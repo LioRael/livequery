@@ -1,0 +1,19 @@
+[package]
+name = "livequery-transport"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+description = "Read-only wire protocol and bounded local Unix transport"
+[dependencies]
+livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.2" }
+serde.workspace = true
+serde_json.workspace = true
+[lints]
+workspace = true
+[target.'cfg(unix)'.dependencies]
+rustix = { version = "1", features = ["process"] }
+socket2 = "0.6"

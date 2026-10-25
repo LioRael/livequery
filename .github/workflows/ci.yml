@@ -24,9 +24,11 @@ jobs:
         env:
           RUSTDOCFLAGS: -D warnings
       - run: python3 scripts/consumer-check.py
-      - run: cargo build --workspace --examples --bins --locked
+      - run: cargo build --workspace --bins --locked
       - run: python3 scripts/smoke.py
-      - run: cargo package --workspace --locked
+      - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
+      - run: python3 scripts/workload-smoke.py
+      - run: cargo package -p livequery-core -p livequery-derive -p livequery-query -p livequery-transport -p livequery-agent -p livequery -p livequery-cli --locked
   msrv:
     runs-on: ubuntu-latest
     steps:
@@ -34,3 +36,4 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.88.0
       - run: cargo test --workspace --locked
       - run: cargo run --manifest-path tests/consumer/Cargo.toml --locked
+      - run: cargo run --manifest-path tests/components/Cargo.toml --locked

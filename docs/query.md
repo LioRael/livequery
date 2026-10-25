@@ -24,7 +24,7 @@ One newline-delimited JSON request and response per Unix connection; unknown req
 {"command":"query","sql":"SELECT id FROM players WHERE health < 20"}
 ```
 
-A schema response contains a map from source name to columns (`name`, `rust_type`). A query response:
+A schema response contains a map from source name to columns (`name`, `rust_type`, `schema`). A query response:
 
 ```json
 {"status":"ok","data":{"columns":[{"name":"id","rust_type":"u64"}],"rows":[{"id":42}],"scanned":2,"truncated":false}}
@@ -36,10 +36,12 @@ Errors:
 {"status":"error","code":"busy","message":"source busy; retry later"}
 ```
 
-Categories: `busy`, `limit`, `not_found`, `invalid`, `serialization`, `io`. The CLI returns a nonzero exit on errors; `--json` makes successful outputs machine-readable while diagnostics remain on stderr. `list --json` emits one JSON object per live discovered agent. Query/watch JSON is one result payload per line, without the transport envelope.
+Categories: `deadline`, `busy`, `limit`, `not_found`, `invalid`, `serialization`, `io`. The CLI returns a nonzero exit on errors; `--json` makes successful outputs machine-readable while diagnostics remain on stderr. `list --json` emits one JSON object per live discovered agent. Query/watch JSON is one result payload per line, without the transport envelope.
 
 ## WATCH
 
-`livequery watch 'SELECT ...' --pid PID` issues sequential queries and sleeps after each completed request. Intervals must be 100–60000 ms. It emits a complete replacement result on the first poll and whenever rows, schema or truncation change. Scanned count alone does not trigger output. There is no row identity inference, added/removed event stream, stable timestamp or server history. Reordering counts as a change. Busy/error terminates the CLI watch with a diagnostic; application-level `Watch::poll` lets callers choose their own retry policy and retains its previous successful result on error.
+`livequery watch 'SELECT ...' --pid PID` issues sequential conditional observations and sleeps after each completed request. Intervals must be 100–60000 ms. It emits a complete replacement result on the first poll and whenever rows, schema or truncation change. Scanned count alone does not trigger output. There is no row identity inference, added/removed event stream, stable timestamp or server history. Reordering counts as a change. Busy retries on the next poll; other errors terminate the CLI watch with a diagnostic; application-level `Watch::poll` lets callers choose their own retry policy and retains its previous successful result on error.
 
-`Watch` is a synchronous query helper, not a scheduler. Drop it to release the retained result. CLI Ctrl-C closes the current connection; the server has no stored subscription to cancel. Changes between snapshots, even a change followed by a reversal, can be missed. Slow consumers cannot build an event backlog. Each subscriber still adds independent full snapshot work; poll sparingly.
+`Watch` is a synchronous query helper, not a scheduler. Drop it to release the retained result. CLI Ctrl-C closes the current connection; the server has no stored subscription to cancel. Changes between snapshots, even a change followed by a reversal, can be missed. Slow consumers cannot build an event backlog. Each changed publication still adds independent full snapshot work per subscriber; unchanged revisions do not clone or scan rows. Publication is an application checkpoint, not a guarantee of the freshest wall-clock state. A publisher can skip revisions between polls. A revision is sampled before execution, so a racing newer publication may cause one redundant subsequent scan; an older result is never labelled with a future revision.
+
+Conditional observation request: `{"command":"observe","sql":"SELECT * FROM players","since":null}`. The response is `{"status":"observation","revision":{...},"data":{...}}`; send that opaque revision on the next poll. Equal revisions return `{"status":"not_modified","revision":{...}}`. Cursors belong to the same query, registry and agent lifetime; clear them when changing SQL or reconnecting to a restarted agent. They are an optimization hint, not authorization or persistent identity. The CLI keeps one fixed query per watch invocation. Registration identity prevents reusing a cursor after a source is replaced within a registry.

@@ -1,6 +1,6 @@
 #![cfg(unix)]
 use livequery::{
-    Inspect, Limits, Registry, Table,
+    Inspect, Limits, Published, Registry, Source, Table,
     local::{self, Request, Response, Server},
 };
 use std::{
@@ -23,7 +23,16 @@ fn real_socket_query_disconnect_invalid_frame_and_cleanup() {
     let path = dir.join("agent.sock");
     let r = Registry::new();
     let _g = r
-        .expose("items", Table::new(vec![Item { id: 42 }]))
+        .expose_published(
+            "items",
+            Published::from_snapshot(
+                Table::new(vec![Item { id: 42 }])
+                    .snapshot(Limits::default())
+                    .unwrap(),
+                Limits::default(),
+            )
+            .unwrap(),
+        )
         .unwrap();
     let server = Server::bind(&path, r.clone(), Limits::default()).unwrap();
     assert!(Server::bind(&path, r, Limits::default()).is_err());
@@ -149,15 +158,26 @@ fn slow_reader_is_disconnected_without_stalling_other_clients() {
     let dir = std::env::temp_dir().join(format!("lq-slow-read-{}", std::process::id()));
     let path = dir.join("agent.sock");
     let registry = Registry::new();
+    // This tests socket backpressure, not debug-build serialization throughput.
+    let limits = Limits {
+        query_timeout: Duration::from_secs(5),
+        ..Limits::default()
+    };
     let _guard = registry
-        .expose(
+        .expose_published(
             "large",
-            Table::new(vec![LargeRow {
-                value: "x".repeat(900_000),
-            }]),
+            Published::from_snapshot(
+                Table::new(vec![LargeRow {
+                    value: "x".repeat(900_000),
+                }])
+                .snapshot(limits)
+                .unwrap(),
+                limits,
+            )
+            .unwrap(),
         )
         .unwrap();
-    let server = Server::bind(&path, registry, Limits::default()).unwrap();
+    let server = Server::bind(&path, registry, limits).unwrap();
     let stop = Arc::new(AtomicBool::new(false));
     let thread = {
         let stop = stop.clone();
@@ -180,7 +200,7 @@ fn slow_reader_is_disconnected_without_stalling_other_clients() {
     fs::remove_dir(dir).unwrap();
     result.expect("slow client must see EOF after the write deadline");
     assert!(
-        received.len() < 900_000,
+        received.len() > 1_000 && received.len() < 900_000,
         "fixture should exceed the socket send buffer"
     );
 }
@@ -192,6 +212,7 @@ impl livequery::Source for LargeSchema {
         vec![livequery::Column {
             name: "id".into(),
             rust_type: "x".repeat(2_000_000),
+            schema: serde_json::Value::Bool(true),
         }]
     }
     fn snapshot(&self, _: Limits) -> Result<livequery::Snapshot, livequery::Error> {
@@ -206,7 +227,21 @@ fn oversized_schema_returns_a_bounded_error() {
     let dir = std::env::temp_dir().join(format!("lq-schema-{}", std::process::id()));
     let path = dir.join("agent.sock");
     let registry = Registry::new();
-    let _guard = registry.expose("large", LargeSchema).unwrap();
+    let snapshot = LargeSchema
+        .snapshot(Limits {
+            bytes: 4_000_000,
+            ..Limits::default()
+        })
+        .unwrap();
+    let published = Published::from_snapshot(
+        snapshot,
+        Limits {
+            bytes: 4_000_000,
+            ..Limits::default()
+        },
+    )
+    .unwrap();
+    let _guard = registry.expose_published("large", published).unwrap();
     let server = Server::bind(&path, registry, Limits::default()).unwrap();
     let stop = Arc::new(AtomicBool::new(false));
     let thread = {
@@ -285,5 +320,79 @@ fn symlinked_socket_directory_is_rejected() {
     symlink(&dir, &link).unwrap();
     assert!(Server::bind(link.join("agent.sock"), Registry::new(), Limits::default()).is_err());
     fs::remove_file(link).unwrap();
+    fs::remove_dir(dir).unwrap();
+}
+
+#[derive(Debug)]
+struct ForbiddenCallback;
+impl Source for ForbiddenCallback {
+    fn schema(&self) -> Vec<livequery::Column> {
+        Item::schema()
+    }
+    fn snapshot(&self, _: Limits) -> Result<livequery::Snapshot, livequery::Error> {
+        panic!("network must not invoke live source callbacks")
+    }
+}
+#[test]
+fn remote_queries_only_read_published_data_and_observations_skip_unchanged_versions() {
+    let dir = std::env::temp_dir().join(format!("lq-published-{}", std::process::id()));
+    let path = dir.join("agent.sock");
+    let registry = Registry::new();
+    let _live = registry.expose("live", ForbiddenCallback).unwrap();
+    let published = Published::new::<Item>(Limits::default()).unwrap();
+    published
+        .publish(livequery::Snapshot::capture([&Item { id: 42 }], Limits::default()).unwrap())
+        .unwrap();
+    let _guard = registry
+        .expose_published("items", published.clone())
+        .unwrap();
+    let server = Server::bind(&path, registry, Limits::default()).unwrap();
+    let stop = Arc::new(AtomicBool::new(false));
+    let thread = {
+        let stop = stop.clone();
+        std::thread::spawn(move || server.serve(&stop).unwrap())
+    };
+    let response = local::request(
+        &path,
+        &Request::Query {
+            sql: "SELECT * FROM live".into(),
+        },
+    )
+    .unwrap();
+    assert!(matches!(response, Response::Error { code, .. } if code == "not_found"));
+    let first = local::request(
+        &path,
+        &Request::Observe {
+            sql: "SELECT * FROM items".into(),
+            since: None,
+        },
+    )
+    .unwrap();
+    let revision = match first {
+        Response::Observation { revision, data } => {
+            assert_eq!(data["rows"][0]["id"], 42);
+            revision
+        }
+        other => panic!("unexpected {other:?}"),
+    };
+    assert!(matches!(
+        local::request(
+            &path,
+            &Request::Observe {
+                sql: "SELECT * FROM items".into(),
+                since: Some(revision)
+            }
+        )
+        .unwrap(),
+        Response::NotModified { .. }
+    ));
+    published
+        .publish(livequery::Snapshot::capture([&Item { id: 43 }], Limits::default()).unwrap())
+        .unwrap();
+    assert!(
+        matches!(local::request(&path, &Request::Observe { sql: "SELECT * FROM items".into(), since: Some(revision) }).unwrap(), Response::Observation { data, .. } if data["rows"][0]["id"] == 43)
+    );
+    stop.store(true, Ordering::Relaxed);
+    thread.join().unwrap();
     fs::remove_dir(dir).unwrap();
 }

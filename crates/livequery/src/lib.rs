@@ -13,24 +13,18 @@
 //! # Ok::<(), livequery::Error>(())
 //! ```
 //!
-//! Derive only supports named structs. Enum fields can use serde serialization.
+//! Enums also require Serialize and JsonSchema to define their representation.
 //! ```compile_fail
 //! #[derive(livequery::Inspect)]
 //! enum Unsupported { A, B }
 //! ```
 #[cfg(unix)]
 pub mod local;
-extern crate self as livequery;
-mod query;
-mod state;
-pub use livequery_derive::Inspect;
-pub use query::{Query, QueryResult, Watch};
-pub use state::{
-    Column, Error, Inspect, Limits, Registration, Registry, Row, Snapshot, Source, Table,
-};
-// The wire values and derive output intentionally use one matching serde_json version.
-pub use serde_json;
-
-pub use serde;
+pub use livequery_agent::Agent;
 #[doc(hidden)]
-pub use state::value_with_budget;
+pub use livequery_core::value_with_budget;
+pub use livequery_core::{
+    CollectionSource, Column, Error, Inspect, Limits, Published, Registration, Registry, Revision,
+    Row, RowCollection, Snapshot, Source, Table, schemars, serde, serde_json,
+};
+pub use livequery_query::{Query, QueryResult, Watch};

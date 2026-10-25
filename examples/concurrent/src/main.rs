@@ -1,5 +1,5 @@
 use livequery::{
-    Inspect, Limits, Registry, Table,
+    Inspect, Limits, Published, Registry, Table,
     local::{self, Server},
 };
 use std::{
@@ -33,7 +33,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         },
     ]);
     let registry = Registry::new();
-    let _registration = registry.expose("players", players.clone())?;
+    let published = Published::new::<Player>(Limits::default())?;
+    published.refresh(&players)?;
+    let _registration = registry.expose_published("players", published.clone())?;
     let path = local::directory().join(format!("{}.sock", std::process::id()));
     let server = Server::bind(&path, registry, Limits::default())?;
     let stop = Arc::new(AtomicBool::new(false));
@@ -61,6 +63,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 std::hint::black_box(&player.token);
             }
         });
+        published.refresh(&players)?;
         std::thread::sleep(Duration::from_millis(250));
     }
     stop.store(true, Ordering::Relaxed);

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.2 (unreleased)
+
+- Independent Core, Query, Agent and Transport crates; compatible livequery facade.
+- Root examples/basic, examples/concurrent, examples/async-server and benches packages.
+
+- Recursive JSON Schema and root enums; nested custom fields now require JsonSchema.
+- VecDeque, sorted map values and shared Mutex/RwLock collection adapters.
+- Remote access requires explicit Published snapshots; ordinary expose is local-only.
+- Cooperative query deadlines and revision-aware WATCH with Busy retries.
+- Real synchronous/Tokio service benchmarks and reproducible comparison probes.
+
+Migration: derive JsonSchema for nested types, register with expose_published, and refresh at application checkpoints. Alpha.1 remains the currently published package.
+
+
 ## 0.1.0-alpha.1 — 2026-10-26
 
 First experimental release. APIs and the local protocol may change during alpha.

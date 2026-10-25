@@ -4,7 +4,8 @@ use std::sync::{
     Arc, RwLock,
     atomic::{AtomicBool, Ordering},
 };
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, livequery::schemars::JsonSchema)]
+#[schemars(crate = "livequery::schemars")]
 enum Status {
     Online,
     Offline,

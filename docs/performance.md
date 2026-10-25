@@ -1,60 +1,76 @@
-# Performance measurements
+# Measured performance (alpha.2 candidate)
 
-Measured locally on 2026-10-26, macOS/Darwin arm64, Apple M2 Pro, 16 GiB RAM, rustc 1.99.0 (b940084d7 2026-09-28), Cargo bench optimized profile, default allocator. These are single-run microbenchmarks, not production guarantees or a comparison against competing tools.
+Measured 2026-10-26 on macOS arm64, Apple M2 Pro, 16 GiB RAM, Rust 1.99.0, optimized Cargo profile and default allocator. Raw data and harnesses are committed. These are local diagnostic experiments, not production guarantees or competitor rankings. [Alpha.1 measurements](performance-alpha1.md) describe the older live-callback design and must not be used as alpha.2 results.
 
-Raw files: [benchmark.csv](benchmark.csv), [benchmark-resources.txt](benchmark-resources.txt). Harness: [inspection.rs](../crates/livequery/benches/inspection.rs).
+## Actual application cost
 
-## Snapshot + query latency
+A real 64-byte TCP echo workload runs on either OS threads or a two-worker Tokio runtime. Four persistent Python asyncio clients generate closed-loop load on the same machine. Each request atomically updates two counters. Separate observers query a Unix socket every 10 ms after the previous response. Application publication copies two counters under its existing mutex and captures/serializes outside it; default publication interval is 10 ms.
 
-Thirty samples for each size, three scalar fields per row, predicate matching every row, two projected fields, LIMIT 100. Timing includes snapshot acquisition, bounded serialization/decoding, owned row construction, filtering, projection and serialized-size checks. Parsing occurs before the timed loop. There are no concurrent updates in these rows.
+Each row below is the median of three separate child processes, with case order rotated. The load lasts two seconds after 100 ms warmup; the host lifetime is three seconds. CPU is child user+system time over its entire lifetime, excluding compilation and the load generator. RSS is that child's maximum resident set, not incremental allocation or a leak measurement. p99 is the median of per-run sample quantiles, not a pooled percentile. Python load generation, machine noise and short runs constrain inference. The manual endpoint is intentionally less capable than LiveQuery; this is a cost reference, not a feature-equivalent comparison.
 
-| Rows | p50 | p99 (sample quantile) |
-|---:|---:|---:|
-| 100 | 68 µs | 82 µs |
-| 1,000 | 525 µs | 616 µs |
-| 10,000 | 5,734 µs | 7,543 µs |
+| Engine | Mode | Observers | Publish ms | Requests/s | Request p99 µs | Host CPU s | Peak RSS MiB |
+|---|---|---:|---:|---:|---:|---:|---:|
+| sync | baseline | 0 | — | 22076 | 285 | 0.461 | 2.23 |
+| sync | manual | 1 | — | 21709 | 329 | 0.461 | 2.34 |
+| sync | published | 0 | 10 | 21901 | 315 | 0.481 | 2.81 |
+| sync | published | 1 | 10 | 21761 | 327 | 0.479 | 3.09 |
+| sync | published | 4 | 10 | 21495 | 418 | 0.475 | 3.12 |
+| sync | published | 4 | 50 | 20692 | 398 | 0.467 | 3.09 |
+| async | baseline | 0 | — | 22291 | 301 | 0.637 | 2.44 |
+| async | manual | 1 | — | 21791 | 377 | 0.640 | 2.56 |
+| async | published | 0 | 10 | 23708 | 291 | 0.662 | 2.98 |
+| async | published | 1 | 10 | 23128 | 327 | 0.659 | 3.31 |
+| async | published | 4 | 10 | 22866 | 419 | 0.658 | 3.27 |
+| async | published | 4 | 50 | 20904 | 455 | 0.631 | 3.23 |
 
-The linear scan is visible. LIMIT does not avoid snapshot copying. Larger sources exceed the default scan budget rather than silently truncating the inspected collection. Thirty samples are insufficient for robust tail-latency claims.
+All 36 cases had zero request, observation and publication errors. Some observed throughput exceeds baseline due to run noise; this is not a speedup claim. Tail latency rises in several observed cases. The 50 ms publication cases returned `not_modified` responses, proving that polling can skip work when publication is slower than polling. No universal overhead percentage is inferred. Raw results: [service-benchmark.json](service-benchmark.json).
 
-## Update and WATCH contention
+## Disabled build
 
-Each scenario runs about 400 ms on 100 rows. Subscriber counts are 0, 1, 8 and 32; requested polling rates are 10 and 100 Hz. Update rates are maximum-speed (`watch_update_0`), requested 100 Hz, and requested 1,000 Hz. Subscribers are polled sequentially on one reader thread, with a sleep after each batch. Requested rates are not guaranteed: polling time, sleep granularity and scheduling reduce actual rates.
+The same fixture was separately compiled without its `inspection` feature, removing the LiveQuery dependency and integration. It retains its application, manual-debug and Tokio dependencies; this is not a minimal executable-size benchmark. Both artifacts use the same toolchain/profile.
 
-Selected maximum-speed cases:
+Enabled binary: 1,827,648 bytes; disabled binary: 1,154,144 bytes. The local toolchain reported a missing libLLVM for its automatic debug stripping, so these are actual produced file sizes, not fully stripped deployment sizes. No toolchain/global configuration was changed.
 
-| Subscribers / requested Hz | Successful updates/s | Busy update attempts | Successful observations | Observation errors |
-|---|---:|---:|---:|---:|
-| 0 / 100 | 20,153,968 | 0 | 0 | 0 |
-| 1 / 100 | 19,379,135 | 28,205 | 33 | 1 |
-| 8 / 100 | 19,961,416 | 162,298 | 241 | 15 |
-| 32 / 100 | 18,740,731 | 535,474 | 815 | 49 |
+- Disabled sync: 20430 requests/s, 464 µs p99, 0.465 s host CPU, 2.03 MiB peak RSS (three runs).
+- Disabled async: 23079 requests/s, 284 µs p99, 0.640 s host CPU, 2.28 MiB peak RSS (three runs).
 
-Counters cover the entire scenario. Busy updates are **not retried**; this exposes lost application work if a caller ignores Busy. Busy observations are counted, not treated as successful low-cost queries. Even unchanged watches rescan. In the 1,000 Hz requested update cases, actual successful updates were 801/s without watchers and 752/s with 32 watchers at requested 100 Hz, with 19 busy attempts in the latter run. These are workload measurements, not a general percentage-overhead claim.
+Raw: [disabled-benchmark.json](disabled-benchmark.json). Compilation without inspection performs no publication, agent polling or observation; startup latency was not separately measured.
 
-The p50/p99 columns for WATCH rows measure single update attempts, including busy attempts, not query latency or completion-after-retry latency. Maximum-speed runs sample every thousandth attempt; paced runs sample every attempt. OS scheduling jitter and small sample counts dominate the paced measurements.
+## Published snapshot queries and WATCH
 
-## Disabled / idle baseline
+Thirty samples per size, three fields per row, two projected fields, LIMIT 100, matching all rows. Query parsing and application capture occur before timing; measurements include cloning the published view, scan/filter/projection and result validation. These differ from alpha.1 capture-inclusive timing.
 
-One million tight-loop updates with the same data and nonblocking write lock:
+| Rows | p50 µs | p99 µs | Unchanged Watch polls/s |
+|---:|---:|---:|---:|
+| 100 | 45 | 101 | 30,770,414 |
+| 1000 | 225 | 243 | 25,595,361 |
+| 10000 | 2591 | 3758 | 29,655,621 |
 
-| Configuration | Successful updates/s |
-|---|---:|
-| Plain std RwLock, no LiveQuery integration | 164,389,191 |
-| Table wrapper, no registration | 156,424,144 |
-| Table wrapper, registered but no observer | 157,351,262 |
+Unchanged Watch is an in-process tight loop checking the revision; it is not a socket round-trip rate. Changed publications still require independent full scans per subscriber. The remaining CSV scenarios measure 100-row publication/update attempts at unpaced, requested 100 Hz and 1,000 Hz rates, with 0/1/8/32 watchers at requested 10/100 Hz. Capture/publication cost is included on the writer thread; the `busy` counter includes failed publication attempts. Readers poll sequentially, so requested rates are not achieved automatically. Busy/errors are counted rather than silently treated as successful work. Each Watch retains a full last result, so memory scales with subscriber count and result size.
 
-This is a microbenchmark with inlining and no real business work. It does not establish zero overhead or that registration improves performance. Registration starts no threads, performs no repeated reads and records no history; idle per-update code is the same Table write path. An application that compiles out integration has its original code path, but feature-gated binary size/startup costs have not been measured here.
+The entire microbenchmark took 10.09 s wall, 4.08 s user CPU and 0.06 s system CPU, with 27,279,360 bytes maximum RSS. This is a whole-process peak, not per-subscriber allocation attribution. Raw: [benchmark-alpha2.csv](benchmark-alpha2.csv), [resource report](benchmark-alpha2-resources.txt).
 
-## CPU and memory
+## Sustained diagnostic load
 
-The already-built benchmark executable, excluding compilation, took 10.15 s wall time, 3.70 s user CPU and 0.07 s system CPU. macOS reported 12,664,832 bytes maximum resident set size and 11,108,736 bytes peak memory footprint. These are process-wide peaks across all cases, not incremental per-subscription allocations. They include allocator/loaded executable effects. Each Watch retains one full result, so retained memory grows with subscriber count and result size.
+One 30-second load run for each engine, four observers, 10 ms publication. This checks continued service and cleanup; thirty seconds is not a production endurance or leak certification.
+
+- sync: 546,872 requests, 6,165 observations, p99 764 µs, host peak RSS 3.05 MiB; request/observation/publication errors 0/0/0.
+- async: 614,989 requests, 6,430 observations, p99 499 µs, host peak RSS 3.22 MiB; request/observation/publication errors 0/1/1.
+
+The async run recorded one failed observation and one failed publication attempt, while all application requests succeeded. This harness counts all diagnostics failures, including Busy, together and did not record their categories; it cannot attribute these two events more precisely. Failed publication preserves the previous snapshot and the next application tick tries again. This is observable snapshot sampling, not lossless event delivery.
+
+Raw: [soak-benchmark.json](soak-benchmark.json). Maximum RSS alone cannot establish stable memory over time. Production-tail behavior, allocator attribution, fairness under hostile same-user load and multi-hour endurance remain outside these measurements.
 
 ## Reproduce
 
 ```sh
-cargo bench -p livequery --bench inspection
+cargo bench -p livequery-benchmarks --bench inspection
+cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
+python3 scripts/workload-smoke.py
+python3 scripts/benchmark-service.py
+cargo build --release --no-default-features --features async --target-dir experiments/workload/target/disabled --manifest-path experiments/workload/Cargo.toml --locked
+python3 scripts/benchmark-service.py --only baseline --binary experiments/workload/target/disabled/release/livequery-workload --output docs/disabled-benchmark.json
+python3 scripts/benchmark-service.py --only soak --repeats 1 --seconds 30 --output docs/soak-benchmark.json
 ```
 
-For macOS process resource accounting, first build using `cargo bench -p livequery --bench inspection --no-run`, then pass the executable path printed by Cargo to `/usr/bin/time -l`. Redirect stdout to a CSV and stderr to a resource report. Use `/usr/bin/time -v` on Linux. Running time around Cargo itself would conflate compiler memory with runtime memory.
-
-The real process/CLI smoke tests also verified an ordinary concurrent program and a Tokio TCP echo service, including counters after a real echoed request. They are correctness tests, not service throughput benchmarks. CLI transport latency, sustained production service tail latency, allocator attribution, multi-process fairness and extended load/soak behavior remain unmeasured. A safety/serialization improvement may cost throughput; do not remove bounds based solely on these numbers.
+Run benchmarks without concurrent compilation. `os.wait4` collects resources for the already-built host child only; the same script supports Linux RSS unit conversion. No timing threshold is used in CI. Never remove safety bounds solely to improve these numbers.

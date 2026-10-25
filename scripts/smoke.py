@@ -15,7 +15,7 @@ def cli(pid, *args):
     return subprocess.check_output([str(BIN), *args, '--pid', str(pid), '--json'], text=True)
 
 def run_example(name, env):
-    process = subprocess.Popen([str(ROOT / 'target/debug/examples' / name)], stdout=subprocess.PIPE,
+    process = subprocess.Popen([str(ROOT / 'target/debug' / name)], stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE, text=True, env={**os.environ, **env})
     try:
         line = process.stdout.readline().strip()

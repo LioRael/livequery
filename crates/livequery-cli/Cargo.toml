@@ -15,7 +15,8 @@ name = "livequery"
 path = "src/main.rs"
 doc = false
 [dependencies]
-livequery = { path = "../livequery", version = "0.1.0-alpha.1" }
+livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.2" }
+livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.2" }
 serde_json.workspace = true
 [lints]
 workspace = true

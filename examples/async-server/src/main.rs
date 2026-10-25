@@ -1,5 +1,5 @@
 use livequery::{
-    Inspect, Limits, Registry, Table,
+    Inspect, Limits, Published, Registry, Table,
     local::{self, Server},
 };
 use std::sync::{
@@ -22,7 +22,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         bytes: 0,
     }]);
     let registry = Registry::new();
-    let _registration = registry.expose("requests", stats.clone())?;
+    let published = Published::new::<Requests>(Limits::default())?;
+    let _registration = registry.expose_published("requests", published.clone())?;
     let server = Server::bind(
         local::directory().join(format!("{}.sock", std::process::id())),
         registry,
@@ -48,6 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     while let Ok(accepted) = tokio::time::timeout_at(deadline, listener.accept()).await {
         let (mut stream, _) = accepted?;
         let stats = stats.clone();
+        let published = published.clone();
         tokio::spawn(async move {
             let mut buffer = [0; 4096];
             if let Ok(Ok(n)) =
@@ -63,6 +65,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                         })
                         .is_ok()
                     {
+                        let _ = published.refresh(&stats);
                         break;
                     }
                     tokio::task::yield_now().await;

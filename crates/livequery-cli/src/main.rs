@@ -1,7 +1,5 @@
-use livequery::{
-    QueryResult,
-    local::{self, Request, Response},
-};
+use livequery_query::QueryResult;
+use livequery_transport::{Request, Response, local};
 use std::{
     io::{self, Write},
     path::PathBuf,
@@ -83,14 +81,41 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         return Err("interval must be 100..60000 ms".into());
     }
     let mut previous = None;
+    let mut revision = None;
     let mut polls = 0;
     loop {
         if command == "watch" && count.is_some_and(|c| polls >= c) {
             break;
         }
-        let response = local::request(&socket, &request)?;
+        let active_request = if command == "watch" {
+            Request::Observe {
+                sql: args[1].clone(),
+                since: revision,
+            }
+        } else {
+            request.clone()
+        };
+        let response = local::request(&socket, &active_request)?;
         let data = match response {
             Response::Ok { data } => data,
+            Response::Observation {
+                revision: next,
+                data,
+            } => {
+                revision = Some(next);
+                data
+            }
+            Response::NotModified { revision: next } => {
+                revision = Some(next);
+                polls += 1;
+                std::thread::sleep(Duration::from_millis(interval));
+                continue;
+            }
+            Response::Error { code, .. } if command == "watch" && code == "busy" => {
+                polls += 1;
+                std::thread::sleep(Duration::from_millis(interval));
+                continue;
+            }
             Response::Error { code, message } => return Err(format!("{code}: {message}").into()),
         };
         let mut comparable = data.clone();

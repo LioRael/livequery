@@ -1,0 +1,5 @@
+field lookup: Ok(NodeTree { info: Leaf("12"), meta: Some(Wrap(1)), size: 3 })
+after assignment: Ok(NodeTree { info: Leaf("20"), meta: Some(Wrap(1)), size: 3 })
+
+{"bevy_remote": {"jsonrpc": "2.0", "id": 1, "result": [{"components": {"bevy::Player": {"health": 20, "id": 42}}, "entity": 4294967277}]}}
+console gRPC task telemetry received: 7 tasks
