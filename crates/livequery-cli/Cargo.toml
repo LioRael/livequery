@@ -1,0 +1,21 @@
+[package]
+name = "livequery-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Local CLI for querying LiveQuery-enabled Rust programs"
+readme = "README.md"
+keywords = ["debugging", "observability", "runtime", "inspection"]
+categories = ["development-tools::debugging"]
+[[bin]]
+name = "livequery"
+path = "src/main.rs"
+doc = false
+[dependencies]
+livequery = { path = "../livequery", version = "0.1.0-alpha.1" }
+serde_json.workspace = true
+[lints]
+workspace = true

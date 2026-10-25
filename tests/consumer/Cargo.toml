@@ -1,0 +1,9 @@
+[package]
+name = "livequery-consumer-check"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.88"
+publish = false
+[workspace]
+[dependencies]
+lq = { package = "livequery", path = "../../crates/livequery" }

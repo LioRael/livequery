@@ -1,0 +1,22 @@
+[package]
+name = "livequery-derive"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Derive explicit, field-filtered LiveQuery inspection"
+readme = "README.md"
+keywords = ["debugging", "observability", "runtime", "inspection"]
+categories = ["development-tools::debugging"]
+[lib]
+proc-macro = true
+[dependencies]
+syn = { version = "2", features = ["full"] }
+quote = "1"
+proc-macro2 = "1"
+proc-macro-crate = "3"
+
+[lints]
+workspace = true

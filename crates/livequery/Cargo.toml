@@ -1,0 +1,28 @@
+[package]
+name = "livequery"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Read-only runtime state inspection and bounded queries for Rust applications"
+readme = "README.md"
+keywords = ["debugging", "observability", "runtime", "inspection"]
+categories = ["development-tools::debugging"]
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+livequery-derive = { path = "../livequery-derive", version = "0.1.0-alpha.1" }
+sqlparser = { version = "0.59", default-features = false, features = ["std"] }
+[dev-dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "net", "io-util"] }
+[[bench]]
+name = "inspection"
+harness = false
+[lints]
+workspace = true
+[target.'cfg(unix)'.dependencies]
+rustix = { version = "1", features = ["process"] }
+socket2 = "0.6"
