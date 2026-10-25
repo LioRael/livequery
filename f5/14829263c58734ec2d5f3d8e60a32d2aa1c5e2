@@ -1,0 +1,25 @@
+CONTRIBUTING.md
+  s_1d1ebc94680cfb::t_0101c75b96db1c 7
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_0101c75b96db1c 7-8
+docs/release-0.1.0-alpha.1.md
+  s_1d1ebc94680cfb::t_0101c75b96db1c 17,29,36-43
+README.md
+  s_1d1ebc94680cfb::t_0101c75b96db1c 13,20,48-54,118-119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f514829263c58734ec2d5f3d8e60a32d2aa1c5e2",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
