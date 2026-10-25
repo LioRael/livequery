@@ -13,6 +13,7 @@ Scope: the first release requirements in the supplied LiveQuery prompt. ORDER BY
 | WATCH, cancellation, slow consumers, high update rate | Conditional publication revisions, full changed-result comparison; no retained agent subscriptions or queue; transport tests and benchmarks |
 | Read-only access, secret filtering, finite resources | Private owner-checked UDS; caps, deadlines; transport malformed/slow clients and forbidden callback tests |
 | Query cannot invoke unbounded application callbacks | Only expose_published is visible remotely; capture is an explicit trusted application action |
+| Independent workspace layers | Core, Query, Agent, Transport, Derive and CLI crates; thin compatible facade; root examples and benchmarks; tests/components validates direct crate composition |
 | Runtime independence | Core has no Tokio dependency; concurrent and async-server examples and workload engines |
 | Query size/update/subscriber benchmark | benches/inspection.rs (100/1k/10k rows, 1/8/32 subscribers, 10/100 Hz polling) |
 | Actual host throughput/tail/CPU/memory | experiments/workload and scripts/benchmark-service.py; reproducible results in performance.md |

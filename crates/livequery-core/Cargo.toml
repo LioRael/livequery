@@ -1,0 +1,18 @@
+[package]
+name = "livequery-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+description = "Explicit schemas, registration and safe runtime snapshots"
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+schemars = "1"
+livequery-derive = { path = "../livequery-derive", version = "0.1.0-alpha.2" }
+[lints]
+workspace = true

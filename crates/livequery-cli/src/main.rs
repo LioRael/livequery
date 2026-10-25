@@ -1,7 +1,5 @@
-use livequery::{
-    QueryResult,
-    local::{self, Request, Response},
-};
+use livequery_query::QueryResult;
+use livequery_transport::{Request, Response, local};
 use std::{
     io::{self, Write},
     path::PathBuf,

@@ -2,7 +2,7 @@
 
 Measured locally on 2026-10-26, macOS/Darwin arm64, Apple M2 Pro, 16 GiB RAM, rustc 1.99.0 (b940084d7 2026-09-28), Cargo bench optimized profile, default allocator. These are single-run microbenchmarks, not production guarantees or a comparison against competing tools.
 
-Raw files: [benchmark.csv](benchmark.csv), [benchmark-resources.txt](benchmark-resources.txt). Harness: [inspection.rs](../crates/livequery/benches/inspection.rs).
+Raw files: [benchmark.csv](benchmark.csv), [benchmark-resources.txt](benchmark-resources.txt). Harness: [inspection.rs](https://github.com/LioRael/livequery/blob/v0.1.0-alpha.1/crates/livequery/benches/inspection.rs).
 
 ## Snapshot + query latency
 

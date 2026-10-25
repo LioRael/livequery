@@ -1,0 +1,13 @@
+[package]
+name = "livequery-example-basic"
+version = "0.0.0"
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+[[bin]]
+name = "basic"
+path = "src/main.rs"
+[dependencies]
+livequery = { path = "../../crates/livequery" }
+[lints]
+workspace = true

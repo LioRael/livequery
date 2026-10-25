@@ -12,10 +12,21 @@ pub fn derive_inspect(input: TokenStream) -> TokenStream {
         .into()
 }
 fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
-    let crate_path = match proc_macro_crate::crate_name("livequery")
-        .map_err(|error| syn::Error::new_spanned(&input.ident, error.to_string()))?
-    {
-        proc_macro_crate::FoundCrate::Itself => quote!(::livequery),
+    let (package, found) = ["livequery", "livequery-core"]
+        .into_iter()
+        .find_map(|package| {
+            proc_macro_crate::crate_name(package)
+                .ok()
+                .map(|found| (package, found))
+        })
+        .ok_or_else(|| {
+            syn::Error::new_spanned(&input.ident, "Inspect requires livequery or livequery-core")
+        })?;
+    let crate_path = match found {
+        proc_macro_crate::FoundCrate::Itself => {
+            let ident = syn::Ident::new(&package.replace('-', "_"), input.ident.span());
+            quote!(::#ident)
+        }
         proc_macro_crate::FoundCrate::Name(name) => {
             let ident = syn::Ident::new(&name, input.ident.span());
             quote!(::#ident)

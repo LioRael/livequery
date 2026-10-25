@@ -74,23 +74,50 @@ checksum = "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
 name = "livequery"
 version = "0.1.0-alpha.2"
 dependencies = [
- "livequery-derive",
- "rustix",
- "schemars",
+ "livequery-agent",
+ "livequery-core",
+ "livequery-query",
+ "livequery-transport",
  "serde",
  "serde_json",
  "socket2",
- "sqlparser",
- "thiserror",
- "tokio",
+]
+
+[[package]]
+name = "livequery-agent"
+version = "0.1.0-alpha.2"
+dependencies = [
+ "livequery-core",
+ "livequery-query",
+ "livequery-transport",
+ "serde_json",
+]
+
+[[package]]
+name = "livequery-benchmarks"
+version = "0.0.0"
+dependencies = [
+ "livequery",
 ]
 
 [[package]]
 name = "livequery-cli"
 version = "0.1.0-alpha.2"
 dependencies = [
- "livequery",
+ "livequery-query",
+ "livequery-transport",
  "serde_json",
+]
+
+[[package]]
+name = "livequery-core"
+version = "0.1.0-alpha.2"
+dependencies = [
+ "livequery-derive",
+ "schemars",
+ "serde",
+ "serde_json",
+ "thiserror",
 ]
 
 [[package]]
@@ -101,6 +128,49 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.119",
+]
+
+[[package]]
+name = "livequery-example-async-server"
+version = "0.0.0"
+dependencies = [
+ "livequery",
+ "tokio",
+]
+
+[[package]]
+name = "livequery-example-basic"
+version = "0.0.0"
+dependencies = [
+ "livequery",
+]
+
+[[package]]
+name = "livequery-example-concurrent"
+version = "0.0.0"
+dependencies = [
+ "livequery",
+]
+
+[[package]]
+name = "livequery-query"
+version = "0.1.0-alpha.2"
+dependencies = [
+ "livequery-core",
+ "serde",
+ "serde_json",
+ "sqlparser",
+]
+
+[[package]]
+name = "livequery-transport"
+version = "0.1.0-alpha.2"
+dependencies = [
+ "livequery-core",
+ "rustix",
+ "serde",
+ "serde_json",
+ "socket2",
 ]
 
 [[package]]

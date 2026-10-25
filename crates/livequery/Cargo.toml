@@ -11,19 +11,14 @@ readme = "README.md"
 keywords = ["debugging", "observability", "runtime", "inspection"]
 categories = ["development-tools::debugging"]
 [dependencies]
+livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.2" }
+livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.2" }
+livequery-agent = { path = "../livequery-agent", version = "0.1.0-alpha.2" }
+livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.2" }
+[dev-dependencies]
 serde.workspace = true
 serde_json.workspace = true
-thiserror.workspace = true
-schemars = "1"
-livequery-derive = { path = "../livequery-derive", version = "0.1.0-alpha.2" }
-sqlparser = { version = "0.59", default-features = false, features = ["std"] }
-[dev-dependencies]
-tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "net", "io-util"] }
-[[bench]]
-name = "inspection"
-harness = false
 [lints]
 workspace = true
-[target.'cfg(unix)'.dependencies]
-rustix = { version = "1", features = ["process"] }
+[target.'cfg(unix)'.dev-dependencies]
 socket2 = "0.6"

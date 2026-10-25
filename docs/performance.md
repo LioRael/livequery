@@ -64,7 +64,7 @@ Raw: [soak-benchmark.json](soak-benchmark.json). Maximum RSS alone cannot establ
 ## Reproduce
 
 ```sh
-cargo bench -p livequery --bench inspection
+cargo bench -p livequery-benchmarks --bench inspection
 cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
 python3 scripts/workload-smoke.py
 python3 scripts/benchmark-service.py

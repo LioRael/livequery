@@ -7,6 +7,7 @@ import tempfile
 
 root = Path(__file__).resolve().parents[1]
 subprocess.run(['cargo', 'run', '--locked', '--manifest-path', str(root / 'tests/consumer/Cargo.toml')], check=True)
+subprocess.run(['cargo', 'run', '--locked', '--manifest-path', str(root / 'tests/components/Cargo.toml')], check=True)
 cases = {
     'enum': ('#[derive(lq::Inspect)] enum Bad { A } fn main() {}', 'JsonSchema'),
     'tuple': ('#[derive(lq::Inspect)] struct Bad(u64); fn main() {}', 'Inspect requires named fields'),

@@ -1,4 +1,5 @@
-use crate::{Column, Error, Limits, Registry, Row};
+//! Bounded SQL parsing, execution and pull-based change detection.
+use livequery_core::{Column, Error, Limits, Registry, Revision, Row};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sqlparser::{
@@ -168,7 +169,7 @@ impl Query {
     /// Publication revision, or none for a live local source.
     /// # Errors
     /// Returns missing-source or busy errors.
-    pub fn revision(&self, registry: &Registry) -> Result<Option<crate::Revision>, Error> {
+    pub fn revision(&self, registry: &Registry) -> Result<Option<Revision>, Error> {
         registry.revision(&self.source)
     }
 }
@@ -368,7 +369,7 @@ impl Parser {
 pub struct Watch {
     query: Query,
     previous: Option<QueryResult>,
-    revision: Option<crate::Revision>,
+    revision: Option<Revision>,
     limits: Option<Limits>,
 }
 impl Watch {

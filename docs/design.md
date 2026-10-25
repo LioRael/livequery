@@ -18,7 +18,7 @@ The examined interfaces do not provide this exact combination of ordinary Rust c
 ## Decisions
 
 1. **Explicit registration + owned snapshots.** No pointer walking or unsafe reflection. A guard owns the registration; the catalog stores weak references. Trusted local source callbacks run after releasing the catalog lock. Remote sources must be `Published` owned snapshots. An in-flight request may finish after its guard is dropped.
-2. **One crate for cohesive MVP modules.** `livequery` contains state/query/local modules; `livequery-derive` and `livequery-cli` require separate crates for Rust target reasons. No artificial agent/core/transport crate boundaries. Core has no Tokio dependency; Tokio is a dev-dependency for the example only.
+2. **Independent crates with one-way dependencies.** Core owns schemas, registration, collection adapters and publication. Query depends only on Core and SQL parsing. Transport owns protocol/framing, socket security, deadlines and client lifecycle, with no Query dependency. Agent dispatches protocol requests through Query over a published-only registry and composes a local transport server. CLI depends directly on Query result types and Transport. The thin `livequery` facade preserves existing imports and `local::Server`; it contains no duplicated implementation. Core and Agent have no Tokio dependency. Tokio belongs to the independent async example package.
 3. **Borrow application data only during snapshot construction.** `Table` uses `try_read`; projection/filter execution takes place on owned JSON rows after unlocking. Existing `RwLock<Vec<T>>` can be adapted without redesign. `Source` supports Mutex-backed or versioned application views; implementers must use nonblocking acquisition and uphold snapshot consistency/budgets themselves. `CollectionSource` supports Vec, VecDeque, BTreeMap and sorted HashMap values through Mutex/RwLock; maps expose values, not implicit key columns.
 4. **Reuse the SQL lexer; own a deliberately tiny grammar.** Full AST validation would require auditing every unsupported clause as upstream evolves. The strict parser consumes every token and rejects extra syntax. This does mean maintaining boolean precedence and NULL semantics ourselves, with tests. A fully custom lexer would unnecessarily duplicate SQL string quoting/comment behavior. A future full AST planner should be introduced only alongside additional query semantics.
 5. **Serde as a value boundary, not arbitrary reflection.** The macro enumerates named fields, skips sensitive fields before serialization, reports resolved Rust type names, and bounds JSON field writes. Option, vector, map and serde enum/struct fields are representable. Types themselves remain application-owned. Nested serializers decide their own exposure. Schemars supplies per-column recursive JSON Schema, `$defs` and enum variant inventories. Custom nested types implement JsonSchema; root enums are one `value` column using Serde representation.
@@ -38,3 +38,28 @@ The version-one JSON request/response shapes can support a future Web Explorer o
 - Requested polling rate versus actual successful observations under application contention.
 - Explicit capture still invokes trusted serializers/adapters; applications choose capture frequency and thread. Remote requests cannot invoke them.
 - macOS is locally verified; Linux/macOS CI and Rust 1.88 checks run on each push. Consult the CI run for the specific commit before relying on its result. Windows transport is absent.
+
+
+## Workspace layout
+
+```text
+livequery/
+├── crates/
+│   ├── livequery-core/       # schemas, ownership, snapshots, collections
+│   ├── livequery-derive/     # derive works with facade or standalone Core
+│   ├── livequery-query/      # bounded SQL and WATCH
+│   ├── livequery-agent/      # published-only dispatch, composed server
+│   ├── livequery-transport/  # wire protocol, socket server/client and discovery
+│   ├── livequery-cli/        # executable client
+│   └── livequery/            # compatible embedding facade
+├── examples/
+│   ├── basic/
+│   ├── concurrent/
+│   └── async-server/
+├── benches/                 # livequery-benchmarks package
+└── docs/
+```
+
+The transport server accepts a trusted request handler; it does not know about registries or execute SQL. Its handler must return promptly. `livequery_agent::Agent::handle` is usable without a socket; `livequery_agent::local::Server` provides the bounded published-data implementation. `Registry::published_only` supplies the access boundary without exposing private registry internals. Root examples and benchmarks are workspace packages with `publish = false`.
+
+Release dependency order: derive → core → query/transport → agent → facade/CLI. Local `cargo package` verification uses Cargo's temporary registry for all seven publishable packages. Existing alpha.1 publication metadata is historical; splitting the alpha.2 candidate does not publish those new crates automatically.

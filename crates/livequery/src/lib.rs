@@ -20,24 +20,11 @@
 //! ```
 #[cfg(unix)]
 pub mod local;
-extern crate self as livequery;
-mod collection;
-mod published;
-mod query;
-mod state;
-pub use livequery_derive::Inspect;
-pub use query::{Query, QueryResult, Watch};
-pub use state::{
-    Column, Error, Inspect, Limits, Registration, Registry, Revision, Row, Snapshot, Source,
-};
-// The wire values and derive output intentionally use one matching serde_json version.
-pub use serde_json;
-
-pub use serde;
+pub use livequery_agent::Agent;
 #[doc(hidden)]
-pub use state::value_with_budget;
-
-pub use schemars;
-
-pub use collection::{CollectionSource, RowCollection, Table};
-pub use published::Published;
+pub use livequery_core::value_with_budget;
+pub use livequery_core::{
+    CollectionSource, Column, Error, Inspect, Limits, Published, Registration, Registry, Revision,
+    Row, RowCollection, Snapshot, Source, Table, schemars, serde, serde_json,
+};
+pub use livequery_query::{Query, QueryResult, Watch};

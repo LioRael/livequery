@@ -18,7 +18,7 @@ From this checkout, on macOS or Linux:
 
 ```sh
 cargo install --path crates/livequery-cli --locked
-cargo run -p livequery --example concurrent
+cargo run -p livequery-example-concurrent
 ```
 
 In a second terminal, use the PID printed by the example:
@@ -80,9 +80,9 @@ Keep the registration guard alive. Dropping it immediately removes discovery and
 
 To allow a CLI connection, bind `local::Server` in `local::directory()` and call `serve` on a thread owned by the application. The library does not spawn a thread or require a runtime. See the complete examples:
 
-- [Basic source](crates/livequery/examples/basic.rs)
-- [Concurrent changing players](crates/livequery/examples/concurrent.rs), exits after 30 seconds
-- [Tokio TCP echo service](crates/livequery/examples/async-server.rs), exposes request counters and exits after 30 seconds
+- [Basic source](examples/basic/src/main.rs)
+- [Concurrent changing players](examples/concurrent/src/main.rs), exits after 30 seconds
+- [Tokio TCP echo service](examples/async-server/src/main.rs), exposes request counters and exits after 30 seconds
 
 ## What is implemented
 
@@ -101,6 +101,10 @@ No ORDER BY, JOIN, aggregation, history, nested-field queries, Windows transport
 
 Each changed publication is scanned; unchanged revisions skip the snapshot and scan. Large collections fail before scanning; use dedicated diagnostic views. Polling misses intermediate states. Same-user processes can read exposed data. Custom serializers/adapters run only during explicit application capture/publication or trusted in-process queries, and cannot be forcibly preempted. Remote queries read only validated owned JSON snapshots. Use short bounded adapters and dedicated inspection views for latency-sensitive applications.
 
+## Workspace
+
+Core, Query, Agent and Transport are independent crates under `crates/`; `livequery` remains a thin compatible entry point. Runnable packages live in `examples/basic`, `examples/concurrent`, and `examples/async-server`; benchmarks live in `benches/`. See the [dependency boundaries and directory tree](docs/design.md#workspace-layout).
+
 ## Verify
 
 ```sh
@@ -109,9 +113,9 @@ cargo clippy --workspace --all-targets --all-features -- -D warnings
 cargo test --workspace --locked
 python3 scripts/consumer-check.py
 cargo doc --workspace --no-deps
-cargo build --workspace --examples --bins
+cargo build --workspace --bins
 python3 scripts/smoke.py
-cargo bench -p livequery --bench inspection
+cargo bench -p livequery-benchmarks --bench inspection
 ```
 
 The [acceptance matrix](docs/acceptance.md) maps the original requirements to executable evidence and remaining roadmap.

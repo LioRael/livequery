@@ -1,0 +1,12 @@
+[package]
+name = "livequery-components-check"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.88"
+publish = false
+[workspace]
+[dependencies]
+state = { package = "livequery-core", path = "../../crates/livequery-core" }
+query = { package = "livequery-query", path = "../../crates/livequery-query" }
+agent = { package = "livequery-agent", path = "../../crates/livequery-agent" }
+wire = { package = "livequery-transport", path = "../../crates/livequery-transport" }

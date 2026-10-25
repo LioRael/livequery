@@ -228,7 +228,8 @@ impl Registry {
     ) -> Result<Registration, Error> {
         self.register(name, Arc::new(published.clone()), Some(published))
     }
-    pub(crate) fn remote(&self) -> Self {
+    /// Returns a catalog view restricted to explicitly published sources.
+    pub fn published_only(&self) -> Self {
         Self {
             access: Access::Published,
             ..self.clone()
@@ -367,7 +368,10 @@ pub fn value_with_budget<T: Serialize>(value: &T, remaining: &mut usize) -> Resu
     Ok(serde_json::from_slice(&bytes)?)
 }
 
-pub(crate) fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error> {
+/// Serializes a value through a capped writer without retaining excess output.
+/// # Errors
+/// Returns a limit or serialization error when encoding cannot complete within the budget.
+pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error> {
     struct Buffer {
         bytes: Vec<u8>,
         max: usize,
