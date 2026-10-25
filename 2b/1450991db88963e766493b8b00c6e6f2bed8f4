@@ -1,0 +1,149 @@
+crates/livequery/src/lib.rs
+  s_1d1ebc94680cfb::t_31f299899a33a1 24-25,41-43
+  s_1d1ebc94680cfb::t_f46c3e7086abac 16,31,39-40
+docs/service-benchmark.json
+  s_1d1ebc94680cfb::t_ee6d9428845d49 1-801
+crates/livequery-cli/src/main.rs
+  s_1d1ebc94680cfb::t_48a2aa39b1445d 86,92-94,96-100,103-104,106-120
+  s_1d1ebc94680cfb::t_b6f17af0cccd80 95,105
+docs/design.md
+  s_1d1ebc94680cfb::t_9cb7ba0e6f02d4 3,20,22,24-26,32,37,39
+  s_1d1ebc94680cfb::t_31aa35b7d41a11 16
+crates/livequery/src/published.rs
+  s_1d1ebc94680cfb::t_31f299899a33a1 1-4,10-27,29,31-36,47-53,55-62,71-95,99-104,106-107
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 5-7,9,37-42,44,46,54,63-67,70,96-98
+  s_1d1ebc94680cfb::t_efcb5426934d36 8,28,30,43,45,68-69,105
+crates/livequery/tests/transport.rs
+  s_1d1ebc94680cfb::t_48a2aa39b1445d 325-357,360-366,369-375,377-398
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 26-31,33,35,161-165,167,169-170,172,174-176,230-240,242-244
+  s_1d1ebc94680cfb::t_7e6a6b0ded4ec2 3,32,34,171,173,177,180,203,215,241,358-359,367-368,376
+docs/security.md
+  s_1d1ebc94680cfb::t_9cb7ba0e6f02d4 5,15,25,27,31-34,39
+docs/performance.md
+  s_1d1ebc94680cfb::t_d9404f6eca2718 1,3,5,7,9,11-24,26,28,30,32,34-35,37,39,41,43-47,49,51,53,55-59,62,68-73,76
+  s_1d1ebc94680cfb::t_31aa35b7d41a11 60-61
+docs/soak-benchmark.json
+  s_1d1ebc94680cfb::t_d83e4470c89c95 1-55
+experiments/comparison/src/bin/bevy.rs
+  s_1d1ebc94680cfb::t_a977d999a0541c 1-6,11-13,23-26,31,34-35,38-39
+  s_1d1ebc94680cfb::t_229f678f93ae9f 7-10,14-22,27-30,32-33,36-37
+crates/livequery/examples/concurrent.rs
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 36-38,66
+  s_1d1ebc94680cfb::t_d52f8315432b4f 2
+docs/acceptance.md
+  s_1d1ebc94680cfb::t_24a03d72915234 1-23
+scripts/workload-smoke.py
+  s_1d1ebc94680cfb::t_ceb526ba0d900f 1-34
+experiments/comparison/src/bin/interact.rs
+  s_1d1ebc94680cfb::t_229f678f93ae9f 3-6,9-10
+  s_1d1ebc94680cfb::t_a977d999a0541c 2,7-8,11-18
+  s_1d1ebc94680cfb::t_4c3bab8867d80f 1
+crates/livequery/benches/inspection.rs
+  s_1d1ebc94680cfb::t_24a03d72915234 1,39,50-52,61,71
+  s_1d1ebc94680cfb::t_229f678f93ae9f 35-38,53-59,67-70,108-113
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_9cb7ba0e6f02d4 3-13
+scripts/check-release.sh
+  s_1d1ebc94680cfb::t_229f678f93ae9f 4
+experiments/comparison/Cargo.toml
+  s_1d1ebc94680cfb::t_a977d999a0541c 1-19
+crates/livequery/examples/async-server.rs
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 25-26,52,68
+  s_1d1ebc94680cfb::t_4f530746dd7300 2
+crates/livequery/src/collection.rs
+  s_1d1ebc94680cfb::t_31f299899a33a1 1-63,65-67,69-70,73-80,82-92,94-98,100-133,135-138
+  s_1d1ebc94680cfb::t_d8871ff439603b 64,68,71-72,81,93,99,134
+crates/livequery/src/query.rs
+  s_1d1ebc94680cfb::t_48a2aa39b1445d 372,381,393-395,398
+  s_1d1ebc94680cfb::t_31f299899a33a1 8,104,135-137,163-165,168-173,371,380,392,397
+scripts/benchmark-service.py
+  s_1d1ebc94680cfb::t_31aa35b7d41a11 3
+  s_1d1ebc94680cfb::t_f69db9d40558c8 1-2,4-68
+crates/livequery/src/local.rs
+  s_1d1ebc94680cfb::t_48a2aa39b1445d 23-29,45-56,126,130,132-135,138-140,142,144-148,334
+  s_1d1ebc94680cfb::t_31f299899a33a1 94,265
+  s_1d1ebc94680cfb::t_9cb7ba0e6f02d4 105
+  s_1d1ebc94680cfb::t_ab20b53d26e4a0 131,136-137,141,143
+docs/query.md
+  s_1d1ebc94680cfb::t_9cb7ba0e6f02d4 27,39,43,45-47
+crates/livequery/examples/basic.rs
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 13,15-21,23
+  s_1d1ebc94680cfb::t_29bca908bc4a1f 2,22
+docs/benchmark-alpha2.csv
+  s_1d1ebc94680cfb::t_0091750d8f9349 1-15
+  s_1d1ebc94680cfb::t_d47bd7a6ea4068 16
+  s_1d1ebc94680cfb::t_2a223805420289 17-34
+scripts/comparison-probes.py
+  s_1d1ebc94680cfb::t_1c9c9f7d63b5ad 18
+  s_1d1ebc94680cfb::t_a977d999a0541c 1-10,12-17,19-22
+  s_1d1ebc94680cfb::t_74e637823f9190 11
+docs/comparison.md
+  s_1d1ebc94680cfb::t_4c3bab8867d80f 1-36
+experiments/workload/src/main.rs
+  s_1d1ebc94680cfb::t_229f678f93ae9f 2-262,264
+  s_1d1ebc94680cfb::t_70d08919b20cfc 1,263
+crates/livequery/src/state.rs
+  s_1d1ebc94680cfb::t_31f299899a33a1 6-7,9-10,22-35,50-52,72-73,81,123-124,126-127,131-132,136-139,141-145,148-151,155-173,175-180,182-186,192-194,200,219-226,228-240,242,275-277,291-294,310,325-342,344-345,347,349-350
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 154,174,313-316,318-319
+  s_1d1ebc94680cfb::t_1c9c9f7d63b5ad 213,260-273
+  s_1d1ebc94680cfb::t_3faf3253da154f 8,128-130,134,181,187,227,241,278,290,295,317,323-324,343,346,348
+README.md
+  s_1d1ebc94680cfb::t_9cb7ba0e6f02d4 3,20,48,51,54,57,72-74,79,89,93,96,100,102,117
+  s_1d1ebc94680cfb::t_22485a373d0437 118
+experiments/comparison/src/bin/console.rs
+  s_1d1ebc94680cfb::t_229f678f93ae9f 7-9,11-14,17-21,24-27,30-35,38-42,45-47,50-51
+  s_1d1ebc94680cfb::t_a0c12f59efd0e4 1-6,10,15-16,22-23,28-29,36-37,43-44,48-49,52-54
+crates/livequery/tests/schema_collection.rs
+  s_1d1ebc94680cfb::t_975ee5a81f28de 155-160,162-163,165-176
+  s_1d1ebc94680cfb::t_8da7e3e29a0dbc 1-2,4-7,9-16,18-23,25-30,32-55,57-58,60-76,78-134,143-154
+  s_1d1ebc94680cfb::t_1c9c9f7d63b5ad 135-138,140,142
+  s_1d1ebc94680cfb::t_9c88cb17593c8b 3,8,17,24,31,56,59,77,139,141,161,164
+.github/workflows/ci.yml
+  s_1d1ebc94680cfb::t_229f678f93ae9f 29-30
+Cargo.lock
+  s_1d1ebc94680cfb::t_baf3c0eac32e8f 17-22,75,79,90,98,162-181,195-219,250-260
+Cargo.toml
+  s_1d1ebc94680cfb::t_8bdf5da5500ab5 5
+crates/livequery-cli/Cargo.toml
+  s_1d1ebc94680cfb::t_451313113b28a2 18
+crates/livequery-derive/src/lib.rs
+  s_1d1ebc94680cfb::t_1f48d5eb672723 15-39,43,82-83
+crates/livequery/Cargo.toml
+  s_1d1ebc94680cfb::t_cf985022ce87a4 17-18
+crates/livequery/tests/inspection.rs
+  s_1d1ebc94680cfb::t_b57e73853331e8 7-8
+docs/benchmark-alpha2-resources.txt
+  s_1d1ebc94680cfb::t_ae90070e2eabe4 1-18
+docs/comparison-probes.txt
+  s_1d1ebc94680cfb::t_c4b890dcaa1430 1-5
+docs/disabled-benchmark.json
+  s_1d1ebc94680cfb::t_c0474b65df08dc 1-143
+docs/performance-alpha1.md
+  s_1d1ebc94680cfb::t_28e0e8473ddc0d 1-60
+experiments/comparison/Cargo.lock
+  s_1d1ebc94680cfb::t_e7dbaf07f227bd 1-2913
+experiments/workload/Cargo.lock
+  s_1d1ebc94680cfb::t_7562f7e2d70ff8 1-420
+experiments/workload/Cargo.toml
+  s_1d1ebc94680cfb::t_bb545903aa4bbf 1-16
+scripts/consumer-check.py
+  s_1d1ebc94680cfb::t_525010e74f6aa4 11
+tests/consumer/Cargo.lock
+  s_1d1ebc94680cfb::t_bedc620b585b08 11-16,69,73,90,137-156,170-194,225-235
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2b1450991db88963e766493b8b00c6e6f2bed8f4",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
