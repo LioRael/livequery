@@ -1,0 +1,119 @@
+docs/release-0.1.0-alpha.1.md
+  s_1d1ebc94680cfb::t_de3d899a851738 1-35
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_de3d899a851738 1-14
+docs/security.md
+  s_1d1ebc94680cfb::t_de3d899a851738 7-26
+  s_1d1ebc94680cfb::t_b8ba225c95726b 1-6,27-36
+README.md
+  s_1d1ebc94680cfb::t_de3d899a851738 3-111
+  s_1d1ebc94680cfb::t_a4d147ea5ea116 1-2
+crates/livequery/tests/transport.rs
+  s_1d1ebc94680cfb::t_a712aa38320292 19-20,23,33,53-54,56,61,65,76-78,84-85,87,90,100,105,107,110-111,235-289
+  s_1d1ebc94680cfb::t_b786efd06bf490 16,27,34-38,72-73,91-96,102-103,112-166,168-234
+  s_1d1ebc94680cfb::t_026666fda3994c 1-15,17-18,21-22,24-26,28-32,39-52,55,57-60,62-64,66-71,74-75,79-83,86,88-89,97-99,101,104,106,108-109,167
+scripts/check-release.sh
+  s_1d1ebc94680cfb::t_de3d899a851738 1-11
+CONTRIBUTING.md
+  s_1d1ebc94680cfb::t_de3d899a851738 3-7
+  s_1d1ebc94680cfb::t_e90639a19f131e 1-2
+SECURITY.md
+  s_1d1ebc94680cfb::t_de3d899a851738 1-15
+.github/workflows/ci.yml
+  s_1d1ebc94680cfb::t_de3d899a851738 2-36
+  s_1d1ebc94680cfb::t_8a02412aed0f0f 1
+crates/livequery/src/local.rs
+  s_1d1ebc94680cfb::t_b786efd06bf490 167-168
+  s_1d1ebc94680cfb::t_b7345be9174187 1-166,169-347
+docs/design.md
+  s_1d1ebc94680cfb::t_de3d899a851738 26-40
+  s_1d1ebc94680cfb::t_2ce7986af0fdec 1-25
+.gitignore
+  s_1d1ebc94680cfb::t_b4a1ff8cb358cc 1-3
+Cargo.lock
+  s_1d1ebc94680cfb::t_258661e1e0a330 1-368
+Cargo.toml
+  s_1d1ebc94680cfb::t_0ab54fa418866b 1-19
+LICENSE-APACHE
+  s_1d1ebc94680cfb::t_e93a4b02b19c1e 1-176
+LICENSE-MIT
+  s_1d1ebc94680cfb::t_209bf851e76139 1-21
+crates/livequery-cli/Cargo.toml
+  s_1d1ebc94680cfb::t_2628da938d9ade 1-21
+crates/livequery-cli/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_3bd1c3f2e0f259 1-176
+crates/livequery-cli/LICENSE-MIT
+  s_1d1ebc94680cfb::t_acf76666a10a56 1-21
+crates/livequery-cli/README.md
+  s_1d1ebc94680cfb::t_3fc2d5f71eca60 1-9
+crates/livequery-cli/src/main.rs
+  s_1d1ebc94680cfb::t_55a9a5c89238ae 1-175
+crates/livequery-derive/Cargo.toml
+  s_1d1ebc94680cfb::t_76bf7b254af094 1-22
+crates/livequery-derive/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_0a6519fc8953a7 1-176
+crates/livequery-derive/LICENSE-MIT
+  s_1d1ebc94680cfb::t_dabb0d03acc969 1-21
+crates/livequery-derive/README.md
+  s_1d1ebc94680cfb::t_e2466dcd3dbe56 1-9
+crates/livequery-derive/src/lib.rs
+  s_1d1ebc94680cfb::t_5a48b8d728432c 1-86
+crates/livequery/Cargo.toml
+  s_1d1ebc94680cfb::t_349f6f08e8a552 1-28
+crates/livequery/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_8d486addfd9f6a 1-176
+crates/livequery/LICENSE-MIT
+  s_1d1ebc94680cfb::t_d0446376793a4d 1-21
+crates/livequery/README.md
+  s_1d1ebc94680cfb::t_eda6a2bcd3c8ce 1-9
+crates/livequery/benches/inspection.rs
+  s_1d1ebc94680cfb::t_3eff60eaff047b 1-144
+crates/livequery/examples/async-server.rs
+  s_1d1ebc94680cfb::t_0ffed95027a7a6 1-76
+crates/livequery/examples/basic.rs
+  s_1d1ebc94680cfb::t_465b291ff2fd0d 1-29
+crates/livequery/examples/concurrent.rs
+  s_1d1ebc94680cfb::t_1068e9264664ae 1-69
+crates/livequery/src/lib.rs
+  s_1d1ebc94680cfb::t_2d266a2924b513 1-36
+crates/livequery/src/query.rs
+  s_1d1ebc94680cfb::t_0ef8b1cbf37c79 1-385
+crates/livequery/src/state.rs
+  s_1d1ebc94680cfb::t_9e5e6dc665b076 1-309
+crates/livequery/tests/inspection.rs
+  s_1d1ebc94680cfb::t_59b6b36541e5ad 1-365
+docs/benchmark-resources.txt
+  s_1d1ebc94680cfb::t_1a0aa64cda4961 1-18
+docs/benchmark.csv
+  s_1d1ebc94680cfb::t_54a623a80d2459 1-31
+docs/performance.md
+  s_1d1ebc94680cfb::t_b483e2fde77441 1-60
+docs/query.md
+  s_1d1ebc94680cfb::t_fd03e6a319fcfa 1-45
+scripts/consumer-check.py
+  s_1d1ebc94680cfb::t_acd0f40c1f7f6d 1-27
+scripts/smoke.py
+  s_1d1ebc94680cfb::t_560396152cae72 1-57
+tests/consumer/Cargo.lock
+  s_1d1ebc94680cfb::t_47921b9434683c 1-311
+tests/consumer/Cargo.toml
+  s_1d1ebc94680cfb::t_80a1e60cec1207 1-9
+tests/consumer/src/main.rs
+  s_1d1ebc94680cfb::t_3d03e2e9ce0535 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fd7e8aa3bc3b16f00edbbb14f0727fdfa4dd7e69",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
