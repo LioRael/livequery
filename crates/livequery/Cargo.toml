@@ -14,7 +14,8 @@ categories = ["development-tools::debugging"]
 serde.workspace = true
 serde_json.workspace = true
 thiserror.workspace = true
-livequery-derive = { path = "../livequery-derive", version = "0.1.0-alpha.1" }
+schemars = "1"
+livequery-derive = { path = "../livequery-derive", version = "0.1.0-alpha.2" }
 sqlparser = { version = "0.59", default-features = false, features = ["std"] }
 [dev-dependencies]
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "net", "io-util"] }

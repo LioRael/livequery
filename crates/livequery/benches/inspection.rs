@@ -1,4 +1,4 @@
-use livequery::{Inspect, Limits, Query, Registry, Table, Watch};
+use livequery::{Inspect, Limits, Published, Query, Registry, Source, Table, Watch};
 use std::{
     hint::black_box,
     sync::{
@@ -32,7 +32,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     for n in [100, 1_000, 10_000] {
         let r = Registry::new();
-        let _guard = r.expose("players", Table::new(rows(n)))?;
+        let published = Published::from_snapshot(
+            Table::new(rows(n)).snapshot(Limits::default())?,
+            Limits::default(),
+        )?;
+        let _guard = r.expose_published("players", published)?;
         let q = Query::parse("SELECT id, health FROM players WHERE health < 60 LIMIT 100")?;
         let mut samples = Vec::new();
         for _ in 0..30 {
@@ -43,14 +47,28 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let p50 = percentile(&mut samples, 50);
         let p99 = percentile(&mut samples, 99);
         println!("query,{n},0,0,{p50},{p99},0,0,0,0");
+        let mut watch = Watch::new(q);
+        watch.poll(&r, Limits::default())?;
+        let start = Instant::now();
+        for _ in 0..100_000 {
+            black_box(watch.poll(&r, Limits::default())?);
+        }
+        println!(
+            "unchanged_watch,{n},1,0,0,0,{:.0},0,100000,0",
+            100_000. / start.elapsed().as_secs_f64()
+        );
     }
-    // The raw lock baseline uses the same synchronization and data; only registration differs.
+    // Publication scenarios include capture and publication cost on the writer thread.
     for update_hz in [0, 100, 1000] {
         for subscribers in [0, 1, 8, 32] {
             for hz in [10, 100] {
                 let table = Table::new(rows(100));
                 let r = Registry::new();
-                let _guard = r.expose("players", table.clone())?;
+                let published = Published::from_snapshot(
+                    table.snapshot(Limits::default())?,
+                    Limits::default(),
+                )?;
+                let _guard = r.expose_published("players", published.clone())?;
                 let stop = Arc::new(AtomicBool::new(false));
                 let reader = {
                     let stop = stop.clone();
@@ -87,7 +105,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     match table.update(|r| {
                         r[0].health = r[0].health.wrapping_add(1);
                     }) {
-                        Ok(()) => count += 1,
+                        Ok(()) => {
+                            count += 1;
+                            if published.refresh(&table).is_err() {
+                                busy += 1;
+                            }
+                        }
                         Err(_) => busy += 1,
                     }
                     if update_hz > 0 || (count + busy) % 1000 == 0 {

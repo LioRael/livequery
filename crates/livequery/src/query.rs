@@ -5,7 +5,7 @@ use sqlparser::{
     dialect::GenericDialect,
     tokenizer::{Token, Tokenizer},
 };
-use std::cmp::Ordering;
+use std::{cmp::Ordering, time::Instant};
 
 /// A validated, finite SELECT query; unsupported SQL is always rejected.
 #[derive(Debug, Clone)]
@@ -101,6 +101,7 @@ impl Query {
     /// # Errors
     /// Reports unknown fields even on empty tables, incompatible comparisons, and budgets.
     pub fn execute(&self, registry: &Registry, limits: Limits) -> Result<QueryResult, Error> {
+        let start = Instant::now();
         let snapshot = registry.snapshot(&self.source, limits)?;
         let find = |name: &str| {
             snapshot
@@ -131,6 +132,9 @@ impl Query {
             truncated: false,
         };
         for row in snapshot.rows {
+            if start.elapsed() >= limits.query_timeout {
+                return Err(Error::Deadline);
+            }
             if self
                 .filter
                 .as_ref()
@@ -156,7 +160,16 @@ impl Query {
         if serde_json::to_vec(&result)?.len() > limits.bytes {
             return Err(Error::Limit("result bytes".into()));
         }
+        if start.elapsed() >= limits.query_timeout {
+            return Err(Error::Deadline);
+        }
         Ok(result)
+    }
+    /// Publication revision, or none for a live local source.
+    /// # Errors
+    /// Returns missing-source or busy errors.
+    pub fn revision(&self, registry: &Registry) -> Result<Option<crate::Revision>, Error> {
+        registry.revision(&self.source)
     }
 }
 impl Expr {
@@ -355,6 +368,8 @@ impl Parser {
 pub struct Watch {
     query: Query,
     previous: Option<QueryResult>,
+    revision: Option<crate::Revision>,
+    limits: Option<Limits>,
 }
 impl Watch {
     /// Starts an observation; the first poll always emits a full result.
@@ -362,6 +377,8 @@ impl Watch {
         Self {
             query,
             previous: None,
+            revision: None,
+            limits: None,
         }
     }
     /// Returns a full replacement result only when rows or schema change.
@@ -372,7 +389,13 @@ impl Watch {
         registry: &Registry,
         limits: Limits,
     ) -> Result<Option<QueryResult>, Error> {
+        let revision = self.query.revision(registry)?;
+        if revision.is_some() && revision == self.revision && self.limits == Some(limits) {
+            return Ok(None);
+        }
         let next = self.query.execute(registry, limits)?;
+        self.revision = revision;
+        self.limits = Some(limits);
         let changed = self.previous.as_ref().is_none_or(|old| {
             old.rows != next.rows || old.columns != next.columns || old.truncated != next.truncated
         });

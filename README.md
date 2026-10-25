@@ -1,6 +1,6 @@
 # LiveQuery
 
-**Experimental · 0.1.0-alpha.1 · Rust 1.88+ · macOS / Linux**
+**Experimental · alpha.2 development · Rust 1.88+ · macOS / Linux**
 
 **Turn running programs into queryable, observable worlds.**
 
@@ -17,7 +17,7 @@ LiveQuery is an opt-in, read-only runtime inspection library and local CLI. It w
 From this checkout, on macOS or Linux:
 
 ```sh
-cargo install livequery-cli --version 0.1.0-alpha.1 --locked
+cargo install --path crates/livequery-cli --locked
 cargo run -p livequery --example concurrent
 ```
 
@@ -45,16 +45,16 @@ id  username  health
 
 ## Embed
 
-Add the published library:
+For this alpha.2 checkout, add the library as a path dependency (alpha.1 remains the published release):
 
 ```sh
-cargo add livequery@0.1.0-alpha.1
+cargo add livequery --path /path/to/livequery/crates/livequery
 ```
 
-Fields must implement serde `Serialize`; the struct itself needs only `Inspect`. For local development, a path dependency on `crates/livequery` also works.
+Fields must implement serde `Serialize` and `schemars::JsonSchema`; the struct itself needs only `Inspect`. For local development, a path dependency on `crates/livequery` also works.
 
 ```rust
-use livequery::{Inspect, Limits, Query, Registry, Table};
+use livequery::{Inspect, Limits, Published, Query, Registry, Table};
 
 #[derive(Debug, Inspect)]
 struct Player {
@@ -69,12 +69,14 @@ let registry = Registry::new();
 let players = Table::new(vec![Player {
     id: 42, username: "Ada".into(), health: 12, token: "private".into(),
 }]);
-let _registration = registry.expose("players", players.clone())?;
+let published = Published::new::<Player>(Limits::default())?;
+published.refresh(&players)?;
+let _registration = registry.expose_published("players", published.clone())?;
 let result = Query::parse("SELECT id FROM players WHERE health < 20")?
     .execute(&registry, Limits::default())?;
 ```
 
-Keep the registration guard alive. Dropping it immediately removes discovery and releases ownership when any in-flight snapshot finishes. `Table::update` applies an update or returns `Busy`; the application decides whether to retry. `Table::from_shared` accepts existing `Arc<RwLock<Vec<T>>>` state. The `Source` trait supports other collections and custom adapters.
+Keep the registration guard alive. Dropping it immediately removes discovery and releases ownership when any in-flight snapshot finishes. `Table::update` applies an update or returns `Busy`; the application decides whether to retry. `Table::from_shared` accepts existing `Arc<RwLock<Vec<T>>>` state. `CollectionSource` also adapts `VecDeque`, `BTreeMap`, `HashMap`, and `Arc<Mutex<C>>`. Map values become rows (hash keys are sorted for stable output). The `Source` trait supports custom adapters. Call `published.refresh(&players)` at application-chosen checkpoints to make changes visible; failed publications preserve the previous version. `Registry::expose` remains available for trusted in-process queries only.
 
 To allow a CLI connection, bind `local::Server` in `local::directory()` and call `serve` on a thread owned by the application. The library does not spawn a thread or require a runtime. See the complete examples:
 
@@ -84,20 +86,20 @@ To allow a CLI connection, bind `local::Server` in `local::directory()` and call
 
 ## What is implemented
 
-- Named-struct derive, static field/type schemas, explicit registration, secret-field omission.
+- Named-struct and enum derive, recursive JSON Schema, explicit registration, secret-field omission.
 - Whole-table snapshots with nonblocking lock acquisition and bounded derived-field serialization.
 - SELECT, projection, scalar comparisons, AND/OR/NOT, parentheses, IS NULL, LIMIT.
 - Unix Socket discovery, schema/query protocol, machine-readable errors, CLI tables and JSON.
-- Polling WATCH with one retained result and no server-side subscriber queues.
+- Revision-aware polling WATCH skips unchanged publications, with one retained result and no server-side queues.
 - Tests, external consumers, compile-fail checks, real process/CLI smoke tests, benchmarks, and Linux/macOS/MSRV CI.
 
-Defaults: 10,000 scanned rows, 1,000 output rows, 1 MiB serialized snapshot/result, 4 KiB SQL, 256 SQL tokens, 32 predicate nesting levels. Oversized snapshots fail; results limited by LIMIT report `truncated`.
+Defaults: 10,000 scanned rows, 1,000 output rows, 1 MiB serialized snapshot/result, 4 KiB SQL, 256 SQL tokens, 32 predicate nesting levels, and a cooperative 100 ms query deadline. Oversized snapshots fail; results limited by LIMIT report `truncated`.
 
 ## Boundaries
 
-No ORDER BY, JOIN, aggregation, history, nested-field queries, Windows transport, write operations, or arbitrary PID attachment. Schema describes top-level fields using Rust type names; it is not recursive reflection or JSON Schema. Enum and nested struct fields can be serialized/projected as JSON, but nested schemas and enum variant inventories are not generated.
+No ORDER BY, JOIN, aggregation, history, nested-field queries, Windows transport, write operations, or arbitrary PID attachment. Schema includes Rust type names and JSON Schema with recursive definitions and enum variants. Nested custom types derive `Serialize` and `JsonSchema`; root enums additionally derive `Inspect` and appear in a `value` column. See [schema tests](crates/livequery/tests/schema_collection.rs).
 
-Each poll scans the full source. Large collections fail before scanning; use dedicated diagnostic views. Polling misses intermediate states. Same-user processes can read exposed data. Custom serializers/adapters are trusted application code and cannot be forcibly preempted. Use short bounded adapters and dedicated inspection views for latency-sensitive applications.
+Each changed publication is scanned; unchanged revisions skip the snapshot and scan. Large collections fail before scanning; use dedicated diagnostic views. Polling misses intermediate states. Same-user processes can read exposed data. Custom serializers/adapters run only during explicit application capture/publication or trusted in-process queries, and cannot be forcibly preempted. Remote queries read only validated owned JSON snapshots. Use short bounded adapters and dedicated inspection views for latency-sensitive applications.
 
 ## Verify
 
@@ -111,6 +113,8 @@ cargo build --workspace --examples --bins
 python3 scripts/smoke.py
 cargo bench -p livequery --bench inspection
 ```
+
+The [acceptance matrix](docs/acceptance.md) maps the original requirements to executable evidence and remaining roadmap.
 
 Read [research and decisions](docs/design.md), [query and protocol](docs/query.md), [security and consistency](docs/security.md), and [measured performance](docs/performance.md). Licensed under MIT or Apache-2.0.
 

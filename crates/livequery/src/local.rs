@@ -20,6 +20,13 @@ use std::{
 pub enum Request {
     /// Discover source schemas.
     Schema,
+    /// Fetch a changed publication without retaining a server-side subscription.
+    Observe {
+        /// SELECT statement, identical across polls belonging to one observation.
+        sql: String,
+        /// Previously returned revision, or none for the first observation.
+        since: Option<crate::Revision>,
+    },
     /// Execute one bounded query.
     Query {
         /// SELECT statement.
@@ -34,6 +41,18 @@ pub enum Response {
     Ok {
         /// Response payload.
         data: serde_json::Value,
+    },
+    /// A changed published snapshot, represented as a full query result.
+    Observation {
+        /// Publication revision sampled before query execution.
+        revision: crate::Revision,
+        /// Full replacement query result.
+        data: serde_json::Value,
+    },
+    /// The source publication has not changed; no snapshot scan was performed.
+    NotModified {
+        /// Current publication revision.
+        revision: crate::Revision,
     },
     /// Stable error category and readable detail.
     Error {
@@ -72,7 +91,7 @@ impl Server {
         let server = Self {
             listener,
             path: path.into(),
-            registry,
+            registry: registry.remote(),
             limits,
             identity: (metadata.dev(), metadata.ino()),
         };
@@ -83,7 +102,7 @@ impl Server {
     /// Serves at most sixteen nonblocking clients on the caller's thread until cancellation.
     /// # Errors
     /// Reports listener errors. Slow, malformed and disconnected clients are isolated.
-    /// I/O deadlines are per client; trusted source callbacks must still return promptly.
+    /// I/O deadlines are per client; remote queries read only bounded published snapshots.
     pub fn serve(&self, stop: &AtomicBool) -> Result<(), Error> {
         let mut clients = Vec::new();
         while !stop.load(Ordering::Relaxed) {
@@ -104,15 +123,30 @@ impl Server {
         }
         Ok(())
     }
-    fn dispatch(&self, request: Request) -> Result<serde_json::Value, Error> {
+    fn dispatch(&self, request: Request) -> Result<Response, Error> {
         match request {
             Request::Schema => {
                 let mut remaining = self.limits.bytes;
-                crate::value_with_budget(&self.registry.schemas(), &mut remaining)
+                Ok(Response::Ok {
+                    data: crate::value_with_budget(&self.registry.schemas(), &mut remaining)?,
+                })
             }
-            Request::Query { sql } => Ok(serde_json::to_value(
-                Query::parse(&sql)?.execute(&self.registry, self.limits)?,
-            )?),
+            Request::Query { sql } => Ok(Response::Ok {
+                data: serde_json::to_value(
+                    Query::parse(&sql)?.execute(&self.registry, self.limits)?,
+                )?,
+            }),
+            Request::Observe { sql, since } => {
+                let query = Query::parse(&sql)?;
+                let revision = query.revision(&self.registry)?.ok_or_else(|| {
+                    Error::Invalid("remote observation requires published data".into())
+                })?;
+                if since == Some(revision) {
+                    return Ok(Response::NotModified { revision });
+                }
+                let data = serde_json::to_value(query.execute(&self.registry, self.limits)?)?;
+                Ok(Response::Observation { revision, data })
+            }
         }
     }
 }
@@ -228,6 +262,7 @@ fn frame(stream: &mut UnixStream, max: usize) -> Result<Vec<u8>, Error> {
 fn diagnostic(error: Error) -> Response {
     let code = match &error {
         Error::Busy => "busy",
+        Error::Deadline => "deadline",
         Error::Limit(_) => "limit",
         Error::NotFound(_) => "not_found",
         Error::Invalid(_) => "invalid",
@@ -296,7 +331,7 @@ impl Client {
                             .map_err(Error::from)
                             .and_then(|request| server.dispatch(request))
                         {
-                            Ok(data) => Response::Ok { data },
+                            Ok(response) => response,
                             Err(error) => diagnostic(error),
                         };
                         self.respond(response, server.limits.bytes)

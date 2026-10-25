@@ -1,0 +1,19 @@
+[package]
+name = "livequery-comparison"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.88"
+publish = false
+[workspace]
+[dependencies]
+interact = "0.3.6"
+bevy_tasks = { version = "0.17.3", features = ["multi_threaded"] }
+bevy_app = "0.17.3"
+bevy_ecs = "0.17.3"
+bevy_reflect = "0.17.3"
+bevy_remote = "0.17.3"
+serde_json = "1"
+console-subscriber = "0.4"
+console-api = "0.8"
+tokio = { version = "1", features = ["full", "tracing"] }
+tracing-subscriber = "0.3"

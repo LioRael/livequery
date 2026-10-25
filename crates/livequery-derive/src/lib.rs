@@ -12,18 +12,6 @@ pub fn derive_inspect(input: TokenStream) -> TokenStream {
         .into()
 }
 fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
-    let Data::Struct(data) = &input.data else {
-        return Err(syn::Error::new_spanned(
-            &input,
-            "Inspect requires a named struct; enum fields may implement Serialize",
-        ));
-    };
-    let Fields::Named(fields) = &data.fields else {
-        return Err(syn::Error::new_spanned(
-            &input,
-            "Inspect requires named fields",
-        ));
-    };
     let crate_path = match proc_macro_crate::crate_name("livequery")
         .map_err(|error| syn::Error::new_spanned(&input.ident, error.to_string()))?
     {
@@ -32,6 +20,34 @@ fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
             let ident = syn::Ident::new(&name, input.ident.span());
             quote!(::#ident)
         }
+    };
+    if matches!(input.data, Data::Enum(_)) {
+        let mut generics = input.generics.clone();
+        generics.make_where_clause().predicates.push(syn::parse_quote!(Self: Send + Sync + #crate_path::serde::Serialize + #crate_path::schemars::JsonSchema));
+        let name = &input.ident;
+        let (imp, ty, clause) = generics.split_for_impl();
+        return Ok(quote! {
+            impl #imp #crate_path::Inspect for #name #ty #clause {
+                fn schema() -> Vec<#crate_path::Column> { vec![#crate_path::Column::new::<Self>("value")] }
+                fn inspect(&self) -> Result<#crate_path::Row, #crate_path::Error> { self.inspect_bounded(#crate_path::Limits::default().bytes) }
+                fn inspect_bounded(&self, max_bytes: usize) -> Result<#crate_path::Row, #crate_path::Error> {
+                    let mut remaining = max_bytes;
+                    Ok([("value".to_owned(), #crate_path::value_with_budget(self, &mut remaining)?)].into_iter().collect())
+                }
+            }
+        });
+    }
+    let Data::Struct(data) = &input.data else {
+        return Err(syn::Error::new_spanned(
+            &input,
+            "Inspect does not support unions",
+        ));
+    };
+    let Fields::Named(fields) = &data.fields else {
+        return Err(syn::Error::new_spanned(
+            &input,
+            "Inspect requires named fields",
+        ));
     };
     let mut generics = input.generics.clone();
     generics
@@ -63,8 +79,8 @@ fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
         generics
             .make_where_clause()
             .predicates
-            .push(syn::parse_quote!(#ty: #crate_path::serde::Serialize));
-        columns.push(quote! { #crate_path::Column { name: #name.to_owned(), rust_type: ::std::any::type_name::<#ty>().to_owned() } });
+            .push(syn::parse_quote!(#ty: #crate_path::serde::Serialize + #crate_path::schemars::JsonSchema));
+        columns.push(quote! { #crate_path::Column::new::<#ty>(#name) });
         values.push(quote! { row.insert(#name.to_owned(), #crate_path::value_with_budget(&self.#ident, &mut remaining)?); });
     }
     let name = &input.ident;

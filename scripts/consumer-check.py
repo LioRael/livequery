@@ -8,7 +8,7 @@ import tempfile
 root = Path(__file__).resolve().parents[1]
 subprocess.run(['cargo', 'run', '--locked', '--manifest-path', str(root / 'tests/consumer/Cargo.toml')], check=True)
 cases = {
-    'enum': ('#[derive(lq::Inspect)] enum Bad { A } fn main() {}', 'Inspect requires a named struct'),
+    'enum': ('#[derive(lq::Inspect)] enum Bad { A } fn main() {}', 'JsonSchema'),
     'tuple': ('#[derive(lq::Inspect)] struct Bad(u64); fn main() {}', 'Inspect requires named fields'),
     'attribute': ('#[derive(lq::Inspect)] struct Bad { #[inspect(secret)] id: u64 } fn main() {}', 'expected skip'),
     'non_send': ('#[derive(lq::Inspect)] struct Bad { #[inspect(skip)] value: std::rc::Rc<u64> } fn main() {}', 'cannot be'),
