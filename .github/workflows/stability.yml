@@ -1,0 +1,54 @@
+name: Stability gates
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * 1'
+permissions:
+  contents: read
+concurrency:
+  group: stability-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo install cargo-audit --version 0.22.2 --locked
+      - run: |
+          cargo audit --deny warnings
+          for lockfile in tests/consumer/Cargo.lock tests/components/Cargo.lock tests/compat-alpha2/Cargo.lock experiments/workload/Cargo.lock fuzz/Cargo.lock; do
+            cargo audit --file "$lockfile" --deny warnings --no-fetch
+          done
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo install cargo-semver-checks --version 0.51.0 --locked
+      - run: cargo semver-checks check-release -p livequery-core -p livequery-query -p livequery-transport -p livequery-agent -p livequery --baseline-rev v0.1.0-alpha.2 --release-type patch
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: cargo install cargo-fuzz --version 0.13.2 --locked
+      - run: cargo fuzz run query_and_wire -- -max_total_time=60 -max_len=8192 -rss_limit_mb=1024
+  sustained-load:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    env:
+      LOAD_SECONDS: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') && '600' || '120' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
+      - run: python3 scripts/benchmark-service.py --only soak --repeats 1 --seconds "$LOAD_SECONDS" --output target/sustained-load.json
+      - run: python3 scripts/check-load.py target/sustained-load.json

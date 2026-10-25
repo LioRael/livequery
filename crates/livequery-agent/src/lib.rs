@@ -1,7 +1,7 @@
 //! Read-only dispatch over published sources, independent of a transport event loop.
 use livequery_core::{Error, Limits, Registry};
 use livequery_query::Query;
-use livequery_transport::{Request, Response};
+use livequery_transport::{Cursor, Observation, PROTOCOL_VERSION, Request, Response};
 #[cfg(unix)]
 pub mod local;
 /// Dispatches bounded requests against a published-only registry view.
@@ -9,13 +9,17 @@ pub mod local;
 pub struct Agent {
     registry: Registry,
     limits: Limits,
+    session: String,
 }
 impl Agent {
     /// Creates a dispatcher without starting threads or opening a listener.
+    /// # Panics
+    /// Panics if the operating system cannot supply randomness for the session identity.
     pub fn new(registry: Registry, limits: Limits) -> Self {
         Self {
             registry: registry.published_only(),
             limits,
+            session: uuid::Uuid::new_v4().to_string(),
         }
     }
     /// Executes a read-only request without invoking application capture callbacks.
@@ -23,11 +27,50 @@ impl Agent {
     /// Returns query, publication, schema and resource-limit errors.
     pub fn handle(&self, request: Request) -> Result<Response, Error> {
         match request {
+            Request::Hello { protocol } => {
+                if protocol != PROTOCOL_VERSION {
+                    return Ok(Response::Error {
+                        code: "incompatible_protocol".into(),
+                        message: format!(
+                            "requested protocol {protocol}; supported protocol {PROTOCOL_VERSION}"
+                        ),
+                    });
+                }
+                Ok(Response::Ok {
+                    data: serde_json::json!({"protocol":PROTOCOL_VERSION, "agent_id":self.session, "capabilities":["schema","query","observe_v2","status"]}),
+                })
+            }
+            Request::Status => Ok(Response::Ok {
+                data: serde_json::to_value(self.registry.publication_status(self.limits)?)?,
+            }),
+            Request::ObserveV2 { sql, since } => {
+                let query = Query::parse(&sql)?;
+                let revision = query.revision(&self.registry)?.ok_or_else(|| {
+                    Error::Invalid("remote observation requires published data".into())
+                })?;
+                let cursor = Cursor {
+                    session: self.session.clone(),
+                    query: blake3::hash(sql.as_bytes()).to_hex().to_string(),
+                    revision,
+                };
+                if since.as_ref() == Some(&cursor) {
+                    return Ok(Response::Ok {
+                        data: serde_json::to_value(Observation::Unchanged { cursor })?,
+                    });
+                }
+                let data = serde_json::to_value(query.execute(&self.registry, self.limits)?)?;
+                Ok(Response::Ok {
+                    data: serde_json::to_value(Observation::Changed {
+                        cursor,
+                        result: data,
+                    })?,
+                })
+            }
             Request::Schema => {
                 let mut remaining = self.limits.bytes;
                 Ok(Response::Ok {
                     data: livequery_core::value_with_budget(
-                        &self.registry.schemas(),
+                        &self.registry.schemas_bounded(self.limits)?,
                         &mut remaining,
                     )?,
                 })

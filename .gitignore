@@ -1,3 +1,9 @@
 target/
 *.sock
 __pycache__/
+fuzz/artifacts/
+fuzz/coverage/
+fuzz/corpus/query_and_wire/*
+!fuzz/corpus/query_and_wire/select
+!fuzz/corpus/query_and_wire/observe
+!fuzz/corpus/query_and_wire/hello

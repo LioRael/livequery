@@ -5,7 +5,7 @@ use std::{
     fs,
     io::{Read, Write},
     os::unix::{
-        fs::{DirBuilderExt, MetadataExt, PermissionsExt},
+        fs::{DirBuilderExt, FileTypeExt, MetadataExt, PermissionsExt},
         net::{UnixListener, UnixStream},
     },
     path::{Path, PathBuf},
@@ -36,6 +36,11 @@ impl Server {
             Err(e) => return Err(e.into()),
         }
         check_directory(parent)?;
+        let path = fs::canonicalize(parent)?.join(
+            path.file_name()
+                .ok_or_else(|| Error::Invalid("socket filename".into()))?,
+        );
+        let path = path.as_path();
         let listener = UnixListener::bind(path)?;
         let metadata = fs::symlink_metadata(path)?;
         let server = Self {
@@ -124,8 +129,25 @@ pub fn request(path: impl AsRef<Path>, request: &Request) -> Result<Response, Er
         path.parent()
             .ok_or_else(|| Error::Invalid("socket parent".into()))?,
     )?;
+    let path = fs::canonicalize(
+        path.parent()
+            .ok_or_else(|| Error::Invalid("socket parent".into()))?,
+    )?
+    .join(
+        path.file_name()
+            .ok_or_else(|| Error::Invalid("socket filename".into()))?,
+    );
+    let meta = fs::symlink_metadata(&path)?;
+    if !meta.file_type().is_socket()
+        || meta.uid() != rustix::process::getuid().as_raw()
+        || meta.mode() & 0o077 != 0
+    {
+        return Err(Error::Invalid(
+            "socket must be a private socket owned by this user".into(),
+        ));
+    }
     let socket = socket2::Socket::new(socket2::Domain::UNIX, socket2::Type::STREAM, None)?;
-    socket.connect_timeout(&socket2::SockAddr::unix(path)?, IO_TIMEOUT)?;
+    socket.connect_timeout(&socket2::SockAddr::unix(&path)?, IO_TIMEOUT)?;
     let descriptor: std::os::fd::OwnedFd = socket.into();
     let mut stream = UnixStream::from(descriptor);
     let mut bytes = serde_json::to_vec(request)?;
@@ -148,6 +170,19 @@ fn check_directory(path: &Path) -> Result<(), Error> {
         return Err(Error::Invalid(
             "socket directory must be owned by this user and mode 0700".into(),
         ));
+    }
+    // Reject ancestors another user could rename; root-owned sticky temporary roots
+    // protect their entries. Resolve aliases before binding/connecting below them.
+    let canonical = fs::canonicalize(path)?;
+    for ancestor in canonical.ancestors().skip(1) {
+        let meta = fs::metadata(ancestor)?;
+        let trusted_owner = meta.uid() == 0 || meta.uid() == rustix::process::getuid().as_raw();
+        let sticky_root = meta.uid() == 0 && meta.mode() & 0o1000 != 0;
+        if !trusted_owner || (meta.mode() & 0o022 != 0 && !sticky_root) {
+            return Err(Error::Invalid(
+                "socket ancestor can be replaced by an untrusted user".into(),
+            ));
+        }
     }
     Ok(())
 }
@@ -188,16 +223,7 @@ fn frame(stream: &mut UnixStream, max: usize) -> Result<Vec<u8>, Error> {
     }
 }
 fn diagnostic(error: Error) -> Response {
-    let code = match &error {
-        Error::Busy => "busy",
-        Error::Deadline => "deadline",
-        Error::Limit(_) => "limit",
-        Error::NotFound(_) => "not_found",
-        Error::Invalid(_) => "invalid",
-        Error::Io(_) => "io",
-        Error::Serialization(_) => "serialization",
-        _ => "internal",
-    };
+    let code = error.code();
     Response::Error {
         code: code.into(),
         message: error.to_string(),

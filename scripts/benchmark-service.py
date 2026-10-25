@@ -1,68 +1,167 @@
 #!/usr/bin/env python3
-"""Real TCP workload: child CPU/RSS, request tails, and independent diagnostic observers."""
-import argparse, asyncio, json, os, pathlib, subprocess, sys, time
-ROOT=pathlib.Path(__file__).resolve().parents[1]
-def quantile(values,q):
-    return sorted(values)[int((len(values)-1)*q)] if values else None
-async def drive(meta,mode,seconds,subscribers,poll_ms):
-    finish=time.perf_counter()+seconds
-    latency=[]; query_latency=[]; failures=0; observations=0; unchanged=0; query_errors=0
+"""Real TCP load with classified diagnostics and bounded latency/resource sampling."""
+import argparse
+import asyncio
+from collections import Counter, deque
+import json
+import hashlib
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parents[1]
+SAMPLES = 100_000
+
+
+def quantile(values, q):
+    return sorted(values)[int((len(values) - 1) * q)] if values else None
+
+
+def resources(pid):
+    """Read the host only; unsupported measurements are null, never zero."""
+    sample = {"rss_bytes": None, "threads": None, "fds": None}
+    try:
+        sample["rss_bytes"] = int(subprocess.check_output(
+            ["ps", "-o", "rss=", "-p", str(pid)], text=True, timeout=2).strip()) * 1024
+        if sys.platform == "darwin":
+            sample["threads"] = len(subprocess.check_output(
+                ["ps", "-M", "-p", str(pid)], text=True, timeout=2).splitlines()) - 1
+            output = subprocess.check_output(
+                ["/usr/sbin/lsof", "-a", "-p", str(pid), "-Ff", "-n", "-P"],
+                text=True, timeout=2)
+            sample["fds"] = sum(line[1:].isdigit() for line in output.splitlines() if line.startswith("f"))
+        else:
+            sample["threads"] = len(list(Path(f"/proc/{pid}/task").iterdir()))
+            sample["fds"] = len(list(Path(f"/proc/{pid}/fd").iterdir()))
+    except (OSError, ValueError, subprocess.SubprocessError):
+        pass
+    return sample
+
+
+async def drive(meta, mode, seconds, subscribers, poll_ms):
+    start = time.perf_counter()
+    finish = start + seconds
+    latency, query_latency = deque(maxlen=SAMPLES), deque(maxlen=SAMPLES)
+    errors, query_errors = Counter(), Counter()
+    completed = observations = unchanged = 0
+    samples = []
+
     async def load():
-        nonlocal failures
-        reader,writer=await asyncio.open_connection('127.0.0.1',meta['port'])
-        while time.perf_counter()<finish:
-            start=time.perf_counter()
-            try:
-                writer.write(b'x'*64);await writer.drain()
-                assert await asyncio.wait_for(reader.readexactly(64),1)==b'x'*64
-                latency.append((time.perf_counter()-start)*1e6)
-            except Exception:
-                failures+=1;break
-        writer.close();await writer.wait_closed()
-    async def observe():
-        nonlocal observations,unchanged,query_errors
-        revision=None
-        while time.perf_counter()<finish:
-            start=time.perf_counter()
-            try:
-                reader,writer=await asyncio.open_unix_connection(meta['socket'])
-                request={'min_completed':0} if mode=='manual' else {'command':'observe','sql':'SELECT completed, bytes FROM counters WHERE completed > 0','since':revision}
-                writer.write(json.dumps(request).encode()+b'\n');await writer.drain()
-                reply=json.loads(await asyncio.wait_for(reader.readline(),1))
-                writer.close();await writer.wait_closed()
-                if mode=='published':
-                    if reply['status']=='error': raise RuntimeError(reply)
-                    revision=reply['revision']
-                    unchanged+=reply['status']=='not_modified'
-                observations+=1;query_latency.append((time.perf_counter()-start)*1e6)
-            except Exception: query_errors+=1
-            await asyncio.sleep(poll_ms/1000)
-    start=time.perf_counter()
-    await asyncio.gather(*(load() for _ in range(4)),*(observe() for _ in range(subscribers)))
-    elapsed=time.perf_counter()-start
-    return dict(requests=len(latency),requests_per_second=len(latency)/elapsed,p50_us=quantile(latency,.5),p95_us=quantile(latency,.95),p99_us=quantile(latency,.99),request_errors=failures,observations=observations,not_modified=unchanged,observation_errors=query_errors,observation_p99_us=quantile(query_latency,.99))
-def main():
-    p=argparse.ArgumentParser();p.add_argument('--repeats',type=int,default=3);p.add_argument('--seconds',type=int,default=2);p.add_argument('--output',default='docs/service-benchmark.json');p.add_argument('--binary',default='experiments/workload/target/release/livequery-workload');p.add_argument('--only',choices=['baseline','soak']);args=p.parse_args()
-    binary=ROOT/args.binary
-    rows=[]
-    for repeat in range(args.repeats):
-        for engine in ['sync','async']:
-            cases=[('baseline',0,10),('manual',1,10),('published',0,10),('published',1,10),('published',4,10),('published',4,50)]
-            if args.only=='baseline': cases=[('baseline',0,10)]
-            if args.only=='soak': cases=[('published',4,10)]
-            # Rotate order to avoid always measuring baseline on a colder machine.
-            cases=cases[repeat:]+cases[:repeat]
-            for mode,subscribers,publish_ms in cases:
-                proc=subprocess.Popen([str(binary),engine,mode,str(args.seconds+1),str(publish_ms)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        nonlocal completed
+        reader, writer = await asyncio.open_connection("127.0.0.1", meta["port"])
+        try:
+            while time.perf_counter() < finish:
+                before = time.perf_counter()
                 try:
-                    meta=json.loads(proc.stdout.readline());time.sleep(.1)
-                    metrics=asyncio.run(drive(meta,mode,args.seconds,subscribers,10))
-                    _,status,usage=os.wait4(proc.pid,0);proc.returncode=os.waitstatus_to_exitcode(status)
-                    if proc.returncode: raise RuntimeError(proc.stderr.read())
-                    summary=json.loads(proc.stdout.readline())
-                    row=dict(repeat=repeat,engine=engine,mode=mode,subscribers=subscribers,publish_ms=publish_ms,poll_ms=10,host_cpu_seconds=usage.ru_utime+usage.ru_stime,host_peak_rss_bytes=usage.ru_maxrss*(1 if sys.platform=='darwin' else 1024),**metrics,**summary)
-                    rows.append(row);print(json.dumps(row),flush=True)
+                    writer.write(b"x" * 64)
+                    await writer.drain()
+                    assert await asyncio.wait_for(reader.readexactly(64), 1) == b"x" * 64
+                    completed += 1
+                    latency.append((time.perf_counter() - before) * 1e6)
+                except Exception as error:
+                    errors[type(error).__name__] += 1
+                    break
+        finally:
+            writer.close()
+            await writer.wait_closed()
+
+    async def observe():
+        nonlocal observations, unchanged
+        cursor = None
+        while time.perf_counter() < finish:
+            before = time.perf_counter()
+            writer = None
+            try:
+                reader, writer = await asyncio.open_unix_connection(meta["socket"])
+                request = {"min_completed": 0} if mode == "manual" else {
+                    "command": "observe_v2", "sql": "SELECT completed, bytes FROM counters WHERE completed > 0", "since": cursor}
+                writer.write(json.dumps(request).encode() + b"\n")
+                await writer.drain()
+                reply = json.loads(await asyncio.wait_for(reader.readline(), 1))
+                if mode == "published":
+                    if reply["status"] == "error":
+                        query_errors[reply["code"]] += 1
+                        continue
+                    observed = reply["data"]
+                    cursor = observed["cursor"]
+                    unchanged += observed["kind"] == "unchanged"
+                observations += 1
+                query_latency.append((time.perf_counter() - before) * 1e6)
+            except Exception as error:
+                query_errors[type(error).__name__] += 1
+            finally:
+                if writer is not None:
+                    writer.close()
+                    await writer.wait_closed()
+                # Errors also back off instead of turning contention into a busy loop.
+                await asyncio.sleep(poll_ms / 1000)
+
+    async def monitor():
+        while time.perf_counter() < finish:
+            sample = await asyncio.to_thread(resources, meta["pid"])
+            samples.append({"elapsed_seconds": time.perf_counter() - start, **sample})
+            await asyncio.sleep(max(0, min(5, finish - time.perf_counter())))
+
+    await asyncio.gather(*(load() for _ in range(4)), *(observe() for _ in range(subscribers)), monitor())
+    elapsed = time.perf_counter() - start
+    return dict(requests=completed, requests_per_second=completed / elapsed,
+                p50_us=quantile(latency, .5), p95_us=quantile(latency, .95), p99_us=quantile(latency, .99),
+                latency_samples=len(latency), request_errors=sum(errors.values()), request_error_codes=dict(errors),
+                observations=observations, not_modified=unchanged, observation_errors=sum(query_errors.values()),
+                observation_error_codes=dict(query_errors), observation_p99_us=quantile(query_latency, .99),
+                resource_samples=samples)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repeats", type=int, default=3)
+    parser.add_argument("--seconds", type=int, default=2)
+    parser.add_argument("--output", default="docs/service-benchmark.json")
+    parser.add_argument("--binary", default="experiments/workload/target/release/livequery-workload")
+    parser.add_argument("--only", choices=["baseline", "soak"])
+    args = parser.parse_args()
+    binary = ROOT / args.binary
+    rows = []
+    for repeat in range(args.repeats):
+        for engine in ["sync", "async"]:
+            cases = [("baseline", 0, 10), ("manual", 1, 10), ("published", 0, 10),
+                     ("published", 1, 10), ("published", 4, 10), ("published", 4, 50)]
+            if args.only == "baseline":
+                cases = [("baseline", 0, 10)]
+            if args.only == "soak":
+                cases = [("published", 4, 10)]
+            cases = cases[repeat:] + cases[:repeat]
+            for mode, subscribers, publish_ms in cases:
+                proc = subprocess.Popen([str(binary), engine, mode, str(args.seconds + 3), str(publish_ms)],
+                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                try:
+                    meta = json.loads(proc.stdout.readline())
+                    time.sleep(.1)
+                    metrics = asyncio.run(drive(meta, mode, args.seconds, subscribers, 10))
+                    _, status, usage = os.wait4(proc.pid, 0)
+                    proc.returncode = os.waitstatus_to_exitcode(status)
+                    if proc.returncode:
+                        raise RuntimeError(proc.stderr.read())
+                    summary = json.loads(proc.stdout.readline())
+                    row = dict(repeat=repeat, engine=engine, mode=mode, subscribers=subscribers,
+                               publish_ms=publish_ms, poll_ms=10, host_cpu_seconds=usage.ru_utime + usage.ru_stime,
+                               host_peak_rss_bytes=usage.ru_maxrss * (1 if sys.platform == "darwin" else 1024),
+                               **metrics, **summary)
+                    rows.append(row)
+                    print(json.dumps(row), flush=True)
                 finally:
-                    if proc.poll() is None: proc.terminate();proc.wait()
-    (ROOT/args.output).write_text(json.dumps({'platform':sys.platform,'binary':args.binary,'binary_bytes':binary.stat().st_size,'repeats':args.repeats,'load_seconds':args.seconds,'load_clients':4,'payload_bytes':64,'results':rows},indent=2)+'\n')
-if __name__=='__main__': main()
+                    if proc.poll() is None:
+                        proc.terminate()
+                        proc.wait()
+    output = ROOT / args.output
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(dict(platform=sys.platform, binary=args.binary, binary_bytes=binary.stat().st_size, binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
+                                     repeats=args.repeats, load_seconds=args.seconds, load_clients=4, payload_bytes=64,
+                                     latency_policy="last 100000 completed requests; bounded memory, not a whole-run tail",
+                                     results=rows), indent=2) + "\n")
+
+
+if __name__ == "__main__":
+    main()

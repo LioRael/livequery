@@ -158,9 +158,7 @@ impl Query {
                     .collect(),
             );
         }
-        if serde_json::to_vec(&result)?.len() > limits.bytes {
-            return Err(Error::Limit("result bytes".into()));
-        }
+        livequery_core::json_bytes(&result, limits.bytes)?;
         if start.elapsed() >= limits.query_timeout {
             return Err(Error::Deadline);
         }

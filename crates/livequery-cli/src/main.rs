@@ -1,5 +1,5 @@
 use livequery_query::QueryResult;
-use livequery_transport::{Request, Response, local};
+use livequery_transport::{Observation, PROTOCOL_VERSION, Request, Response, local};
 use std::{
     io::{self, Write},
     path::PathBuf,
@@ -28,7 +28,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     let command = args.first().map(String::as_str).unwrap_or("help");
     if command == "help" || command == "--help" {
         println!(
-            "LiveQuery — explore an explicitly enabled Rust program\n\n  livequery list [--json]\n  livequery attach <pid>\n  livequery schema --pid <pid>\n  livequery query 'SELECT * FROM players' --pid <pid> [--json]\n  livequery watch 'SELECT * FROM players' --pid <pid> [--interval-ms 1000] [--count 10]\n\nUse --socket <path> instead of --pid. WATCH emits full changed results; --count counts polls."
+            "LiveQuery — explore an explicitly enabled Rust program\n\n  livequery list [--json]\n  livequery attach <pid>\n  livequery status --pid <pid> [--json]\n  livequery schema --pid <pid>\n  livequery query 'SELECT * FROM players' --pid <pid> [--json]\n  livequery watch 'SELECT * FROM players' --pid <pid> [--interval-ms 1000] [--count 10]\n\nUse --socket <path> instead of --pid. WATCH emits full changed results; --count counts polls."
         );
         return Ok(());
     }
@@ -68,55 +68,88 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         .ok_or("specify --pid or --socket; target must enable LiveQuery")?;
     let request = match command {
         "schema" | "attach" => Request::Schema,
+        "status" => Request::Status,
         "query" | "watch" => Request::Query {
             sql: args.get(1).ok_or("query requires SQL")?.clone(),
         },
         _ => return Err("unknown command; use --help".into()),
     };
-    let expected = if command == "schema" { 1 } else { 2 };
+    let expected = if matches!(command, "schema" | "status") {
+        1
+    } else {
+        2
+    };
     if args.len() != expected {
         return Err("unexpected arguments".into());
     }
     if !(100..=60_000).contains(&interval) {
         return Err("interval must be 100..60000 ms".into());
     }
+    match local::request(
+        &socket,
+        &Request::Hello {
+            protocol: PROTOCOL_VERSION,
+        },
+    )? {
+        Response::Ok { data } if data["protocol"].as_u64() == Some(PROTOCOL_VERSION as u64) => {}
+        _ => return Err("incompatible agent protocol; use a matching CLI/Agent version".into()),
+    }
     let mut previous = None;
     let mut revision = None;
     let mut polls = 0;
+    let mut connection_failures = 0;
     loop {
         if command == "watch" && count.is_some_and(|c| polls >= c) {
             break;
         }
         let active_request = if command == "watch" {
-            Request::Observe {
+            Request::ObserveV2 {
                 sql: args[1].clone(),
-                since: revision,
+                since: revision.clone(),
             }
         } else {
             request.clone()
         };
-        let response = local::request(&socket, &active_request)?;
-        let data = match response {
-            Response::Ok { data } => data,
-            Response::Observation {
-                revision: next,
-                data,
-            } => {
-                revision = Some(next);
-                data
+        let response = match local::request(&socket, &active_request) {
+            Ok(response) => {
+                connection_failures = 0;
+                response
             }
-            Response::NotModified { revision: next } => {
-                revision = Some(next);
+            Err(error) if command == "watch" && error.code() == "io" && connection_failures < 3 => {
+                connection_failures += 1;
+                revision = None;
+                previous = None;
                 polls += 1;
+                eprintln!("agent connection interrupted; retry {connection_failures}/3: {error}");
                 std::thread::sleep(Duration::from_millis(interval));
                 continue;
             }
+            Err(error) => return Err(error.into()),
+        };
+        let data = match response {
+            Response::Ok { data } if command == "watch" => {
+                match serde_json::from_value::<Observation>(data)? {
+                    Observation::Changed { cursor, result } => {
+                        revision = Some(cursor);
+                        result
+                    }
+                    Observation::Unchanged { cursor } => {
+                        revision = Some(cursor);
+                        polls += 1;
+                        std::thread::sleep(Duration::from_millis(interval));
+                        continue;
+                    }
+                    _ => return Err("unsupported observation payload".into()),
+                }
+            }
+            Response::Ok { data } => data,
             Response::Error { code, .. } if command == "watch" && code == "busy" => {
                 polls += 1;
                 std::thread::sleep(Duration::from_millis(interval));
                 continue;
             }
             Response::Error { code, message } => return Err(format!("{code}: {message}").into()),
+            _ => return Err("unexpected response for negotiated protocol".into()),
         };
         let mut comparable = data.clone();
         if let Some(object) = comparable.as_object_mut() {
@@ -125,7 +158,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         if previous.as_ref() != Some(&comparable) {
             if json {
                 println!("{}", serde_json::to_string(&data)?);
-            } else if matches!(request, Request::Schema) {
+            } else if matches!(request, Request::Schema | Request::Status) {
                 println!("{}", serde_json::to_string_pretty(&data)?);
             } else {
                 table(&serde_json::from_value::<QueryResult>(data)?)?;

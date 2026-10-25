@@ -1,6 +1,6 @@
 # LiveQuery
 
-**Experimental · 0.1.0-alpha.2 · Rust 1.88+ · macOS / Linux**
+**Experimental · alpha.3 development · Rust 1.88+ · macOS / Linux**
 
 **Turn running programs into queryable, observable worlds.**
 
@@ -17,7 +17,7 @@ LiveQuery is an opt-in, read-only runtime inspection library and local CLI. It w
 From this checkout, on macOS or Linux:
 
 ```sh
-cargo install livequery-cli --version 0.1.0-alpha.2 --locked
+cargo install --path crates/livequery-cli --locked
 cargo run -p livequery-example-concurrent
 ```
 
@@ -45,7 +45,7 @@ id  username  health
 
 ## Embed
 
-Add the published library:
+For the published alpha.2 library (protocol 1), use:
 
 ```sh
 cargo add livequery@0.1.0-alpha.2
@@ -100,6 +100,12 @@ Defaults: 10,000 scanned rows, 1,000 output rows, 1 MiB serialized snapshot/resu
 No ORDER BY, JOIN, aggregation, history, nested-field queries, Windows transport, write operations, or arbitrary PID attachment. Schema includes Rust type names and JSON Schema with recursive definitions and enum variants. Nested custom types derive `Serialize` and `JsonSchema`; root enums additionally derive `Inspect` and appear in a `value` column. See [schema tests](crates/livequery/tests/schema_collection.rs).
 
 Each changed publication is scanned; unchanged revisions skip the snapshot and scan. Large collections fail before scanning; use dedicated diagnostic views. Polling misses intermediate states. Same-user processes can read exposed data. Custom serializers/adapters run only during explicit application capture/publication or trusted in-process queries, and cannot be forcibly preempted. Remote queries read only validated owned JSON snapshots. Use short bounded adapters and dedicated inspection views for latency-sensitive applications.
+
+## Stability work
+
+This checkout is the unpublished alpha.3 candidate. Its CLI negotiates protocol 2; build the CLI from this checkout for its examples. `livequery status --pid <pid> --json` reports snapshot age, last publication time and categorized failures. WATCH retries up to three consecutive I/O interruptions and binds cursors to the Agent session and exact query. Existing alpha.2 CLI requests remain accepted. Use a path dependency for candidate APIs.
+
+See [stable release gates and remaining evidence](docs/stability.md). No stable-release or production-readiness claim is made.
 
 ## Workspace
 

@@ -278,6 +278,7 @@ fn full_listener_backlog_cannot_block_client_indefinitely() {
     let listener =
         socket2::Socket::new(socket2::Domain::UNIX, socket2::Type::STREAM, None).unwrap();
     listener.bind(&address).unwrap();
+    fs::set_permissions(&path, std::os::unix::fs::PermissionsExt::from_mode(0o600)).unwrap();
     listener.listen(1).unwrap();
     let mut pending = Vec::new();
     let mut full = false;
@@ -395,4 +396,30 @@ fn remote_queries_only_read_published_data_and_observations_skip_unchanged_versi
     stop.store(true, Ordering::Relaxed);
     thread.join().unwrap();
     fs::remove_dir(dir).unwrap();
+}
+
+#[test]
+fn unsafe_ancestor_and_symlink_socket_are_rejected() {
+    use std::os::unix::fs::{DirBuilderExt, PermissionsExt, symlink};
+    let root = std::env::temp_dir().join(format!("lq-ancestor-{}", std::process::id()));
+    fs::DirBuilder::new().mode(0o700).create(&root).unwrap();
+    let child = root.join("child");
+    fs::DirBuilder::new().mode(0o700).create(&child).unwrap();
+    fs::set_permissions(&root, fs::Permissions::from_mode(0o777)).unwrap();
+    assert!(Server::bind(child.join("agent.sock"), Registry::new(), Limits::default()).is_err());
+    fs::set_permissions(&root, fs::Permissions::from_mode(0o700)).unwrap();
+    let actual = child.join("actual.sock");
+    let listener = std::os::unix::net::UnixListener::bind(&actual).unwrap();
+    fs::set_permissions(&actual, fs::Permissions::from_mode(0o600)).unwrap();
+    let alias = child.join("alias.sock");
+    symlink(&actual, &alias).unwrap();
+    assert!(matches!(
+        local::request(&alias, &Request::Schema),
+        Err(livequery::Error::Invalid(_))
+    ));
+    drop(listener);
+    fs::remove_file(alias).unwrap();
+    fs::remove_file(actual).unwrap();
+    fs::remove_dir(child).unwrap();
+    fs::remove_dir(root).unwrap();
 }

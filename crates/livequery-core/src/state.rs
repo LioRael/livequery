@@ -60,6 +60,20 @@ pub enum Error {
     #[error("transport failed: {0}")]
     Io(#[from] std::io::Error),
 }
+impl Error {
+    /// Stable diagnostic category; messages are not a compatibility contract.
+    pub fn code(&self) -> &'static str {
+        match self {
+            Self::Invalid(_) => "invalid",
+            Self::Limit(_) => "limit",
+            Self::Busy => "busy",
+            Self::Deadline => "deadline",
+            Self::NotFound(_) => "not_found",
+            Self::Serialization(_) => "serialization",
+            Self::Io(_) => "io",
+        }
+    }
+}
 /// Finite budgets used by both custom and built-in sources.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Limits {
@@ -96,9 +110,7 @@ pub trait Inspect: Send + Sync {
     /// method to enforce limits before allocating; the default validates after inspection.
     fn inspect_bounded(&self, max_bytes: usize) -> Result<Row, Error> {
         let row = self.inspect()?;
-        if serde_json::to_vec(&row)?.len() > max_bytes {
-            return Err(Error::Limit("row bytes".into()));
-        }
+        json_bytes(&row, max_bytes)?;
         Ok(row)
     }
 }
@@ -296,6 +308,58 @@ impl Registry {
             })
             .collect()
     }
+    /// Lists schemas while bounding aggregate serialization and copying.
+    /// # Errors
+    /// Returns Busy, a limit or deadline error instead of waiting or constructing an oversized catalog.
+    /// # Panics
+    /// Panics if the registry lock is poisoned.
+    pub fn schemas_bounded(&self, limits: Limits) -> Result<BTreeMap<String, Vec<Column>>, Error> {
+        let start = Instant::now();
+        let entries = self.entries.try_read().map_err(catalog_lock_error)?;
+        let mut result = BTreeMap::new();
+        let mut remaining = limits.bytes;
+        for (name, entry) in entries.iter() {
+            if start.elapsed() >= limits.query_timeout {
+                return Err(Error::Deadline);
+            }
+            if let Some(entry) = entry.upgrade().filter(|entry| self.visible(entry)) {
+                let size = json_bytes(&(name, &entry.columns), remaining)?.len();
+                remaining = remaining.saturating_sub(size);
+                result.insert(name.clone(), entry.columns.clone());
+            }
+        }
+        json_bytes(&result, limits.bytes)?;
+        Ok(result)
+    }
+    /// Reports publication freshness and failure counters without capturing application state.
+    /// # Errors
+    /// Returns busy, deadline or resource-limit errors.
+    /// # Panics
+    /// Panics if the registry lock is poisoned.
+    pub fn publication_status(
+        &self,
+        limits: Limits,
+    ) -> Result<BTreeMap<String, crate::PublicationStatus>, Error> {
+        let start = Instant::now();
+        let entries = self.entries.try_read().map_err(catalog_lock_error)?;
+        let mut result = BTreeMap::new();
+        let mut remaining = limits.bytes;
+        for (name, entry) in entries.iter() {
+            if start.elapsed() >= limits.query_timeout {
+                return Err(Error::Deadline);
+            }
+            if let Some(entry) = entry.upgrade().filter(|entry| self.visible(entry))
+                && let Some(published) = &entry.published
+            {
+                let status = published.status()?;
+                remaining =
+                    remaining.saturating_sub(json_bytes(&(name, &status), remaining)?.len());
+                result.insert(name.clone(), status);
+            }
+        }
+        json_bytes(&result, limits.bytes)?;
+        Ok(result)
+    }
     /// Copies one source without retaining the catalog lock during application code.
     /// # Errors
     /// Returns missing-source, busy, invalid-snapshot, or budget errors.
@@ -304,8 +368,8 @@ impl Registry {
     pub fn snapshot(&self, name: &str, limits: Limits) -> Result<Snapshot, Error> {
         let entry = self
             .entries
-            .read()
-            .expect("registry lock poisoned")
+            .try_read()
+            .map_err(catalog_lock_error)?
             .get(name)
             .and_then(Weak::upgrade)
             .filter(|entry| self.visible(entry))
@@ -332,8 +396,8 @@ impl Registry {
     pub fn revision(&self, name: &str) -> Result<Option<Revision>, Error> {
         let entry = self
             .entries
-            .read()
-            .expect("registry lock poisoned")
+            .try_read()
+            .map_err(catalog_lock_error)?
             .get(name)
             .and_then(Weak::upgrade)
             .filter(|entry| self.visible(entry))
@@ -348,6 +412,12 @@ impl Registry {
                 })
             })
             .transpose()
+    }
+}
+fn catalog_lock_error<T>(error: std::sync::TryLockError<T>) -> Error {
+    match error {
+        std::sync::TryLockError::WouldBlock => Error::Busy,
+        std::sync::TryLockError::Poisoned(_) => panic!("registry lock poisoned"),
     }
 }
 fn identifier(s: &str) -> bool {
@@ -401,4 +471,38 @@ pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error>
     }
     result?;
     Ok(buffer.bytes)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn request_paths_do_not_wait_for_registration_writers() {
+        let registry = Registry::new();
+        let held = registry.entries.write().unwrap();
+        let reader = registry.clone();
+        let (tx, rx) = std::sync::mpsc::channel();
+        let worker = std::thread::spawn(move || {
+            let results = [
+                matches!(reader.schemas_bounded(Limits::default()), Err(Error::Busy)),
+                matches!(
+                    reader.publication_status(Limits::default()),
+                    Err(Error::Busy)
+                ),
+                matches!(
+                    reader.snapshot("items", Limits::default()),
+                    Err(Error::Busy)
+                ),
+                matches!(reader.revision("items"), Err(Error::Busy)),
+            ];
+            tx.send(results).unwrap();
+        });
+        let result = rx.recv_timeout(Duration::from_secs(1));
+        drop(held);
+        worker.join().unwrap();
+        assert_eq!(
+            result.expect("request paths must not await application registration"),
+            [true; 4]
+        );
+    }
 }

@@ -24,7 +24,7 @@ pub use livequery_agent::Agent;
 #[doc(hidden)]
 pub use livequery_core::value_with_budget;
 pub use livequery_core::{
-    CollectionSource, Column, Error, Inspect, Limits, Published, Registration, Registry, Revision,
-    Row, RowCollection, Snapshot, Source, Table, schemars, serde, serde_json,
+    CollectionSource, Column, Error, Inspect, Limits, PublicationStatus, Published, Registration,
+    Registry, Revision, Row, RowCollection, Snapshot, Source, Table, schemars, serde, serde_json,
 };
 pub use livequery_query::{Query, QueryResult, Watch};

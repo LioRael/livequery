@@ -191,6 +191,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let state = Arc::new(Mutex::new(Counters::default()));
     let stop = Arc::new(AtomicBool::new(false));
     let publication_errors = Arc::new(AtomicU64::new(0));
+    let publication_attempts = Arc::new(AtomicU64::new(0));
+    let publication_error_codes =
+        Arc::new(Mutex::new(std::collections::BTreeMap::<String, u64>::new()));
     let dir = std::env::temp_dir().join(format!("lq-workload-{}", std::process::id()));
     let path = dir.join("agent.sock");
     let mut workers = Vec::new();
@@ -216,14 +219,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let state = state.clone();
                 let shutdown = stop.clone();
                 let errors = publication_errors.clone();
+                let attempts = publication_attempts.clone();
+                let error_codes = publication_error_codes.clone();
                 workers.push(std::thread::spawn(move || {
                     while !shutdown.load(Ordering::Relaxed) {
                         let counters = *state.lock().expect("application counters poisoned");
-                        if livequery::Snapshot::capture([&counters], limits)
+                        attempts.fetch_add(1, Ordering::Relaxed);
+                        if let Err(error) = livequery::Snapshot::capture([&counters], limits)
                             .and_then(|snapshot| published.publish(snapshot))
-                            .is_err()
                         {
                             errors.fetch_add(1, Ordering::Relaxed);
+                            *error_codes
+                                .lock()
+                                .expect("diagnostic counters poisoned")
+                                .entry(error.code().into())
+                                .or_default() += 1;
                         }
                         std::thread::sleep(Duration::from_millis(publish_ms));
                     }
@@ -258,7 +268,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!(
         "{}",
-        serde_json::json!({"publication_errors":publication_errors.load(Ordering::Relaxed),"completed":state.lock().expect("counters poisoned").completed})
+        serde_json::json!({"publication_errors":publication_errors.load(Ordering::Relaxed),"publication_attempts":publication_attempts.load(Ordering::Relaxed),"publication_error_codes":*publication_error_codes.lock().expect("diagnostic counters poisoned"),"completed":state.lock().expect("counters poisoned").completed})
     );
     Ok(())
 }
