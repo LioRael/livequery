@@ -1,0 +1,46 @@
+scripts/consumer-check.py
+  s_1d1ebc94680cfb::t_bd4a1e6ff42b01 15-18
+crates/livequery/tests/stability.rs
+  s_1d1ebc94680cfb::t_1bc8515ed20773 158-160
+  s_1d1ebc94680cfb::t_13c144061db4d7 169,189-193
+docs/stability.md
+  s_1d1ebc94680cfb::t_9cdcb621d4c5ae 12,14,23
+.github/workflows/stability.yml
+  s_1d1ebc94680cfb::t_e1461bc8847cb1 54
+.github/workflows/endurance.yml
+  s_1d1ebc94680cfb::t_1bc8515ed20773 1-42
+docs/security-review-alpha3.md
+  s_1d1ebc94680cfb::t_9cdcb621d4c5ae 1-21
+crates/livequery-transport/src/local.rs
+  s_1d1ebc94680cfb::t_bd4a1e6ff42b01 38,106,127,159-161,167-174,176-180,182-183,187,212,214
+  s_1d1ebc94680cfb::t_dd10b21237291f 163,213,344-376
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_9cdcb621d4c5ae 9-10
+crates/livequery-derive/src/lib.rs
+  s_1d1ebc94680cfb::t_bd4a1e6ff42b01 15-23,123-133
+  s_1d1ebc94680cfb::t_abb3c1ea99c9f9 134
+scripts/check-load.py
+  s_1d1ebc94680cfb::t_363b5ac79cf0b3 3,7-16,18-21,30-35
+docs/security.md
+  s_1d1ebc94680cfb::t_9cdcb621d4c5ae 5,7,45
+scripts/benchmark-service.py
+  s_1d1ebc94680cfb::t_363b5ac79cf0b3 13,74,92-98,113-119,124,139,141-145,149,181
+crates/livequery-cli/tests/reconnect.rs
+  s_1d1ebc94680cfb::t_f3fccddc56035b 58-78,92-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c006dc3dbbde5cd57a8329a6f8dbeb7dd90a8575",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
