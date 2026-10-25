@@ -1,6 +1,6 @@
 # LiveQuery
 
-**Experimental · alpha.2 development · Rust 1.88+ · macOS / Linux**
+**Experimental · 0.1.0-alpha.2 · Rust 1.88+ · macOS / Linux**
 
 **Turn running programs into queryable, observable worlds.**
 
@@ -17,7 +17,7 @@ LiveQuery is an opt-in, read-only runtime inspection library and local CLI. It w
 From this checkout, on macOS or Linux:
 
 ```sh
-cargo install --path crates/livequery-cli --locked
+cargo install livequery-cli --version 0.1.0-alpha.2 --locked
 cargo run -p livequery-example-concurrent
 ```
 
@@ -45,10 +45,10 @@ id  username  health
 
 ## Embed
 
-For this alpha.2 checkout, add the library as a path dependency (alpha.1 remains the published release):
+Add the published library:
 
 ```sh
-cargo add livequery --path /path/to/livequery/crates/livequery
+cargo add livequery@0.1.0-alpha.2
 ```
 
 Fields must implement serde `Serialize` and `schemars::JsonSchema`; the struct itself needs only `Inspect`. For local development, a path dependency on `crates/livequery` also works.
@@ -124,4 +124,6 @@ Read [research and decisions](docs/design.md), [query and protocol](docs/query.m
 
 Release scope: [CHANGELOG](CHANGELOG.md). Vulnerability reporting: [SECURITY.md](SECURITY.md).
 
-Published packages: [livequery](https://crates.io/crates/livequery/0.1.0-alpha.1), [livequery-derive](https://crates.io/crates/livequery-derive/0.1.0-alpha.1), [livequery-cli](https://crates.io/crates/livequery-cli/0.1.0-alpha.1).
+Published packages: [livequery](https://crates.io/crates/livequery/0.1.0-alpha.2), [livequery-derive](https://crates.io/crates/livequery-derive/0.1.0-alpha.2), [livequery-cli](https://crates.io/crates/livequery-cli/0.1.0-alpha.2).
+
+Independent packages: [Core](https://crates.io/crates/livequery-core/0.1.0-alpha.2), [Query](https://crates.io/crates/livequery-query/0.1.0-alpha.2), [Agent](https://crates.io/crates/livequery-agent/0.1.0-alpha.2), [Transport](https://crates.io/crates/livequery-transport/0.1.0-alpha.2).

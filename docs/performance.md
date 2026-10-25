@@ -1,4 +1,4 @@
-# Measured performance (alpha.2 candidate)
+# Measured performance (alpha.2)
 
 Measured 2026-10-26 on macOS arm64, Apple M2 Pro, 16 GiB RAM, Rust 1.99.0, optimized Cargo profile and default allocator. Raw data and harnesses are committed. These are local diagnostic experiments, not production guarantees or competitor rankings. [Alpha.1 measurements](performance-alpha1.md) describe the older live-callback design and must not be used as alpha.2 results.
 

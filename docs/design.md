@@ -62,4 +62,4 @@ livequery/
 
 The transport server accepts a trusted request handler; it does not know about registries or execute SQL. Its handler must return promptly. `livequery_agent::Agent::handle` is usable without a socket; `livequery_agent::local::Server` provides the bounded published-data implementation. `Registry::published_only` supplies the access boundary without exposing private registry internals. Root examples and benchmarks are workspace packages with `publish = false`.
 
-Release dependency order: derive → core → query/transport → agent → facade/CLI. Local `cargo package` verification uses Cargo's temporary registry for all seven publishable packages. Existing alpha.1 publication metadata is historical; splitting the alpha.2 candidate does not publish those new crates automatically.
+Release dependency order: derive → core → query/transport → agent → facade/CLI. Local `cargo package` verification uses Cargo's temporary registry for all seven publishable packages. All seven alpha.2 crates have been published; alpha.1 publication metadata is historical.

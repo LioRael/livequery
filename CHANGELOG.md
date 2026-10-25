@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0-alpha.2 (unreleased)
+## 0.1.0-alpha.2
 
 - Independent Core, Query, Agent and Transport crates; compatible livequery facade.
 - Root examples/basic, examples/concurrent, examples/async-server and benches packages.
@@ -11,7 +11,7 @@
 - Cooperative query deadlines and revision-aware WATCH with Busy retries.
 - Real synchronous/Tokio service benchmarks and reproducible comparison probes.
 
-Migration: derive JsonSchema for nested types, register with expose_published, and refresh at application checkpoints. Alpha.1 remains the currently published package.
+Migration: derive JsonSchema for nested types, register with expose_published, and refresh at application checkpoints. All seven alpha.2 crates are published on crates.io.
 
 
 ## 0.1.0-alpha.1 — 2026-10-26

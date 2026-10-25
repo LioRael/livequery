@@ -1,6 +1,6 @@
 # Original prompt acceptance
 
-Scope: the first release requirements in the supplied LiveQuery prompt. ORDER BY was explicitly deferrable; history implementation and section 8 are future directions, not required MVP features. Alpha.2 is a development candidate; crates.io alpha.1 does not contain these additions.
+Scope: the first release requirements in the supplied LiveQuery prompt. ORDER BY was explicitly deferrable; history implementation and section 8 are future directions, not required MVP features. Alpha.2 is published on crates.io; alpha.1 does not contain these additions.
 
 | Requirement | Implementation and executable evidence |
 |---|---|
