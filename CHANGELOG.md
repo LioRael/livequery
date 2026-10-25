@@ -6,6 +6,8 @@
 - Publication freshness and categorized failure diagnostics through status.
 - Capped result/catalog serialization and stricter local socket/ancestor validation.
 - Compatibility, property, lifecycle and secret-filter regression tests; fuzz, dependency and API CI gates.
+- Reject ignored enum/container inspect attributes, reuse validated canonical socket directories and retry interrupted response EOF.
+- Independent source security review and two-hour Linux/macOS endurance workflow.
 - Bounded long-run load sampling with diagnostic error categories and RSS/thread/FD trends.
 
 

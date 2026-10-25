@@ -155,7 +155,9 @@ proptest! {
     fn selection_matches_numeric_predicate(threshold in 0u64..100, ids in prop::collection::vec(0u64..100, 0..100)) {
         let registry = Registry::new();
         let _guard = registry.expose("items", Table::new(ids.iter().map(|id| Item { id: *id, name: "x".into() }).collect::<Vec<_>>())).unwrap();
-        let result = Query::parse(&format!("SELECT id FROM items WHERE id > {threshold}")).unwrap().execute(&registry, Limits::default()).unwrap();
+        // This property checks selection semantics, not scheduler-dependent latency.
+        let limits = Limits { query_timeout: std::time::Duration::from_secs(5), ..Limits::default() };
+        let result = Query::parse(&format!("SELECT id FROM items WHERE id > {threshold}")).unwrap().execute(&registry, limits).unwrap();
         let actual: Vec<_> = result.rows.iter().map(|row| row["id"].as_u64().unwrap()).collect();
         let expected: Vec<_> = ids.into_iter().filter(|id| *id > threshold).collect();
         prop_assert_eq!(actual, expected);
@@ -164,7 +166,7 @@ proptest! {
 
 #[test]
 fn nested_enum_secrets_are_omitted_from_values_and_schema() {
-    #[derive(Debug, livequery::serde::Serialize, livequery::schemars::JsonSchema)]
+    #[derive(Debug, Inspect, livequery::serde::Serialize, livequery::schemars::JsonSchema)]
     #[serde(crate = "livequery::serde", tag = "kind")]
     #[schemars(crate = "livequery::schemars")]
     enum Details {
@@ -184,6 +186,11 @@ fn nested_enum_secrets_are_omitted_from_values_and_schema() {
     };
     let Details::Active { secret, .. } = &details;
     assert!(!secret.is_empty());
+    let root_snapshot = Snapshot::capture([&details], Limits::default()).unwrap();
+    let root_serialized = serde_json::to_string(&root_snapshot).unwrap();
+    assert!(
+        !root_serialized.contains("\"secret\"") && !root_serialized.contains("never-export-this")
+    );
     let snapshot = Snapshot::capture([&Outer { details }], Limits::default()).unwrap();
     let serialized = serde_json::to_string(&snapshot).unwrap();
     assert!(!serialized.contains("\"secret\"") && !serialized.contains("never-export-this"));

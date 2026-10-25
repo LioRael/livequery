@@ -9,9 +9,9 @@ Alpha.3 is an unpublished hardening candidate. Current measured evidence is in [
 | WATCH lifecycle | UUID Agent identity + exact SQL digest + source revision; client clears caches and retries at most three consecutive I/O failures | Malformed responses and incompatible agents fail closed |
 | Freshness / faults | Status exposes successful publication time, monotonic age and failure categories; failed capture preserves previous data | No promise of observing every application event |
 | Resource limits | Capped result/catalog serialization, bounded transport buffers, query-loop deadlines | Timeouts remain cooperative; serialized budgets are not exact heap caps |
-| Security regression | Parser/wire fuzz target, generated query properties, private socket/ancestor checks | Independent adversarial review still required before stable release |
+| Security regression | Parser/wire fuzz target, generated query properties, private socket/ancestor checks | Independent focused source review completed with fixes; see [review scope and limits](security-review-alpha3.md) |
 | Dependency health | Pinned cargo-audit CI, weekly checks | Resolve or explicitly assess every new advisory; never silently ignore |
-| Sustained load | Classified request/observation/publication failures; RSS, thread and FD samples every five seconds | Complete Linux/macOS runs and multi-hour endurance before stable release |
+| Sustained load | Classified request/observation/publication failures; RSS, thread and FD samples every five seconds | Two-minute Linux/macOS runs passed; two-hour per-engine workflow must pass on the repaired implementation |
 | Integration scope | Independent registry/facade/component consumers and ordinary-thread/Tokio TCP service fixtures | Real-project integration is explicitly excluded from the requested acceptance scope |
 
 ## Initial load gate
@@ -20,7 +20,7 @@ The fixture's bounded target is one diagnostic row, four observers polling every
 
 After ten seconds warmup, resource samples must be available, thread range ≤1, FD range ≤32 (transport has sixteen active slots), and RSS range ≤8 MiB. These thresholds identify obvious regressions in this small fixture; they do not establish a general memory limit. Latency samples retain only the last 100,000 completed requests to bound load-generator memory. CPU/maxRSS belong to the host child. Sampling and the Python client run on the same machine and can affect latency.
 
-Normal push/PR CI runs two minutes per engine on Linux and macOS. Run a 10-minute trial per engine with the manual Stability gates workflow, then an independently supervised multi-hour run before removing the prerelease label. A single short local run cannot close the multi-hour endurance gate. Real-project integration is not required for this acceptance scope; conclusions remain limited to the documented fixtures. Baseline-relative throughput/tail budgets need controlled hardware and a representative application, not a universal percentage chosen from the echo fixture.
+Normal push/PR CI runs two minutes per engine on Linux and macOS. The manual Stability gates workflow runs ten minutes per engine. The Two-hour endurance workflow runs each engine for 7,200 seconds on separate Linux/macOS workers and retains raw results with source/binary identity. All four jobs must pass before closing the fixture endurance gate. A single short local run cannot close the multi-hour endurance gate. Real-project integration is not required for this acceptance scope; conclusions remain limited to the documented fixtures. Baseline-relative throughput/tail budgets need controlled hardware and a representative application, not a universal percentage chosen from the echo fixture.
 
 ## Compatibility policy
 

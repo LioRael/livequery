@@ -10,6 +10,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 SAMPLES = 100_000
@@ -70,6 +71,7 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
     async def observe():
         nonlocal observations, unchanged
         cursor = None
+        last_completed = 0
         while time.perf_counter() < finish:
             before = time.perf_counter()
             writer = None
@@ -87,6 +89,13 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
                     observed = reply["data"]
                     cursor = observed["cursor"]
                     unchanged += observed["kind"] == "unchanged"
+                    if observed["kind"] == "changed":
+                        rows = observed["result"]["rows"]
+                        if rows:
+                            current = rows[0]["completed"]
+                            assert current >= last_completed, "published counters regressed"
+                            assert rows[0]["bytes"] == current * 64, "incoherent snapshot"
+                            last_completed = current
                 observations += 1
                 query_latency.append((time.perf_counter() - before) * 1e6)
             except Exception as error:
@@ -101,12 +110,18 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
     async def monitor():
         while time.perf_counter() < finish:
             sample = await asyncio.to_thread(resources, meta["pid"])
-            samples.append({"elapsed_seconds": time.perf_counter() - start, **sample})
+            samples.append({"elapsed_seconds": time.perf_counter() - start,
+                            "requests": completed, "request_errors": sum(errors.values()),
+                            "observations": observations, "observation_errors": sum(query_errors.values()), **sample})
+            if len(samples) % 12 == 1:
+                print(json.dumps({"progress_seconds": round(time.perf_counter() - start),
+                                  "requests": completed, "request_errors": dict(errors),
+                                  "observation_errors": dict(query_errors), **sample}), flush=True)
             await asyncio.sleep(max(0, min(5, finish - time.perf_counter())))
 
     await asyncio.gather(*(load() for _ in range(4)), *(observe() for _ in range(subscribers)), monitor())
     elapsed = time.perf_counter() - start
-    return dict(requests=completed, requests_per_second=completed / elapsed,
+    return dict(elapsed_seconds=elapsed, requests=completed, requests_per_second=completed / elapsed,
                 p50_us=quantile(latency, .5), p95_us=quantile(latency, .95), p99_us=quantile(latency, .99),
                 latency_samples=len(latency), request_errors=sum(errors.values()), request_error_codes=dict(errors),
                 observations=observations, not_modified=unchanged, observation_errors=sum(query_errors.values()),
@@ -121,11 +136,17 @@ def main():
     parser.add_argument("--output", default="docs/service-benchmark.json")
     parser.add_argument("--binary", default="experiments/workload/target/release/livequery-workload")
     parser.add_argument("--only", choices=["baseline", "soak"])
+    parser.add_argument("--engine", choices=["sync", "async", "both"], default="both")
     args = parser.parse_args()
+    if args.seconds < 1 or args.repeats < 1:
+        parser.error("seconds and repeats must be positive")
+    started_at = datetime.now(timezone.utc).isoformat()
+    source_ref = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    engines = ["sync", "async"] if args.engine == "both" else [args.engine]
     binary = ROOT / args.binary
     rows = []
     for repeat in range(args.repeats):
-        for engine in ["sync", "async"]:
+        for engine in engines:
             cases = [("baseline", 0, 10), ("manual", 1, 10), ("published", 0, 10),
                      ("published", 1, 10), ("published", 4, 10), ("published", 4, 50)]
             if args.only == "baseline":
@@ -157,7 +178,7 @@ def main():
                         proc.wait()
     output = ROOT / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(dict(platform=sys.platform, binary=args.binary, binary_bytes=binary.stat().st_size, binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
+    output.write_text(json.dumps(dict(platform=sys.platform, source_ref=source_ref, started_at=started_at, finished_at=datetime.now(timezone.utc).isoformat(), engines=engines, binary=args.binary, binary_bytes=binary.stat().st_size, binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
                                      repeats=args.repeats, load_seconds=args.seconds, load_clients=4, payload_bytes=64,
                                      latency_policy="last 100000 completed requests; bounded memory, not a whole-run tail",
                                      results=rows), indent=2) + "\n")

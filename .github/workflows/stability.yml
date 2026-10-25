@@ -51,4 +51,4 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
       - run: python3 scripts/benchmark-service.py --only soak --repeats 1 --seconds "$LOAD_SECONDS" --output target/sustained-load.json
-      - run: python3 scripts/check-load.py target/sustained-load.json
+      - run: python3 scripts/check-load.py target/sustained-load.json --min-seconds "$LOAD_SECONDS"

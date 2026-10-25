@@ -12,6 +12,15 @@ pub fn derive_inspect(input: TokenStream) -> TokenStream {
         .into()
 }
 fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
+    reject_inspect_attributes(&input.attrs)?;
+    if let Data::Enum(data) = &input.data {
+        for variant in &data.variants {
+            reject_inspect_attributes(&variant.attrs)?;
+            for field in &variant.fields {
+                reject_inspect_attributes(&field.attrs)?;
+            }
+        }
+    }
     let (package, found) = ["livequery", "livequery-core"]
         .into_iter()
         .find_map(|package| {
@@ -110,4 +119,16 @@ fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
             }
         }
     })
+}
+
+fn reject_inspect_attributes(attributes: &[syn::Attribute]) -> syn::Result<()> {
+    for attribute in attributes {
+        if attribute.path().is_ident("inspect") {
+            return Err(syn::Error::new_spanned(
+                attribute,
+                "inspect attributes are supported only on named struct fields; use serde(skip) for enum fields",
+            ));
+        }
+    }
+    Ok(())
 }
