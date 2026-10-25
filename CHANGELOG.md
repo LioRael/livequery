@@ -4,6 +4,8 @@
 
 First experimental release. APIs and the local protocol may change during alpha.
 
+Available on crates.io: `livequery`, `livequery-derive`, and `livequery-cli` at `0.1.0-alpha.1`.
+
 - Explicit source registration with lifetime guards, static top-level type schemas, owned snapshots, and nonblocking application lock acquisition.
 - Inspect derive with field omission, generic field bounds, and renamed dependency support.
 - Bounded SELECT/projection/filter/LIMIT queries with boolean expressions, NULL semantics, and exact integer handling.

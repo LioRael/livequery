@@ -10,14 +10,14 @@ Expose a Rust collection, then ask questions about its live state without writin
 SELECT id, username FROM players WHERE health < 20;
 ```
 
-LiveQuery is an opt-in, read-only runtime inspection library and local CLI. It works with ordinary threads and Tokio applications. It does **not** inspect arbitrary processes or memory. This repository contains a working Unix MVP, not a published crate or production diagnostics service.
+LiveQuery is an opt-in, read-only runtime inspection library and local CLI. It works with ordinary threads and Tokio applications. It does **not** inspect arbitrary processes or memory. This experimental Unix MVP is available on crates.io. It is not a production diagnostics service.
 
 ## Run the demo
 
 From this checkout, on macOS or Linux:
 
 ```sh
-cargo install --path crates/livequery-cli --locked
+cargo install livequery-cli --version 0.1.0-alpha.1 --locked
 cargo run -p livequery --example concurrent
 ```
 
@@ -45,7 +45,13 @@ id  username  health
 
 ## Embed
 
-Until publication, add a path dependency on `crates/livequery`. Fields must implement serde `Serialize`; the struct itself needs only `Inspect`.
+Add the published library:
+
+```sh
+cargo add livequery@0.1.0-alpha.1
+```
+
+Fields must implement serde `Serialize`; the struct itself needs only `Inspect`. For local development, a path dependency on `crates/livequery` also works.
 
 ```rust
 use livequery::{Inspect, Limits, Query, Registry, Table};
@@ -109,3 +115,5 @@ cargo bench -p livequery --bench inspection
 Read [research and decisions](docs/design.md), [query and protocol](docs/query.md), [security and consistency](docs/security.md), and [measured performance](docs/performance.md). Licensed under MIT or Apache-2.0.
 
 Release scope: [CHANGELOG](CHANGELOG.md). Vulnerability reporting: [SECURITY.md](SECURITY.md).
+
+Published packages: [livequery](https://crates.io/crates/livequery/0.1.0-alpha.1), [livequery-derive](https://crates.io/crates/livequery-derive/0.1.0-alpha.1), [livequery-cli](https://crates.io/crates/livequery-cli/0.1.0-alpha.1).
