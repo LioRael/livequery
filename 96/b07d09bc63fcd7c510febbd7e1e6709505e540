@@ -1,0 +1,128 @@
+crates/livequery-agent/src/local.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 7-26,28
+  s_1d1ebc94680cfb::t_7fb669e19447c5 1-6,27
+scripts/smoke.py
+  s_1d1ebc94680cfb::t_3d085de85f8f43 18
+crates/livequery-core/src/lib.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 8-15
+  s_1d1ebc94680cfb::t_14b7ebc592f77f 1-7
+crates/livequery-derive/src/lib.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 15-24
+  s_1d1ebc94680cfb::t_8814f9bf0fa18a 25-29
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_3d085de85f8f43 5-7
+crates/livequery-transport/src/local.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 3-241
+  s_1d1ebc94680cfb::t_74d70222e83201 1-2,242-315
+docs/design.md
+  s_1d1ebc94680cfb::t_3d085de85f8f43 21,41-65
+docs/performance-alpha1.md
+  s_1d1ebc94680cfb::t_3d085de85f8f43 5
+crates/livequery/src/local.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 4
+  s_1d1ebc94680cfb::t_31406c3635f6bf 1-3
+docs/performance.md
+  s_1d1ebc94680cfb::t_3d085de85f8f43 67
+tests/components/Cargo.toml
+  s_1d1ebc94680cfb::t_3d085de85f8f43 1-12
+scripts/check-release.sh
+  s_1d1ebc94680cfb::t_3d085de85f8f43 10,12
+crates/livequery-query/src/lib.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 2
+  s_1d1ebc94680cfb::t_10d20b9538603f 1,172,372
+tests/components/src/main.rs
+  s_1d1ebc94680cfb::t_3d085de85f8f43 1-2,6-12,15-17,22-23,37,45-47
+  s_1d1ebc94680cfb::t_d53a616cb28c35 3-5,13-14,18-21,24-36,38-44
+README.md
+  s_1d1ebc94680cfb::t_3d085de85f8f43 21,83-85,104-107,116,118
+crates/livequery/src/lib.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 23,25-29
+  s_1d1ebc94680cfb::t_1feedc14fae1c6 30
+.github/workflows/ci.yml
+  s_1d1ebc94680cfb::t_3d085de85f8f43 27,31
+  s_1d1ebc94680cfb::t_fff6c558044d88 39
+crates/livequery/Cargo.toml
+  s_1d1ebc94680cfb::t_3d085de85f8f43 23
+  s_1d1ebc94680cfb::t_32c4c78d58db0f 14-18
+scripts/consumer-check.py
+  s_1d1ebc94680cfb::t_3d085de85f8f43 10
+crates/livequery-agent/src/lib.rs
+  s_1d1ebc94680cfb::t_d53a616cb28c35 9-32,52,54
+  s_1d1ebc94680cfb::t_8f7ca2db9830dd 1-8,33-51,53
+Cargo.lock
+  s_1d1ebc94680cfb::t_8ef0c8bfcf56e7 77-80,87,89-98,101-108,112-122,133-175
+Cargo.toml
+  s_1d1ebc94680cfb::t_544b8789790bb2 2
+benches/Cargo.toml
+  s_1d1ebc94680cfb::t_83ea0b06462f93 1-14
+crates/livequery-agent/Cargo.toml
+  s_1d1ebc94680cfb::t_a284ce56083406 1-17
+crates/livequery-agent/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_0ce4e3f5cfd4c8 1-176
+crates/livequery-agent/LICENSE-MIT
+  s_1d1ebc94680cfb::t_85f640b31c3a5c 1-21
+crates/livequery-agent/README.md
+  s_1d1ebc94680cfb::t_06ca2f70a277b1 1-7
+crates/livequery-cli/Cargo.toml
+  s_1d1ebc94680cfb::t_1900245b80d1b9 18-19
+crates/livequery-cli/src/main.rs
+  s_1d1ebc94680cfb::t_8f629cc64cc458 1-2
+crates/livequery-core/Cargo.toml
+  s_1d1ebc94680cfb::t_85a3505d625ee1 1-18
+crates/livequery-core/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_853b70451ee1d9 1-176
+crates/livequery-core/LICENSE-MIT
+  s_1d1ebc94680cfb::t_1129841c546086 1-21
+crates/livequery-core/README.md
+  s_1d1ebc94680cfb::t_2ed9898e2d24db 1-7
+crates/livequery-core/src/state.rs
+  s_1d1ebc94680cfb::t_44dcc32deb76a9 231-232,371-374
+crates/livequery-query/Cargo.toml
+  s_1d1ebc94680cfb::t_4f473ef3607d87 1-17
+crates/livequery-query/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_978ef3f421f4ba 1-176
+crates/livequery-query/LICENSE-MIT
+  s_1d1ebc94680cfb::t_ddfbe4919ed50c 1-21
+crates/livequery-query/README.md
+  s_1d1ebc94680cfb::t_26b053453485e2 1-7
+crates/livequery-transport/Cargo.toml
+  s_1d1ebc94680cfb::t_03864b590bda4f 1-19
+crates/livequery-transport/LICENSE-APACHE
+  s_1d1ebc94680cfb::t_9d6030cb5900dd 1-176
+crates/livequery-transport/LICENSE-MIT
+  s_1d1ebc94680cfb::t_d1e3ac94d5df02 1-21
+crates/livequery-transport/README.md
+  s_1d1ebc94680cfb::t_23e0abaf022142 1-7
+crates/livequery-transport/src/lib.rs
+  s_1d1ebc94680cfb::t_690e4e74869876 1-53
+docs/acceptance.md
+  s_1d1ebc94680cfb::t_466236aa089995 16
+examples/async-server/Cargo.toml
+  s_1d1ebc94680cfb::t_56eafc3a5c6fda 1-14
+examples/basic/Cargo.toml
+  s_1d1ebc94680cfb::t_b07187cf909b2c 1-13
+examples/concurrent/Cargo.toml
+  s_1d1ebc94680cfb::t_ffb1cf7df9f028 1-13
+experiments/workload/Cargo.lock
+  s_1d1ebc94680cfb::t_3d65a6c56538bb 76-95,114-134
+tests/components/Cargo.lock
+  s_1d1ebc94680cfb::t_37333c912a8691 1-405
+tests/consumer/Cargo.lock
+  s_1d1ebc94680cfb::t_75dccb08d45e57 71-83,94-104,115-135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "96b07d09bc63fcd7c510febbd7e1e6709505e540",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
