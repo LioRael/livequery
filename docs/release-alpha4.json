@@ -1,0 +1,62 @@
+{
+  "verified_at": "2026-10-26T02:48:10.524448+00:00",
+  "registry": "https://crates.io",
+  "crates": [
+    {
+      "crate": "livequery-derive",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "8f34c51c902a24c27d738354e8aba9e27a4b21213945bf3098f16bf0df601886",
+      "created_at": "2026-10-26T02:45:06.423051Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    },
+    {
+      "crate": "livequery-core",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "c56afad6552d0b817926cc114e213f8d8267744d3dcdc1998502ee48bf6c471d",
+      "created_at": "2026-10-26T02:45:13.815645Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    },
+    {
+      "crate": "livequery-query",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "8faaf19399e090545772a7675a61159be7da63538e044824d75cec38df0f0e38",
+      "created_at": "2026-10-26T02:45:23.496345Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    },
+    {
+      "crate": "livequery-transport",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "23b0031399b0c88c704477750efd3ff97a7f1b2664b44fb493ae3c876b913e2e",
+      "created_at": "2026-10-26T02:45:29.856828Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    },
+    {
+      "crate": "livequery-agent",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "aab4aa0d00c549505ab3fa5477bbc42f64c04a0c13b6afeeb0100e84738618e4",
+      "created_at": "2026-10-26T02:46:43.144297Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    },
+    {
+      "crate": "livequery",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "3343df9da92df549919e29098fb40d3809b8281b4035a957b013d80601bb4792",
+      "created_at": "2026-10-26T02:47:00.755292Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    },
+    {
+      "crate": "livequery-cli",
+      "version": "0.1.0-alpha.4",
+      "yanked": false,
+      "checksum": "6d9117fb70e56de78ca2a1292c31e5f4a7361928ee542fa3782a703652b6a492",
+      "created_at": "2026-10-26T02:47:10.605851Z",
+      "source_commit": "28793e3c969b8536cc511c48b1eb39bdd1424571"
+    }
+  ]
+}

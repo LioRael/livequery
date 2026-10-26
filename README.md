@@ -1,8 +1,8 @@
-> Development candidate: alpha.4. Start with the [stuck-worker walkthrough](docs/stuck-jobs.md), then the [integration/lifecycle recipes](docs/integration.md) and [measured task-table costs](docs/jobs-performance.md). Published alpha.2 and the alpha.3 endurance run are separate versions; their evidence does not certify this candidate.
+> Published prerelease: [alpha.4](https://github.com/LioRael/livequery/releases/tag/v0.1.0-alpha.4). Start with the [stuck-worker walkthrough](docs/stuck-jobs.md), then the [integration/lifecycle recipes](docs/integration.md) and [measured task-table costs](docs/jobs-performance.md). All four two-hour alpha.4 endurance jobs passed; see [source-bound evidence](docs/endurance-alpha4/README.md).
 
 # LiveQuery
 
-**Experimental · alpha.4 development · Rust 1.88+ · macOS / Linux**
+**Experimental · alpha.4 · Rust 1.88+ · macOS / Linux**
 
 **Turn running programs into queryable, observable worlds.**
 
@@ -105,7 +105,7 @@ Each changed publication is scanned; unchanged revisions skip the snapshot and s
 
 ## Stability work
 
-This checkout is the unpublished alpha.4 candidate. Its CLI negotiates protocol 2; build the CLI from this checkout for its examples. `livequery status --pid <pid> --json` reports snapshot age, last publication time and categorized failures. WATCH retries up to three consecutive I/O interruptions and binds cursors to the Agent session and exact query. Existing alpha.2 CLI requests remain accepted. Use a path dependency for candidate APIs.
+All seven crates are published at `0.1.0-alpha.4`. Install the CLI with `cargo install livequery-cli --version 0.1.0-alpha.4 --locked`. Its CLI negotiates protocol 2. `livequery status --pid <pid> --json` reports snapshot age, last publication time and categorized failures. WATCH retries up to three consecutive I/O interruptions and binds cursors to the Agent session and exact query. Existing alpha.2 CLI requests remain accepted. Use `livequery = "0.1.0-alpha.4"` for these APIs.
 
 See [stable release gates and remaining evidence](docs/stability.md). No stable-release or production-readiness claim is made.
 

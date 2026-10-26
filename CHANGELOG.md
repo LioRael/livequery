@@ -1,6 +1,8 @@
 # Changelog
 
-## 0.1.0-alpha.4 (unreleased)
+## 0.1.0-alpha.4 — 2026-10-26
+
+All seven crates published. Includes the alpha.3 hardening changes below; alpha.3 itself was not published. Four Linux/macOS × sync/async two-hour endurance gates passed; see [evidence](docs/endurance-alpha4/README.md) and [registry verification](docs/release-alpha4.json).
 
 - Complete stuck-worker investigation fixture and CLI acceptance test.
 - Optional PublishedHandle and RunningAgent lifecycle conveniences with explicit capture scheduling.
@@ -8,7 +10,7 @@
 - Explicit interactive CLI sessions, memory-only history, catalog completion and coherent freshness metadata.
 - Shared immutable query reads, preserving owned Snapshot APIs, plus representative task-table cost benchmarks.
 
-## 0.1.0-alpha.3 (unreleased)
+## 0.1.0-alpha.3 (unpublished; included in alpha.4)
 
 - Protocol negotiation, session/query-bound observation cursors and bounded CLI reconnection.
 - Publication freshness and categorized failure diagnostics through status.
