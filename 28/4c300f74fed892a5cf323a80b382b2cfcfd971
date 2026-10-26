@@ -1,0 +1,35 @@
+docs/readiness-ci-isolation-40386443740/preflight.json
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-3
+docs/readiness-ci-isolation-40386443740/README.md
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-5
+docs/readiness-ci-isolation-40386443740/binary-sha256.txt
+  s_1d1ebc94680cfb::t_4bc59060962b52 1
+docs/readiness-ci-isolation-40386443740/isolation-sync.json
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-11031
+docs/readiness-ci-isolation-40386443740/provenance.json
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-12
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_4bc59060962b52 24-25
+docs/readiness-ci-isolation-40386443740/instrumentation.patch
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-245
+docs/readiness-ci-isolation-40386443740/toolchain.txt
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-7
+scripts/diagnostics/quiet-hosted-macos.py
+  s_1d1ebc94680cfb::t_4bc59060962b52 1-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "284c300f74fed892a5cf323a80b382b2cfcfd971",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
