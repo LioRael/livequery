@@ -1,0 +1,115 @@
+.github/workflows/ci.yml
+  s_1d1ebc94680cfb::t_53f1ed987d08a0 29
+.gitignore
+  s_1d1ebc94680cfb::t_9c398a5dc22753 10-13
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_44c85dac757b1a 3-10
+Cargo.lock
+  s_1d1ebc94680cfb::t_5495a8242717ba 124-132,173,176-181,283,297,316,322,329,340,370-376,379,389,418-430,574,595-613,712,756,791,847-864,942-950,960-1024
+Cargo.toml
+  s_1d1ebc94680cfb::t_608f0568761d6a 5
+README.md
+  s_1d1ebc94680cfb::t_0975789b5243ec 1-2,5,102,108
+benches/Cargo.toml
+  s_1d1ebc94680cfb::t_32b4cb4749b4a8 15-18
+benches/jobs.rs
+  s_1d1ebc94680cfb::t_cf158055f3ba1a 1-249
+crates/livequery-agent/Cargo.toml
+  s_1d1ebc94680cfb::t_44fd789c533a8e 12-14
+crates/livequery-agent/src/lib.rs
+  s_ee0a00b403076b::t_2a7d5c1f0a45d5 40,43-47,56,66-70
+crates/livequery-agent/src/local.rs
+  s_1d1ebc94680cfb::t_70559f84c9fce1 29-83
+crates/livequery-cli/Cargo.toml
+  s_ee0a00b403076b::t_c3ef7f70c816b1 18-19,21,25-26
+crates/livequery-cli/src/main.rs
+  s_ee0a00b403076b::t_d87ad4b80f34a4 1,16-18,34,72-78,103-113,120,157-160,171,179-188,192-193,204-205,273-283
+crates/livequery-cli/src/session.rs
+  s_1d1ebc94680cfb::t_a81e2c5847e734 1-146
+crates/livequery-core/Cargo.toml
+  s_1d1ebc94680cfb::t_0a7052d4a7c218 16
+crates/livequery-core/src/lib.rs
+  s_ee0a00b403076b::t_8539aee65c3ed7 8,12-13
+crates/livequery-core/src/published.rs
+  s_ee0a00b403076b::t_10686be50764ac 36,83,117,150-153,164-171,191,208-251
+crates/livequery-core/src/state.rs
+  s_ee0a00b403076b::t_becf6f22ee96ea 195-200,226-247,397-404,413-424,434-438
+crates/livequery-query/Cargo.toml
+  s_1d1ebc94680cfb::t_c0661ba81ccecb 12
+crates/livequery-query/src/lib.rs
+  s_ee0a00b403076b::t_c32fd65693352b 18-24,46-57,59,67,70,75-82,84-148,151-171,173,180-189,191-192,199,201-216,231-235,242,249-264,267-314,320-324,340,389-395,413-422,424
+crates/livequery-transport/Cargo.toml
+  s_1d1ebc94680cfb::t_94776a3e67179b 12
+crates/livequery-transport/src/lib.rs
+  s_ee0a00b403076b::t_46227b91926438 38-42
+crates/livequery/Cargo.toml
+  s_1d1ebc94680cfb::t_4a807d217a9b98 14-17
+crates/livequery/src/lib.rs
+  s_ee0a00b403076b::t_61325d0c06a76b 27-29,31
+crates/livequery/src/local.rs
+  s_1d1ebc94680cfb::t_d9578ab4b2022f 2
+crates/livequery/tests/diagnostics.rs
+  s_1d1ebc94680cfb::t_538285dd1ac43d 1-252
+crates/livequery/tests/inspection.rs
+  s_1d1ebc94680cfb::t_7de0434d0715dd 133,136,222-223,232-233
+docs/integration.md
+  s_1d1ebc94680cfb::t_f28666166ef51b 1-45
+docs/investigation-validation.md
+  s_1d1ebc94680cfb::t_c1442eabb7d151 1-14
+docs/jobs-benchmark-macos.json
+  s_1d1ebc94680cfb::t_836027867779e1 1-541
+docs/jobs-performance.md
+  s_1d1ebc94680cfb::t_fb4caea33f7d73 1-43
+docs/query.md
+  s_1d1ebc94680cfb::t_3f84b810736167 45,57-66
+docs/security.md
+  s_1d1ebc94680cfb::t_b0256b4a8b8f7f 33
+docs/stability.md
+  s_1d1ebc94680cfb::t_ab279ec32183cc 3-4
+docs/stuck-jobs.md
+  s_1d1ebc94680cfb::t_b261d3cc88c0d9 1-41
+examples/async-server/src/main.rs
+  s_1d1ebc94680cfb::t_9e7619d6960a06 2-3,5,22-27,63-67,75-76
+examples/concurrent/src/main.rs
+  s_1d1ebc94680cfb::t_bd36cacd2c7199 2-3,5,30-33,35,56-58,61-62
+examples/jobs/Cargo.toml
+  s_1d1ebc94680cfb::t_bd92c47fcdea28 1-13
+examples/jobs/src/main.rs
+  s_1d1ebc94680cfb::t_f8158525bc2796 1-135
+fuzz/corpus/query_and_wire/count
+  s_1d1ebc94680cfb::t_7ced7d53d0c5bd 1
+fuzz/corpus/query_and_wire/max
+  s_1d1ebc94680cfb::t_dce71dc7786e6e 1
+fuzz/corpus/query_and_wire/order
+  s_1d1ebc94680cfb::t_6503613536334f 1
+scripts/check-release.sh
+  s_1d1ebc94680cfb::t_356acf041a98e2 12
+scripts/jobs-smoke.py
+  s_1d1ebc94680cfb::t_7bcf268169c599 1-95
+tests/consumer/Cargo.lock
+  s_1d1ebc94680cfb::t_86f4a4e8b26463 177,187,206,217,227,237
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "932841ac9fda5848f6fcab44bbf4ec2d37320d1d",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    },
+    "s_ee0a00b403076b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a17505-144a-7aa1-bb70-1f0b9a618180",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
