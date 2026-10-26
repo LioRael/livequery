@@ -1,0 +1,9 @@
+[package]
+name = "livequery-registry-jobs"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.88"
+publish = false
+[workspace]
+[dependencies]
+livequery = "=0.1.0-alpha.4"

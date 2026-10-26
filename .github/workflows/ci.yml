@@ -27,6 +27,14 @@ jobs:
       - run: cargo build --workspace --bins --locked
       - run: python3 scripts/smoke.py
       - run: python3 scripts/jobs-smoke.py
+      - run: cargo build --manifest-path tests/registry-consumer/Cargo.toml --locked
+        if: runner.os == 'Linux'
+      - run: cargo install livequery-cli --version 0.1.0-alpha.4 --locked --root target/registry-install
+        if: runner.os == 'Linux'
+      - run: python3 scripts/jobs-smoke.py --cli target/registry-install/bin/livequery --host tests/registry-consumer/target/debug/livequery-registry-jobs
+        if: runner.os == 'Linux'
+      - run: python3 scripts/jobs-smoke.py --host tests/registry-consumer/target/debug/livequery-registry-jobs
+        if: runner.os == 'Linux'
       - run: cargo build --manifest-path tests/compat-alpha2/Cargo.toml --locked
         if: runner.os == 'Linux'
       - run: cargo install livequery-cli --version 0.1.0-alpha.2 --locked --root target/compat-install
@@ -35,6 +43,8 @@ jobs:
         if: runner.os == 'Linux'
       - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
       - run: python3 scripts/workload-smoke.py
+      - run: python3 scripts/benchmark-service.py --task-rows 1000 --string-bytes 128 --seconds 30 --repeats 1 --output target/task-smoke.json
+      - run: python3 scripts/check-load.py target/task-smoke.json --min-seconds 30
       - run: cargo package -p livequery-core -p livequery-derive -p livequery-query -p livequery-transport -p livequery-agent -p livequery -p livequery-cli --locked
   msrv:
     runs-on: ubuntu-latest

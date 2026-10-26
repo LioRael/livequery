@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Acceptance: identify a stuck worker, repair it, and observe recovery without code edits."""
+import argparse
 import json
 import os
 import pty
@@ -10,7 +11,11 @@ import tempfile
 import time
 
 root = Path(__file__).resolve().parents[1]
-cli = root / 'target/debug/livequery'
+parser = argparse.ArgumentParser()
+parser.add_argument('--cli', type=Path, default=root / 'target/debug/livequery')
+parser.add_argument('--host', type=Path, default=root / 'target/debug/jobs')
+args = parser.parse_args()
+cli = args.cli
 
 def line(process):
     assert select.select([process.stdout], [], [], 8)[0], 'service/CLI output timed out'
@@ -18,7 +23,7 @@ def line(process):
 
 with tempfile.TemporaryDirectory(prefix='lqj-') as directory:
     socket = str(Path(directory) / 'a.sock')
-    host = subprocess.Popen([str(root / 'target/debug/jobs'), socket], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    host = subprocess.Popen([str(args.host), socket], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     watch = None
     try:
         assert json.loads(line(host))['stalled_worker'] == 2

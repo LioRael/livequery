@@ -1,0 +1,54 @@
+name: Task-table endurance
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/task-endurance.yml"
+permissions:
+  contents: read
+concurrency:
+  group: task-endurance-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  task-table:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        engine: [sync, async]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
+      - name: Record toolchain
+        run: |
+          mkdir -p target
+          rustc -Vv > target/task-toolchain.txt
+          git rev-parse HEAD >> target/task-toolchain.txt
+      - name: Repeated end-to-end cost comparison
+        run: |
+          python3 scripts/benchmark-service.py --only baseline --task-rows 1000 --string-bytes 128 --engine '${{ matrix.engine }}' --seconds 30 --repeats 3 --output target/task-baseline.json
+          for period in 10 100; do
+            for observers in 1 4; do
+              python3 scripts/benchmark-service.py --task-rows 1000 --string-bytes 128 --publish-ms "$period" --subscribers "$observers" --engine '${{ matrix.engine }}' --seconds 30 --repeats 3 --output "target/task-cost-${period}-${observers}.json"
+            done
+          done
+      - name: Thousand-row sustained load
+        run: |
+          python3 scripts/benchmark-service.py --task-rows 1000 --string-bytes 128 --engine '${{ matrix.engine }}' --seconds 600 --repeats 1 --output target/task-1000.json
+          python3 scripts/check-load.py target/task-1000.json --min-seconds 600 --engine '${{ matrix.engine }}'
+      - name: Near-budget two-hour load
+        run: |
+          python3 scripts/benchmark-service.py --task-rows 5000 --string-bytes 96 --engine '${{ matrix.engine }}' --seconds 7200 --repeats 1 --output target/task-5000.json
+          python3 scripts/check-load.py target/task-5000.json --min-seconds 7200 --engine '${{ matrix.engine }}'
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: task-endurance-${{ matrix.os }}-${{ matrix.engine }}-${{ github.sha }}
+          path: |
+            target/task-*.json
+            target/task-toolchain.txt
+          if-no-files-found: error
+          retention-days: 30

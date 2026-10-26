@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — stable-readiness
+
+- Enforce detailed-result metadata byte budgets while preserving basic-query budgets.
+- Report syntax errors at the unexpected token or EOF.
+- Reset WATCH result/freshness state on session changes, missing metadata and I/O retries.
+- Check cancellation between client dispatches; test slow-client shutdown, refresh recovery and historical snapshot release.
+- Add representative task-table socket load, property/fuzz checks, registry-install acceptance and a candidate stable API contract.
+
 ## 0.1.0-alpha.4 — 2026-10-26
 
 All seven crates published. Includes the alpha.3 hardening changes below; alpha.3 itself was not published. Four Linux/macOS × sync/async two-hour endurance gates passed; see [evidence](docs/endurance-alpha4/README.md) and [registry verification](docs/release-alpha4.json).

@@ -19,7 +19,7 @@ jobs:
       - run: cargo install cargo-audit --version 0.22.2 --locked
       - run: |
           cargo audit --deny warnings
-          for lockfile in tests/consumer/Cargo.lock tests/components/Cargo.lock tests/compat-alpha2/Cargo.lock experiments/workload/Cargo.lock fuzz/Cargo.lock; do
+          for lockfile in tests/consumer/Cargo.lock tests/components/Cargo.lock tests/compat-alpha2/Cargo.lock experiments/workload/Cargo.lock fuzz/Cargo.lock tests/registry-consumer/Cargo.lock; do
             cargo audit --file "$lockfile" --deny warnings --no-fetch
           done
   api:
@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-semver-checks --version 0.51.0 --locked
-      - run: cargo semver-checks check-release -p livequery-core -p livequery-query -p livequery-transport -p livequery-agent -p livequery --baseline-rev v0.1.0-alpha.2 --release-type patch
+      - run: cargo semver-checks check-release -p livequery-core -p livequery-query -p livequery-transport -p livequery-agent -p livequery --baseline-rev v0.1.0-alpha.4 --release-type patch
   fuzz:
     runs-on: ubuntu-latest
     steps:

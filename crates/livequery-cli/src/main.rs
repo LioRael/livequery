@@ -139,6 +139,7 @@ fn run_args(mut args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
                 connection_failures += 1;
                 revision = None;
                 previous = None;
+                freshness = None;
                 polls += 1;
                 eprintln!("agent connection interrupted; retry {connection_failures}/3: {error}");
                 std::thread::sleep(Duration::from_millis(interval));
@@ -150,6 +151,13 @@ fn run_args(mut args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
             Response::Ok { data } if command == "watch" => {
                 match serde_json::from_value::<Observation>(data)? {
                     Observation::Changed { cursor, result } => {
+                        if revision
+                            .as_ref()
+                            .is_some_and(|previous| previous.session != cursor.session)
+                        {
+                            previous = None;
+                            freshness = None;
+                        }
                         revision = Some(cursor);
                         result
                     }
@@ -182,8 +190,11 @@ fn run_args(mut args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
                 if !json {
                     show_age(freshness);
                 }
-            } else if !json {
-                eprintln!("publication freshness unavailable from this Agent");
+            } else {
+                freshness = None;
+                if !json {
+                    eprintln!("publication freshness unavailable from this Agent");
+                }
             }
         }
         let mut comparable = data.clone();

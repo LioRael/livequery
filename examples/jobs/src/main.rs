@@ -1,4 +1,4 @@
-//! Controlled stuck-worker fixture. Business commands use stdin; LiveQuery stays read-only.
+// Controlled stuck-worker fixture. Business commands use stdin; LiveQuery stays read-only.
 use livequery::{Inspect, Limits, PublishedHandle, Registry, Table, local::RunningAgent};
 use std::{
     io::{self, BufRead, Write},

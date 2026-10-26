@@ -11,3 +11,5 @@ fuzz/corpus/query_and_wire/*
 !fuzz/corpus/query_and_wire/order
 !fuzz/corpus/query_and_wire/count
 !fuzz/corpus/query_and_wire/max
+
+tests/registry-consumer/target/
