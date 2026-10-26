@@ -1,6 +1,6 @@
-# Candidate contract for the first stable release
+# Contract for 0.1.0
 
-This is the contract proposed for the first non-prerelease `0.1.0`, not an announcement that it has shipped. It describes the stable-readiness working tree after alpha.4 and must be checked against the final release commit. The acceptance status is maintained in [stability.md](stability.md).
+This is the contract for the first non-prerelease `0.1.0`. Publication is recorded separately in the release evidence; this document alone is not proof that packages have shipped. The acceptance status is maintained in [stability.md](stability.md).
 
 The supported scope is local, read-only diagnostics on Linux and macOS, with Rust 1.88 or later. Root and same-UID processes are trusted. Applications choose which diagnostic data to publish and when; LiveQuery is not an arbitrary process debugger, an authorization boundary against hostile same-user code, a hard real-time service, or a lossless event store. Real-project validation is excluded from this release's requested acceptance scope.
 
@@ -20,7 +20,7 @@ The supported scope is local, read-only diagnostics on Linux and macOS, with Rus
 | Agent lifetime | `start` binds synchronously; `stop` requests cancellation; `wait` consumes and joins. Drop requests stop and joins as fallback. | `wait` without `stop` can wait indefinitely while service runs. Join/Drop can block; use `spawn_blocking` for async shutdown. In-flight handlers are not forcibly interrupted. |
 | Errors | Callers may branch on documented `Error::code()` categories. | Error text is diagnostic, not a stable machine interface. Query location tests protect useful positions, not permanent wording. |
 
-The existing alpha.2 library baseline remains the current automated source-compatibility check. Before release, review all intentional changes and record the first stable tag as the subsequent stable compatibility baseline. Proc-macro behavior, wire semantics and CLI behavior require their own tests; library SemVer checks do not cover them.
+The alpha.4 library baseline is the automated source-compatibility check for this release. Before release, review all intentional changes and record the first stable tag as the subsequent stable compatibility baseline. Proc-macro behavior, wire semantics and CLI behavior require their own tests; library SemVer checks do not cover them.
 
 ## CLI and Agent compatibility
 

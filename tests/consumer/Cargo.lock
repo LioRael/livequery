@@ -174,7 +174,7 @@ checksum = "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
 
 [[package]]
 name = "livequery"
-version = "0.1.0-alpha.4"
+version = "0.1.0"
 dependencies = [
  "livequery-agent",
  "livequery-core",
@@ -184,7 +184,7 @@ dependencies = [
 
 [[package]]
 name = "livequery-agent"
-version = "0.1.0-alpha.4"
+version = "0.1.0"
 dependencies = [
  "blake3",
  "livequery-core",
@@ -203,7 +203,7 @@ dependencies = [
 
 [[package]]
 name = "livequery-core"
-version = "0.1.0-alpha.4"
+version = "0.1.0"
 dependencies = [
  "livequery-derive",
  "schemars",
@@ -214,7 +214,7 @@ dependencies = [
 
 [[package]]
 name = "livequery-derive"
-version = "0.1.0-alpha.4"
+version = "0.1.0"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -224,7 +224,7 @@ dependencies = [
 
 [[package]]
 name = "livequery-query"
-version = "0.1.0-alpha.4"
+version = "0.1.0"
 dependencies = [
  "livequery-core",
  "serde",
@@ -234,7 +234,7 @@ dependencies = [
 
 [[package]]
 name = "livequery-transport"
-version = "0.1.0-alpha.4"
+version = "0.1.0"
 dependencies = [
  "livequery-core",
  "rustix",

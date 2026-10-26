@@ -1,0 +1,72 @@
+[
+  {
+    "engine": "sync",
+    "case": "task-cost-10-4",
+    "repeats": 3,
+    "median_requests_per_second": 23663.06876555518,
+    "median_host_cpu_seconds": 26.643737
+  },
+  {
+    "engine": "sync",
+    "case": "task-cost-100-4",
+    "repeats": 3,
+    "median_requests_per_second": 23016.625510088903,
+    "median_host_cpu_seconds": 18.182773
+  },
+  {
+    "engine": "sync",
+    "case": "task-baseline",
+    "repeats": 3,
+    "median_requests_per_second": 24331.968163862442,
+    "median_host_cpu_seconds": 15.662909
+  },
+  {
+    "engine": "sync",
+    "case": "task-cost-10-1",
+    "repeats": 3,
+    "median_requests_per_second": 24148.31860070068,
+    "median_host_cpu_seconds": 25.533403999999997
+  },
+  {
+    "engine": "sync",
+    "case": "task-cost-100-1",
+    "repeats": 3,
+    "median_requests_per_second": 24350.96555097815,
+    "median_host_cpu_seconds": 17.0762
+  },
+  {
+    "engine": "async",
+    "case": "task-cost-10-4",
+    "repeats": 3,
+    "median_requests_per_second": 63266.646414218965,
+    "median_host_cpu_seconds": 28.78954
+  },
+  {
+    "engine": "async",
+    "case": "task-cost-100-4",
+    "repeats": 3,
+    "median_requests_per_second": 67029.99366146835,
+    "median_host_cpu_seconds": 22.426683999999998
+  },
+  {
+    "engine": "async",
+    "case": "task-baseline",
+    "repeats": 3,
+    "median_requests_per_second": 73949.58919321265,
+    "median_host_cpu_seconds": 21.809820000000002
+  },
+  {
+    "engine": "async",
+    "case": "task-cost-10-1",
+    "repeats": 3,
+    "median_requests_per_second": 64157.04558398871,
+    "median_host_cpu_seconds": 28.791673
+  },
+  {
+    "engine": "async",
+    "case": "task-cost-100-1",
+    "repeats": 3,
+    "median_requests_per_second": 72601.37181166875,
+    "median_host_cpu_seconds": 22.602740999999998
+  }
+]

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — stable-readiness
+## 0.1.0 — 2026-10-27
 
 - Acceptance scope: macOS task-table high-load endurance has not passed and is excluded from the 0.1.0 release gate by explicit release-owner decision. Regular macOS CI and two-hour baseline remain required. Deadline/Busy must be handled; the remaining macOS delay has no established specific root cause or verified fix. Historical failures are retained in [attempt 5](docs/readiness-task-attempt5/README.md).
 

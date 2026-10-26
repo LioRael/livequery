@@ -1,0 +1,30 @@
+[
+  {
+    "crate": "livequery-derive",
+    "stable_0_1_0": []
+  },
+  {
+    "crate": "livequery-core",
+    "stable_0_1_0": []
+  },
+  {
+    "crate": "livequery-query",
+    "stable_0_1_0": []
+  },
+  {
+    "crate": "livequery-transport",
+    "stable_0_1_0": []
+  },
+  {
+    "crate": "livequery-agent",
+    "stable_0_1_0": []
+  },
+  {
+    "crate": "livequery",
+    "stable_0_1_0": []
+  },
+  {
+    "crate": "livequery-cli",
+    "stable_0_1_0": []
+  }
+]

@@ -9,7 +9,7 @@ homepage.workspace = true
 readme = "README.md"
 description = "Bounded SQL selection and revision-aware runtime observation"
 [dependencies]
-livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.4" }
+livequery-core = { path = "../livequery-core", version = "0.1.0" }
 serde.workspace = true
 serde_json.workspace = true
 sqlparser = { version = "0.59", default-features = false, features = ["std"] }

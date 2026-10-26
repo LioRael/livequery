@@ -1,0 +1,20 @@
+{
+  "tested_source": "29b2f17cdf4ee49397242858384907562495e5cd",
+  "library_behavior": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+  "changed_build_inputs": [
+    "Cargo.toml",
+    "Cargo.lock",
+    "crates/livequery-agent/Cargo.toml",
+    "crates/livequery-cli/Cargo.toml",
+    "crates/livequery-core/Cargo.toml",
+    "crates/livequery-query/Cargo.toml",
+    "crates/livequery-transport/Cargo.toml",
+    "crates/livequery/Cargo.toml",
+    "experiments/workload/Cargo.lock",
+    "fuzz/Cargo.lock",
+    "tests/components/Cargo.lock",
+    "tests/consumer/Cargo.lock"
+  ],
+  "comparison": "Every changed manifest/lock equals the tested source after exact alpha.4 to 0.1.0 replacement. Runtime Rust sources, workload, dependency versions/features and validation scripts unchanged. No build.rs or runtime package-version environment reference.",
+  "boundary": "Source behavior equivalence, not executable-byte identity. Original endurance binaries retain alpha.4 source/hash; stable packages and binaries require separate final checks."
+}
