@@ -6,6 +6,7 @@ from pathlib import Path
 import platform
 import plistlib
 import subprocess
+import time
 
 
 def main():
@@ -30,8 +31,15 @@ def main():
                 for action in ['disable', 'bootout']:
                     result = subprocess.run(['launchctl', action, target], capture_output=True, text=True)
                     actions.append({'action': action, 'exit': result.returncode, 'stderr': result.stderr})
-                after = subprocess.run(['launchctl', 'print', target], capture_output=True, text=True)
-                record.update(actions=actions, after_exit=after.returncode)
+                shutdown = []
+                for attempt in range(11):
+                    if attempt:
+                        time.sleep(1)
+                    after = subprocess.run(['launchctl', 'print', target], capture_output=True, text=True)
+                    shutdown.append({'exit': after.returncode, 'status': [line.strip() for line in after.stdout.splitlines() if line.strip().startswith(('state =', 'pid ='))]})
+                    if after.returncode != 0:
+                        break
+                record.update(actions=actions, after_exit=after.returncode, shutdown_observations=shutdown)
                 failed |= any(a['exit'] for a in actions) or after.returncode == 0
             else:
                 record['stderr'] = before.stderr
