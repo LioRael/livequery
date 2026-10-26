@@ -1,0 +1,37 @@
+docs/readiness-task-attempt1/README.md
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 1-5
+  s_1d1ebc94680cfb::t_d05963d42194e5 6-7
+docs/readiness-task-attempt1/darwin-async.json
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 1-21518
+crates/livequery-core/src/state.rs
+  s_1d1ebc94680cfb::t_42996687d5dd3a 172,189-255,599-625,630
+  s_1d1ebc94680cfb::t_50e05cb6e5be14 626-629,631
+docs/readiness-task-attempt1/linux-async.json
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 1-21617
+docs/readiness-task-attempt1/darwin-sync.json
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 1-21560
+docs/readiness-task-attempt1/linux-sync.json
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 1-21621
+docs/stable-readiness-validation.md
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 33-36
+docs/readiness-task-attempt1/summary.json
+  s_1d1ebc94680cfb::t_1cb89e46df7e90 1-58
+.github/workflows/ci.yml
+  s_1d1ebc94680cfb::t_280ea0abbd5477 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "176710777440897b581437123a8056bff9dfc04d",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
