@@ -1,6 +1,6 @@
 # Alpha.4 investigation validation
 
-This unpublished candidate implements the repository investigation path described in [stuck-jobs.md](stuck-jobs.md). It is separate from the alpha.3 hardening and two-hour endurance work.
+This unpublished candidate implements the repository investigation path described in [stuck-jobs.md](stuck-jobs.md). It includes the alpha.3 hardening changes.
 
 - Native Cargo check, strict Clippy, fmt, 49 tests/doc-tests, rustdoc, eight compile-fail cases, independent facade/component consumers and all seven crate packages passed locally.
 - Rust 1.88 workspace tests passed. The CLI uses rustyline 17 to preserve this MSRV; the newer 19 release requires compiler functionality absent in 1.88.
@@ -12,3 +12,5 @@ This unpublished candidate implements the repository investigation path describe
 [Task-table performance measurements](jobs-performance.md) retain raw data, source hashes and the benchmark binary hash. They cover row/string sizes, allocation counts, capture/publish time, and loopback TCP tail latency with publication frequency/observer variants. Short local runs guide initial settings; they do not establish a production SLO.
 
 The alpha.3 independent security review and endurance run belong to their recorded source commit. Neither is claimed as full security review or multi-hour endurance evidence for the changed alpha.4 implementation. Linux/macOS CI must pass for the final PR head. Real-project integration, JOIN/GROUP BY, key-based WATCH diffs and adoption claims remain outside this increment.
+
+The alpha.4 [four-platform/engine two-hour endurance gate](endurance-alpha4/README.md) passed on behavior commit `932841ac9fda5848f6fcab44bbf4ec2d37320d1d`; raw reports and toolchains are retained. Alpha.3 endurance was canceled and is not release evidence.
