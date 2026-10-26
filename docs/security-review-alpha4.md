@@ -1,6 +1,6 @@
 # Alpha.4 incremental independent source review
 
-Date: 2026-10-26. Reviewed release source: `28793e3c969b8536cc511c48b1eb39bdd1424571`, comparing the alpha.4 changes with `c006dc3dbbde5cd57a8329a6f8dbeb7dd90a8575`. Corrections are in the stable-readiness working tree based on documentation commit `e9898f5af687093e10483e9b407c79ee68febb89`; they are not retroactive fixes to the published alpha.4 crates. The final validation record must identify the commit that contains them.
+Date: 2026-10-26. Reviewed release source: `28793e3c969b8536cc511c48b1eb39bdd1424571`, comparing the alpha.4 changes with `c006dc3dbbde5cd57a8329a6f8dbeb7dd90a8575`. Corrections are in the stable-readiness working tree based on documentation commit `e9898f5af687093e10483e9b407c79ee68febb89`; they are not retroactive fixes to the published alpha.4 crates. The corrections are recorded in behavior commit `75d83d5304ae5c046dd00dc478f4934863634f3c`; [validation status](stable-readiness-validation.md) separates local passes from pending CI endurance.
 
 Two independent review agents inspected Core/Query and Agent/CLI lifecycle changes. A separate verifier checked all four candidate paths against the source and distinguished new defects from inherited behavior. These reviewers did not execute target code. Development regressions were implemented and run separately from the source review. This is a focused review, not third-party certification, a comprehensive audit, or a dynamic cross-UID attack demonstration.
 

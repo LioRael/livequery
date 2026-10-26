@@ -16,7 +16,11 @@ The task workload uses real loopback TCP business requests and diagnostic Unix s
 
 Initial 1,000-row, 128-byte-string, 30-second synchronous smoke passed. A later 5,000-row/64-byte-string run overlapped local builds and ASan fuzz: business errors stayed zero, but query/publication Deadline errors violated the gate. It is not accepted as a load pass. Isolated reruns and dedicated CI workers must establish the supported envelope; no timeout/error gate was relaxed.
 
-The enhanced fuzz harness varies rows, NULL strings and full-width integers, checks aggregate/order properties, and executes arbitrary query/wire inputs. Its first run exposed a harness assertion that incorrectly unwrapped a valid cooperative Deadline under CPU contention; the harness now accepts that documented error and the saved input is replayed. This was not a library panic. Final fuzz execution counts and long-run evidence will be recorded after completion.
+The enhanced fuzz harness varies rows, NULL strings and full-width integers, checks aggregate/order properties, and executes arbitrary query/wire inputs. Its first run exposed a harness assertion that incorrectly unwrapped a valid cooperative Deadline under CPU contention; the harness now accepts that documented error and the saved input is replayed. This was not a library panic. After replaying that saved input, the enhanced ASan/libFuzzer run completed 261,713 executions in 301 seconds without a reported library crash. Long-run CI evidence is still pending.
+
+The isolated rerun on clean behavior commit `75d83d5304ae5c046dd00dc478f4934863634f3c` passed for both engines: 5,000 rows/96-byte strings, a 914,901-byte initial snapshot, 60 seconds each, four observers, zero business/query/publication errors, complete traffic/resource gates. Sync completed 1,453,935 business requests; async completed 1,601,024. These are short same-host observations, not portable throughput guarantees. Raw [isolated](readiness-tasks-local.json) and [contended](readiness-tasks-contended.json) reports retain their actual source/dirty flag and binary identity. The contended run remains a failure, not discarded evidence.
+
+Task-table CI run: https://github.com/LioRael/livequery/actions/runs/40265450720. Fresh baseline endurance: https://github.com/LioRael/livequery/actions/runs/40265479241. Both run behavior commit `75d83d5304ae5c046dd00dc478f4934863634f3c`; later documentation commits do not produce new test binaries.
 
 ## Required final evidence
 
