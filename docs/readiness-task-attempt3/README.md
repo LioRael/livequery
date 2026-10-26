@@ -1,0 +1,6 @@
+# Task endurance attempt 3 — failed acceptance
+
+Run https://github.com/LioRael/livequery/actions/runs/40295124391 tested source 38dffc0f53eff45066ac51eb7e13d6e4bd8c2b17.
+All four trials completed 7,200 seconds with zero business errors. Linux sync/async passed the unchanged gate. macOS sync had five capture Deadline errors and one Busy error in 127,018 publication attempts; async had eight Deadline and one Busy in 130,949. macOS sync also reported one query Deadline (alongside 21 query Busy errors); this independently fails acceptance. The matching baseline run 40295129952 passed four jobs. This is not release acceptance.
+
+The next change instruments the workload only: record capture elapsed wall time and CLOCK_THREAD_CPUTIME_ID time for the first 64 slow successful captures (at least 50 ms) and first 64 failed captures. Missing CPU clock values remain null, not zero. This will distinguish CPU consumption from off-CPU time in the failing thread; it cannot by itself explain why a thread was off-CPU. The library and its 100 ms wall-clock deadline remain unchanged. This is a diagnostic experiment, not a retry intended to obtain green checks. Its source and binary must be recorded separately.

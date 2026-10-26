@@ -9,6 +9,24 @@ use std::{
     },
     time::{Duration, Instant},
 };
+// The workload runs on Linux/macOS; thread CPU time separates computation from
+// elapsed time spent off-CPU without changing the library's wall-clock budget.
+#[cfg(feature = "inspection")]
+fn thread_cpu_ns() -> Option<u64> {
+    let mut time = libc::timespec {
+        tv_sec: 0,
+        tv_nsec: 0,
+    };
+    // SAFETY: time is writable and initialized; this clock reads the calling thread.
+    if unsafe { libc::clock_gettime(libc::CLOCK_THREAD_CPUTIME_ID, &mut time) } != 0 {
+        return None;
+    }
+    u64::try_from(time.tv_sec)
+        .ok()?
+        .checked_mul(1_000_000_000)?
+        .checked_add(u64::try_from(time.tv_nsec).ok()?)
+}
+
 #[derive(Debug, Clone, Serialize, Default)]
 #[cfg_attr(feature = "inspection", derive(livequery::Inspect))]
 struct Counters {
@@ -235,6 +253,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ..Counters::default()
     }));
     let stop = Arc::new(AtomicBool::new(false));
+    let slow_captures = Arc::new(Mutex::new(Vec::<serde_json::Value>::new()));
     let publication_errors = Arc::new(AtomicU64::new(0));
     let publication_attempts = Arc::new(AtomicU64::new(0));
     let capture_lock_ns = Arc::new(AtomicU64::new(0));
@@ -289,6 +308,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }));
                 let state = state.clone();
                 let shutdown = stop.clone();
+                let slow_captures = slow_captures.clone();
                 let errors = publication_errors.clone();
                 let attempts = publication_attempts.clone();
                 let error_codes = publication_error_codes.clone();
@@ -310,11 +330,37 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         };
                         let publication_started = Instant::now();
                         attempts.fetch_add(1, Ordering::Relaxed);
+                        let cpu_started = thread_cpu_ns();
+                        let capture_started = Instant::now();
                         let snapshot = if task_mode {
                             livequery::Snapshot::capture(counters.jobs.iter(), limits)
                         } else {
                             livequery::Snapshot::capture([&counters], limits)
                         };
+                        let capture_wall_ns = capture_started.elapsed().as_nanos();
+                        let capture_cpu_ns = cpu_started
+                            .zip(thread_cpu_ns())
+                            .and_then(|(start, end)| end.checked_sub(start));
+                        let capture_error = snapshot.as_ref().err().map(livequery::Error::code);
+                        if capture_wall_ns >= 50_000_000 || capture_error.is_some() {
+                            let mut samples =
+                                slow_captures.lock().expect("diagnostic samples poisoned");
+                            if samples
+                                .iter()
+                                .filter(|sample| {
+                                    sample["capture_error"].is_null() == capture_error.is_none()
+                                })
+                                .count()
+                                < 64
+                            {
+                                samples.push(serde_json::json!({
+                                    "attempt": attempts.load(Ordering::Relaxed),
+                                    "capture_wall_ns": capture_wall_ns,
+                                    "capture_cpu_ns": capture_cpu_ns,
+                                    "capture_error": capture_error,
+                                }));
+                            }
+                        }
                         if let Err(error) =
                             snapshot.and_then(|snapshot| published.publish(snapshot))
                         {
@@ -364,7 +410,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!(
         "{}",
-        serde_json::json!({"capture_lock_ns":capture_lock_ns.load(Ordering::Relaxed),"capture_lock_max_ns":capture_lock_max_ns.load(Ordering::Relaxed),"publication_ns":publication_ns.load(Ordering::Relaxed),"publication_max_ns":publication_max_ns.load(Ordering::Relaxed),"publication_errors":publication_errors.load(Ordering::Relaxed),"publication_attempts":publication_attempts.load(Ordering::Relaxed),"publication_error_codes":*publication_error_codes.lock().expect("diagnostic counters poisoned"),"completed":state.lock().expect("counters poisoned").completed})
+        serde_json::json!({"slow_captures":*slow_captures.lock().expect("diagnostic samples poisoned"),"capture_lock_ns":capture_lock_ns.load(Ordering::Relaxed),"capture_lock_max_ns":capture_lock_max_ns.load(Ordering::Relaxed),"publication_ns":publication_ns.load(Ordering::Relaxed),"publication_max_ns":publication_max_ns.load(Ordering::Relaxed),"publication_errors":publication_errors.load(Ordering::Relaxed),"publication_attempts":publication_attempts.load(Ordering::Relaxed),"publication_error_codes":*publication_error_codes.lock().expect("diagnostic counters poisoned"),"completed":state.lock().expect("counters poisoned").completed})
     );
     Ok(())
+}
+
+#[cfg(all(test, feature = "inspection"))]
+mod tests {
+    #[test]
+    fn thread_cpu_clock_is_available_and_monotonic() {
+        let start = super::thread_cpu_ns().expect("thread CPU clock must be available");
+        for i in 0_u64..100_000 {
+            std::hint::black_box(i.wrapping_mul(i));
+        }
+        let end = super::thread_cpu_ns().expect("thread CPU clock must remain available");
+        assert!(
+            end > start,
+            "CPU work should advance the calling thread clock"
+        );
+    }
 }

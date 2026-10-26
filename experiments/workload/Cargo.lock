@@ -246,6 +246,7 @@ dependencies = [
 name = "livequery-workload"
 version = "0.0.0"
 dependencies = [
+ "libc",
  "livequery",
  "serde",
  "serde_json",
