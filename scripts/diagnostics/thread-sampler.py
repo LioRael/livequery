@@ -28,7 +28,7 @@ with io.StringIO() as f:
         for tid in selected:
             info=ThreadInfo();got=lib.proc_pidinfo(a.pid,15 if a.identities else 5,tid,ctypes.byref(info),ctypes.sizeof(info))
             if got!=ctypes.sizeof(info):rows.append({'tid':tid,'error':ctypes.get_errno(),'returned_bytes':got});continue
-            rows.append({'tid':tid,'cpu_ns':info.user_ns+info.system_ns,'state':info.state,'priority':info.current_priority,'name':info.name.decode(errors='replace')})
+            rows.append({'tid':tid,'cpu_ns':info.user_ns+info.system_ns,'state':info.state,'priority':info.current_priority,'base_priority':info.priority,'max_priority':info.max_priority,'name':info.name.decode(errors='replace')})
         f.write(json.dumps({'monotonic_ns':stamp,'threads':rows,'task_counters':task_read(a.pid)})+'\n');samples+=1;time.sleep(a.interval)
     pathlib.Path(a.output).write_text(f.getvalue())
 print(json.dumps({'samples':samples,'elapsed_seconds':time.monotonic()-start}))

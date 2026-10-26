@@ -22,6 +22,7 @@ jobs:
           cargo build --release --locked --manifest-path target/ci-offcpu/source/experiments/workload/Cargo.toml
           rustc -Vv > target/ci-offcpu/toolchain.txt
           python3 scripts/diagnostics/macos.py package --seconds 300
+          clang -Wall -Wextra -Werror scripts/diagnostics/process-policy.c -o target/ci-offcpu/bin/policy-probe
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: deadline-binaries-${{ github.sha }}
@@ -56,7 +57,7 @@ jobs:
       - name: Fixed VM settling interval (no CPU admission gate)
         run: sleep 180
       - name: Measure original workload and enforce original error gates
-        run: python3 scripts/diagnostics/macos.py run --seconds 300 --variant '${{ matrix.variant }}' --engine '${{ matrix.engine }}'
+        run: python3 scripts/diagnostics/measurement-process.py run --seconds 300 --variant '${{ matrix.variant }}' --engine '${{ matrix.engine }}'
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
