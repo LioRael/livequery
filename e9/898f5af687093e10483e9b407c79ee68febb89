@@ -1,0 +1,27 @@
+docs/release-alpha4.json
+  s_1d1ebc94680cfb::t_46790634415efd 1-62
+CHANGELOG.md
+  s_1d1ebc94680cfb::t_586859665807ee 3-5,13
+README.md
+  s_1d1ebc94680cfb::t_171fd79cc1d5c8 1,5,108
+docs/investigation-validation.md
+  s_1d1ebc94680cfb::t_190830352907d6 3,17-18
+docs/stability.md
+  s_1d1ebc94680cfb::t_e2bd75388ef871 3,5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e9898f5af687093e10483e9b407c79ee68febb89",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
