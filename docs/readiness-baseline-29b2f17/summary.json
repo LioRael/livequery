@@ -1,0 +1,98 @@
+[
+  {
+    "os": "macos-26",
+    "engine": "async",
+    "source_ref": "29b2f17cdf4ee49397242858384907562495e5cd",
+    "source_dirty": false,
+    "binary_sha256": "cc4ae973507639d4e112dd637c69183bdd783be9fc66e30f19d62286c8e6486c",
+    "elapsed_seconds": 7200.024413959,
+    "requests": 164862153,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 2171
+    },
+    "publication_error_codes": {
+      "busy": 137
+    },
+    "warmed_samples": 1430,
+    "max_sample_gap_seconds": 5.077423332999842,
+    "resource_ranges": {
+      "threads": 0,
+      "fds": 4,
+      "rss_bytes": 131072
+    },
+    "gate": "PASS"
+  },
+  {
+    "os": "macos-26",
+    "engine": "sync",
+    "source_ref": "29b2f17cdf4ee49397242858384907562495e5cd",
+    "source_dirty": false,
+    "binary_sha256": "cc4ae973507639d4e112dd637c69183bdd783be9fc66e30f19d62286c8e6486c",
+    "elapsed_seconds": 7200.014717917,
+    "requests": 278576641,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 1668
+    },
+    "publication_error_codes": {
+      "busy": 29
+    },
+    "warmed_samples": 1433,
+    "max_sample_gap_seconds": 5.084640292000131,
+    "resource_ranges": {
+      "threads": 0,
+      "fds": 4,
+      "rss_bytes": 114688
+    },
+    "gate": "PASS"
+  },
+  {
+    "os": "ubuntu-latest",
+    "engine": "async",
+    "source_ref": "29b2f17cdf4ee49397242858384907562495e5cd",
+    "source_dirty": false,
+    "binary_sha256": "fec0d7a164235862748803e34e72355d5b1b894c7f0282824577d4b67dcf7312",
+    "elapsed_seconds": 7200.001412218,
+    "requests": 104554341,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 70
+    },
+    "publication_error_codes": {
+      "busy": 3
+    },
+    "warmed_samples": 1436,
+    "max_sample_gap_seconds": 5.01420712499997,
+    "resource_ranges": {
+      "threads": 0,
+      "fds": 4,
+      "rss_bytes": 45056
+    },
+    "gate": "PASS"
+  },
+  {
+    "os": "ubuntu-latest",
+    "engine": "sync",
+    "source_ref": "29b2f17cdf4ee49397242858384907562495e5cd",
+    "source_dirty": false,
+    "binary_sha256": "fec0d7a164235862748803e34e72355d5b1b894c7f0282824577d4b67dcf7312",
+    "elapsed_seconds": 7200.014977231001,
+    "requests": 173088210,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 70
+    },
+    "publication_error_codes": {
+      "busy": 3
+    },
+    "warmed_samples": 1436,
+    "max_sample_gap_seconds": 5.018903434000094,
+    "resource_ranges": {
+      "threads": 0,
+      "fds": 4,
+      "rss_bytes": 53248
+    },
+    "gate": "PASS"
+  }
+]
