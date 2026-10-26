@@ -183,6 +183,9 @@ for engine in [a.engine]:
                 sampler.wait(timeout=10)
     if a.variant == 'diagnostic':
         run([sys.executable, str(HERE/'correlate.py'), str(case)])
+        # Read logs only once all workload and sampler processes have exited.
+        with (case/'system-log-collector.log').open('w') as collector_log:
+            subprocess.run([sys.executable, str(HERE/'failure-system-log.py'), str(case)], stdout=collector_log, stderr=collector_log)
     with (case/'gate.log').open('w') as gate:
         verdict = subprocess.run([sys.executable, str(ROOT/'scripts/check-load.py'), str(case/'report.json'), '--min-seconds', str(a.seconds), '--engine', engine], stdout=gate, stderr=gate).returncode
     verdicts.append({'engine': engine, 'original_gate_exit': verdict})
