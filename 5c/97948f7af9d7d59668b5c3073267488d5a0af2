@@ -1,0 +1,85 @@
+docs/readiness-task-attempt5/macos-sync/measurement-policy/measurement-exit.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1
+docs/readiness-task-attempt5/macos-sync/ci-offcpu/service-isolation.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-70
+docs/readiness-task-attempt5/macos-sync/gate-recheck.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-4
+docs/readiness-task-attempt5/macos-async/gate-recheck.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-4
+docs/readiness-task-attempt5/macos-async/task-cost-100-1.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-416
+docs/readiness-task-attempt5/macos-sync/measurement-policy/process-policy-outside.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-30
+docs/readiness-task-attempt5/macos-async/measurement-policy/measurement-stderr.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-5
+docs/readiness-task-attempt5/macos-sync/task-toolchain.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-10
+docs/readiness-task-attempt5/macos-async/measurement-policy/process-policy-outside.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-30
+docs/readiness-task-attempt5/summary.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-59
+docs/readiness-task-attempt5/macos-sync/task-cost-100-4.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-415
+docs/readiness-task-attempt5/macos-sync/task-cost-10-1.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-440
+docs/readiness-task-attempt5/macos-async/ci-offcpu/service-isolation.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-70
+docs/readiness-task-attempt5/macos-async/measurement-policy/process-policy-inside.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-30
+docs/readiness-task-attempt5/macos-async/task-baseline.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-337
+docs/readiness-task-attempt5/macos-async/task-cost-10-1.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-415
+docs/readiness-task-attempt5/macos-sync/ci-bin/SHA256SUMS
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-2
+docs/readiness-task-attempt5/macos-sync/measurement-policy/process-policy-inside.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-30
+docs/readiness-task-attempt5/macos-async/measurement-policy/measurement-exit.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1
+docs/readiness-task-attempt5/macos-async/ci-bin/SHA256SUMS
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-2
+docs/readiness-task-attempt5/macos-async/task-cost-10-4.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-419
+docs/readiness-task-attempt5/macos-async/measurement-policy/measurement-launch.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-13
+docs/readiness-task-attempt5/macos-async/task-1000.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-1874
+docs/readiness-task-attempt5/macos-async/task-toolchain.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-10
+docs/readiness-task-attempt5/macos-sync/task-1000.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-1875
+docs/readiness-task-attempt5/macos-sync/task-baseline.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-337
+docs/readiness-task-attempt5/macos-sync/task-cost-10-4.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-417
+docs/readiness-task-attempt5/macos-sync/task-cost-100-1.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-415
+docs/readiness-task-attempt5/README.md
+  s_1d1ebc94680cfb::t_eeafe39506abfb 1-9
+docs/readiness-task-attempt5/macos-sync/measurement-policy/measurement-launch.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-13
+docs/readiness-task-attempt5/macos-sync/measurement-policy/measurement-stderr.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-5
+docs/readiness-task-attempt5/macos-async/task-cost-100-4.json
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-415
+docs/readiness-task-attempt5/macos-async/measurement-policy/measurement-stdout.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-41
+docs/readiness-task-attempt5/macos-sync/measurement-policy/measurement-stdout.txt
+  s_1d1ebc94680cfb::t_06ad90ae856f80 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5c97948f7af9d7d59668b5c3073267488d5a0af2",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
