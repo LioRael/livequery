@@ -1,0 +1,11 @@
+# macOS deadline diagnosis
+
+This workflow diagnoses the failures on official source `12fa024`; it is not final release acceptance. `macos.py prepare` creates an archived copy and applies the explicit diagnostic patch there. The production crates and benchmark gates remain unchanged. Source base, workflow head, patch hash, binary hash, toolchain and runner image are recorded separately.
+
+The workflow runs one job on the same `macos-latest` runner class used by the failed task endurance. Build finishes before measurement. Sync and async run serially for 300 seconds each, with 5000 rows, 96-byte strings, four observers and the original 100 ms timeout. There are no retries. Each report is checked with the original checker; a failed check makes the job fail after both engine reports have been collected. The artifact upload runs even on failure.
+
+Isolation controls: an exclusive cooperative measurement lock, preflight rejecting existing cargo/rustc/workload/xctrace processes, one workload at a time, bounded process lifetimes and no profiler. Process names/CPU are recorded without arguments or environment values. A conflicting process causes failure, not termination of that process. These controls prevent overlap within this runner; they cannot promise exclusive physical-host CPUs. GitHub provisions a fresh VM per hosted job: https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job . Workflow overlap alone is not proof of co-resident VM interference.
+
+The diagnostic uses buffered phase/allocator records and 10 ms thread/task snapshots. It changes timing and is never relabeled as an uninstrumented or stable binary. `correlate.py` excludes post-Deadline cleanup and brackets slow intervals with process fault counts. State 1 means running/runnable, not necessarily executing on a CPU. Positive process faults cannot be attributed to one thread; snapshots may miss waits between observations. A passing short diagnostic does not establish a fix or satisfy the two-hour gates.
+
+The patch is intentionally fixed to the recorded base. Before investigating a later library behavior, explicitly review and update the base and patch; never silently apply it to a new behavior revision.

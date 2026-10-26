@@ -1,0 +1,431 @@
+{
+  "source": "system-trace-buffered: diagnostic modified binary, heavy tracing active, failed trace finalization",
+  "failed_spans": 29,
+  "largest_gap_phase_counts": [
+    {
+      "kind": "query",
+      "from": "sort",
+      "to": "project",
+      "count": 1
+    },
+    {
+      "kind": "query",
+      "from": "scan",
+      "to": "scan",
+      "count": 1
+    },
+    {
+      "kind": "query",
+      "from": "scan",
+      "to": "deadline",
+      "count": 4
+    },
+    {
+      "kind": "capture",
+      "from": "rows",
+      "to": "rows",
+      "count": 7
+    },
+    {
+      "kind": "capture",
+      "from": "validate",
+      "to": "validated",
+      "count": 12
+    },
+    {
+      "kind": "capture",
+      "from": "deadline",
+      "to": "end",
+      "count": 2
+    },
+    {
+      "kind": "capture",
+      "from": "rows",
+      "to": "deadline",
+      "count": 2
+    }
+  ],
+  "overlapping_low_cpu_checkpoint_intervals": [
+    {
+      "overlap_ms": 103.085,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239238684000,
+        "end_ns": 1776239341769000,
+        "phase_from": "sort",
+        "phase_to": "project",
+        "wall_ms": 103.085,
+        "cpu_ms": 1.161667
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239088706000,
+        "end_ns": 1776239345196000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 256.49,
+        "cpu_ms": 3.623375
+      }
+    },
+    {
+      "overlap_ms": 98.681,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239476315000,
+        "end_ns": 1776239574996000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 98.681,
+        "cpu_ms": 0.084834
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239472153000,
+        "end_ns": 1776239586668000,
+        "phase_from": "rows",
+        "phase_to": "deadline",
+        "wall_ms": 114.515,
+        "cpu_ms": 0.10925
+      }
+    },
+    {
+      "overlap_ms": 63.022,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776243009515000,
+        "end_ns": 1776243072537000,
+        "phase_from": "scan",
+        "phase_to": "deadline",
+        "wall_ms": 63.022,
+        "cpu_ms": 0.057
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776242794998000,
+        "end_ns": 1776243093409000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 298.411,
+        "cpu_ms": 5.301917
+      }
+    },
+    {
+      "overlap_ms": 44.3,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776242236699000,
+        "end_ns": 1776242356847000,
+        "phase_from": "scan",
+        "phase_to": "deadline",
+        "wall_ms": 120.148,
+        "cpu_ms": 0.012375
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776242280792000,
+        "end_ns": 1776242325092000,
+        "phase_from": "rows",
+        "phase_to": "rows",
+        "wall_ms": 44.3,
+        "cpu_ms": 0.203416
+      }
+    },
+    {
+      "overlap_ms": 39.162,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239193764000,
+        "end_ns": 1776239232926000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 39.162,
+        "cpu_ms": 0.0455
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239088706000,
+        "end_ns": 1776239345196000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 256.49,
+        "cpu_ms": 3.623375
+      }
+    },
+    {
+      "overlap_ms": 38.308,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776240864096000,
+        "end_ns": 1776240902404000,
+        "phase_from": "scan",
+        "phase_to": "deadline",
+        "wall_ms": 38.308,
+        "cpu_ms": 0.01775
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776240778150000,
+        "end_ns": 1776241308072000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 529.922,
+        "cpu_ms": 7.28175
+      }
+    },
+    {
+      "overlap_ms": 38.184,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239684229000,
+        "end_ns": 1776239722413000,
+        "phase_from": "scan",
+        "phase_to": "deadline",
+        "wall_ms": 38.184,
+        "cpu_ms": 0.088166
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239586668000,
+        "end_ns": 1776239930943000,
+        "phase_from": "deadline",
+        "phase_to": "end",
+        "wall_ms": 344.275,
+        "cpu_ms": 1.810917
+      }
+    },
+    {
+      "overlap_ms": 34.692,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": false,
+        "start_ns": 1776241658741000,
+        "end_ns": 1776241693433000,
+        "phase_from": "sort",
+        "phase_to": "project",
+        "wall_ms": 34.692,
+        "cpu_ms": 1.194916
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776241568509000,
+        "end_ns": 1776241760061000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 191.552,
+        "cpu_ms": 5.047791
+      }
+    },
+    {
+      "overlap_ms": 33.104,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239595044000,
+        "end_ns": 1776239628148000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 33.104,
+        "cpu_ms": 0.069167
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239586668000,
+        "end_ns": 1776239930943000,
+        "phase_from": "deadline",
+        "phase_to": "end",
+        "wall_ms": 344.275,
+        "cpu_ms": 1.810917
+      }
+    },
+    {
+      "overlap_ms": 33.063,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776240831033000,
+        "end_ns": 1776240864096000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 33.063,
+        "cpu_ms": 0.043833
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776240778150000,
+        "end_ns": 1776241308072000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 529.922,
+        "cpu_ms": 7.28175
+      }
+    },
+    {
+      "overlap_ms": 30.419,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776242191783000,
+        "end_ns": 1776242222315000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 30.532,
+        "cpu_ms": 0.059333
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776242191896000,
+        "end_ns": 1776242230978000,
+        "phase_from": "rows",
+        "phase_to": "deadline",
+        "wall_ms": 39.082,
+        "cpu_ms": 0.094583
+      }
+    },
+    {
+      "overlap_ms": 28.723,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776242236699000,
+        "end_ns": 1776242356847000,
+        "phase_from": "scan",
+        "phase_to": "deadline",
+        "wall_ms": 120.148,
+        "cpu_ms": 0.012375
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776242328124000,
+        "end_ns": 1776242721312000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 393.188,
+        "cpu_ms": 3.649542
+      }
+    },
+    {
+      "overlap_ms": 23.984,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239660185000,
+        "end_ns": 1776239684169000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 23.984,
+        "cpu_ms": 0.07975
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239586668000,
+        "end_ns": 1776239930943000,
+        "phase_from": "deadline",
+        "phase_to": "end",
+        "wall_ms": 344.275,
+        "cpu_ms": 1.810917
+      }
+    },
+    {
+      "overlap_ms": 22.809,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776239148924000,
+        "end_ns": 1776239171733000,
+        "phase_from": "scan",
+        "phase_to": "scan",
+        "wall_ms": 22.809,
+        "cpu_ms": 0.050542
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776239088706000,
+        "end_ns": 1776239345196000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 256.49,
+        "cpu_ms": 3.623375
+      }
+    },
+    {
+      "overlap_ms": 20.872,
+      "query": {
+        "kind": "query",
+        "tid": 51941178,
+        "deadline": true,
+        "start_ns": 1776243072537000,
+        "end_ns": 1776243100363000,
+        "phase_from": "deadline",
+        "phase_to": "end",
+        "wall_ms": 27.826,
+        "cpu_ms": 0.020792
+      },
+      "capture": {
+        "kind": "capture",
+        "tid": 51941179,
+        "deadline": true,
+        "start_ns": 1776242794998000,
+        "end_ns": 1776243093409000,
+        "phase_from": "validate",
+        "phase_to": "validated",
+        "wall_ms": 298.411,
+        "cpu_ms": 5.301917
+      }
+    }
+  ],
+  "interpretation": "Checkpoint intervals on distinct capture and query threads overlap in wall time while each consumes little thread CPU. This is consistent with a shared disturbance, but neither proves simultaneous descheduling nor distinguishes allocator/kernel blocking from scheduling/tracer interference. No valid scheduler trace survived. Not evidence identifying the cause of the earlier uninstrumented CI/local failures.",
+  "thresholds": {
+    "interval_min_ms": 20,
+    "interval_cpu_wall_ratio_below": 0.2,
+    "overlap_min_ms": 20
+  }
+}

@@ -1,0 +1,12 @@
+rustc 1.99.0 (b940084d7 2026-09-28)
+binary: rustc
+commit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+commit-date: 2026-09-28
+host: aarch64-apple-darwin
+release: 1.99.0
+LLVM version: 23.1.1
+12fa024461de4096b325ed3c9b8c87da735ba1e7
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+8675e7611ec061cd798ad3eae65c98fe8c141927e1052f5730362f025d9c0910  experiments/workload/target/release/livequery-workload

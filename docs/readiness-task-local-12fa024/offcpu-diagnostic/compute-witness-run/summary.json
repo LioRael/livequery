@@ -1,0 +1,32 @@
+{
+  "samples": 200,
+  "slowest": [
+    {
+      "start_ns": 1780226374187000,
+      "wall_ns": 2962000,
+      "cpu_ns": 1001625
+    },
+    {
+      "start_ns": 1780225731702000,
+      "wall_ns": 1946000,
+      "cpu_ns": 1001458
+    },
+    {
+      "start_ns": 1780227094603000,
+      "wall_ns": 1760000,
+      "cpu_ns": 1003542
+    },
+    {
+      "start_ns": 1780227423351000,
+      "wall_ns": 1751000,
+      "cpu_ns": 1001792
+    },
+    {
+      "start_ns": 1780230891982000,
+      "wall_ns": 1749000,
+      "cpu_ns": 1003417
+    }
+  ],
+  "wall_over_100ms": 0,
+  "limitations": "Separate later interval, not concurrent with LiveQuery; absence of stalls cannot exclude earlier scheduling pressure. CLOCK_THREAD_CPUTIME_ID calls remain in measured loop."
+}

@@ -1,0 +1,36 @@
+{
+  "struct_bytes": 96,
+  "before": {
+    "faults": 1208,
+    "pageins": 172,
+    "cow_faults": 145,
+    "csw": 1194,
+    "total_user": 634321,
+    "total_system": 861449,
+    "threadnum": 1,
+    "numrunning": 1
+  },
+  "after": {
+    "faults": 2232,
+    "pageins": 172,
+    "cow_faults": 145,
+    "csw": 1236,
+    "total_user": 640978,
+    "total_system": 899821,
+    "threadnum": 1,
+    "numrunning": 1
+  },
+  "delta": {
+    "faults": 1024,
+    "pageins": 0,
+    "cow_faults": 0,
+    "csw": 42,
+    "total_user": 6657,
+    "total_system": 38372,
+    "threadnum": 0,
+    "numrunning": 0
+  },
+  "calls": 1000,
+  "mean_read_ns": 4905.708,
+  "limitation": "mmap touch validates fault-counter sensitivity, not disk-pagein detection or kernel wait duration. Counters are process-wide; positive changes cannot identify the affected thread."
+}

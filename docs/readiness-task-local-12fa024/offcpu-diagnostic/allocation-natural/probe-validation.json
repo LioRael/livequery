@@ -1,0 +1,25 @@
+{
+  "native_tests": {
+    "controlled_delay": "passed",
+    "allocation_zero_realloc_byte_preservation": "passed"
+  },
+  "allocation_microbenchmark": {
+    "iterations": 100000,
+    "native_ns": [
+      2948792,
+      3564917,
+      3444250,
+      2607541,
+      2417542
+    ],
+    "probe_ns": [
+      13966250,
+      12889125,
+      16213667,
+      12388375,
+      14020542
+    ],
+    "operation_count_per_round": 200000
+  },
+  "limitation": "Microbenchmark only, not capture overhead estimate. Record(start) fixture validates accounting of a controlled delay, not an actual allocator lock stall."
+}

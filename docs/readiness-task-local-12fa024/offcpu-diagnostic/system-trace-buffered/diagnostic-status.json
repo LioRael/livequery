@@ -1,0 +1,13 @@
+{
+  "benchmark_complete": true,
+  "duration_seconds": 120.013432958,
+  "business_errors": 0,
+  "query_deadline": 6,
+  "capture_deadline": 23,
+  "trace_usable": false,
+  "trace_export_error": "Document Missing Template Error",
+  "driver_failure": "TimeoutExpired waiting 60 seconds for xctrace after workload exit; trace exited without saving a complete document",
+  "root_cause_established": false,
+  "instrumentation_perturbs_load": true,
+  "next_step": "Validate complete trace lifecycle before any further natural workload run. No endurance rerun before diagnosis and repair."
+}

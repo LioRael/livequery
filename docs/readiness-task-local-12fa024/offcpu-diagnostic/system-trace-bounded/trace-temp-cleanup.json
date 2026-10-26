@@ -1,0 +1,16 @@
+[
+  {
+    "name": "instrumentsACF7dF.ktrace",
+    "bytes": 47576645632,
+    "birth_unix": 1793036378.0672584,
+    "modified_unix": 1793036519.3922408,
+    "reason": "Temporary full-system trace from our 120s/45s acquisitions. Matching acquisition timestamps; no open handle. Aborted finalization and disk exhaustion risk. Original workload JSON, phase events, logs and patches retained."
+  },
+  {
+    "name": "instrumentsNtQP9b.ktrace",
+    "bytes": 17765686584,
+    "birth_unix": 1793036721.7367,
+    "modified_unix": 1793036815.3610265,
+    "reason": "Temporary full-system trace from our 120s/45s acquisitions. Matching acquisition timestamps; no open handle. Aborted finalization and disk exhaustion risk. Original workload JSON, phase events, logs and patches retained."
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "sync-5000.json": {
+    "samples": 1430,
+    "last_sample_seconds": 7199.306653167,
+    "max_gap_seconds": 5.060736958000007,
+    "resource_ranges": {
+      "threads": 0,
+      "fds": 4,
+      "rss_bytes": 4243456
+    },
+    "continuous_business_observations_all_query_kinds": true
+  },
+  "async-5000.json": {
+    "samples": 1427,
+    "last_sample_seconds": 7195.699059625,
+    "max_gap_seconds": 5.363347832999807,
+    "resource_ranges": {
+      "threads": 0,
+      "fds": 4,
+      "rss_bytes": 7847936
+    },
+    "continuous_business_observations_all_query_kinds": true
+  }
+}

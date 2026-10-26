@@ -1,0 +1,14 @@
+{
+  "exit_code": -9,
+  "stop_reason": "artifact_bytes",
+  "elapsed_seconds": 0.166345083,
+  "peak_observed_bytes": 81920,
+  "final_bytes": 81920,
+  "private_tmpdir": "/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/offcpu-diagnostic/bounded-recorder/size-test/tmp",
+  "limits": {
+    "bytes": 65536,
+    "seconds": 5.0,
+    "min_free_bytes": 8589934592
+  },
+  "limitations": "50 ms polling can overshoot; only files under root counted. Recorder must be verified to honor TMPDIR. Process groups do not constrain helpers that deliberately detach."
+}

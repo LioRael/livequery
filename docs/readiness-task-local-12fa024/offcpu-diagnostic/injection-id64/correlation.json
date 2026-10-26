@@ -1,0 +1,19 @@
+[
+  {
+    "kind": "capture",
+    "tid": 51884493,
+    "deadline": true,
+    "wall_ms": 158.535,
+    "largest_gap_from": "start",
+    "largest_gap_to": "rows",
+    "row_from": 0,
+    "row_to": 0,
+    "gap_wall_ms": 158.531,
+    "gap_cpu_ms": 0.056,
+    "thread_samples": 18,
+    "states": {
+      "3": 18
+    },
+    "max_observer_gap_ms": 6.409
+  }
+]

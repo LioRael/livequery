@@ -1,0 +1,2 @@
+{"kind":"capture","tid":51933397,"pthread_handle":8433336192,"wall_ns":171818000,"deadline":true,"points":[{"phase":"start","row":0,"wall_ns":1776038730789000,"cpu_ns":4722250},{"phase":"rows","row":0,"wall_ns":1776038902602000,"cpu_ns":4780250},{"phase":"deadline","row":0,"wall_ns":1776038902605000,"cpu_ns":4782250},{"phase":"end","row":0,"wall_ns":1776038902607000,"cpu_ns":4784500}]}
+{"diagnostic_dropped_events":0}

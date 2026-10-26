@@ -1,0 +1,9 @@
+# Bounded recorder guard validation
+
+No LiveQuery workload ran. This guard creates a new artifact root, private TMPDIR and process group, checks artifact size, free disk space and total time through recorder exit, and stops its own process group on limit breach. It preserves the outcome. It does not alter library source or gates.
+
+Fixture results: 64 KiB size limit stopped a controlled writer at 80 KiB after 0.166 s; 0.3 s total-time limit stopped a controlled sleeper after 0.333 s. These demonstrate actual polling overshoot, not hard quotas. The guard also removes surviving process-group helpers when the parent exits. Detached helpers and output outside its root are not contained; real recorder TMPDIR behavior must be separately verified.
+
+One Time Profiler capability validation requested a 3 s recording / 1 s rolling window against /bin/sleep, with waiting-thread and context-switch sampling options. It produced no recording or log before the 30 s total deadline; the guard stopped it at 31.197 s (scheduling/termination adds overshoot). Peak artifact bytes zero, exit -9. This proves bounded shutdown, not a working lightweight recorder. No natural workload or acceptance test was started. Do not extend/repeat the same attempt blindly.
+
+Startup isolation (2026-10-27 02:38 +08): no recording or workload was requested. Under the same private-TMPDIR guard, xcrun --find xctrace succeeded in 0.058 s, and direct xctrace help record succeeded in 1.348 s. Direct xctrace record --template "Time Profiler" --show-recording-options produced no output and hit the 10 s guard (actual exit 11.106 s). The CLI explicitly documents this option as not starting a recording. Thus the earlier no-output failure is reproducible on template/options initialization without a target workload or trace acquisition; it is not evidence that LiveQuery blocks recorder startup. The exact initialization wait remains unknown. No further recording was attempted.
