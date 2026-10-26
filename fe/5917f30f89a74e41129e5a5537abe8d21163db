@@ -1,0 +1,30 @@
+docs/deadline-investigation.md
+  s_1d1ebc94680cfb::t_f4c5ca0a826949 28-31
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_5ba9cf721fcbdf 12,19,25,27-28,57-60,78-101,122,127-129,141-143,149-159,161-162,168-171,179-180
+  s_1d1ebc94680cfb::t_f4c5ca0a826949 140
+scripts/diagnostics/correlate.py
+  s_1d1ebc94680cfb::t_0f21191524899f 25-28
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_0f21191524899f 10-12,18-56,58-59,63
+scripts/diagnostics/isolation.py
+  s_1d1ebc94680cfb::t_f4c5ca0a826949 2
+scripts/diagnostics/README.md
+  s_1d1ebc94680cfb::t_f4c5ca0a826949 1,3,5,7,9,11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fe5917f30f89a74e41129e5a5537abe8d21163db",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
