@@ -1,0 +1,46 @@
+crates/livequery-core/src/state.rs
+  s_1d1ebc94680cfb::t_ba73ec620d1490 555-557,597-613,615-620,622-628,630-631,633-644,653
+  s_1d1ebc94680cfb::t_97e8a41038cb05 659-712
+docs/readiness-field-buffer/before.json
+  s_1d1ebc94680cfb::t_cdbb3d01ea0a6c 1-529
+docs/readiness-field-buffer/after.json
+  s_1d1ebc94680cfb::t_cdbb3d01ea0a6c 1-531
+docs/readiness-field-buffer/README.md
+  s_1d1ebc94680cfb::t_cdbb3d01ea0a6c 1-13
+crates/livequery-cli/tests/watch_state.rs
+  s_1d1ebc94680cfb::t_42166e933fe525 57-58
+docs/readiness-field-buffer/after.log
+  s_1d1ebc94680cfb::t_4c2b9ff288254b 1-9
+docs/readiness-field-buffer/before.log
+  s_1d1ebc94680cfb::t_5b0e26a22cc4dc 1-54
+docs/readiness-field-buffer/final-check.log
+  s_1d1ebc94680cfb::t_ad5ef9d371cd2b 1-2
+docs/readiness-field-buffer/final-clippy.log
+  s_1d1ebc94680cfb::t_8142300dda9dbc 1-13
+docs/readiness-field-buffer/final-test.log
+  s_1d1ebc94680cfb::t_0cb8b2a897510d 1-227
+docs/readiness-field-buffer/fixture.log
+  s_1d1ebc94680cfb::t_6dca83ae2afe9f 1-20
+docs/readiness-field-buffer/test.log
+  s_1d1ebc94680cfb::t_6ed9c954dbb509 1-199
+docs/readiness-field-buffer/tests.log
+  s_1d1ebc94680cfb::t_f21f12da8c36aa 1-49
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_8cabd1e14f130a 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
