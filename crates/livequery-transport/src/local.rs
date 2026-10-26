@@ -5,7 +5,7 @@ use std::{
     fs,
     io::{Read, Write},
     os::unix::{
-        fs::{DirBuilderExt, MetadataExt, PermissionsExt},
+        fs::{DirBuilderExt, FileTypeExt, MetadataExt, PermissionsExt},
         net::{UnixListener, UnixStream},
     },
     path::{Path, PathBuf},
@@ -35,7 +35,11 @@ impl Server {
             Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists => {}
             Err(e) => return Err(e.into()),
         }
-        check_directory(parent)?;
+        let path = check_directory(parent)?.join(
+            path.file_name()
+                .ok_or_else(|| Error::Invalid("socket filename".into()))?,
+        );
+        let path = path.as_path();
         let listener = UnixListener::bind(path)?;
         let metadata = fs::symlink_metadata(path)?;
         let server = Self {
@@ -99,7 +103,7 @@ pub fn discover() -> Result<Vec<PathBuf>, Error> {
     if !dir.exists() {
         return Ok(Vec::new());
     }
-    check_directory(&dir)?;
+    let dir = check_directory(&dir)?;
     let mut paths = Vec::new();
     for entry in fs::read_dir(dir)? {
         let path = entry?.path();
@@ -120,12 +124,25 @@ pub fn discover() -> Result<Vec<PathBuf>, Error> {
 /// Returns security, timeout, malformed-response and I/O errors.
 pub fn request(path: impl AsRef<Path>, request: &Request) -> Result<Response, Error> {
     let path = path.as_ref();
-    check_directory(
+    let path = check_directory(
         path.parent()
             .ok_or_else(|| Error::Invalid("socket parent".into()))?,
-    )?;
+    )?
+    .join(
+        path.file_name()
+            .ok_or_else(|| Error::Invalid("socket filename".into()))?,
+    );
+    let meta = fs::symlink_metadata(&path)?;
+    if !meta.file_type().is_socket()
+        || meta.uid() != rustix::process::getuid().as_raw()
+        || meta.mode() & 0o077 != 0
+    {
+        return Err(Error::Invalid(
+            "socket must be a private socket owned by this user".into(),
+        ));
+    }
     let socket = socket2::Socket::new(socket2::Domain::UNIX, socket2::Type::STREAM, None)?;
-    socket.connect_timeout(&socket2::SockAddr::unix(path)?, IO_TIMEOUT)?;
+    socket.connect_timeout(&socket2::SockAddr::unix(&path)?, IO_TIMEOUT)?;
     let descriptor: std::os::fd::OwnedFd = socket.into();
     let mut stream = UnixStream::from(descriptor);
     let mut bytes = serde_json::to_vec(request)?;
@@ -139,17 +156,35 @@ pub fn request(path: impl AsRef<Path>, request: &Request) -> Result<Response, Er
         Limits::default().bytes + 1024,
     )?)?)
 }
-fn check_directory(path: &Path) -> Result<(), Error> {
-    let meta = fs::symlink_metadata(path)?;
-    if !meta.is_dir()
-        || meta.uid() != rustix::process::getuid().as_raw()
-        || meta.mode() & 0o077 != 0
-    {
+fn check_directory(path: &Path) -> Result<PathBuf, Error> {
+    // Reject a final symlink even if it currently points to a private directory.
+    if !fs::symlink_metadata(path)?.is_dir() {
         return Err(Error::Invalid(
-            "socket directory must be owned by this user and mode 0700".into(),
+            "socket directory must be a real directory".into(),
         ));
     }
-    Ok(())
+    let canonical = fs::canonicalize(path)?;
+    let uid = rustix::process::getuid().as_raw();
+    // Validate from the root down so an untrusted ancestor cannot replace an
+    // already-validated child. Callers must reuse this exact resolved path.
+    let ancestors: Vec<_> = canonical.ancestors().collect();
+    for ancestor in ancestors.into_iter().rev() {
+        let meta = fs::symlink_metadata(ancestor)?;
+        let private_leaf = ancestor == canonical;
+        let trusted_owner = meta.uid() == 0 || meta.uid() == uid;
+        let sticky_root = meta.uid() == 0 && meta.mode() & 0o1000 != 0;
+        if !meta.is_dir()
+            || !trusted_owner
+            || (private_leaf && (meta.uid() != uid || meta.mode() & 0o077 != 0))
+            || (!private_leaf && meta.mode() & 0o022 != 0 && !sticky_root)
+        {
+            return Err(Error::Invalid(
+                "socket directory chain must be private and protected from untrusted replacement"
+                    .into(),
+            ));
+        }
+    }
+    Ok(canonical)
 }
 fn frame(stream: &mut UnixStream, max: usize) -> Result<Vec<u8>, Error> {
     stream.set_nonblocking(true)?;
@@ -174,7 +209,9 @@ fn frame(stream: &mut UnixStream, max: usize) -> Result<Vec<u8>, Error> {
             Err(error) => return Err(error.into()),
         };
         if n == 0 {
-            return Err(Error::Invalid("incomplete frame".into()));
+            return Err(
+                std::io::Error::new(std::io::ErrorKind::UnexpectedEof, "incomplete frame").into(),
+            );
         }
         let end = buffer[..n].iter().position(|b| *b == b'\n');
         let count = end.unwrap_or(n);
@@ -188,16 +225,7 @@ fn frame(stream: &mut UnixStream, max: usize) -> Result<Vec<u8>, Error> {
     }
 }
 fn diagnostic(error: Error) -> Response {
-    let code = match &error {
-        Error::Busy => "busy",
-        Error::Deadline => "deadline",
-        Error::Limit(_) => "limit",
-        Error::NotFound(_) => "not_found",
-        Error::Invalid(_) => "invalid",
-        Error::Io(_) => "io",
-        Error::Serialization(_) => "serialization",
-        _ => "internal",
-    };
+    let code = error.code();
     Response::Error {
         code: code.into(),
         message: error.to_string(),
@@ -312,4 +340,37 @@ fn write_bytes(stream: &mut UnixStream, bytes: &[u8]) -> Result<(), Error> {
         }
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn validated_directory_is_reused_after_original_alias_changes() {
+        use std::os::unix::fs::symlink;
+        let root = std::env::temp_dir().join(format!("lq-resolved-{}", std::process::id()));
+        fs::DirBuilder::new().mode(0o700).create(&root).unwrap();
+        let safe = root.join("safe");
+        let other = root.join("other");
+        for parent in [&safe, &other] {
+            fs::DirBuilder::new().mode(0o700).create(parent).unwrap();
+            fs::DirBuilder::new()
+                .mode(0o700)
+                .create(parent.join("private"))
+                .unwrap();
+        }
+        let alias = root.join("alias");
+        symlink(&safe, &alias).unwrap();
+        let original = alias.join("private");
+        let checked = check_directory(&original).unwrap();
+        fs::remove_file(&alias).unwrap();
+        symlink(&other, &alias).unwrap();
+        fs::set_permissions(other.join("private"), fs::Permissions::from_mode(0o755)).unwrap();
+        assert!(check_directory(&original).is_err());
+        assert_eq!(checked, fs::canonicalize(safe.join("private")).unwrap());
+        let listener = UnixListener::bind(checked.join("test.sock")).unwrap();
+        assert!(!other.join("private/test.sock").exists());
+        drop(listener);
+        fs::remove_dir_all(root).unwrap();
+    }
 }

@@ -12,6 +12,10 @@ cases = {
     'enum': ('#[derive(lq::Inspect)] enum Bad { A } fn main() {}', 'JsonSchema'),
     'tuple': ('#[derive(lq::Inspect)] struct Bad(u64); fn main() {}', 'Inspect requires named fields'),
     'attribute': ('#[derive(lq::Inspect)] struct Bad { #[inspect(secret)] id: u64 } fn main() {}', 'expected skip'),
+    'enum_field_skip': ('#[derive(lq::Inspect)] enum Bad { A { #[inspect(skip)] secret: String } } fn main() {}', 'inspect attributes are supported only'),
+    'enum_tuple_skip': ('#[derive(lq::Inspect)] enum Bad { A(#[inspect(skip)] String) } fn main() {}', 'inspect attributes are supported only'),
+    'enum_variant_skip': ('#[derive(lq::Inspect)] enum Bad { #[inspect(skip)] A } fn main() {}', 'inspect attributes are supported only'),
+    'container_skip': ('#[derive(lq::Inspect)] #[inspect(skip)] struct Bad { secret: String } fn main() {}', 'inspect attributes are supported only'),
     'non_send': ('#[derive(lq::Inspect)] struct Bad { #[inspect(skip)] value: std::rc::Rc<u64> } fn main() {}', 'cannot be'),
 }
 with tempfile.TemporaryDirectory(prefix='livequery-consumer-') as directory:

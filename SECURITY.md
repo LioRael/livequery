@@ -1,6 +1,6 @@
 # Security policy
 
-LiveQuery is experimental. The current alpha is the only maintained version; fixes may require an upgrade and may change APIs.
+LiveQuery is experimental. The latest published alpha is the maintained prerelease; fixes may require upgrading. The alpha.3 development branch is not a supported release. Once a stable line exists, the latest stable minor is the supported line, and fixes may require its latest patch. API/MSRV and protocol policy is recorded in docs/stability.md.
 
 ## Reporting
 

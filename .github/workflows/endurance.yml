@@ -1,0 +1,42 @@
+name: Two-hour endurance
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/endurance.yml'
+permissions:
+  contents: read
+concurrency:
+  group: endurance-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  endurance:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        engine: [sync, async]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 160
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
+      - name: Record toolchain
+        run: |
+          mkdir -p target
+          rustc -Vv > target/toolchain.txt
+          git rev-parse HEAD >> target/toolchain.txt
+      - name: Exercise service for two hours
+        run: python3 scripts/benchmark-service.py --only soak --engine '${{ matrix.engine }}' --repeats 1 --seconds 7200 --output target/endurance.json
+      - name: Enforce duration, traffic and resource gates
+        run: python3 scripts/check-load.py target/endurance.json --min-seconds 7200 --engine '${{ matrix.engine }}'
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: endurance-${{ matrix.os }}-${{ matrix.engine }}-${{ github.sha }}
+          path: |
+            target/endurance.json
+            target/toolchain.txt
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,19 @@
+[package]
+name = "livequery-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+[package.metadata]
+cargo-fuzz = true
+[workspace]
+[dependencies]
+libfuzzer-sys = "0.4"
+livequery = { path = "../crates/livequery" }
+livequery-transport = { path = "../crates/livequery-transport" }
+serde_json = "1"
+[[bin]]
+name = "query_and_wire"
+path = "fuzz_targets/query_and_wire.rs"
+test = false
+doc = false
+bench = false

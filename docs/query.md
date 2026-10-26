@@ -15,9 +15,9 @@ Rows preserve source order. LIMIT affects returned rows, not snapshot size or sc
 
 NULL comparison produces unknown. WHERE retains only true; NOT unknown remains unknown, false AND unknown is false, true OR unknown is true. Use IS NULL/IS NOT NULL to test absence. Complex enum values follow their serde representation, not a LiveQuery-specific tagging convention.
 
-## Local wire format, version 1
+## Local wire format
 
-One newline-delimited JSON request and response per Unix connection; unknown request fields are rejected. No handshake or version negotiation yet. Source code types are in `livequery::local`.
+One newline-delimited JSON request and response per Unix connection; unknown request fields are rejected. Protocol 2 clients first send `{"command":"hello","protocol":2}`. Success reports the version, Agent instance ID and capabilities. Unsupported versions return `incompatible_protocol`. Alpha.2 Agents do not implement Hello; the new CLI fails with an explicit compatibility error. Legacy version-one commands remain accepted. Protocol types are in `livequery_transport`; legacy exports remain in `livequery::local`.
 
 ```json
 {"command":"schema"}
@@ -45,3 +45,12 @@ Categories: `deadline`, `busy`, `limit`, `not_found`, `invalid`, `serialization`
 `Watch` is a synchronous query helper, not a scheduler. Drop it to release the retained result. CLI Ctrl-C closes the current connection; the server has no stored subscription to cancel. Changes between snapshots, even a change followed by a reversal, can be missed. Slow consumers cannot build an event backlog. Each changed publication still adds independent full snapshot work per subscriber; unchanged revisions do not clone or scan rows. Publication is an application checkpoint, not a guarantee of the freshest wall-clock state. A publisher can skip revisions between polls. A revision is sampled before execution, so a racing newer publication may cause one redundant subsequent scan; an older result is never labelled with a future revision.
 
 Conditional observation request: `{"command":"observe","sql":"SELECT * FROM players","since":null}`. The response is `{"status":"observation","revision":{...},"data":{...}}`; send that opaque revision on the next poll. Equal revisions return `{"status":"not_modified","revision":{...}}`. Cursors belong to the same query, registry and agent lifetime; clear them when changing SQL or reconnecting to a restarted agent. They are an optimization hint, not authorization or persistent identity. The CLI keeps one fixed query per watch invocation. Registration identity prevents reusing a cursor after a source is replaced within a registry.
+
+
+## Protocol 2 observation and diagnostics
+
+Send `{"command":"observe_v2","sql":"SELECT * FROM players","since":null}`. A successful envelope contains `data: {"kind":"changed","cursor":{...},"result":{...}}`, or `data: {"kind":"unchanged","cursor":{...}}`. Echo the opaque cursor as `since`. The cursor binds to a UUID generated per Agent instance, the exact SQL byte digest, and the registration/publication revision. Recreating the Agent, changing SQL or replacing a source forces a full result. It is a cache hint, never an authentication credential.
+
+`{"command":"status"}` returns published-source metadata: `sequence`, monotonic `age_ms`, wall-clock `published_at_unix_ms`, and cumulative failure counts by stable category. Empty initial Publications have null timestamps until a successful capture. Capture/publication failures do not replace the last successful snapshot; counters can increase without a revision change. Counters are independently sampled diagnostics, not a transactional event history. User-defined error messages are not exposed in these counters.
+
+The v2 CLI retries at most three consecutive I/O failures, clears cached rows/cursor and reports retries on stderr. Attempts count toward `--count`. Invalid frames and protocol errors terminate; it does not silently downgrade. Retries target the same socket address; a restart under a different PID requires an explicit new target. Version-one observation cursors keep their original same-query/same-session limitations; use v2 for restart safety.

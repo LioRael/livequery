@@ -9,9 +9,11 @@ homepage.workspace = true
 readme = "README.md"
 description = "Runtime query dispatch and local agent lifecycle"
 [dependencies]
-livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.2" }
-livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.2" }
-livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.2" }
+livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.3" }
+livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.3" }
+livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.3" }
 serde_json.workspace = true
+uuid = { version = "1", features = ["v4"] }
+blake3 = "1"
 [lints]
 workspace = true

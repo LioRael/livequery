@@ -9,7 +9,7 @@ homepage.workspace = true
 readme = "README.md"
 description = "Read-only wire protocol and bounded local Unix transport"
 [dependencies]
-livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.2" }
+livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.3" }
 serde.workspace = true
 serde_json.workspace = true
 [lints]

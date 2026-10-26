@@ -11,11 +11,12 @@ readme = "README.md"
 keywords = ["debugging", "observability", "runtime", "inspection"]
 categories = ["development-tools::debugging"]
 [dependencies]
-livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.2" }
-livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.2" }
-livequery-agent = { path = "../livequery-agent", version = "0.1.0-alpha.2" }
-livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.2" }
+livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.3" }
+livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.3" }
+livequery-agent = { path = "../livequery-agent", version = "0.1.0-alpha.3" }
+livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.3" }
 [dev-dependencies]
+proptest = "1"
 serde.workspace = true
 serde_json.workspace = true
 [lints]

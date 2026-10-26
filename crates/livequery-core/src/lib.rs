@@ -5,7 +5,7 @@ mod published;
 mod state;
 pub use collection::{CollectionSource, RowCollection, Table};
 pub use livequery_derive::Inspect;
-pub use published::Published;
+pub use published::{PublicationStatus, Published};
 #[doc(hidden)]
 pub use state::value_with_budget;
 pub use state::{

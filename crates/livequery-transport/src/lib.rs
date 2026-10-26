@@ -21,6 +21,20 @@ pub enum Request {
         /// SELECT statement.
         sql: String,
     },
+    /// Negotiate a protocol version before issuing commands.
+    Hello {
+        /// Requested wire protocol version.
+        protocol: u16,
+    },
+    /// Report freshness and failed capture/publication attempts.
+    Status,
+    /// Observe with an agent-session and exact-query-bound cursor.
+    ObserveV2 {
+        /// SELECT statement.
+        sql: String,
+        /// Opaque cursor returned by a previous observation.
+        since: Option<Cursor>,
+    },
 }
 /// Machine-readable success or diagnostic response.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -49,5 +63,38 @@ pub enum Response {
         code: String,
         /// Diagnostic detail.
         message: String,
+    },
+}
+
+/// Current negotiated wire protocol. Legacy alpha.2 commands remain accepted.
+pub const PROTOCOL_VERSION: u16 = 2;
+/// Opaque conditional observation hint; never an authorization credential.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Cursor {
+    /// Random identity generated for each Agent instance.
+    pub session: String,
+    /// Digest of the exact SQL bytes.
+    pub query: String,
+    /// Source registration and publication sequence.
+    pub revision: livequery_core::Revision,
+}
+
+/// Protocol-v2 observation payload inside a successful Response envelope.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(tag = "kind", rename_all = "snake_case")]
+#[non_exhaustive]
+pub enum Observation {
+    /// Full replacement result and its cursor.
+    Changed {
+        /// Cursor to echo on the next poll.
+        cursor: Cursor,
+        /// Query result.
+        result: serde_json::Value,
+    },
+    /// Same session, SQL and publication as the previous poll.
+    Unchanged {
+        /// Cursor to echo on the next poll.
+        cursor: Cursor,
     },
 }
