@@ -1,0 +1,5 @@
+# Disk-indexing intervention: incomplete isolation
+
+Run 40386443740 on source 330f651. mdutil succeeded and a fixed 180-second post-build settling interval elapsed. The 3-CPU VM's four load1 samples were 2.651, 2.839, 2.611, 2.642. External decaying ps CPU estimates were 14.5%, 222.1%, 0.4%, 1.7%. The second sample contained corespotlightd 174.3% and helpd 45.7%. Original host admission rejected this interval. Neither LiveQuery engine started, so there is no new workload timeout/pass result.
+
+The result supports reduced background activity relative to the previous VM, but this is not a controlled same-host comparison and does not prove isolation. mdutil controls volume indexing; the observed user agents remain a separate source of CPU activity. The next targeted correction validates their launch-agent labels and disables/boots out only these two agents in the disposable GitHub-hosted macOS job. The script refuses local/self-hosted execution and records command outcomes. OS protection rejection must remain a failure; no SIP bypass is permitted. No workload, timeout, observer or acceptance gate changes.
