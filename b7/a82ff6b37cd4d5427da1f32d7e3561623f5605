@@ -1,0 +1,29 @@
+docs/readiness-driver-audit/report-python315.json
+  s_1d1ebc94680cfb::t_5aaff0d5a0d390 1-96
+docs/readiness-driver-audit/README.md
+  s_1d1ebc94680cfb::t_fbfffbb94ea9f1 1-46
+docs/readiness-driver-audit/profile-python315.txt
+  s_1d1ebc94680cfb::t_5aaff0d5a0d390 1-45
+docs/readiness-driver-audit/report-python39.json
+  s_1d1ebc94680cfb::t_5aaff0d5a0d390 1-94
+docs/readiness-driver-audit/provenance.json
+  s_1d1ebc94680cfb::t_5aaff0d5a0d390 1-14
+docs/readiness-driver-audit/profile-python39.txt
+  s_1d1ebc94680cfb::t_5aaff0d5a0d390 1-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b7a82ff6b37cd4d5427da1f32d7e3561623f5605",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
