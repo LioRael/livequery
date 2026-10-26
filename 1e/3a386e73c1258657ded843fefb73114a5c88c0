@@ -1,0 +1,37 @@
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_a5e26f2e5ce3d2 4-9,17
+docs/readiness-ci-isolation-40387723695/README.md
+  s_1d1ebc94680cfb::t_5af9ba919feedc 1-9
+docs/readiness-ci-isolation-40387723695/binary-sha256.txt
+  s_1d1ebc94680cfb::t_aa73fb97a8da9c 1
+docs/readiness-ci-isolation-40387723695/instrumentation.patch
+  s_1d1ebc94680cfb::t_15a8060242505a 1-245
+docs/readiness-ci-isolation-40387723695/isolation-sync.json
+  s_1d1ebc94680cfb::t_388db22306456d 1-10466
+docs/readiness-ci-isolation-40387723695/preflight.json
+  s_1d1ebc94680cfb::t_95bc82f052ea66 1-3
+docs/readiness-ci-isolation-40387723695/provenance.json
+  s_1d1ebc94680cfb::t_5349faf079170a 1-12
+docs/readiness-ci-isolation-40387723695/service-isolation.json
+  s_1d1ebc94680cfb::t_3fedb38b0d6269 1-70
+docs/readiness-ci-isolation-40387723695/toolchain.txt
+  s_1d1ebc94680cfb::t_232b99beda3894 1-7
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_2809d27f949382 62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1e3a386e73c1258657ded843fefb73114a5c88c0",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
