@@ -1,0 +1,97 @@
+docs/readiness-ci-diagnostic-40383573185/provenance.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-12
+docs/readiness-ci-diagnostic-40383573185/sync/events/2186-10680.tid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/host-activity.jsonl
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-60
+docs/readiness-ci-diagnostic-40383573185/sync/report.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-1382
+docs/readiness-ci-diagnostic-40383573185/async/failure-host-correlation.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-427
+docs/readiness-ci-diagnostic-40383573185/sync/run.log
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-6
+docs/readiness-ci-diagnostic-40383573185/toolchain.txt
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-7
+docs/readiness-ci-diagnostic-40383573185/admission-replay.json
+  s_1d1ebc94680cfb::t_75fffee3bdc97b 1-12
+docs/readiness-ci-diagnostic-40383573185/async/report.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-1366
+docs/readiness-ci-diagnostic-40383573185/instrumentation.patch
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-245
+docs/readiness-ci-diagnostic-40383573185/async/clock-anchor.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/async/failure-correlation.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-1746
+docs/readiness-ci-diagnostic-40383573185/sync/gate.log
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-5
+docs/readiness-ci-diagnostic-40383573185/async/gate.log
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-5
+docs/readiness-ci-diagnostic-40383573185/async/sampler.log
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/failure-correlation.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-2979
+docs/deadline-investigation.md
+  s_1d1ebc94680cfb::t_17de5eb42d0194 16-19
+docs/readiness-ci-diagnostic-40383573185/preflight.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-3
+docs/readiness-ci-diagnostic-40383573185/binary-sha256.txt
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/events/2186-10681.tid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/pid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/async/events/8049-28884.jsonl
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-68
+docs/readiness-ci-diagnostic-40383573185/sync/events/2186-10681.jsonl
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-100
+docs/readiness-ci-diagnostic-40383573185/sync/sampler.log
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/clock-anchor.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/async/events/8049-28883.jsonl
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-2
+scripts/diagnostics/README.md
+  s_1d1ebc94680cfb::t_17de5eb42d0194 12-13
+docs/readiness-ci-diagnostic-40383573185/verdicts.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-10
+docs/readiness-ci-diagnostic-40383573185/async/events/8049-28883.tid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/events/2186-10658.tid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/sync/failure-host-correlation.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-530
+docs/readiness-ci-diagnostic-40383573185/async/pid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/async/host-activity.jsonl
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-60
+scripts/diagnostics/isolation.py
+  s_1d1ebc94680cfb::t_e4536c174f0440 1-45
+docs/readiness-ci-diagnostic-40383573185/README.md
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-11
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_e4536c174f0440 18-19,94
+docs/readiness-ci-diagnostic-40383573185/review-summary.json
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-68
+docs/readiness-ci-diagnostic-40383573185/async/run.log
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1-6
+docs/readiness-ci-diagnostic-40383573185/async/events/8049-28882.tid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+docs/readiness-ci-diagnostic-40383573185/async/events/8049-28884.tid
+  s_1d1ebc94680cfb::t_17de5eb42d0194 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "08bda91057a932721e163c37d757429ec50a152d",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
