@@ -1,0 +1,38 @@
+docs/readiness-task-attempt2/darwin-sync.json
+  s_1d1ebc94680cfb::t_63598618a0e0e7 1-21544
+docs/readiness-task-attempt2/README.md
+  s_1d1ebc94680cfb::t_c7883026813205 1-10
+  s_1d1ebc94680cfb::t_fd7dd25092f9be 11-18
+docs/readiness-task-attempt2/linux-async.json
+  s_1d1ebc94680cfb::t_63598618a0e0e7 1-21617
+docs/readiness-task-attempt2/linux-sync.json
+  s_1d1ebc94680cfb::t_63598618a0e0e7 1-21619
+docs/readiness-task-attempt2/darwin-async.json
+  s_1d1ebc94680cfb::t_63598618a0e0e7 1-21488
+crates/livequery-core/src/state.rs
+  s_1d1ebc94680cfb::t_9f72d01253c61b 157,560-592,631-651
+docs/readiness-task-attempt2/summary.json
+  s_1d1ebc94680cfb::t_63598618a0e0e7 1-194
+docs/readiness-task-attempt2/capture-before.json
+  s_1d1ebc94680cfb::t_64f87b1fbc9f57 1
+docs/readiness-task-attempt2/capture-counting.json
+  s_1d1ebc94680cfb::t_2ee495fb684e2e 1
+docs/readiness-task-attempt2/capture-probe.rs
+  s_1d1ebc94680cfb::t_e874fe810474f9 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "38dffc0f53eff45066ac51eb7e13d6e4bd8c2b17",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
