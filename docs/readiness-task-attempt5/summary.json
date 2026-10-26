@@ -1,0 +1,59 @@
+[
+  {
+    "engine": "sync",
+    "source_ref": "29b2f17cdf4ee49397242858384907562495e5cd",
+    "source_dirty": false,
+    "binary_sha256": "cc4ae973507639d4e112dd637c69183bdd783be9fc66e30f19d62286c8e6486c",
+    "gate_exit": 1,
+    "elapsed_seconds": 600.0161175410001,
+    "requests": 13154350,
+    "request_errors": 0,
+    "request_error_codes": {},
+    "observation_errors": 7,
+    "observation_error_codes": {
+      "busy": 7
+    },
+    "publication_attempts": 41213,
+    "publication_error_codes": {
+      "busy": 1,
+      "deadline": 1
+    },
+    "publication_errors": 2,
+    "slow_captures": [
+      {
+        "attempt": 40433,
+        "capture_cpu_ns": 1370375,
+        "capture_error": "deadline",
+        "capture_wall_ns": 217064875
+      }
+    ]
+  },
+  {
+    "engine": "async",
+    "source_ref": "29b2f17cdf4ee49397242858384907562495e5cd",
+    "source_dirty": false,
+    "binary_sha256": "cc4ae973507639d4e112dd637c69183bdd783be9fc66e30f19d62286c8e6486c",
+    "gate_exit": 1,
+    "elapsed_seconds": 600.023976458,
+    "requests": 16163811,
+    "request_errors": 0,
+    "request_error_codes": {},
+    "observation_errors": 8,
+    "observation_error_codes": {
+      "busy": 8
+    },
+    "publication_attempts": 43265,
+    "publication_error_codes": {
+      "deadline": 1
+    },
+    "publication_errors": 1,
+    "slow_captures": [
+      {
+        "attempt": 39979,
+        "capture_cpu_ns": 4580667,
+        "capture_error": "deadline",
+        "capture_wall_ns": 254472959
+      }
+    ]
+  }
+]

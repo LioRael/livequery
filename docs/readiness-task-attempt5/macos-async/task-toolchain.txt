@@ -1,0 +1,10 @@
+rustc 1.99.1 (58cf8f9c3 2026-10-13)
+binary: rustc
+commit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67
+commit-date: 2026-10-13
+host: aarch64-apple-darwin
+release: 1.99.1
+LLVM version: 23.1.1
+29b2f17cdf4ee49397242858384907562495e5cd
+Darwin iad20-eo1212-95c3a03a-614c-4b96-ab34-06b8b79008b9-4EC30558F4BD.local 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:16:43 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_VMAPPLE arm64
+{"os": "macOS-26.6.2-arm64-arm-64bit-Mach-O", "arch": "arm64", "cpus": 3, "image": "20261021.0445.8", "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]"}
