@@ -1,9 +1,6 @@
 name: Two-hour endurance
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/endurance.yml'
 permissions:
   contents: read
 concurrency:

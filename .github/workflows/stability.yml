@@ -1,6 +1,7 @@
 name: Stability gates
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
   schedule:
@@ -39,6 +40,7 @@ jobs:
       - run: cargo install cargo-fuzz --version 0.13.2 --locked
       - run: cargo fuzz run query_and_wire -- -max_total_time=60 -max_len=8192 -rss_limit_mb=1024
   sustained-load:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]

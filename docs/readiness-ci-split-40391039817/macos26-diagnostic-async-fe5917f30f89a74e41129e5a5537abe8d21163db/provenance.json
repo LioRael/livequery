@@ -1,0 +1,13 @@
+{
+  "official_base": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+  "workflow_head": "fe5917f30f89a74e41129e5a5537abe8d21163db",
+  "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+  "diagnostic_only": true,
+  "runner_image": "20261013.0424.1",
+  "runner_os_image": "macos26",
+  "runner_arch": "arm64",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "logical_cpus": 3,
+  "seconds_per_engine": 300,
+  "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+}

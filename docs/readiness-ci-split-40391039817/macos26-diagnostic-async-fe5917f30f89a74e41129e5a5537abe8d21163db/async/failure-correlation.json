@@ -1,0 +1,2782 @@
+{
+  "spans": [
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 75.542,
+      "pre_return_cpu_ms": 28.372042,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 305792465000,
+          "end_ns": 305816063000,
+          "wall_ms": 23.598,
+          "cpu_ms": 0.620458,
+          "allocator_ms": 20.414978,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 18,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1382
+          },
+          "counter_bracket": [
+            305759768000,
+            305819414000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 305648680000,
+              "end_ns": 310778147000,
+              "busy_percent": 248.78048780487805
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 70.413,
+      "pre_return_cpu_ms": 28.683167,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 306576976000,
+          "end_ns": 306593116000,
+          "wall_ms": 16.14,
+          "cpu_ms": 6.440541,
+          "allocator_ms": 0.025541,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3046
+          },
+          "counter_bracket": [
+            306531927000,
+            306611627000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 305648680000,
+              "end_ns": 310778147000,
+              "busy_percent": 248.78048780487805
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.981,
+      "pre_return_cpu_ms": 25.374625,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 61.154,
+      "pre_return_cpu_ms": 31.639208,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 317157754000,
+          "end_ns": 317172579000,
+          "wall_ms": 14.825,
+          "cpu_ms": 6.797333,
+          "allocator_ms": 0.027416,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 6016
+          },
+          "counter_bracket": [
+            317091804000,
+            317232558000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 315848876000,
+              "end_ns": 321009283000,
+              "busy_percent": 299.41822882999355
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 60.232,
+      "pre_return_cpu_ms": 24.691,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 317531787000,
+          "end_ns": 317548723000,
+          "wall_ms": 16.936,
+          "cpu_ms": 5.467209,
+          "allocator_ms": 0.01904,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 5806
+          },
+          "counter_bracket": [
+            317434687000,
+            317569584000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 315848876000,
+              "end_ns": 321009283000,
+              "busy_percent": 299.41822882999355
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 55.05,
+      "pre_return_cpu_ms": 28.13125,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 104.279,
+      "pre_return_cpu_ms": 14.375416,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "start_ns": 322882298000,
+          "end_ns": 322966899000,
+          "wall_ms": 84.601,
+          "cpu_ms": 0.722708,
+          "allocator_ms": 13.003136,
+          "thread_samples": [
+            {
+              "stamp": 322915213000,
+              "tid": 15675,
+              "cpu_ns": 8392608000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            },
+            {
+              "stamp": 322959349000,
+              "tid": 15675,
+              "cpu_ns": 8392986000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3041
+          },
+          "counter_bracket": [
+            322801151000,
+            322984697000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 80.65,
+      "pre_return_cpu_ms": 25.267,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 323769276000,
+          "end_ns": 323782713000,
+          "wall_ms": 13.437,
+          "cpu_ms": 0.819083,
+          "allocator_ms": 0.250599,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1712
+          },
+          "counter_bracket": [
+            323678953000,
+            323804660000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 323783835000,
+          "end_ns": 323797981000,
+          "wall_ms": 14.146,
+          "cpu_ms": 0.734625,
+          "allocator_ms": 13.650623,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1712
+          },
+          "counter_bracket": [
+            323678953000,
+            323804660000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 323799757000,
+          "end_ns": 323818429000,
+          "wall_ms": 18.672,
+          "cpu_ms": 7.121208,
+          "allocator_ms": 0.030165,
+          "thread_samples": [
+            {
+              "stamp": 323804660000,
+              "tid": 15675,
+              "cpu_ns": 8663037000,
+              "state": 1,
+              "priority": 20,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2946
+          },
+          "counter_bracket": [
+            323678953000,
+            323892049000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 96.516,
+      "pre_return_cpu_ms": 22.636958,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 324450709000,
+          "end_ns": 324505560000,
+          "wall_ms": 54.851,
+          "cpu_ms": 4.626083,
+          "allocator_ms": 0.827542,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3496
+          },
+          "counter_bracket": [
+            324398119000,
+            324517404000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 82.798,
+      "pre_return_cpu_ms": 31.765708,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 326027273000,
+          "end_ns": 326040964000,
+          "wall_ms": 13.691,
+          "cpu_ms": 0.721792,
+          "allocator_ms": 2.08963,
+          "thread_samples": [
+            {
+              "stamp": 326030743000,
+              "tid": 15675,
+              "cpu_ns": 9415979000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4590
+          },
+          "counter_bracket": [
+            325948968000,
+            326102358000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 326040964000,
+          "end_ns": 326052751000,
+          "wall_ms": 11.787,
+          "cpu_ms": 0.676208,
+          "allocator_ms": 4.297411,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3628
+          },
+          "counter_bracket": [
+            325982805000,
+            326102358000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 321009283000,
+              "end_ns": 326208417000,
+              "busy_percent": 297.49679075738123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 57.379,
+      "pre_return_cpu_ms": 30.153583,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 121.617,
+      "pre_return_cpu_ms": 9.777,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 328021807000,
+          "end_ns": 328039956000,
+          "wall_ms": 18.149,
+          "cpu_ms": 0.611375,
+          "allocator_ms": 15.748164,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1252
+          },
+          "counter_bracket": [
+            328009295000,
+            328112034000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 328048217000,
+          "end_ns": 328067984000,
+          "wall_ms": 19.767,
+          "cpu_ms": 0.71625,
+          "allocator_ms": 3.426918,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1252
+          },
+          "counter_bracket": [
+            328009295000,
+            328112034000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 328067984000,
+          "end_ns": 328091120000,
+          "wall_ms": 23.136,
+          "cpu_ms": 0.570625,
+          "allocator_ms": 0.509985,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1252
+          },
+          "counter_bracket": [
+            328009295000,
+            328112034000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> deadline",
+          "start_ns": 328091120000,
+          "end_ns": 328131128000,
+          "wall_ms": 40.008,
+          "cpu_ms": 0.102458,
+          "allocator_ms": 30.024003,
+          "thread_samples": [
+            {
+              "stamp": 328112034000,
+              "tid": 15675,
+              "cpu_ns": 10037854000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1679
+          },
+          "counter_bracket": [
+            328009295000,
+            328200624000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 94.824,
+      "pre_return_cpu_ms": 22.345042,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 328291238000,
+          "end_ns": 328305875000,
+          "wall_ms": 14.637,
+          "cpu_ms": 0.339,
+          "allocator_ms": 0.122205,
+          "thread_samples": [
+            {
+              "stamp": 328302685000,
+              "tid": 15675,
+              "cpu_ns": 10113286000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1687
+          },
+          "counter_bracket": [
+            328200624000,
+            328379397000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 328305875000,
+          "end_ns": 328320294000,
+          "wall_ms": 14.419,
+          "cpu_ms": 0.428667,
+          "allocator_ms": 14.167912,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1369
+          },
+          "counter_bracket": [
+            328217363000,
+            328379397000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 328336293000,
+          "end_ns": 328354573000,
+          "wall_ms": 18.28,
+          "cpu_ms": 0.351833,
+          "allocator_ms": 0.130362,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1369
+          },
+          "counter_bracket": [
+            328217363000,
+            328379397000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 328363218000,
+          "end_ns": 328376515000,
+          "wall_ms": 13.297,
+          "cpu_ms": 6.100167,
+          "allocator_ms": 0.065833,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1369
+          },
+          "counter_bracket": [
+            328217363000,
+            328379397000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 103.586,
+      "pre_return_cpu_ms": 8.659416,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 329024852000,
+          "end_ns": 329053255000,
+          "wall_ms": 28.403,
+          "cpu_ms": 0.509625,
+          "allocator_ms": 18.294348,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2378
+          },
+          "counter_bracket": [
+            328926789000,
+            329101011000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 329053255000,
+          "end_ns": 329088114000,
+          "wall_ms": 34.859,
+          "cpu_ms": 0.870375,
+          "allocator_ms": 24.048952,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2378
+          },
+          "counter_bracket": [
+            328926789000,
+            329101011000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 329088114000,
+          "end_ns": 329100621000,
+          "wall_ms": 12.507,
+          "cpu_ms": 0.658959,
+          "allocator_ms": 0.290548,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2378
+          },
+          "counter_bracket": [
+            328926789000,
+            329101011000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> deadline",
+          "start_ns": 329100621000,
+          "end_ns": 329121161000,
+          "wall_ms": 20.54,
+          "cpu_ms": 0.791166,
+          "allocator_ms": 4.397977,
+          "thread_samples": [
+            {
+              "stamp": 329101011000,
+              "tid": 15675,
+              "cpu_ns": 10361581000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            },
+            {
+              "stamp": 329118274000,
+              "tid": 15675,
+              "cpu_ns": 10362233000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2866
+          },
+          "counter_bracket": [
+            328926789000,
+            329138527000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 110.164,
+      "pre_return_cpu_ms": 20.589167,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 330532543000,
+          "end_ns": 330544456000,
+          "wall_ms": 11.913,
+          "cpu_ms": 0.84875,
+          "allocator_ms": 2.842668,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2011
+          },
+          "counter_bracket": [
+            330372709000,
+            330612295000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 330546055000,
+          "end_ns": 330610586000,
+          "wall_ms": 64.531,
+          "cpu_ms": 0.347041,
+          "allocator_ms": 64.329198,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2011
+          },
+          "counter_bracket": [
+            330372709000,
+            330612295000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 330623186000,
+          "end_ns": 330635841000,
+          "wall_ms": 12.655,
+          "cpu_ms": 4.30175,
+          "allocator_ms": 0.037002,
+          "thread_samples": [
+            {
+              "stamp": 330632194000,
+              "tid": 15675,
+              "cpu_ns": 10927303000,
+              "state": 1,
+              "priority": 20,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2120
+          },
+          "counter_bracket": [
+            330468140000,
+            330684798000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 79.908,
+      "pre_return_cpu_ms": 24.877958,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 332317458000,
+          "end_ns": 332359918000,
+          "wall_ms": 42.46,
+          "cpu_ms": 0.553542,
+          "allocator_ms": 41.550103,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 279
+          },
+          "counter_bracket": [
+            332182700000,
+            332369190000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 331451314000,
+              "end_ns": 336732913000,
+              "busy_percent": 298.10486418193307
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.728,
+      "pre_return_cpu_ms": 27.098,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 54.118,
+      "pre_return_cpu_ms": 21.478166,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 351056022000,
+          "end_ns": 351080046000,
+          "wall_ms": 24.024,
+          "cpu_ms": 4.916417,
+          "allocator_ms": 0.02375,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2410
+          },
+          "counter_bracket": [
+            350981461000,
+            351110015000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 346995335000,
+              "end_ns": 352163314000,
+              "busy_percent": 248.4313725490196
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 62.89,
+      "pre_return_cpu_ms": 24.511,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 351885493000,
+          "end_ns": 351897290000,
+          "wall_ms": 11.797,
+          "cpu_ms": 5.318292,
+          "allocator_ms": 0.179499,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 783
+          },
+          "counter_bracket": [
+            351870807000,
+            351903386000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 346995335000,
+              "end_ns": 352163314000,
+              "busy_percent": 248.4313725490196
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 81.241,
+      "pre_return_cpu_ms": 28.321958,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 362750977000,
+          "end_ns": 362763300000,
+          "wall_ms": 12.323,
+          "cpu_ms": 0.818625,
+          "allocator_ms": 4.500224,
+          "thread_samples": [
+            {
+              "stamp": 362759502000,
+              "tid": 15675,
+              "cpu_ns": 24265588000,
+              "state": 1,
+              "priority": 13,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1992
+          },
+          "counter_bracket": [
+            362732205000,
+            362775728000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 362483403000,
+              "end_ns": 367672133000,
+              "busy_percent": 254.94148244473342
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 362765147000,
+          "end_ns": 362775767000,
+          "wall_ms": 10.62,
+          "cpu_ms": 4.900584,
+          "allocator_ms": 0.02108,
+          "thread_samples": [
+            {
+              "stamp": 362775728000,
+              "tid": 15675,
+              "cpu_ns": 24271686000,
+              "state": 1,
+              "priority": 15,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2500
+          },
+          "counter_bracket": [
+            362743343000,
+            362808021000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 362483403000,
+              "end_ns": 367672133000,
+              "busy_percent": 254.94148244473342
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 56.723,
+      "pre_return_cpu_ms": 22.810625,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 372949877000,
+          "end_ns": 372975492000,
+          "wall_ms": 25.615,
+          "cpu_ms": 6.140625,
+          "allocator_ms": 0.113331,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4811
+          },
+          "counter_bracket": [
+            372858921000,
+            372985432000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 372880229000,
+              "end_ns": 378107073000,
+              "busy_percent": 269.4587628865979
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 62.995,
+      "pre_return_cpu_ms": 34.779083,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 373833189000,
+          "end_ns": 373850724000,
+          "wall_ms": 17.535,
+          "cpu_ms": 6.468292,
+          "allocator_ms": 0.067915,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2751
+          },
+          "counter_bracket": [
+            373783747000,
+            373888659000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 372880229000,
+              "end_ns": 378107073000,
+              "busy_percent": 269.4587628865979
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 50.308,
+      "pre_return_cpu_ms": 31.582333,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 54.143,
+      "pre_return_cpu_ms": 22.9775,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 384309229000,
+          "end_ns": 384335050000,
+          "wall_ms": 25.821,
+          "cpu_ms": 7.070375,
+          "allocator_ms": 0.036584,
+          "thread_samples": [
+            {
+              "stamp": 384316430000,
+              "tid": 15675,
+              "cpu_ns": 33943106000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 7367
+          },
+          "counter_bracket": [
+            384236145000,
+            384396869000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 383232812000,
+              "end_ns": 388271451000,
+              "busy_percent": 231.6891891891892
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 56.31,
+      "pre_return_cpu_ms": 44.689041,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 387621892000,
+          "end_ns": 387632918000,
+          "wall_ms": 11.026,
+          "cpu_ms": 8.788791,
+          "allocator_ms": 0.106124,
+          "thread_samples": [
+            {
+              "stamp": 387628389000,
+              "tid": 15675,
+              "cpu_ns": 35307816000,
+              "state": 1,
+              "priority": 12,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 10460
+          },
+          "counter_bracket": [
+            387534842000,
+            387693160000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 383232812000,
+              "end_ns": 388271451000,
+              "busy_percent": 231.6891891891892
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 60.316,
+      "pre_return_cpu_ms": 31.280125,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 82.699,
+      "pre_return_cpu_ms": 27.715041,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 395748525000,
+          "end_ns": 395763341000,
+          "wall_ms": 14.816,
+          "cpu_ms": 0.681959,
+          "allocator_ms": 7.607465,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 5467
+          },
+          "counter_bracket": [
+            395667654000,
+            395799933000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 393449409000,
+              "end_ns": 398506773000,
+              "busy_percent": 238.71399866041529
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 70.638,
+      "pre_return_cpu_ms": 26.2935,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 405840255000,
+          "end_ns": 405857608000,
+          "wall_ms": 17.353,
+          "cpu_ms": 6.10825,
+          "allocator_ms": 0.023205,
+          "thread_samples": [
+            {
+              "stamp": 405848210000,
+              "tid": 15675,
+              "cpu_ns": 43327683000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3768
+          },
+          "counter_bracket": [
+            405747833000,
+            405861003000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 403598803000,
+              "end_ns": 408725744000,
+              "busy_percent": 243.5154707044108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 69.116,
+      "pre_return_cpu_ms": 30.331709,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 406264072000,
+          "end_ns": 406275445000,
+          "wall_ms": 11.373,
+          "cpu_ms": 0.988541,
+          "allocator_ms": 8.843426,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3256
+          },
+          "counter_bracket": [
+            406232575000,
+            406333163000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 403598803000,
+              "end_ns": 408725744000,
+              "busy_percent": 243.5154707044108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 56.979,
+      "pre_return_cpu_ms": 31.897458,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 57.596,
+      "pre_return_cpu_ms": 26.793541,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 406773172000,
+          "end_ns": 406784595000,
+          "wall_ms": 11.423,
+          "cpu_ms": 4.625542,
+          "allocator_ms": 0.024042,
+          "thread_samples": [
+            {
+              "stamp": 406780496000,
+              "tid": 15675,
+              "cpu_ns": 43720821000,
+              "state": 1,
+              "priority": 16,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2962
+          },
+          "counter_bracket": [
+            406750742000,
+            406857499000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 403598803000,
+              "end_ns": 408725744000,
+              "busy_percent": 243.5154707044108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 55.078,
+      "pre_return_cpu_ms": 36.995,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.055,
+      "pre_return_cpu_ms": 32.725416,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 411351847000,
+          "end_ns": 411362092000,
+          "wall_ms": 10.245,
+          "cpu_ms": 5.045541,
+          "allocator_ms": 0.018876,
+          "thread_samples": [
+            {
+              "stamp": 411359012000,
+              "tid": 15675,
+              "cpu_ns": 45907858000,
+              "state": 1,
+              "priority": 14,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4709
+          },
+          "counter_bracket": [
+            411242721000,
+            411370747000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 408725744000,
+              "end_ns": 413814276000,
+              "busy_percent": 269.34739617666446
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 54.952,
+      "pre_return_cpu_ms": 34.91125,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 57.016,
+      "pre_return_cpu_ms": 34.983125,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 55.434,
+      "pre_return_cpu_ms": 43.674958,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 65.248,
+      "pre_return_cpu_ms": 35.990541,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 70.13,
+      "pre_return_cpu_ms": 30.704083,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 418131442000,
+          "end_ns": 418167381000,
+          "wall_ms": 35.939,
+          "cpu_ms": 7.949167,
+          "allocator_ms": 0.036747,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4677
+          },
+          "counter_bracket": [
+            418026218000,
+            418171483000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 413814276000,
+              "end_ns": 418990586000,
+              "busy_percent": 240.58823529411765
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.887,
+      "pre_return_cpu_ms": 38.113667,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 58.184,
+      "pre_return_cpu_ms": 31.375542,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 58.273,
+      "pre_return_cpu_ms": 23.905,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 429294652000,
+          "end_ns": 429317054000,
+          "wall_ms": 22.402,
+          "cpu_ms": 0.954917,
+          "allocator_ms": 0.299827,
+          "thread_samples": [
+            {
+              "stamp": 429316300000,
+              "tid": 15675,
+              "cpu_ns": 54237898000,
+              "state": 1,
+              "priority": 15,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3333
+          },
+          "counter_bracket": [
+            429195634000,
+            429354684000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 429263429000,
+              "end_ns": 434380942000,
+              "busy_percent": 230.1125082726671
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 429318879000,
+          "end_ns": 429334937000,
+          "wall_ms": 16.058,
+          "cpu_ms": 5.501333,
+          "allocator_ms": 4.581376,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 513
+          },
+          "counter_bracket": [
+            429280416000,
+            429354684000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 429263429000,
+              "end_ns": 434380942000,
+              "busy_percent": 230.1125082726671
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 61.139,
+      "pre_return_cpu_ms": 32.271167,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 103.706,
+      "pre_return_cpu_ms": 33.487375,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 439817551000,
+          "end_ns": 439830868000,
+          "wall_ms": 13.317,
+          "cpu_ms": 6.474084,
+          "allocator_ms": 0.129706,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4036
+          },
+          "counter_bracket": [
+            439749967000,
+            439850329000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 439519327000,
+              "end_ns": 444754598000,
+              "busy_percent": 241.55339805825244
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 50.133,
+      "pre_return_cpu_ms": 30.40175,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 440323934000,
+          "end_ns": 440340955000,
+          "wall_ms": 17.021,
+          "cpu_ms": 6.39025,
+          "allocator_ms": 0.025625,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1688
+          },
+          "counter_bracket": [
+            440279097000,
+            440345667000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 439519327000,
+              "end_ns": 444754598000,
+              "busy_percent": 241.55339805825244
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 53.305,
+      "pre_return_cpu_ms": 40.249958,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 71.96,
+      "pre_return_cpu_ms": 24.32675,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 461637303000,
+          "end_ns": 461649660000,
+          "wall_ms": 12.357,
+          "cpu_ms": 0.970333,
+          "allocator_ms": 5.93352,
+          "thread_samples": [
+            {
+              "stamp": 461642694000,
+              "tid": 15675,
+              "cpu_ns": 68875572000,
+              "state": 1,
+              "priority": 18,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1411
+          },
+          "counter_bracket": [
+            461609265000,
+            461668358000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 460020626000,
+              "end_ns": 465210939000,
+              "busy_percent": 236.58376963350784
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 461649660000,
+          "end_ns": 461665890000,
+          "wall_ms": 16.23,
+          "cpu_ms": 1.134208,
+          "allocator_ms": 4.169518,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1037
+          },
+          "counter_bracket": [
+            461632225000,
+            461668358000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 460020626000,
+              "end_ns": 465210939000,
+              "busy_percent": 236.58376963350784
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 461665890000,
+          "end_ns": 461681268000,
+          "wall_ms": 15.378,
+          "cpu_ms": 1.106834,
+          "allocator_ms": 12.687816,
+          "thread_samples": [
+            {
+              "stamp": 461668358000,
+              "tid": 15675,
+              "cpu_ns": 68877125000,
+              "state": 1,
+              "priority": 18,
+              "name": ""
+            },
+            {
+              "stamp": 461680155000,
+              "tid": 15675,
+              "cpu_ns": 68877700000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2490
+          },
+          "counter_bracket": [
+            461632225000,
+            461729026000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 460020626000,
+              "end_ns": 465210939000,
+              "busy_percent": 236.58376963350784
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 59.416,
+      "pre_return_cpu_ms": 28.255584,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 461762430000,
+          "end_ns": 461789278000,
+          "wall_ms": 26.848,
+          "cpu_ms": 8.317709,
+          "allocator_ms": 0.168419,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 5418
+          },
+          "counter_bracket": [
+            461680155000,
+            461798910000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 460020626000,
+              "end_ns": 465210939000,
+              "busy_percent": 236.58376963350784
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 100.265,
+      "pre_return_cpu_ms": 35.578833,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 470644805000,
+          "end_ns": 470656744000,
+          "wall_ms": 11.939,
+          "cpu_ms": 1.109541,
+          "allocator_ms": 9.022044,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3291
+          },
+          "counter_bracket": [
+            470603272000,
+            470694827000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 470282220000,
+              "end_ns": 475450955000,
+              "busy_percent": 243.18479685452164
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 470656744000,
+          "end_ns": 470678294000,
+          "wall_ms": 21.55,
+          "cpu_ms": 1.051875,
+          "allocator_ms": 12.118835,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3291
+          },
+          "counter_bracket": [
+            470603272000,
+            470694827000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 470282220000,
+              "end_ns": 475450955000,
+              "busy_percent": 243.18479685452164
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 94.428,
+      "pre_return_cpu_ms": 31.904791,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 68.424,
+      "pre_return_cpu_ms": 27.018708,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 473383489000,
+          "end_ns": 473401242000,
+          "wall_ms": 17.753,
+          "cpu_ms": 1.015375,
+          "allocator_ms": 9.267822,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4157
+          },
+          "counter_bracket": [
+            473294976000,
+            473415353000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 470282220000,
+              "end_ns": 475450955000,
+              "busy_percent": 243.18479685452164
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 103.823,
+      "pre_return_cpu_ms": 32.306166,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 484178172000,
+          "end_ns": 484189253000,
+          "wall_ms": 11.081,
+          "cpu_ms": 5.50675,
+          "allocator_ms": 0.165748,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4777
+          },
+          "counter_bracket": [
+            484093516000,
+            484212665000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 480581804000,
+              "end_ns": 485675073000,
+              "busy_percent": 238.2059800664452
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 77.151,
+      "pre_return_cpu_ms": 26.581291,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 52.97,
+      "pre_return_cpu_ms": 32.703458,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 95.233,
+      "pre_return_cpu_ms": 28.787958,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 494746010000,
+          "end_ns": 494756803000,
+          "wall_ms": 10.793,
+          "cpu_ms": 0.831833,
+          "allocator_ms": 3.005634,
+          "thread_samples": [
+            {
+              "stamp": 494750668000,
+              "tid": 15675,
+              "cpu_ns": 83964340000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4438
+          },
+          "counter_bracket": [
+            494668072000,
+            494783550000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 490861070000,
+              "end_ns": 495983233000,
+              "busy_percent": 267.01777485187625
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 494773998000,
+          "end_ns": 494797879000,
+          "wall_ms": 23.881,
+          "cpu_ms": 6.926459,
+          "allocator_ms": 0.400044,
+          "thread_samples": [
+            {
+              "stamp": 494783550000,
+              "tid": 15675,
+              "cpu_ns": 83970944000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 5633
+          },
+          "counter_bracket": [
+            494732122000,
+            494854954000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 490861070000,
+              "end_ns": 495983233000,
+              "busy_percent": 267.01777485187625
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 68.915,
+      "pre_return_cpu_ms": 26.854625,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 495025999000,
+          "end_ns": 495045835000,
+          "wall_ms": 19.836,
+          "cpu_ms": 0.786833,
+          "allocator_ms": 18.38408,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3041
+          },
+          "counter_bracket": [
+            494996963000,
+            495097251000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 490861070000,
+              "end_ns": 495983233000,
+              "busy_percent": 267.01777485187625
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.418,
+      "pre_return_cpu_ms": 28.995292,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 55.912,
+      "pre_return_cpu_ms": 23.993291,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 61.077,
+      "pre_return_cpu_ms": 25.853417,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 516790621000,
+          "end_ns": 516809950000,
+          "wall_ms": 19.329,
+          "cpu_ms": 6.189667,
+          "allocator_ms": 0.025792,
+          "thread_samples": [
+            {
+              "stamp": 516795466000,
+              "tid": 15675,
+              "cpu_ns": 93548774000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4360
+          },
+          "counter_bracket": [
+            516766927000,
+            516885365000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 516383323000,
+              "end_ns": 521509650000,
+              "busy_percent": 237.38441215323647
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 57.289,
+      "pre_return_cpu_ms": 31.317583,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 541015307000,
+          "end_ns": 541025523000,
+          "wall_ms": 10.216,
+          "cpu_ms": 0.853584,
+          "allocator_ms": 6.115894,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3818
+          },
+          "counter_bracket": [
+            540947972000,
+            541026881000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 536867432000,
+              "end_ns": 541903659000,
+              "busy_percent": 247.58064516129033
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 65.253,
+      "pre_return_cpu_ms": 31.670083,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 111.384,
+      "pre_return_cpu_ms": 30.87625,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 550034497000,
+          "end_ns": 550053514000,
+          "wall_ms": 19.017,
+          "cpu_ms": 6.17125,
+          "allocator_ms": 0.193294,
+          "thread_samples": [
+            {
+              "stamp": 550042863000,
+              "tid": 15675,
+              "cpu_ns": 108107378000,
+              "state": 1,
+              "priority": 15,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 6341
+          },
+          "counter_bracket": [
+            549957965000,
+            550125147000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 546970117000,
+              "end_ns": 552037684000,
+              "busy_percent": 236.87374749498997
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 55.208,
+      "pre_return_cpu_ms": 28.936416,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 74.929,
+      "pre_return_cpu_ms": 27.519708,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 561026067000,
+          "end_ns": 561044281000,
+          "wall_ms": 18.214,
+          "cpu_ms": 6.473417,
+          "allocator_ms": 0.02542,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3718
+          },
+          "counter_bracket": [
+            560970582000,
+            561066845000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 557103966000,
+              "end_ns": 562257888000,
+              "busy_percent": 236.09467455621302
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 101.509,
+      "pre_return_cpu_ms": 26.281125,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 561190606000,
+          "end_ns": 561210244000,
+          "wall_ms": 19.638,
+          "cpu_ms": 5.145541,
+          "allocator_ms": 0.086124,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4360
+          },
+          "counter_bracket": [
+            561134775000,
+            561232014000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 557103966000,
+              "end_ns": 562257888000,
+              "busy_percent": 236.09467455621302
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 76.503,
+      "pre_return_cpu_ms": 25.324458,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 571908156000,
+          "end_ns": 571938825000,
+          "wall_ms": 30.669,
+          "cpu_ms": 7.857542,
+          "allocator_ms": 0.092878,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 5214
+          },
+          "counter_bracket": [
+            571857951000,
+            571945308000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 567445149000,
+              "end_ns": 572528211000,
+              "busy_percent": 234.29336905559276
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.899,
+      "pre_return_cpu_ms": 32.12125,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 582677146000,
+          "end_ns": 582694353000,
+          "wall_ms": 17.207,
+          "cpu_ms": 11.071,
+          "allocator_ms": 0.25346,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2950
+          },
+          "counter_bracket": [
+            582607575000,
+            582708851000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 577607347000,
+              "end_ns": 582709169000,
+              "busy_percent": 226.64890073284477
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 51.419,
+      "pre_return_cpu_ms": 34.833125,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 591321422000,
+          "end_ns": 591332863000,
+          "wall_ms": 11.441,
+          "cpu_ms": 6.643833,
+          "allocator_ms": 0.05154,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3020
+          },
+          "counter_bracket": [
+            591273604000,
+            591357368000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 587861210000,
+              "end_ns": 592917043000,
+              "busy_percent": 224.79892761394103
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 15675,
+      "pre_return_wall_ms": 101.782,
+      "pre_return_cpu_ms": 29.285792,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 594028708000,
+          "end_ns": 594041610000,
+          "wall_ms": 12.902,
+          "cpu_ms": 0.64575,
+          "allocator_ms": 11.180966,
+          "thread_samples": [
+            {
+              "stamp": 594029262000,
+              "tid": 15675,
+              "cpu_ns": 127617772000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1923
+          },
+          "counter_bracket": [
+            593999556000,
+            594051265000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 592917043000,
+              "end_ns": 598182561000,
+              "busy_percent": 235.56270096463024
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 594041610000,
+          "end_ns": 594054721000,
+          "wall_ms": 13.111,
+          "cpu_ms": 1.114208,
+          "allocator_ms": 6.127827,
+          "thread_samples": [
+            {
+              "stamp": 594051265000,
+              "tid": 15675,
+              "cpu_ns": 127619041000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1485
+          },
+          "counter_bracket": [
+            594017094000,
+            594064787000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 592917043000,
+              "end_ns": 598182561000,
+              "busy_percent": 235.56270096463024
+            }
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 594056345000,
+          "end_ns": 594078720000,
+          "wall_ms": 22.375,
+          "cpu_ms": 6.457042,
+          "allocator_ms": 0.499209,
+          "thread_samples": [
+            {
+              "stamp": 594064787000,
+              "tid": 15675,
+              "cpu_ns": 127623129000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2936
+          },
+          "counter_bracket": [
+            594029262000,
+            594131420000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 592917043000,
+              "end_ns": 598182561000,
+              "busy_percent": 235.56270096463024
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 59.707,
+      "pre_return_cpu_ms": 27.272625,
+      "intervals": []
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 56.335,
+      "pre_return_cpu_ms": 35.119292,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 604326178000,
+          "end_ns": 604340948000,
+          "wall_ms": 14.77,
+          "cpu_ms": 7.086167,
+          "allocator_ms": 0.055419,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3249
+          },
+          "counter_bracket": [
+            604248871000,
+            604358979000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 603372147000,
+              "end_ns": 608545916000,
+              "busy_percent": 147.0817120622568
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15675,
+      "pre_return_wall_ms": 65.642,
+      "pre_return_cpu_ms": 25.172792,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 605373669000,
+          "end_ns": 605406284000,
+          "wall_ms": 32.615,
+          "cpu_ms": 6.756083,
+          "allocator_ms": 0.055252,
+          "thread_samples": [
+            {
+              "stamp": 605402624000,
+              "tid": 15675,
+              "cpu_ns": 132821998000,
+              "state": 1,
+              "priority": 17,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4105
+          },
+          "counter_bracket": [
+            605280065000,
+            605483996000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 603372147000,
+              "end_ns": 608545916000,
+              "busy_percent": 147.0817120622568
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "deadline": false,
+      "tid": 15674,
+      "pre_return_wall_ms": 58.17,
+      "pre_return_cpu_ms": 1.554959,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "start_ns": 330944524000,
+          "end_ns": 330998289000,
+          "wall_ms": 53.765,
+          "cpu_ms": 0.07675,
+          "allocator_ms": 0.0,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1916
+          },
+          "counter_bracket": [
+            330872045000,
+            331001389000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 326208417000,
+              "end_ns": 331451314000,
+              "busy_percent": 297.32824427480915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "deadline": false,
+      "tid": 15674,
+      "pre_return_wall_ms": 77.793,
+      "pre_return_cpu_ms": 11.056584,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "start_ns": 406466449000,
+          "end_ns": 406476615000,
+          "wall_ms": 10.166,
+          "cpu_ms": 0.066958,
+          "allocator_ms": 0.002875,
+          "thread_samples": [
+            {
+              "stamp": 406476181000,
+              "tid": 15674,
+              "cpu_ns": 10218597000,
+              "state": 1,
+              "priority": 18,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3868
+          },
+          "counter_bracket": [
+            406364248000,
+            406486896000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 403598803000,
+              "end_ns": 408725744000,
+              "busy_percent": 243.5154707044108
+            }
+          ]
+        },
+        {
+          "phase": "encode -> end",
+          "start_ns": 406483055000,
+          "end_ns": 406530350000,
+          "wall_ms": 47.295,
+          "cpu_ms": 8.432917,
+          "allocator_ms": 17.348196,
+          "thread_samples": [
+            {
+              "stamp": 406486896000,
+              "tid": 15674,
+              "cpu_ns": 10221817000,
+              "state": 1,
+              "priority": 18,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 114,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2829
+          },
+          "counter_bracket": [
+            406454948000,
+            406540044000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 403598803000,
+              "end_ns": 408725744000,
+              "busy_percent": 243.5154707044108
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "('capture', False)": 61,
+    "('capture', True)": 10,
+    "('query', False)": 2
+  },
+  "limitations": "Task counters cover all threads and an expanded time bracket. Positive faults cannot be attributed to measured thread. State snapshots can miss intervening waits; state 1 is not proof of running on CPU. Post-Deadline cleanup excluded."
+}

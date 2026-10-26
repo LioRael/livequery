@@ -1,9 +1,6 @@
 name: Task-table endurance
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - ".github/workflows/task-endurance.yml"
 permissions:
   contents: read
 concurrency:

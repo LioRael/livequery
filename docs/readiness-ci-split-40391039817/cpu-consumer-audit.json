@@ -1,0 +1,71 @@
+{
+  "results": [
+    {
+      "variant": "diagnostic",
+      "engine": "async",
+      "logical_cpus": 3,
+      "workload_wait4_cpu_seconds": 298.737827,
+      "workload_cpu_percent_of_one_core": 99.57190567217509,
+      "ps_estimate_mean": {
+        "workload": 96.57833333333333,
+        "python": 68.79166666666667,
+        "other": 13.906666666666666
+      },
+      "host_tick_cpu_mean": 238.16167656501497,
+      "host_windows_at_least_290_percent": 5,
+      "host_windows": 60
+    },
+    {
+      "variant": "diagnostic",
+      "engine": "sync",
+      "logical_cpus": 3,
+      "workload_wait4_cpu_seconds": 282.114318,
+      "workload_cpu_percent_of_one_core": 94.03205608188728,
+      "ps_estimate_mean": {
+        "workload": 90.59666666666666,
+        "python": 73.70833333333333,
+        "other": 13.135
+      },
+      "host_tick_cpu_mean": 235.26278872760935,
+      "host_windows_at_least_290_percent": 4,
+      "host_windows": 60
+    },
+    {
+      "variant": "official",
+      "engine": "async",
+      "logical_cpus": 3,
+      "workload_wait4_cpu_seconds": 256.320192,
+      "workload_cpu_percent_of_one_core": 85.42201201534834,
+      "ps_estimate_mean": {
+        "workload": 82.50833333333334,
+        "python": 70.545,
+        "other": 18.903333333333332
+      },
+      "host_tick_cpu_mean": 236.49200316003694,
+      "host_windows_at_least_290_percent": 6,
+      "host_windows": 60
+    },
+    {
+      "variant": "official",
+      "engine": "sync",
+      "logical_cpus": 3,
+      "workload_wait4_cpu_seconds": 243.62572600000001,
+      "workload_cpu_percent_of_one_core": 81.19882443716943,
+      "ps_estimate_mean": {
+        "workload": 79.01333333333334,
+        "python": 73.12,
+        "other": 17.255
+      },
+      "host_tick_cpu_mean": 231.87261380982326,
+      "host_windows_at_least_290_percent": 5,
+      "host_windows": 60
+    }
+  ],
+  "limitations": [
+    "wait4 includes workload startup and finalization, normalized by benchmark elapsed time",
+    "ps samples retain only processes above 5% or explicitly selected; absent entries mean below threshold or absent, not zero CPU",
+    "ps CPU is a decayed estimate, not a delta aligned to host ticks; the difference must not be labelled unattributed kernel CPU",
+    "all Python processes are grouped, including driver and diagnostic sampler",
+    "VM CPU counters cannot establish exclusive physical-host scheduling"
+  ]
+}
