@@ -30,3 +30,7 @@ Task-table CI run: https://github.com/LioRael/livequery/actions/runs/40265450720
 - Summarize measured cost ranges and limitations after all four task jobs complete. No general production SLO, hard timeout, or adoption claim follows from these fixtures.
 
 The old alpha.4 endurance evidence remains valid for its recorded source only. No merge or publication is part of this readiness run.
+
+## First CI task endurance outcome
+
+[Attempt 1](readiness-task-attempt1/README.md) failed on both macOS engines due to publication Deadline errors (42 sync / 40 async). Both Linux engines passed. All trials reached two hours with no business errors. This is not accepted release evidence. Validation is being optimized to avoid reconstructing an entire JSON tree; corrected behavior requires fresh baseline and task endurance runs.

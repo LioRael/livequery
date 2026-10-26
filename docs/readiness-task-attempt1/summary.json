@@ -1,0 +1,58 @@
+[
+  {
+    "case": "darwin-async",
+    "source_ref": "75d83d5304ae5c046dd00dc478f4934863634f3c",
+    "binary_sha256": "af6ad490a5dc4316a585e93e7381aa1b0be386145653856515951b1de75f39fb",
+    "elapsed_seconds": 7200.031067708,
+    "request_errors": 0,
+    "observation_errors": {
+      "busy": 16
+    },
+    "publication_errors": {
+      "busy": 1,
+      "deadline": 40
+    },
+    "attempts": 116734
+  },
+  {
+    "case": "darwin-sync",
+    "source_ref": "75d83d5304ae5c046dd00dc478f4934863634f3c",
+    "binary_sha256": "af6ad490a5dc4316a585e93e7381aa1b0be386145653856515951b1de75f39fb",
+    "elapsed_seconds": 7200.047300583001,
+    "request_errors": 0,
+    "observation_errors": {
+      "busy": 25
+    },
+    "publication_errors": {
+      "busy": 1,
+      "deadline": 42
+    },
+    "attempts": 118564
+  },
+  {
+    "case": "linux-async",
+    "source_ref": "75d83d5304ae5c046dd00dc478f4934863634f3c",
+    "binary_sha256": "dbdd55a29c3986a3307f4296abc91ebc41e4a4f031480362e48a100fcf36d03d",
+    "elapsed_seconds": 7200.014397715,
+    "request_errors": 0,
+    "observation_errors": {
+      "busy": 12
+    },
+    "publication_errors": {},
+    "attempts": 167914
+  },
+  {
+    "case": "linux-sync",
+    "source_ref": "75d83d5304ae5c046dd00dc478f4934863634f3c",
+    "binary_sha256": "dbdd55a29c3986a3307f4296abc91ebc41e4a4f031480362e48a100fcf36d03d",
+    "elapsed_seconds": 7200.024210971001,
+    "request_errors": 0,
+    "observation_errors": {
+      "busy": 19
+    },
+    "publication_errors": {
+      "busy": 2
+    },
+    "attempts": 159060
+  }
+]

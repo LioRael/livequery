@@ -169,7 +169,7 @@ impl Snapshot {
         }
         let bytes = json_bytes(self, limits.bytes)?;
         // Parsing validates nesting before any remote request can clone a published value.
-        let _: serde_json::Value = serde_json::from_slice(&bytes)?;
+        validate_json(&bytes)?;
         let mut names = std::collections::BTreeSet::new();
         if self.columns.is_empty()
             || self
@@ -186,6 +186,73 @@ impl Snapshot {
         Ok(bytes.len())
     }
 }
+// Walk through serde_json's normal recursive deserializer without constructing a
+// second JSON tree. deserialize_any retains its nesting and numeric checks.
+struct ValidatedJson(bool);
+impl<'de> Deserialize<'de> for ValidatedJson {
+    fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = ValidatedJson;
+            fn expecting(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+                f.write_str("a bounded JSON value")
+            }
+            fn visit_bool<E: serde::de::Error>(self, _: bool) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_i64<E: serde::de::Error>(self, _: i64) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_u64<E: serde::de::Error>(self, _: u64) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_f64<E: serde::de::Error>(self, _: f64) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_str<E: serde::de::Error>(self, value: &str) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(matches!(
+                    value,
+                    "$serde_json::private::Number" | "$serde_json::private::RawValue"
+                )))
+            }
+            fn visit_unit<E: serde::de::Error>(self) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_seq<A: serde::de::SeqAccess<'de>>(
+                self,
+                mut seq: A,
+            ) -> Result<Self::Value, A::Error> {
+                let mut special = false;
+                while let Some(value) = seq.next_element::<ValidatedJson>()? {
+                    special |= value.0;
+                }
+                Ok(ValidatedJson(special))
+            }
+            fn visit_map<A: serde::de::MapAccess<'de>>(
+                self,
+                mut map: A,
+            ) -> Result<Self::Value, A::Error> {
+                let mut special = false;
+                while let Some(key) = map.next_key::<ValidatedJson>()? {
+                    special |= key.0 | map.next_value::<ValidatedJson>()?.0;
+                }
+                Ok(ValidatedJson(special))
+            }
+        }
+        deserializer.deserialize_any(Visitor)
+    }
+}
+
+fn validate_json(bytes: &[u8]) -> Result<(), serde_json::Error> {
+    let scanned: ValidatedJson = serde_json::from_slice(bytes)?;
+    // Feature unification can enable Value's reserved-key representations. Keep
+    // their acceptance semantics without rebuilding ordinary snapshot trees.
+    if scanned.0 {
+        let _: Value = serde_json::from_slice(bytes)?;
+    }
+    Ok(())
+}
+
 /// An opaque source identity and publication sequence used for conditional observations.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Revision {
@@ -528,6 +595,39 @@ pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error>
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn tree_free_validation_preserves_json_acceptance_and_depth_limit() {
+        for depth in 0..140 {
+            for (open, close) in [("[", "]"), ("{\"key\":", "}")] {
+                let input = format!("{}null{}", open.repeat(depth), close.repeat(depth));
+                assert_eq!(
+                    validate_json(input.as_bytes()).is_ok(),
+                    serde_json::from_str::<Value>(&input).is_ok(),
+                    "depth={depth}, input={open}"
+                );
+            }
+        }
+        for input in [
+            r#"{"$serde_json::private::Number":"not-a-number"}"#,
+            r#"{"$serde_json::private::RawValue":"invalid"}"#,
+            "null",
+            "true",
+            "-9223372036854775808",
+            "18446744073709551615",
+            "1.25",
+            "1e400",
+            "[1,]",
+            "{\"x\":}",
+            "null true",
+            "\"escaped\\ntext\"",
+        ] {
+            assert_eq!(
+                validate_json(input.as_bytes()).is_ok(),
+                serde_json::from_str::<Value>(input).is_ok(),
+                "{input}"
+            );
+        }
+    }
     #[test]
     fn request_paths_do_not_wait_for_registration_writers() {
         let registry = Registry::new();
