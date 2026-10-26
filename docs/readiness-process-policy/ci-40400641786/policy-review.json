@@ -1,0 +1,941 @@
+{
+  "macos26-diagnostic-async-be31c4c19b2b723f07e30d99cf5c511bda9e66e7": {
+    "process-policy-outside": [
+      {
+        "thread": "main",
+        "pid": 3268,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 17,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      },
+      {
+        "thread": "child",
+        "pid": 3268,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      }
+    ],
+    "process-policy-inside": [
+      {
+        "thread": "main",
+        "pid": 3271,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "thread": "child",
+        "pid": 3271,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      }
+    ],
+    "measurement-launch": {
+      "label": "org.livequery.measurement.13d70335db9841348baec4d65de5f5df",
+      "domain": "gui/501",
+      "process_type": "Interactive",
+      "scope": "Only this measurement and its children; no library QoS changes",
+      "library_limits_changed": false,
+      "bootstrap_exit": 0,
+      "bootstrap_stderr": "",
+      "measurement_exit": 1,
+      "bootout_exit": 0,
+      "bootout_stderr": "",
+      "job_absent_after_cleanup": true
+    },
+    "measurement-exit": {
+      "exit_code": 1
+    },
+    "measurement-provenance": {
+      "variant": "diagnostic",
+      "engine": "async",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+      "cpu_admission_gate": false,
+      "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+    },
+    "load": {
+      "engine": "async",
+      "elapsed_seconds": 300.020888917,
+      "requests": 4757926,
+      "observations": 46638,
+      "publication_attempts": 7980,
+      "publication_error_codes": {
+        "deadline": 2
+      },
+      "observation_error_codes": {
+        "busy": 5
+      },
+      "request_error_codes": {}
+    },
+    "source_ref": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "binary_sha256": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+    "thread_policy_samples": [
+      {
+        "base": 31,
+        "max": 63,
+        "current": 31,
+        "state": 3,
+        "samples": 46402
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 31,
+        "state": 1,
+        "samples": 17432
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 30,
+        "state": 3,
+        "samples": 1771
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 30,
+        "state": 1,
+        "samples": 1553
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 29,
+        "state": 3,
+        "samples": 1023
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 29,
+        "state": 1,
+        "samples": 976
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 27,
+        "state": 1,
+        "samples": 672
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 26,
+        "state": 1,
+        "samples": 640
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 28,
+        "state": 1,
+        "samples": 601
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 25,
+        "state": 1,
+        "samples": 500
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 28,
+        "state": 3,
+        "samples": 437
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 24,
+        "state": 1,
+        "samples": 433
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 27,
+        "state": 3,
+        "samples": 297
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 23,
+        "state": 1,
+        "samples": 283
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 22,
+        "state": 1,
+        "samples": 229
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 26,
+        "state": 3,
+        "samples": 195
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 25,
+        "state": 3,
+        "samples": 161
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 21,
+        "state": 1,
+        "samples": 131
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 24,
+        "state": 3,
+        "samples": 125
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 20,
+        "state": 1,
+        "samples": 94
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 23,
+        "state": 3,
+        "samples": 88
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 22,
+        "state": 3,
+        "samples": 74
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 19,
+        "state": 1,
+        "samples": 45
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 21,
+        "state": 3,
+        "samples": 35
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 20,
+        "state": 3,
+        "samples": 34
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 18,
+        "state": 1,
+        "samples": 31
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 19,
+        "state": 3,
+        "samples": 12
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 17,
+        "state": 1,
+        "samples": 8
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 18,
+        "state": 3,
+        "samples": 7
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 17,
+        "state": 3,
+        "samples": 3
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 15,
+        "state": 1,
+        "samples": 2
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 16,
+        "state": 3,
+        "samples": 1
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 14,
+        "state": 3,
+        "samples": 1
+      }
+    ]
+  },
+  "macos26-diagnostic-sync-be31c4c19b2b723f07e30d99cf5c511bda9e66e7": {
+    "process-policy-outside": [
+      {
+        "thread": "main",
+        "pid": 4111,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 17,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      },
+      {
+        "thread": "child",
+        "pid": 4111,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      }
+    ],
+    "process-policy-inside": [
+      {
+        "thread": "main",
+        "pid": 4114,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "thread": "child",
+        "pid": 4114,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      }
+    ],
+    "measurement-launch": {
+      "label": "org.livequery.measurement.69e1ecf278a44ac4a94fea75b372a840",
+      "domain": "gui/501",
+      "process_type": "Interactive",
+      "scope": "Only this measurement and its children; no library QoS changes",
+      "library_limits_changed": false,
+      "bootstrap_exit": 0,
+      "bootstrap_stderr": "",
+      "measurement_exit": 1,
+      "bootout_exit": 0,
+      "bootout_stderr": "",
+      "job_absent_after_cleanup": true
+    },
+    "measurement-exit": {
+      "exit_code": 1
+    },
+    "measurement-provenance": {
+      "variant": "diagnostic",
+      "engine": "sync",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261021.0445.8",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+      "cpu_admission_gate": false,
+      "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+    },
+    "load": {
+      "engine": "sync",
+      "elapsed_seconds": 300.01955254200004,
+      "requests": 6832381,
+      "observations": 49916,
+      "publication_attempts": 8011,
+      "publication_error_codes": {
+        "deadline": 4
+      },
+      "observation_error_codes": {
+        "busy": 4
+      },
+      "request_error_codes": {}
+    },
+    "source_ref": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "binary_sha256": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+    "thread_policy_samples": [
+      {
+        "base": 31,
+        "max": 63,
+        "current": 31,
+        "state": 3,
+        "samples": 44351
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 31,
+        "state": 1,
+        "samples": 16207
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 30,
+        "state": 3,
+        "samples": 2888
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 30,
+        "state": 1,
+        "samples": 1852
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 29,
+        "state": 3,
+        "samples": 1387
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 29,
+        "state": 1,
+        "samples": 1254
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 28,
+        "state": 1,
+        "samples": 1096
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 27,
+        "state": 1,
+        "samples": 889
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 26,
+        "state": 1,
+        "samples": 880
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 28,
+        "state": 3,
+        "samples": 708
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 25,
+        "state": 1,
+        "samples": 671
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 24,
+        "state": 1,
+        "samples": 532
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 23,
+        "state": 1,
+        "samples": 477
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 22,
+        "state": 1,
+        "samples": 336
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 27,
+        "state": 3,
+        "samples": 333
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 26,
+        "state": 3,
+        "samples": 289
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 21,
+        "state": 1,
+        "samples": 224
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 25,
+        "state": 3,
+        "samples": 199
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 24,
+        "state": 3,
+        "samples": 170
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 20,
+        "state": 1,
+        "samples": 155
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 23,
+        "state": 3,
+        "samples": 145
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 22,
+        "state": 3,
+        "samples": 114
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 19,
+        "state": 1,
+        "samples": 113
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 21,
+        "state": 3,
+        "samples": 78
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 18,
+        "state": 1,
+        "samples": 72
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 17,
+        "state": 1,
+        "samples": 59
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 20,
+        "state": 3,
+        "samples": 53
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 19,
+        "state": 3,
+        "samples": 37
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 16,
+        "state": 1,
+        "samples": 29
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 18,
+        "state": 3,
+        "samples": 23
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 17,
+        "state": 3,
+        "samples": 16
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 16,
+        "state": 3,
+        "samples": 7
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 14,
+        "state": 1,
+        "samples": 4
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 15,
+        "state": 1,
+        "samples": 4
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 14,
+        "state": 3,
+        "samples": 3
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 12,
+        "state": 1,
+        "samples": 2
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 12,
+        "state": 3,
+        "samples": 1
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 13,
+        "state": 3,
+        "samples": 1
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 8,
+        "state": 1,
+        "samples": 1
+      },
+      {
+        "base": 31,
+        "max": 63,
+        "current": 15,
+        "state": 3,
+        "samples": 1
+      }
+    ]
+  },
+  "macos26-official-async-be31c4c19b2b723f07e30d99cf5c511bda9e66e7": {
+    "process-policy-outside": [
+      {
+        "thread": "main",
+        "pid": 6411,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 17,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      },
+      {
+        "thread": "child",
+        "pid": 6411,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      }
+    ],
+    "process-policy-inside": [
+      {
+        "thread": "main",
+        "pid": 6414,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "thread": "child",
+        "pid": 6414,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      }
+    ],
+    "measurement-launch": {
+      "label": "org.livequery.measurement.818f0f40e41b478bb9e489ffa1e853ea",
+      "domain": "gui/501",
+      "process_type": "Interactive",
+      "scope": "Only this measurement and its children; no library QoS changes",
+      "library_limits_changed": false,
+      "bootstrap_exit": 0,
+      "bootstrap_stderr": "",
+      "measurement_exit": 0,
+      "bootout_exit": 0,
+      "bootout_stderr": "",
+      "job_absent_after_cleanup": true
+    },
+    "measurement-exit": {
+      "exit_code": 0
+    },
+    "measurement-provenance": {
+      "variant": "official",
+      "engine": "async",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+      "cpu_admission_gate": false,
+      "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+    },
+    "load": {
+      "engine": "async",
+      "elapsed_seconds": 300.02591375,
+      "requests": 11050765,
+      "observations": 63211,
+      "publication_attempts": 13769,
+      "publication_error_codes": {
+        "busy": 1
+      },
+      "observation_error_codes": {
+        "busy": 1
+      },
+      "request_error_codes": {}
+    },
+    "source_ref": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "binary_sha256": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf"
+  },
+  "macos26-official-sync-be31c4c19b2b723f07e30d99cf5c511bda9e66e7": {
+    "process-policy-outside": [
+      {
+        "thread": "main",
+        "pid": 7902,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 17,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      },
+      {
+        "thread": "child",
+        "pid": 7902,
+        "nice": -10,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 20,
+        "base_priority": 20,
+        "max_priority": 20
+      }
+    ],
+    "process-policy-inside": [
+      {
+        "thread": "main",
+        "pid": 7905,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "thread": "child",
+        "pid": 7905,
+        "nice": 0,
+        "qos_status": 0,
+        "qos": 21,
+        "relative": 0,
+        "task_role_status": 0,
+        "task_role": 0,
+        "threadinfo_bytes": 112,
+        "current_priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      }
+    ],
+    "measurement-launch": {
+      "label": "org.livequery.measurement.301f644f29e84082843c262daa912a5a",
+      "domain": "gui/501",
+      "process_type": "Interactive",
+      "scope": "Only this measurement and its children; no library QoS changes",
+      "library_limits_changed": false,
+      "bootstrap_exit": 0,
+      "bootstrap_stderr": "",
+      "measurement_exit": 0,
+      "bootout_exit": 0,
+      "bootout_stderr": "",
+      "job_absent_after_cleanup": true
+    },
+    "measurement-exit": {
+      "exit_code": 0
+    },
+    "measurement-provenance": {
+      "variant": "official",
+      "engine": "sync",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+      "cpu_admission_gate": false,
+      "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+    },
+    "load": {
+      "engine": "sync",
+      "elapsed_seconds": 300.02470249999993,
+      "requests": 6927532,
+      "observations": 52695,
+      "publication_attempts": 11236,
+      "publication_error_codes": {
+        "busy": 1
+      },
+      "observation_error_codes": {
+        "busy": 9
+      },
+      "request_error_codes": {}
+    },
+    "source_ref": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "binary_sha256": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf"
+  }
+}

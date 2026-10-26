@@ -34,3 +34,14 @@ The old alpha.4 endurance evidence remains valid for its recorded source only. N
 ## First CI task endurance outcome
 
 [Attempt 1](readiness-task-attempt1/README.md) failed on both macOS engines due to publication Deadline errors (42 sync / 40 async). Both Linux engines passed. All trials reached two hours with no business errors. This is not accepted release evidence. Validation is being optimized to avoid reconstructing an entire JSON tree; corrected behavior requires fresh baseline and task endurance runs.
+
+## Current policy-corrected candidate
+
+[Run 40400641786](readiness-process-policy/ci-40400641786/README.md) confirms
+a hosted Utility QoS clamp and its correction for the measurement process.
+Official sync and async passed the original 300-second task gates on unchanged
+5bc2613 binaries. Instrumented sync/async still failed and remain preserved.
+This is candidate evidence, not the required final endurance result. The next
+full Linux/macOS 26 ARM baseline and task cohorts use separate build VMs,
+verified executable hashes, and the same measured default scheduling policy.
+No gate, traffic rate, concurrency, or library deadline was relaxed.

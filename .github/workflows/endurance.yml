@@ -7,33 +7,84 @@ concurrency:
   group: endurance-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  endurance:
+  build:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-26]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
+      - name: Package exact measurement binary and toolchain
+        run: |
+          mkdir -p target/ci-bin
+          cp experiments/workload/target/release/livequery-workload target/ci-bin/livequery-workload
+          rustc -Vv > target/ci-bin/toolchain.txt
+          git rev-parse HEAD >> target/ci-bin/toolchain.txt
+      - if: runner.os == 'macOS'
+        run: clang -Wall -Wextra -Werror scripts/diagnostics/process-policy.c -o target/ci-bin/policy-probe
+      - name: Hash all measurement executables
+        run: |
+          cd target/ci-bin
+          shasum -a 256 livequery-workload > SHA256SUMS
+          if [ -f policy-probe ]; then shasum -a 256 policy-probe >> SHA256SUMS; fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: endurance-binary-${{ matrix.os }}-${{ github.sha }}
+          path: target/ci-bin
+          if-no-files-found: error
+          retention-days: 30
+  endurance:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-26]
         engine: [sync, async]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 160
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release --manifest-path experiments/workload/Cargo.toml --locked
-      - name: Record toolchain
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: endurance-binary-${{ matrix.os }}-${{ github.sha }}
+          path: target/ci-bin
+      - name: Verify build artifacts without compiling on the measurement VM
         run: |
-          mkdir -p target
-          rustc -Vv > target/toolchain.txt
-          git rev-parse HEAD >> target/toolchain.txt
-      - name: Exercise service for two hours
-        run: python3 scripts/benchmark-service.py --only soak --engine '${{ matrix.engine }}' --repeats 1 --seconds 7200 --output target/endurance.json
-      - name: Enforce duration, traffic and resource gates
-        run: python3 scripts/check-load.py target/endurance.json --min-seconds 7200 --engine '${{ matrix.engine }}'
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+          cd target/ci-bin
+          shasum -a 256 -c SHA256SUMS
+          chmod +x livequery-workload
+          if [ -f policy-probe ]; then chmod +x policy-probe; fi
+      - name: Preserve toolchain and measurement host identity
+        run: |
+          cp target/ci-bin/toolchain.txt target/toolchain.txt
+          uname -a >> target/toolchain.txt
+          python3 -c 'import json,os,platform,sys; print(json.dumps({"os":platform.platform(),"arch":platform.machine(),"cpus":os.cpu_count(),"image":os.environ.get("ImageVersion"),"python":sys.version}))' >> target/toolchain.txt
+      - name: Isolate observed indexing agents on the disposable Mac
+        if: runner.os == 'macOS'
+        run: |
+          sudo mdutil -a -i off
+          mdutil -a -s
+          python3 scripts/diagnostics/quiet-hosted-macos.py
+          sleep 180
+      - name: Original Linux endurance and acceptance gates
+        if: runner.os == 'Linux'
+        run: bash scripts/endurance.sh '${{ matrix.engine }}'
+      - name: Original macOS endurance with default application scheduling
+        if: runner.os == 'macOS'
+        run: python3 scripts/diagnostics/measurement-process.py --output target/measurement-policy --probe target/ci-bin/policy-probe --timeout 9600 -- bash scripts/endurance.sh '${{ matrix.engine }}'
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: endurance-${{ matrix.os }}-${{ matrix.engine }}-${{ github.sha }}
           path: |
             target/endurance.json
             target/toolchain.txt
+            target/ci-bin/SHA256SUMS
+            target/ci-offcpu/service-isolation.json
+            target/measurement-policy
           if-no-files-found: error
           retention-days: 30

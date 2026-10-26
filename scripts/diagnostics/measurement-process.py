@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Run a measurement in an owned, temporary launchd job on a hosted Mac."""
+import argparse
 import json
 import os
 from pathlib import Path
@@ -12,11 +13,9 @@ import time
 import uuid
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'target/ci-offcpu'
 
 
-def policy(destination):
-    probe = OUT / 'bin/policy-probe'
+def policy(probe, destination):
     probe.chmod(0o755)
     result = subprocess.run([str(probe)], check=True, capture_output=True, text=True)
     rows = [json.loads(line) for line in result.stdout.splitlines()]
@@ -24,26 +23,37 @@ def policy(destination):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--child', action='store_true')
+    parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--probe', type=Path, required=True)
+    parser.add_argument('--timeout', type=int, required=True)
+    parser.add_argument('command', nargs=argparse.REMAINDER)
+    args = parser.parse_args()
+    command = args.command[1:] if args.command[:1] == ['--'] else args.command
+    if not command or args.timeout <= 0:
+        parser.error('a command and positive timeout are required')
     if (os.environ.get('GITHUB_ACTIONS') != 'true'
             or os.environ.get('RUNNER_ENVIRONMENT') != 'github-hosted'
             or platform.system() != 'Darwin'):
         raise SystemExit('Only disposable GitHub-hosted macOS jobs are supported')
-    OUT.mkdir(parents=True, exist_ok=True)
-    if sys.argv[1] == '--child':
-        status = OUT / 'measurement-exit.json'
+    output = args.output.resolve()
+    probe = args.probe.resolve()
+    output.mkdir(parents=True, exist_ok=True)
+    if args.child:
+        status = output / 'measurement-exit.json'
         code = 1
         try:
-            policy(OUT / 'process-policy-inside.json')
-            code = subprocess.run([sys.executable, str(ROOT / 'scripts/diagnostics/macos.py'),
-                                   *sys.argv[2:]], cwd=ROOT).returncode
+            policy(probe, output / 'process-policy-inside.json')
+            code = subprocess.run(command, cwd=ROOT).returncode
         finally:
             temporary = status.with_suffix('.tmp')
             temporary.write_text(json.dumps({'exit_code': code}) + '\n')
             temporary.replace(status)
         return code
 
-    policy(OUT / 'process-policy-outside.json')
-    status = OUT / 'measurement-exit.json'
+    policy(probe, output / 'process-policy-outside.json')
+    status = output / 'measurement-exit.json'
     if status.exists():
         raise SystemExit('Refusing to reuse an already completed measurement directory')
     label = 'org.livequery.measurement.' + uuid.uuid4().hex
@@ -65,8 +75,8 @@ def main():
                                  '--child', *sys.argv[1:]],
             'WorkingDirectory': str(ROOT), 'EnvironmentVariables': environment,
             'ProcessType': 'Interactive', 'RunAtLoad': True,
-            'StandardOutPath': str(OUT / 'measurement-stdout.txt'),
-            'StandardErrorPath': str(OUT / 'measurement-stderr.txt'),
+            'StandardOutPath': str(output / 'measurement-stdout.txt'),
+            'StandardErrorPath': str(output / 'measurement-stderr.txt'),
         }))
         attempted = False
         try:
@@ -77,10 +87,10 @@ def main():
             record['bootstrap_stderr'] = result.stderr
             if result.returncode:
                 raise RuntimeError('Could not start owned measurement job')
-            deadline = time.monotonic() + 900
+            deadline = time.monotonic() + args.timeout
             while not status.exists():
                 if time.monotonic() >= deadline:
-                    raise TimeoutError('Owned measurement job did not finish in 900 seconds')
+                    raise TimeoutError('Owned measurement job exceeded its workflow time budget')
                 time.sleep(.25)
             code = json.loads(status.read_text())['exit_code']
             record['measurement_exit'] = code
@@ -94,7 +104,7 @@ def main():
                 check = subprocess.run(['launchctl', 'print', f'{domain}/{label}'],
                                        capture_output=True, text=True)
                 record['job_absent_after_cleanup'] = check.returncode != 0
-            (OUT / 'measurement-launch.json').write_text(json.dumps(record, indent=2) + '\n')
+            (output / 'measurement-launch.json').write_text(json.dumps(record, indent=2) + '\n')
             if attempted and not record['job_absent_after_cleanup']:
                 raise RuntimeError('Owned measurement job remained after cleanup')
 

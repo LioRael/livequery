@@ -19,3 +19,21 @@ The remaining resource question is short-interval CPU availability to the failed
 ## Resource scope
 
 The user declined paid runners. The diagnostic workflow is fixed to the existing standard `macos-26` ARM runner. The temporary xlarge selector has been removed; no paid job was dispatched, no validation repository created, and no repository moved. Further investigation stays within the existing implementation, workload and free CI; adding capacity is not a prerequisite for release. Original acceptance requirements remain unchanged.
+# Measurement scheduling correction
+
+Run [40400641786](readiness-process-policy/ci-40400641786/README.md) confirmed
+that the hosted runner's child processes inherited a Utility QoS clamp. An
+owned temporary launchd job restores ordinary default application scheduling
+for the entire measurement, including business traffic. The library never
+sets thread priority. Exact before/after policy and cleanup evidence are
+retained. Both official 300-second candidates passed the original gates;
+both instrumented candidates still failed and remain recorded.
+
+Baseline and task endurance now build once per OS on separate VMs, hash the
+executables, then run the original OS/engine matrix on measurement VMs without
+compiling. macOS coverage is explicitly pinned to the free macOS 26 ARM runner.
+The original durations, repetitions, workload parameters and check-load rules
+are unchanged. Linux runs directly; macOS uses the owned measurement launcher.
+The existing smoke and sustained-load jobs use the same macOS launch policy.
+This adds no CPU admission gate and does not make diagnostic instrumentation
+an additional release gate. Long official-binary acceptance is still required.

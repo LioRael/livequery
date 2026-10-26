@@ -1,0 +1,30 @@
+[
+  {
+    "thread": "main",
+    "pid": 6414,
+    "nice": 0,
+    "qos_status": 0,
+    "qos": 21,
+    "relative": 0,
+    "task_role_status": 0,
+    "task_role": 0,
+    "threadinfo_bytes": 112,
+    "current_priority": 31,
+    "base_priority": 31,
+    "max_priority": 63
+  },
+  {
+    "thread": "child",
+    "pid": 6414,
+    "nice": 0,
+    "qos_status": 0,
+    "qos": 21,
+    "relative": 0,
+    "task_role_status": 0,
+    "task_role": 0,
+    "threadinfo_bytes": 112,
+    "current_priority": 31,
+    "base_priority": 31,
+    "max_priority": 63
+  }
+]

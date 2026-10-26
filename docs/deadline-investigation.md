@@ -44,3 +44,15 @@ The current implementation audit establishes these boundaries:
 - The business driver has four clients and observers back off after errors. There is no observed error-triggered tight retry loop to remove. Driver throttling would change the required workload and is not a repair.
 
 This audit has not identified a code defect explaining the observed off-CPU capture intervals. No fix, successful acceptance, or permission to relax the original gates is claimed. Historical evidence remains intact; do not resume the withdrawn paid-resource route or dispatch identical trials merely to obtain a pass.
+# Confirmed hosted scheduling-policy inheritance
+
+The current candidate corrects an inherited Utility QoS clamp in hosted
+measurement processes, with direct before/after evidence rather than an
+inference from CPU utilization. See the [policy investigation and complete
+candidate results](readiness-process-policy/ci-40400641786/README.md).
+Official sync and async each passed 300 seconds on unchanged binaries after
+the correction. Instrumented counterparts still failed; this is not proof
+that all tail timeouts are resolved. Proceed to the original full acceptance
+on the official binaries, retaining every earlier failure and the exact
+measurement policy. No library priority change, paid runner, or new gate is
+part of this correction.

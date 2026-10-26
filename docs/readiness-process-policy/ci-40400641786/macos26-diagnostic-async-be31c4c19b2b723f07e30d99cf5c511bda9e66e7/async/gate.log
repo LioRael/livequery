@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/livequery/livequery/scripts/check-load.py", line 28, in <module>
+    assert set(row[key]) <= {"busy"}, (row["engine"], key, row[key])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('async', 'publication_error_codes', {'deadline': 2})

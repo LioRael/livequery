@@ -1,0 +1,13 @@
+{
+  "label": "org.livequery.measurement.818f0f40e41b478bb9e489ffa1e853ea",
+  "domain": "gui/501",
+  "process_type": "Interactive",
+  "scope": "Only this measurement and its children; no library QoS changes",
+  "library_limits_changed": false,
+  "bootstrap_exit": 0,
+  "bootstrap_stderr": "",
+  "measurement_exit": 0,
+  "bootout_exit": 0,
+  "bootout_stderr": "",
+  "job_absent_after_cleanup": true
+}
