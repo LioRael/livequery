@@ -59,6 +59,7 @@ if a.action == 'prepare':
         'patch_sha256': digest(patch),
         'diagnostic_only': True,
         'runner_image': os.environ.get('ImageVersion'),
+        'runner_os_image': os.environ.get('ImageOS'),
         'runner_arch': platform.machine(),
         'os': platform.platform(),
         'logical_cpus': os.cpu_count(),
