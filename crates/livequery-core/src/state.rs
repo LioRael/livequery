@@ -154,7 +154,7 @@ impl Snapshot {
                 return Err(Error::Limit("scan rows".into()));
             }
             let row = row.inspect_bounded(limits.bytes.saturating_sub(bytes))?;
-            bytes += json_bytes(&row, limits.bytes.saturating_sub(bytes))?.len();
+            bytes += json_size(&row, limits.bytes.saturating_sub(bytes))?;
             snapshot.rows.push(row);
         }
         snapshot.validate(limits)?;
@@ -557,6 +557,39 @@ pub fn value_with_budget<T: Serialize>(value: &T, remaining: &mut usize) -> Resu
     Ok(serde_json::from_slice(&bytes)?)
 }
 
+// Capture only needs each row's encoded size, not another owned byte buffer.
+fn json_size<T: Serialize>(value: &T, max: usize) -> Result<usize, Error> {
+    struct Counter {
+        len: usize,
+        max: usize,
+        exceeded: bool,
+    }
+    impl std::io::Write for Counter {
+        fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
+            if bytes.len() > self.max.saturating_sub(self.len) {
+                self.exceeded = true;
+                return Err(std::io::Error::other("field byte budget exceeded"));
+            }
+            self.len += bytes.len();
+            Ok(bytes.len())
+        }
+        fn flush(&mut self) -> std::io::Result<()> {
+            Ok(())
+        }
+    }
+    let mut counter = Counter {
+        len: 0,
+        max,
+        exceeded: false,
+    };
+    let result = serde_json::to_writer(&mut counter, value);
+    if counter.exceeded {
+        return Err(Error::Limit("field bytes".into()));
+    }
+    result?;
+    Ok(counter.len)
+}
+
 /// Serializes a value through a capped writer without retaining excess output.
 /// # Errors
 /// Returns a limit or serialization error when encoding cannot complete within the budget.
@@ -595,6 +628,27 @@ pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error>
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn counting_rows_preserves_encoded_byte_limits() {
+        for value in [
+            serde_json::json!({"text": "quote\" slash\\ newline\n中文", "n": u64::MAX}),
+            serde_json::json!([null, true, -1, 1.25, [], {}]),
+        ] {
+            let bytes = serde_json::to_vec(&value).unwrap();
+            for limit in 0..=bytes.len() + 1 {
+                let expected = json_bytes(&value, limit);
+                let actual = json_size(&value, limit);
+                assert_eq!(
+                    actual.as_ref().err().map(Error::code),
+                    expected.as_ref().err().map(Error::code)
+                );
+                if let Ok(size) = actual {
+                    assert_eq!(size, bytes.len());
+                }
+            }
+        }
+    }
+
     #[test]
     fn tree_free_validation_preserves_json_acceptance_and_depth_limit() {
         for depth in 0..140 {
