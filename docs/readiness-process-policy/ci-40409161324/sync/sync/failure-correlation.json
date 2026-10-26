@@ -1,0 +1,125 @@
+{
+  "spans": [
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 12230,
+      "pre_return_wall_ms": 52.666,
+      "pre_return_cpu_ms": 3.571833,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 323757552000,
+          "end_ns": 323782729000,
+          "wall_ms": 25.177,
+          "cpu_ms": 0.32775,
+          "allocator_ms": 0.101891,
+          "thread_samples": [
+            {
+              "stamp": 323782510000,
+              "tid": 12230,
+              "cpu_ns": 23272843000,
+              "state": 1,
+              "priority": 29,
+              "base_priority": 31,
+              "max_priority": 63
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 286
+          },
+          "counter_bracket": [
+            323736556000,
+            323808054000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 322037006000,
+              "end_ns": 327102376000,
+              "busy_percent": 299.2110453648915
+            }
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 323785015000,
+          "end_ns": 323808174000,
+          "wall_ms": 23.159,
+          "cpu_ms": 0.451292,
+          "allocator_ms": 0.132861,
+          "thread_samples": [
+            {
+              "stamp": 323808054000,
+              "tid": 12230,
+              "cpu_ns": 23274579000,
+              "state": 1,
+              "priority": 29,
+              "base_priority": 31,
+              "max_priority": 63
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 33
+          },
+          "counter_bracket": [
+            323747029000,
+            323823100000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 322037006000,
+              "end_ns": 327102376000,
+              "busy_percent": 299.2110453648915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 12230,
+      "pre_return_wall_ms": 189.164,
+      "pre_return_cpu_ms": 1.675625,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "start_ns": 575762498000,
+          "end_ns": 575948048000,
+          "wall_ms": 185.55,
+          "cpu_ms": 0.360125,
+          "allocator_ms": 185.316326,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 519
+          },
+          "counter_bracket": [
+            575736860000,
+            575957110000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 574817826000,
+              "end_ns": 579908005000,
+              "busy_percent": 292.7165354330709
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "('capture', False)": 1,
+    "('capture', True)": 1
+  },
+  "limitations": "Task counters cover all threads and an expanded time bracket. Positive faults cannot be attributed to measured thread. State snapshots can miss intervening waits; state 1 is not proof of running on CPU. Post-Deadline cleanup excluded."
+}
