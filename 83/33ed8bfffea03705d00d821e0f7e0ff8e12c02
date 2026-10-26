@@ -1,0 +1,462 @@
+scripts/diagnostics/thread-sampler.py
+  s_1d1ebc94680cfb::t_a909dcfb96987a 1-34
+docs/readiness-task-local-12fa024/README.md
+  s_1d1ebc94680cfb::t_f8f3f7237671db 18-21
+  s_1d1ebc94680cfb::t_68831ac2c52242 1-11
+  s_1d1ebc94680cfb::t_ea3eb0f43b81fb 12-15
+  s_1d1ebc94680cfb::t_d6b0ae66c4f2c7 16-17
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/README.md
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-13
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/pid
+  s_1d1ebc94680cfb::t_5c31145fb73602 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/trace.log
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-3
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/export.log
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-id64/events/40550-51884493.jsonl
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/events/50393-51933397.tid
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/run.log
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-6
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/events/51697-51941178.jsonl
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-10
+docs/readiness-task-local-12fa024/offcpu-diagnostic/run-system-trace-bounded.py
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-25
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/events/20075-52243415.jsonl
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-194
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/sampler.log
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/events/25005-52266972.tid
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/sampler.log
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/pid
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/analysis-output.json
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-102
+docs/readiness-task-local-12fa024/async-profile-diagnostic.json
+  s_1d1ebc94680cfb::t_10ce52b5a6e3cc 1-243
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/events/34693-52303248.tid
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/report.json
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-206
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/resolve-tool/guard-result.json
+  s_1d1ebc94680cfb::t_e00fe34fe3ed1e 1-14
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/instrumentation.patch
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-245
+docs/readiness-task-local-12fa024/async-cost-10-1.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/options.json
+  s_1d1ebc94680cfb::t_bf11ce4ff84230 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/analysis-output.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-6502
+docs/readiness-task-local-12fa024/run.sh
+  s_1d1ebc94680cfb::t_819337da04f90a 1-21
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/pid
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_a909dcfb96987a 1-141
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/analysis.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-6502
+docs/readiness-task-local-12fa024/sync-cost-100-1.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/events/20075-52243414.tid
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/README.md
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-13
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/provenance.json
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-9
+docs/readiness-task-local-12fa024/offcpu-diagnostic/task-counters-validation.json
+  s_1d1ebc94680cfb::t_324fd5f4b929bb 1-36
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/events/55707-51965580.tid
+  s_1d1ebc94680cfb::t_5c31145fb73602 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/diagnostic-status.json
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-13
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/events/55707-51965581.tid
+  s_1d1ebc94680cfb::t_5c31145fb73602 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/compute-witness-long.c
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-20
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/run.log
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-3
+docs/readiness-task-local-12fa024/offcpu-diagnostic/correlate.py
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-15
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/clock-anchor.json
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-102
+docs/readiness-task-local-12fa024/sampling-resource-audit.json
+  s_1d1ebc94680cfb::t_f8f3f7237671db 1-24
+docs/readiness-task-local-12fa024/async-5000.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-22268
+docs/readiness-task-local-12fa024/async-short-diagnostic.json
+  s_1d1ebc94680cfb::t_ea3eb0f43b81fb 1-243
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/completed.json
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/trace-temp-cleanup.json
+  s_1d1ebc94680cfb::t_e72cdf9177a5b8 1-16
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/trace.log
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-3
+  s_1d1ebc94680cfb::t_c5b8479507944e 4
+docs/readiness-task-local-12fa024/sync-cost-100-4.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/completed.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/README.md
+  s_1d1ebc94680cfb::t_bf11ce4ff84230 1-7
+  s_1d1ebc94680cfb::t_e00fe34fe3ed1e 8-9
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/provenance.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-8
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/process.log
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/events/20075-52243413.tid
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/witness.jsonl
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-1000
+docs/readiness-task-local-12fa024/async-cost-10-4.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/run-system-trace.py
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 22-24
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-21,25
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/events/51697-51941179.jsonl
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-44
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/conclusion.json
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-58
+docs/readiness-task-local-12fa024/offcpu-diagnostic/compute-witness-run/summary.json
+  s_1d1ebc94680cfb::t_e89375dceb3b97 1-32
+docs/deadline-investigation.md
+  s_1d1ebc94680cfb::t_290ce81d052422 1-15
+docs/readiness-baseline-12fa024/README.md
+  s_1d1ebc94680cfb::t_f8f3f7237671db 1-3
+docs/readiness-task-attempt4/README.md
+  s_1d1ebc94680cfb::t_f778037729e710 1-9
+docs/readiness-task-local-12fa024/toolchain.txt
+  s_1d1ebc94680cfb::t_819337da04f90a 1-12
+docs/readiness-task-local-12fa024/sync-cost-10-1.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-id64/process.log
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/events/40573-51885092.tid
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/instrumentation.patch
+  s_1d1ebc94680cfb::t_1cdc9ae72f517b 1-190
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/run.log
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-2
+docs/readiness-task-local-12fa024/offcpu-diagnostic/thread-sampler-faults.py
+  s_1d1ebc94680cfb::t_324fd5f4b929bb 1-34
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/host-activity.jsonl
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-25
+docs/readiness-task-local-12fa024/gate-results.txt
+  s_1d1ebc94680cfb::t_819337da04f90a 1-8
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/events/40573-51885091.tid
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-id64/validation.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/probe-validation.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-25
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/provenance.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-9
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/pid
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/events/34693-52303249.tid
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/storage-stop.json
+  s_1d1ebc94680cfb::t_e72cdf9177a5b8 1-12
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/events/34693-52303250.jsonl
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-200
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/run.log
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-3
+docs/readiness-task-local-12fa024/sync-1000.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-1866
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/run.log
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-3
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/help-startup/output.log
+  s_1d1ebc94680cfb::t_e00fe34fe3ed1e 1-53
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/events/34693-52303249.jsonl
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-11
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/events/40573-51885051.tid
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/cross-thread-stalls.json
+  s_1d1ebc94680cfb::t_130c5df952c7cc 1-431
+docs/readiness-task-local-12fa024/summary.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-50
+docs/readiness-task-attempt4/summary.json
+  s_1d1ebc94680cfb::t_f778037729e710 1-317
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/correlation.json
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-99
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/events/25005-52266973.tid
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_a909dcfb96987a 1-40
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/failure-phases.json
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-466
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/provenance.json
+  s_1d1ebc94680cfb::t_903fa558e47111 1-9
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/benchmark-completed.json
+  s_1d1ebc94680cfb::t_5c31145fb73602 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/help-startup/guard-result.json
+  s_1d1ebc94680cfb::t_e00fe34fe3ed1e 1-14
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/events/20075-52243415.tid
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/provenance.json
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-8
+docs/readiness-task-local-12fa024/sync-baseline.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-337
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/witness.jsonl
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-1000
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/instrumentation.patch
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-175
+docs/readiness-task-local-12fa024/offcpu-diagnostic/validate-stop.py
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-23
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/completed.json
+  s_1d1ebc94680cfb::t_e72cdf9177a5b8 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/size-test/guard-result.json
+  s_1d1ebc94680cfb::t_bf11ce4ff84230 1-14
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/host-activity.jsonl
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-25
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/correlation.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-68
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/host-activity.jsonl
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-13
+docs/readiness-task-local-12fa024/offcpu-diagnostic/task-counters.py
+  s_1d1ebc94680cfb::t_324fd5f4b929bb 1-21
+scripts/diagnostics/instrumentation.patch
+  s_1d1ebc94680cfb::t_a909dcfb96987a 1-245
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/report.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-990
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/storage-guard.jsonl
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-9
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/summary.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-15
+docs/readiness-task-local-12fa024/async-baseline.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-337
+docs/readiness-task-local-12fa024/sync-cost-10-4.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/instrumentation.patch
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-245
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/threads.jsonl
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-5504
+docs/readiness-task-local-12fa024/offcpu-diagnostic/correlate-failures.py
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-26
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/completed.json
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-id64/events/40550-51884493.tid
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/events/20075-52243414.jsonl
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-11
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/profiler-validation/guard-result.json
+  s_1d1ebc94680cfb::t_bf11ce4ff84230 1-14
+docs/readiness-task-local-12fa024/offcpu-diagnostic/summarize-switches.py
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-31
+scripts/diagnostics/correlate.py
+  s_1d1ebc94680cfb::t_a909dcfb96987a 1-26
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/provenance.json
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-8
+docs/readiness-task-local-12fa024/offcpu-diagnostic/run-natural.py
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-24
+docs/readiness-task-local-12fa024/offcpu-diagnostic/compute-witness-run/guard-result.json
+  s_1d1ebc94680cfb::t_e89375dceb3b97 1-14
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/report.json
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-263
+docs/readiness-task-local-12fa024/offcpu-diagnostic/validate-buffered.py
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-23
+docs/readiness-task-local-12fa024/offcpu-diagnostic/thread-sampler-buffered.py
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-32
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/failure-correlation.json
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-12971
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/completed.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/report.json
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-1198
+docs/readiness-task-local-12fa024/offcpu-diagnostic/compute-witness.c
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-20
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/resolve-tool/output.log
+  s_1d1ebc94680cfb::t_e00fe34fe3ed1e 1
+docs/readiness-task-local-12fa024/sync-5000.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-21560
+docs/readiness-task-local-12fa024/offcpu-diagnostic/run-allocation.py
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-20
+docs/readiness-task-local-12fa024/offcpu-diagnostic/compute-witness-run/output.log
+  s_1d1ebc94680cfb::t_e89375dceb3b97 1-200
+docs/readiness-task-local-12fa024/thread-sampler.py
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 2-3,9-16,18,21,25-27
+  s_1d1ebc94680cfb::t_7c224d991ad647 1,4-8,17,19-20,22-24,28-31
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/report.json
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 1-687
+scripts/diagnostics/task-counters.py
+  s_1d1ebc94680cfb::t_a909dcfb96987a 1-21
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/correlation.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-20
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-save-validation.xml
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-44
+docs/readiness-task-local-12fa024/offcpu-diagnostic/natural-id64/events/40573-51885092.jsonl
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-4
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/events/55707-51965582.tid
+  s_1d1ebc94680cfb::t_5c31145fb73602 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/run.log
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-2
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/guard.py
+  s_1d1ebc94680cfb::t_bf11ce4ff84230 1-41
+docs/readiness-task-local-12fa024/offcpu-diagnostic/README.md
+  s_1d1ebc94680cfb::t_50ab591810b825 24-29
+  s_1d1ebc94680cfb::t_15bfca0249795f 16-17
+  s_1d1ebc94680cfb::t_b9ae29cf67291d 13
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-12
+  s_1d1ebc94680cfb::t_5c31145fb73602 14-15
+  s_1d1ebc94680cfb::t_d1ae4ac1538e37 18-23
+  s_1d1ebc94680cfb::t_324fd5f4b929bb 30-33
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/events/55707-51965582.jsonl
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-2
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-options.json
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-15
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-natural/instrumentation.patch
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-245
+docs/readiness-task-local-12fa024/offcpu-diagnostic/run-correlated.py
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-33
+docs/readiness-task-local-12fa024/offcpu-diagnostic/thread-sampler.py
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-31
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/instrumentation.patch
+  s_1d1ebc94680cfb::t_5c31145fb73602 1-190
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/events/25005-52266973.jsonl
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-4
+docs/readiness-task-local-12fa024/async-1000.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-1897
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/validation.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1
+docs/readiness-task-local-12fa024/async-cost-100-1.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-418
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/template-startup/guard-result.json
+  s_1d1ebc94680cfb::t_e00fe34fe3ed1e 1-14
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/events/25005-52266971.tid
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/sampler.log
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/run-failure-correlated.py
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-33
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-buffered/events/50393-51933397.jsonl
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-2
+docs/readiness-task-local-12fa024/offcpu-diagnostic/injection-id64/correlation.json
+  s_1d1ebc94680cfb::t_3dc6a2bf1fd9bd 1-19
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/report.json
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1-1174
+docs/readiness-task-local-12fa024/offcpu-diagnostic/bounded-recorder/time-test/guard-result.json
+  s_1d1ebc94680cfb::t_bf11ce4ff84230 1-14
+docs/readiness-task-local-12fa024/async-cost-100-4.json
+  s_1d1ebc94680cfb::t_819337da04f90a 1-417
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/events/34693-52303250.tid
+  s_1d1ebc94680cfb::t_2f90cb5285ab69 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/allocation-correlated/analysis.json
+  s_1d1ebc94680cfb::t_b5bee0b356fb7b 1-102
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-bounded/preexisting-trace-metadata.json
+  s_1d1ebc94680cfb::t_15bfca0249795f 1-89
+docs/readiness-task-local-12fa024/offcpu-diagnostic/analyze-allocation.py
+  s_1d1ebc94680cfb::t_fd3666582bb0ad 1-14
+scripts/diagnostics/README.md
+  s_1d1ebc94680cfb::t_290ce81d052422 1-11
+docs/readiness-task-local-12fa024/offcpu-diagnostic/concurrent-profile-metadata.json
+  s_1d1ebc94680cfb::t_50ab591810b825 1-215
+docs/readiness-baseline-12fa024/macos-latest-async-endurance.json
+  s_1d1ebc94680cfb::t_8d51fca247a04c 1-15850
+docs/readiness-baseline-12fa024/macos-latest-async-toolchain.txt
+  s_1d1ebc94680cfb::t_19a1d6fb8f0cdb 1-8
+docs/readiness-baseline-12fa024/macos-latest-sync-endurance.json
+  s_1d1ebc94680cfb::t_6bc2747df8a990 1-15806
+docs/readiness-baseline-12fa024/macos-latest-sync-toolchain.txt
+  s_1d1ebc94680cfb::t_22a0a3f6c1d697 1-8
+docs/readiness-baseline-12fa024/ubuntu-latest-async-endurance.json
+  s_1d1ebc94680cfb::t_d8634a5e52a736 1-15872
+docs/readiness-baseline-12fa024/ubuntu-latest-async-toolchain.txt
+  s_1d1ebc94680cfb::t_6029ad7719a778 1-8
+docs/readiness-baseline-12fa024/ubuntu-latest-sync-endurance.json
+  s_1d1ebc94680cfb::t_de995a15996a02 1-15872
+docs/readiness-baseline-12fa024/ubuntu-latest-sync-toolchain.txt
+  s_1d1ebc94680cfb::t_5057b37d137fe0 1-8
+docs/readiness-task-attempt4/linux-async-task-1000.json
+  s_1d1ebc94680cfb::t_4b2f43488c02c9 1-1861
+docs/readiness-task-attempt4/linux-async-task-5000.json
+  s_1d1ebc94680cfb::t_b7a59218386491 1-21633
+docs/readiness-task-attempt4/linux-async-task-baseline.json
+  s_1d1ebc94680cfb::t_cfcf55e411eeee 1-337
+docs/readiness-task-attempt4/linux-async-task-cost-10-1.json
+  s_1d1ebc94680cfb::t_d18814996b21c5 1-413
+docs/readiness-task-attempt4/linux-async-task-cost-10-4.json
+  s_1d1ebc94680cfb::t_4af1f8b1307abd 1-413
+docs/readiness-task-attempt4/linux-async-task-cost-100-1.json
+  s_1d1ebc94680cfb::t_ab56dd59ffba5a 1-415
+docs/readiness-task-attempt4/linux-async-task-cost-100-4.json
+  s_1d1ebc94680cfb::t_e8e1a85286637d 1-415
+docs/readiness-task-attempt4/linux-sync-task-1000.json
+  s_1d1ebc94680cfb::t_7d3d0981f8da1e 1-1863
+docs/readiness-task-attempt4/linux-sync-task-5000.json
+  s_1d1ebc94680cfb::t_4eca56a8132949 1-21635
+docs/readiness-task-attempt4/linux-sync-task-baseline.json
+  s_1d1ebc94680cfb::t_2566c111860d7c 1-337
+docs/readiness-task-attempt4/linux-sync-task-cost-10-1.json
+  s_1d1ebc94680cfb::t_3f962fd3cc2a5c 1-413
+docs/readiness-task-attempt4/linux-sync-task-cost-10-4.json
+  s_1d1ebc94680cfb::t_ee987e41629f78 1-411
+docs/readiness-task-attempt4/linux-sync-task-cost-100-1.json
+  s_1d1ebc94680cfb::t_29a1bd7c7d3306 1-409
+docs/readiness-task-attempt4/linux-sync-task-cost-100-4.json
+  s_1d1ebc94680cfb::t_7203dae78e9440 1-413
+docs/readiness-task-attempt4/macos-async-task-1000.json
+  s_1d1ebc94680cfb::t_1dc781dfea0bcd 1-1855
+docs/readiness-task-attempt4/macos-async-task-baseline.json
+  s_1d1ebc94680cfb::t_e06f033d502664 1-337
+docs/readiness-task-attempt4/macos-async-task-cost-10-1.json
+  s_1d1ebc94680cfb::t_c3a6ed733ea00d 1-424
+docs/readiness-task-attempt4/macos-async-task-cost-10-4.json
+  s_1d1ebc94680cfb::t_7a42048f42db8a 1-423
+docs/readiness-task-attempt4/macos-async-task-cost-100-1.json
+  s_1d1ebc94680cfb::t_bbc5702e227ba7 1-411
+docs/readiness-task-attempt4/macos-async-task-cost-100-4.json
+  s_1d1ebc94680cfb::t_2390a9cd932213 1-414
+docs/readiness-task-attempt4/macos-sync-task-1000.json
+  s_1d1ebc94680cfb::t_a3abfaad51c251 1-1865
+docs/readiness-task-attempt4/macos-sync-task-5000.json
+  s_1d1ebc94680cfb::t_4ad1c5ee24e148 1-21929
+docs/readiness-task-attempt4/macos-sync-task-baseline.json
+  s_1d1ebc94680cfb::t_cbcf727f98d1e4 1-337
+docs/readiness-task-attempt4/macos-sync-task-cost-10-1.json
+  s_1d1ebc94680cfb::t_11d9b724101f04 1-429
+docs/readiness-task-attempt4/macos-sync-task-cost-10-4.json
+  s_1d1ebc94680cfb::t_af4fe1d4cfcec9 1-417
+docs/readiness-task-attempt4/macos-sync-task-cost-100-1.json
+  s_1d1ebc94680cfb::t_4920717409ee45 1-427
+docs/readiness-task-attempt4/macos-sync-task-cost-100-4.json
+  s_1d1ebc94680cfb::t_2158e5234fe8cd 1-411
+docs/readiness-task-local-12fa024/async-profile-sample.txt
+  s_1d1ebc94680cfb::t_190124c2558f6b 1-2498
+docs/readiness-task-local-12fa024/offcpu-diagnostic/failure-correlated/threads.jsonl
+  s_1d1ebc94680cfb::t_b7739e4b44811b 1-9868
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/clock-anchor.json
+  s_1d1ebc94680cfb::t_0bd193694adb15 1-102
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/events/51697-51941138.tid
+  s_1d1ebc94680cfb::t_3dda51208620e7 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/events/51697-51941178.tid
+  s_1d1ebc94680cfb::t_f667d63b4efb55 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/events/51697-51941179.tid
+  s_1d1ebc94680cfb::t_4785e5a17cab70 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/instrumentation.patch
+  s_1d1ebc94680cfb::t_2c890f15595419 1-190
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/pid
+  s_1d1ebc94680cfb::t_b46420509051eb 1
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-buffered/provenance.json
+  s_1d1ebc94680cfb::t_92241967200c53 1-9
+docs/readiness-task-local-12fa024/offcpu-diagnostic/system-trace-save-validation.log
+  s_1d1ebc94680cfb::t_34420a8e2fd012 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8333ed8bfffea03705d00d821e0f7e0ff8e12c02",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
