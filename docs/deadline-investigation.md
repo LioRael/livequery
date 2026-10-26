@@ -17,3 +17,7 @@ Next decision is based on failed CI intervals: determine whether they show the s
 ## CI result 40383573185
 
 [Raw correlated CI evidence](readiness-ci-diagnostic-40383573185/README.md) reproduces five capture Deadlines per engine despite serial execution and no known build/profiler overlap. CPU/wall, zero-fault brackets and running/runnable samples support the same CPU-service-shortage mechanism, with weaker sampling coverage than the local case. Host snapshots show substantial OS background activity on the 3-vCPU VM. Known-process exclusion alone did not establish a quiet host. A fixed, fail-closed host admission check now rejects this condition before measurement; it is not evidence that the problem has been solved and does not replace any original gate. No system service is killed or disabled.
+
+## Isolation follow-up and admission correction
+
+Disk-indexing shutdown alone left user indexing agents active; removing those agents succeeded, but macOS 26 still showed other substantial background activity before load. The [macOS 15 comparison](readiness-ci-isolation-40388527325/README.md) never started a workload: its old admission failed only on load-average history. It cannot establish that switching OS fixes any Deadline. The new admission heuristic incorrectly conflated historical run-queue load with current CPU competition; it now measures interval CPU ticks with the same 25%-of-one-core budget. Original error, workload and resource gates remain untouched. Verification returns to macOS 26; no OS coverage is dropped.
