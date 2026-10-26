@@ -1,0 +1,25 @@
+docs/readiness-tasks-contended.json
+  s_1d1ebc94680cfb::t_11be4c17a99a10 1-473
+docs/readiness-tasks-local.json
+  s_1d1ebc94680cfb::t_aa9337f153788b 1-464
+docs/security-review-alpha4.md
+  s_1d1ebc94680cfb::t_9f39f312995c65 3
+docs/stable-readiness-validation.md
+  s_1d1ebc94680cfb::t_e24b8a46d67c83 19-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7774f175e00019d78166038a30491b03e01b0002",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
