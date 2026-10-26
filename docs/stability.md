@@ -1,5 +1,7 @@
 # Stable release gates
 
+This checkout also includes alpha.4 investigation improvements. See [investigation-validation.md](investigation-validation.md); the alpha.3 evidence below applies only to that earlier source revision.
+
 Alpha.3 is an unpublished hardening candidate. Current measured evidence is in [stability-validation.md](stability-validation.md). Passing these checks is necessary, not evidence of universal production suitability. The first stable scope is local, read-only diagnostics on Linux/macOS, with trusted same-user processes, no hard real-time or lossless-event guarantee.
 
 | Gate | Implementation / evidence | Remaining acceptance |

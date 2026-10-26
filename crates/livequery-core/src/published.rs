@@ -33,7 +33,7 @@ const FAILURE_CODES: [&str; 7] = [
 #[derive(Debug)]
 struct Version {
     sequence: u64,
-    snapshot: Snapshot,
+    snapshot: Arc<Snapshot>,
     bytes: usize,
     captured: Option<(Instant, u64)>,
 }
@@ -80,7 +80,7 @@ impl Published {
             columns: Arc::new(snapshot.columns.clone()),
             current: Arc::new(RwLock::new(Arc::new(Version {
                 sequence: 0,
-                snapshot,
+                snapshot: Arc::new(snapshot),
                 bytes,
                 captured: Some((Instant::now(), unix_ms())),
             }))),
@@ -114,7 +114,7 @@ impl Published {
             &mut *current,
             Arc::new(Version {
                 sequence,
-                snapshot,
+                snapshot: Arc::new(snapshot),
                 bytes,
                 captured: Some((Instant::now(), unix_ms())),
             }),
@@ -147,7 +147,10 @@ impl Published {
     /// Panics if the publication lock was poisoned.
     pub fn status(&self) -> Result<PublicationStatus, Error> {
         let current = self.current.try_read().map_err(lock_error)?;
-        Ok(PublicationStatus {
+        Ok(self.status_for(&current))
+    }
+    fn status_for(&self, current: &Version) -> PublicationStatus {
+        PublicationStatus {
             sequence: current.sequence,
             age_ms: current
                 .captured
@@ -158,7 +161,14 @@ impl Published {
                 .enumerate()
                 .map(|(i, code)| (code.to_string(), self.failures[i].load(Ordering::Relaxed)))
                 .collect(),
-        })
+        }
+    }
+    pub(crate) fn read(&self, limits: Limits) -> Result<(Arc<Snapshot>, PublicationStatus), Error> {
+        let current = self.current.try_read().map_err(lock_error)?.clone();
+        if current.bytes > limits.bytes || current.snapshot.rows.len() > limits.scan_rows {
+            return Err(Error::Limit("published snapshot".into()));
+        }
+        Ok((current.snapshot.clone(), self.status_for(&current)))
     }
     /// Current publication number, or busy if another publication is being swapped.
     /// # Errors
@@ -178,7 +188,7 @@ impl Source for Published {
         if current.bytes > limits.bytes || current.snapshot.rows.len() > limits.scan_rows {
             return Err(Error::Limit("published snapshot".into()));
         }
-        Ok(current.snapshot.clone())
+        Ok((*current.snapshot).clone())
     }
 }
 fn lock_error<T>(error: TryLockError<T>) -> Error {
@@ -194,4 +204,48 @@ fn unix_ms() -> u64 {
         .unwrap_or_default()
         .as_millis()
         .min(u64::MAX as u128) as u64
+}
+
+/// Owns a published source and its registration. Drop removes it from discovery.
+/// Refreshing is always explicit and runs on the caller's thread.
+#[derive(Debug)]
+#[must_use = "keep the handle alive while the source should be discoverable"]
+pub struct PublishedHandle {
+    published: Published,
+    _registration: crate::Registration,
+}
+impl PublishedHandle {
+    /// Registers an initially empty typed source; no capture or thread is started.
+    /// # Errors
+    /// Returns schema, name, duplicate-registration or publication budget errors.
+    pub fn register<T: Inspect>(
+        registry: &crate::Registry,
+        name: &str,
+        limits: Limits,
+    ) -> Result<Self, Error> {
+        let published = Published::new::<T>(limits)?;
+        let registration = registry.expose_published(name, published.clone())?;
+        Ok(Self {
+            published,
+            _registration: registration,
+        })
+    }
+    /// Captures on this thread. On failure the previous publication remains available.
+    /// # Errors
+    /// Returns the capture/publication error, which is also counted in status.
+    pub fn refresh(&self, source: &impl Source) -> Result<u64, Error> {
+        self.published.refresh(source)
+    }
+    /// Replaces the diagnostic snapshot, retaining the old one on failure.
+    /// # Errors
+    /// Returns schema, budget or Busy errors and counts them in status.
+    pub fn publish(&self, snapshot: Snapshot) -> Result<u64, Error> {
+        self.published.publish(snapshot)
+    }
+    /// Samples freshness and failure counts without capturing application state.
+    /// # Errors
+    /// Returns Busy during publication.
+    pub fn status(&self) -> Result<PublicationStatus, Error> {
+        self.published.status()
+    }
 }

@@ -12,3 +12,7 @@ path = "inspection.rs"
 harness = false
 [lints]
 workspace = true
+[[bench]]
+name = "jobs"
+path = "jobs.rs"
+harness = false

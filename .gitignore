@@ -7,3 +7,7 @@ fuzz/corpus/query_and_wire/*
 !fuzz/corpus/query_and_wire/select
 !fuzz/corpus/query_and_wire/observe
 !fuzz/corpus/query_and_wire/hello
+
+!fuzz/corpus/query_and_wire/order
+!fuzz/corpus/query_and_wire/count
+!fuzz/corpus/query_and_wire/max

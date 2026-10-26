@@ -26,6 +26,7 @@ jobs:
       - run: python3 scripts/consumer-check.py
       - run: cargo build --workspace --bins --locked
       - run: python3 scripts/smoke.py
+      - run: python3 scripts/jobs-smoke.py
       - run: cargo build --manifest-path tests/compat-alpha2/Cargo.toml --locked
         if: runner.os == 'Linux'
       - run: cargo install livequery-cli --version 0.1.0-alpha.2 --locked --root target/compat-install

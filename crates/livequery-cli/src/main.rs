@@ -1,3 +1,4 @@
+mod session;
 use livequery_query::QueryResult;
 use livequery_transport::{Observation, PROTOCOL_VERSION, Request, Response, local};
 use std::{
@@ -12,7 +13,9 @@ fn main() {
     }
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
-    let mut args: Vec<String> = std::env::args().skip(1).collect();
+    run_args(std::env::args().skip(1).collect())
+}
+fn run_args(mut args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
     let json = remove_flag(&mut args, "--json");
     let socket = option(&mut args, "--socket")?.map(PathBuf::from);
     let pid = option(&mut args, "--pid")?
@@ -28,7 +31,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     let command = args.first().map(String::as_str).unwrap_or("help");
     if command == "help" || command == "--help" {
         println!(
-            "LiveQuery — explore an explicitly enabled Rust program\n\n  livequery list [--json]\n  livequery attach <pid>\n  livequery status --pid <pid> [--json]\n  livequery schema --pid <pid>\n  livequery query 'SELECT * FROM players' --pid <pid> [--json]\n  livequery watch 'SELECT * FROM players' --pid <pid> [--interval-ms 1000] [--count 10]\n\nUse --socket <path> instead of --pid. WATCH emits full changed results; --count counts polls."
+            "LiveQuery — explore an explicitly enabled Rust program\n\n  livequery list [--json]\n  livequery attach <pid>\n  livequery session --pid <pid>\n  livequery status --pid <pid> [--json]\n  livequery schema --pid <pid>\n  livequery query 'SELECT * FROM players' --pid <pid> [--json]\n  livequery watch 'SELECT * FROM players' --pid <pid> [--interval-ms 1000] [--count 10]\n\nUse --socket <path> instead of --pid. WATCH emits full changed results; --count counts polls."
         );
         return Ok(());
     }
@@ -66,7 +69,13 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
                 .map(|id| local::directory().join(format!("{id}.sock")))
         })
         .ok_or("specify --pid or --socket; target must enable LiveQuery")?;
-    let request = match command {
+    if command == "session" {
+        if args.len() != 1 {
+            return Err("unexpected session arguments".into());
+        }
+        return session::run(&socket);
+    }
+    let mut request = match command {
         "schema" | "attach" => Request::Schema,
         "status" => Request::Status,
         "query" | "watch" => Request::Query {
@@ -91,13 +100,24 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
             protocol: PROTOCOL_VERSION,
         },
     )? {
-        Response::Ok { data } if data["protocol"].as_u64() == Some(PROTOCOL_VERSION as u64) => {}
+        Response::Ok { data } if data["protocol"].as_u64() == Some(PROTOCOL_VERSION as u64) => {
+            if command == "query"
+                && data["capabilities"]
+                    .as_array()
+                    .is_some_and(|caps| caps.iter().any(|cap| cap == "query_details"))
+            {
+                request = Request::QueryDetails {
+                    sql: args[1].clone(),
+                };
+            }
+        }
         _ => return Err("incompatible agent protocol; use a matching CLI/Agent version".into()),
     }
     let mut previous = None;
     let mut revision = None;
     let mut polls = 0;
     let mut connection_failures = 0;
+    let mut freshness: Option<(std::time::Instant, Option<u64>)> = None;
     loop {
         if command == "watch" && count.is_some_and(|c| polls >= c) {
             break;
@@ -134,6 +154,10 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
                         result
                     }
                     Observation::Unchanged { cursor } => {
+                        if !json {
+                            eprintln!("unchanged · publication {}", cursor.revision.sequence());
+                            show_age(freshness);
+                        }
                         revision = Some(cursor);
                         polls += 1;
                         std::thread::sleep(Duration::from_millis(interval));
@@ -144,6 +168,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
             }
             Response::Ok { data } => data,
             Response::Error { code, .. } if command == "watch" && code == "busy" => {
+                eprintln!("observation failed: busy; retaining previous result");
                 polls += 1;
                 std::thread::sleep(Duration::from_millis(interval));
                 continue;
@@ -151,9 +176,21 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
             Response::Error { code, message } => return Err(format!("{code}: {message}").into()),
             _ => return Err("unexpected response for negotiated protocol".into()),
         };
+        if matches!(command, "query" | "watch") {
+            if let Some(publication) = data.get("publication").filter(|p| !p.is_null()) {
+                freshness = Some((std::time::Instant::now(), publication["age_ms"].as_u64()));
+                if !json {
+                    show_age(freshness);
+                }
+            } else if !json {
+                eprintln!("publication freshness unavailable from this Agent");
+            }
+        }
         let mut comparable = data.clone();
         if let Some(object) = comparable.as_object_mut() {
             object.remove("scanned");
+            object.remove("publication");
+            object.remove("revision");
         }
         if previous.as_ref() != Some(&comparable) {
             if json {
@@ -164,6 +201,8 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
                 table(&serde_json::from_value::<QueryResult>(data)?)?;
             }
             previous = Some(comparable);
+        } else if command == "watch" && !json {
+            eprintln!("rows unchanged in a new publication");
         }
         polls += 1;
         if command != "watch" {
@@ -230,4 +269,15 @@ fn table(result: &QueryResult) -> io::Result<()> {
         result.scanned,
         if result.truncated { " · limited" } else { "" }
     )
+}
+
+fn show_age(freshness: Option<(std::time::Instant, Option<u64>)>) {
+    match freshness {
+        Some((time, Some(age))) => eprintln!(
+            "snapshot age: {} ms",
+            u128::from(age) + time.elapsed().as_millis()
+        ),
+        Some((_, None)) => eprintln!("snapshot: never successfully published"),
+        None => eprintln!("snapshot age: unavailable"),
+    }
 }

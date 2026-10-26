@@ -130,10 +130,10 @@ fn integer_precision_boolean_precedence_and_null_logic() {
 fn invalid_sql_is_never_silently_accepted() {
     for sql in [
         "DELETE FROM players",
-        "SELECT * FROM players ORDER BY id",
+        "SELECT * FROM players ORDER BY id, health",
         "SELECT * FROM players JOIN other ON id = id",
         "SELECT * FROM players; SELECT * FROM players",
-        "SELECT count(*) FROM players",
+        "SELECT count(id) FROM players",
         "SELECT id, id FROM players",
         "SELECT * FROM players LIMIT -1",
         "SELECT * FROM players OFFSET 2",
@@ -219,6 +219,8 @@ fn concurrent_snapshots_never_tear() {
                     r[0].a += 1;
                     r[0].b = r[0].a;
                 });
+                // Busy is allowed; give the reader an opportunity instead of testing scheduler starvation.
+                std::thread::yield_now();
             }
         })
     };
@@ -227,6 +229,8 @@ fn concurrent_snapshots_never_tear() {
         if let Ok(s) = table.snapshot(Limits::default()) {
             assert_eq!(s.rows[0]["a"], s.rows[0]["b"]);
             snapshots += 1;
+        } else {
+            std::thread::yield_now();
         }
     }
     stop.store(true, Ordering::Relaxed);

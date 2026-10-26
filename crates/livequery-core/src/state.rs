@@ -192,6 +192,12 @@ pub struct Revision {
     registration: u64,
     sequence: u64,
 }
+impl Revision {
+    /// Successful publication sequence within this source registration.
+    pub fn sequence(&self) -> u64 {
+        self.sequence
+    }
+}
 #[derive(Debug, Clone, Copy, Default)]
 enum Access {
     #[default]
@@ -216,6 +222,28 @@ pub struct Registry {
 #[must_use = "dropping the guard unregisters the source"]
 pub struct Registration {
     _entry: Arc<Entry>,
+}
+/// A consistent read of one immutable snapshot and its publication metadata.
+/// Published reads share owned immutable data; live local sources are captured once.
+#[derive(Debug, Clone)]
+pub struct SnapshotView {
+    snapshot: Arc<Snapshot>,
+    publication: Option<crate::PublicationStatus>,
+    revision: Option<Revision>,
+}
+impl SnapshotView {
+    /// Borrows rows without copying the complete published table.
+    pub fn snapshot(&self) -> &Snapshot {
+        &self.snapshot
+    }
+    /// Metadata sampled from this exact snapshot version, or none for a live source.
+    pub fn publication(&self) -> Option<&crate::PublicationStatus> {
+        self.publication.as_ref()
+    }
+    /// Registration and publication sequence corresponding to these rows.
+    pub fn revision(&self) -> Option<Revision> {
+        self.revision
+    }
 }
 impl Registry {
     /// Creates an empty registry with no background work.
@@ -366,6 +394,14 @@ impl Registry {
     /// # Panics
     /// Panics if the registry lock is poisoned.
     pub fn snapshot(&self, name: &str, limits: Limits) -> Result<Snapshot, Error> {
+        Ok(self.read_snapshot(name, limits)?.snapshot().clone())
+    }
+    /// Reads a shared immutable publication, or captures a local source once.
+    /// # Errors
+    /// Returns Busy, missing-source, schema or budget errors.
+    /// # Panics
+    /// Panics if the registry lock is poisoned.
+    pub fn read_snapshot(&self, name: &str, limits: Limits) -> Result<SnapshotView, Error> {
         let entry = self
             .entries
             .try_read()
@@ -374,6 +410,18 @@ impl Registry {
             .and_then(Weak::upgrade)
             .filter(|entry| self.visible(entry))
             .ok_or_else(|| Error::NotFound(name.into()))?;
+        if let Some(published) = &entry.published {
+            let (snapshot, publication) = published.read(limits)?;
+            let revision = Revision {
+                registration: entry.id,
+                sequence: publication.sequence,
+            };
+            return Ok(SnapshotView {
+                snapshot,
+                publication: Some(publication),
+                revision: Some(revision),
+            });
+        }
         let snapshot = entry.source.snapshot(limits)?;
         if entry.published.is_none() {
             snapshot.validate(limits)?;
@@ -383,7 +431,11 @@ impl Registry {
                 ));
             }
         }
-        Ok(snapshot)
+        Ok(SnapshotView {
+            snapshot: Arc::new(snapshot),
+            publication: None,
+            revision: None,
+        })
     }
     fn visible(&self, entry: &Entry) -> bool {
         matches!(self.access, Access::Local) || entry.published.is_some()

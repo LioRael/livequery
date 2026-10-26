@@ -1,14 +1,8 @@
 use livequery::{
-    Inspect, Limits, Published, Registry, Table,
-    local::{self, Server},
+    Inspect, Limits, PublishedHandle, Registry, Table,
+    local::{self, RunningAgent},
 };
-use std::{
-    sync::{
-        Arc,
-        atomic::{AtomicBool, Ordering},
-    },
-    time::Duration,
-};
+use std::time::Duration;
 #[derive(Debug, Inspect)]
 struct Player {
     id: u64,
@@ -33,16 +27,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         },
     ]);
     let registry = Registry::new();
-    let published = Published::new::<Player>(Limits::default())?;
-    published.refresh(&players)?;
-    let _registration = registry.expose_published("players", published.clone())?;
+    let published = PublishedHandle::register::<Player>(&registry, "players", Limits::default())?;
+    if let Err(error) = published.refresh(&players) {
+        eprintln!("diagnostics unavailable: {error}");
+    }
     let path = local::directory().join(format!("{}.sock", std::process::id()));
-    let server = Server::bind(&path, registry, Limits::default())?;
-    let stop = Arc::new(AtomicBool::new(false));
-    let agent = {
-        let stop = stop.clone();
-        std::thread::spawn(move || server.serve(&stop))
-    };
+    let agent = RunningAgent::start(&path, registry, Limits::default())?;
     println!(
         "PID {} · livequery watch 'SELECT * FROM players WHERE health < 80' --pid {}",
         std::process::id(),
@@ -63,10 +53,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 std::hint::black_box(&player.token);
             }
         });
-        published.refresh(&players)?;
+        if let Err(error) = published.refresh(&players) {
+            eprintln!("diagnostics stale: {error}");
+        }
         std::thread::sleep(Duration::from_millis(250));
     }
-    stop.store(true, Ordering::Relaxed);
-    agent.join().map_err(|_| "agent thread panicked")??;
+    agent.stop();
+    agent.wait()?;
     Ok(())
 }
