@@ -1,0 +1,39 @@
+docs/endurance-alpha4/README.md
+  s_1d1ebc94680cfb::t_fa92266f941698 1-27
+docs/endurance-alpha4/darwin-async/endurance.json
+  s_1d1ebc94680cfb::t_c30b7d10011fdc 1-14403
+docs/endurance-alpha4/darwin-async/toolchain.txt
+  s_1d1ebc94680cfb::t_9ed962c6892d65 1-8
+docs/endurance-alpha4/darwin-sync/endurance.json
+  s_1d1ebc94680cfb::t_bbbd06d405e22c 1-14373
+docs/endurance-alpha4/darwin-sync/toolchain.txt
+  s_1d1ebc94680cfb::t_97ccc80f653042 1-8
+docs/endurance-alpha4/linux-async/endurance.json
+  s_1d1ebc94680cfb::t_697899e0a9d756 1-14433
+docs/endurance-alpha4/linux-async/toolchain.txt
+  s_1d1ebc94680cfb::t_3c7eb5119beeea 1-8
+docs/endurance-alpha4/linux-sync/endurance.json
+  s_1d1ebc94680cfb::t_c1008b1f8930fe 1-14423
+docs/endurance-alpha4/linux-sync/toolchain.txt
+  s_1d1ebc94680cfb::t_82946cfd690785 1-8
+docs/investigation-validation.md
+  s_1d1ebc94680cfb::t_33d12990dbfdee 3,15-16
+docs/stability.md
+  s_1d1ebc94680cfb::t_b790e76b9f5f41 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "be35b8622d3adebc79dda97943727ac3b9d9334e",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
