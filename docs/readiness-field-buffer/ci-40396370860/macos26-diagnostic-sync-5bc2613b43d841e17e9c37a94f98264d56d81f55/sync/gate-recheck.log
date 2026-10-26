@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/scripts/check-load.py", line 28, in <module>
+    assert set(row[key]) <= {"busy"}, (row["engine"], key, row[key])
+AssertionError: ('sync', 'observation_error_codes', {'deadline': 1, 'busy': 1})

@@ -1,0 +1,1129 @@
+[
+  {
+    "artifact": "macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55",
+    "measurement": {
+      "variant": "diagnostic",
+      "engine": "sync",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+      "cpu_admission_gate": false,
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55"
+    },
+    "build": {
+      "official_base": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+      "diagnostic_only": true,
+      "runner_image": "20261021.0445.8",
+      "runner_os_image": "macos26",
+      "runner_arch": "arm64",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "seconds_per_engine": 300,
+      "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+    },
+    "sha_matches": true,
+    "result": {
+      "elapsed_seconds": 300.08343295799995,
+      "requests": 6168896,
+      "request_error_codes": {},
+      "observations": 27718,
+      "observation_error_codes": {
+        "deadline": 1,
+        "busy": 1
+      },
+      "publication_attempts": 4498,
+      "publication_error_codes": {
+        "deadline": 2
+      },
+      "query_kinds": {
+        "sort": 9240,
+        "count": 9239,
+        "max": 9239
+      }
+    },
+    "report_sha_matches": true,
+    "slow_captures": [
+      {
+        "attempt": 229,
+        "capture_cpu_ns": 17352625,
+        "capture_error": null,
+        "capture_wall_ns": 85021583
+      },
+      {
+        "attempt": 249,
+        "capture_cpu_ns": 15877500,
+        "capture_error": null,
+        "capture_wall_ns": 96192292
+      },
+      {
+        "attempt": 252,
+        "capture_cpu_ns": 15562125,
+        "capture_error": null,
+        "capture_wall_ns": 64760250
+      },
+      {
+        "attempt": 302,
+        "capture_cpu_ns": 22513084,
+        "capture_error": "deadline",
+        "capture_wall_ns": 490550209
+      },
+      {
+        "attempt": 303,
+        "capture_cpu_ns": 16132667,
+        "capture_error": null,
+        "capture_wall_ns": 69113000
+      },
+      {
+        "attempt": 305,
+        "capture_cpu_ns": 13193709,
+        "capture_error": "deadline",
+        "capture_wall_ns": 144674708
+      },
+      {
+        "attempt": 314,
+        "capture_cpu_ns": 17278458,
+        "capture_error": null,
+        "capture_wall_ns": 54331917
+      },
+      {
+        "attempt": 347,
+        "capture_cpu_ns": 18109750,
+        "capture_error": null,
+        "capture_wall_ns": 98861250
+      },
+      {
+        "attempt": 351,
+        "capture_cpu_ns": 25352917,
+        "capture_error": null,
+        "capture_wall_ns": 95887667
+      },
+      {
+        "attempt": 359,
+        "capture_cpu_ns": 13609541,
+        "capture_error": null,
+        "capture_wall_ns": 61584417
+      },
+      {
+        "attempt": 377,
+        "capture_cpu_ns": 20062000,
+        "capture_error": null,
+        "capture_wall_ns": 52956083
+      },
+      {
+        "attempt": 499,
+        "capture_cpu_ns": 20534916,
+        "capture_error": null,
+        "capture_wall_ns": 69246792
+      },
+      {
+        "attempt": 507,
+        "capture_cpu_ns": 18179541,
+        "capture_error": null,
+        "capture_wall_ns": 55488834
+      },
+      {
+        "attempt": 670,
+        "capture_cpu_ns": 17321666,
+        "capture_error": null,
+        "capture_wall_ns": 61375125
+      },
+      {
+        "attempt": 921,
+        "capture_cpu_ns": 21370209,
+        "capture_error": null,
+        "capture_wall_ns": 53141667
+      },
+      {
+        "attempt": 1327,
+        "capture_cpu_ns": 17321542,
+        "capture_error": null,
+        "capture_wall_ns": 51149833
+      },
+      {
+        "attempt": 1654,
+        "capture_cpu_ns": 18641333,
+        "capture_error": null,
+        "capture_wall_ns": 61522917
+      },
+      {
+        "attempt": 1710,
+        "capture_cpu_ns": 20061167,
+        "capture_error": null,
+        "capture_wall_ns": 59078833
+      },
+      {
+        "attempt": 1982,
+        "capture_cpu_ns": 20171334,
+        "capture_error": null,
+        "capture_wall_ns": 89775583
+      },
+      {
+        "attempt": 3003,
+        "capture_cpu_ns": 23873584,
+        "capture_error": null,
+        "capture_wall_ns": 84803333
+      },
+      {
+        "attempt": 3494,
+        "capture_cpu_ns": 18683042,
+        "capture_error": null,
+        "capture_wall_ns": 51530250
+      },
+      {
+        "attempt": 3576,
+        "capture_cpu_ns": 49045208,
+        "capture_error": null,
+        "capture_wall_ns": 60743916
+      },
+      {
+        "attempt": 3682,
+        "capture_cpu_ns": 27010334,
+        "capture_error": null,
+        "capture_wall_ns": 52326416
+      },
+      {
+        "attempt": 3901,
+        "capture_cpu_ns": 19265084,
+        "capture_error": null,
+        "capture_wall_ns": 50770542
+      },
+      {
+        "attempt": 3987,
+        "capture_cpu_ns": 22061916,
+        "capture_error": null,
+        "capture_wall_ns": 87091375
+      },
+      {
+        "attempt": 3991,
+        "capture_cpu_ns": 19923709,
+        "capture_error": null,
+        "capture_wall_ns": 81109750
+      },
+      {
+        "attempt": 4149,
+        "capture_cpu_ns": 19366334,
+        "capture_error": null,
+        "capture_wall_ns": 51501833
+      },
+      {
+        "attempt": 4309,
+        "capture_cpu_ns": 22165500,
+        "capture_error": null,
+        "capture_wall_ns": 53001666
+      }
+    ],
+    "gate": "Traceback (most recent call last):\n  File \"/Users/runner/work/livequery/livequery/scripts/check-load.py\", line 28, in <module>\n    assert set(row[key]) <= {\"busy\"}, (row[\"engine\"], key, row[key])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('sync', 'observation_error_codes', {'deadline': 1, 'busy': 1})\n",
+    "cpu": {
+      "windows": 60,
+      "min": 67.60287393860222,
+      "max": 299.8032786885246,
+      "median": 232.51968820584312
+    },
+    "failed_spans": [
+      {
+        "kind": "query",
+        "deadline": true,
+        "tid": 15777,
+        "pre_return_wall_ms": 122.251,
+        "pre_return_cpu_ms": 0.183375,
+        "intervals": [
+          {
+            "phase": "scan -> deadline",
+            "start_ns": 324099488000,
+            "end_ns": 324221581000,
+            "wall_ms": 122.093,
+            "cpu_ms": 0.026583,
+            "allocator_ms": 0.00075,
+            "thread_samples": [],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 2019
+            },
+            "counter_bracket": [
+              323806687000,
+              324223249000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 319481000000,
+                "end_ns": 324736298000,
+                "busy_percent": 297.9060913705584
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 15779,
+        "pre_return_wall_ms": 356.532,
+        "pre_return_cpu_ms": 17.701833,
+        "intervals": [
+          {
+            "phase": "validate -> validated",
+            "start_ns": 323880911000,
+            "end_ns": 324223282000,
+            "wall_ms": 342.371,
+            "cpu_ms": 5.071125,
+            "allocator_ms": 0.023666,
+            "thread_samples": [
+              {
+                "stamp": 324098861000,
+                "tid": 15779,
+                "cpu_ns": 7643668000,
+                "state": 1,
+                "priority": 20,
+                "name": ""
+              },
+              {
+                "stamp": 324223249000,
+                "tid": 15779,
+                "cpu_ns": 7643868000,
+                "state": 1,
+                "priority": 20,
+                "name": ""
+              }
+            ],
+            "task_counter_delta": {
+              "faults": 1,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 2698
+            },
+            "counter_bracket": [
+              323770195000,
+              324352522000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 319481000000,
+                "end_ns": 324736298000,
+                "busy_percent": 297.9060913705584
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 15779,
+        "pre_return_wall_ms": 110.271,
+        "pre_return_cpu_ms": 9.356333,
+        "intervals": [
+          {
+            "phase": "rows -> deadline",
+            "start_ns": 324759041000,
+            "end_ns": 324851365000,
+            "wall_ms": 92.324,
+            "cpu_ms": 0.089583,
+            "allocator_ms": 1.299681,
+            "thread_samples": [
+              {
+                "stamp": 324817841000,
+                "tid": 15779,
+                "cpu_ns": 7725619000,
+                "state": 1,
+                "priority": 17,
+                "name": ""
+              }
+            ],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 263
+            },
+            "counter_bracket": [
+              324655284000,
+              324859916000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 324736298000,
+                "end_ns": 330131293000,
+                "busy_percent": 298.33024118738405
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "artifact": "macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55",
+    "measurement": {
+      "variant": "diagnostic",
+      "engine": "async",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+      "cpu_admission_gate": false,
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55"
+    },
+    "build": {
+      "official_base": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+      "diagnostic_only": true,
+      "runner_image": "20261021.0445.8",
+      "runner_os_image": "macos26",
+      "runner_arch": "arm64",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "seconds_per_engine": 300,
+      "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+    },
+    "sha_matches": true,
+    "result": {
+      "elapsed_seconds": 300.04033350000003,
+      "requests": 6414712,
+      "request_error_codes": {},
+      "observations": 28917,
+      "observation_error_codes": {
+        "busy": 4
+      },
+      "publication_attempts": 4907,
+      "publication_error_codes": {
+        "deadline": 5
+      },
+      "query_kinds": {
+        "sort": 9640,
+        "count": 9640,
+        "max": 9637
+      }
+    },
+    "report_sha_matches": true,
+    "slow_captures": [
+      {
+        "attempt": 4,
+        "capture_cpu_ns": 16263583,
+        "capture_error": null,
+        "capture_wall_ns": 64306042
+      },
+      {
+        "attempt": 443,
+        "capture_cpu_ns": 16619417,
+        "capture_error": null,
+        "capture_wall_ns": 59325166
+      },
+      {
+        "attempt": 1076,
+        "capture_cpu_ns": 23886875,
+        "capture_error": "deadline",
+        "capture_wall_ns": 105181125
+      },
+      {
+        "attempt": 1098,
+        "capture_cpu_ns": 15193417,
+        "capture_error": null,
+        "capture_wall_ns": 51534208
+      },
+      {
+        "attempt": 1107,
+        "capture_cpu_ns": 15633000,
+        "capture_error": null,
+        "capture_wall_ns": 61260459
+      },
+      {
+        "attempt": 1112,
+        "capture_cpu_ns": 19557459,
+        "capture_error": null,
+        "capture_wall_ns": 53824500
+      },
+      {
+        "attempt": 1153,
+        "capture_cpu_ns": 17655458,
+        "capture_error": "deadline",
+        "capture_wall_ns": 163301958
+      },
+      {
+        "attempt": 1186,
+        "capture_cpu_ns": 20460667,
+        "capture_error": null,
+        "capture_wall_ns": 59097500
+      },
+      {
+        "attempt": 1191,
+        "capture_cpu_ns": 16485709,
+        "capture_error": null,
+        "capture_wall_ns": 58285667
+      },
+      {
+        "attempt": 1218,
+        "capture_cpu_ns": 26700292,
+        "capture_error": null,
+        "capture_wall_ns": 61263125
+      },
+      {
+        "attempt": 1219,
+        "capture_cpu_ns": 15949625,
+        "capture_error": null,
+        "capture_wall_ns": 73995583
+      },
+      {
+        "attempt": 1537,
+        "capture_cpu_ns": 12606417,
+        "capture_error": null,
+        "capture_wall_ns": 54866916
+      },
+      {
+        "attempt": 1898,
+        "capture_cpu_ns": 20040750,
+        "capture_error": null,
+        "capture_wall_ns": 58952083
+      },
+      {
+        "attempt": 1905,
+        "capture_cpu_ns": 19911291,
+        "capture_error": null,
+        "capture_wall_ns": 52709750
+      },
+      {
+        "attempt": 1906,
+        "capture_cpu_ns": 17212666,
+        "capture_error": null,
+        "capture_wall_ns": 59074583
+      },
+      {
+        "attempt": 2273,
+        "capture_cpu_ns": 18569542,
+        "capture_error": "deadline",
+        "capture_wall_ns": 109620458
+      },
+      {
+        "attempt": 2293,
+        "capture_cpu_ns": 14296834,
+        "capture_error": null,
+        "capture_wall_ns": 60437042
+      },
+      {
+        "attempt": 2367,
+        "capture_cpu_ns": 12332834,
+        "capture_error": null,
+        "capture_wall_ns": 71348458
+      },
+      {
+        "attempt": 2516,
+        "capture_cpu_ns": 15633833,
+        "capture_error": null,
+        "capture_wall_ns": 59062083
+      },
+      {
+        "attempt": 2517,
+        "capture_cpu_ns": 16351583,
+        "capture_error": "deadline",
+        "capture_wall_ns": 126649375
+      },
+      {
+        "attempt": 2851,
+        "capture_cpu_ns": 24222000,
+        "capture_error": null,
+        "capture_wall_ns": 91411875
+      },
+      {
+        "attempt": 3886,
+        "capture_cpu_ns": 15892667,
+        "capture_error": "deadline",
+        "capture_wall_ns": 113582333
+      },
+      {
+        "attempt": 4193,
+        "capture_cpu_ns": 17911250,
+        "capture_error": null,
+        "capture_wall_ns": 62183125
+      },
+      {
+        "attempt": 4410,
+        "capture_cpu_ns": 19622500,
+        "capture_error": null,
+        "capture_wall_ns": 50452292
+      }
+    ],
+    "gate": "Traceback (most recent call last):\n  File \"/Users/runner/work/livequery/livequery/scripts/check-load.py\", line 28, in <module>\n    assert set(row[key]) <= {\"busy\"}, (row[\"engine\"], key, row[key])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('async', 'publication_error_codes', {'deadline': 5})\n",
+    "cpu": {
+      "windows": 60,
+      "min": 102.05162144275315,
+      "max": 300.0,
+      "median": 233.8383178790649
+    },
+    "failed_spans": [
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 12850,
+        "pre_return_wall_ms": 99.894,
+        "pre_return_cpu_ms": 18.970666,
+        "intervals": [
+          {
+            "phase": "rows -> rows",
+            "start_ns": 314310141000,
+            "end_ns": 314348746000,
+            "wall_ms": 38.605,
+            "cpu_ms": 0.6975,
+            "allocator_ms": 13.990729,
+            "thread_samples": [],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 3845
+            },
+            "counter_bracket": [
+              314251445000,
+              314376419000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 309749502000,
+                "end_ns": 314832821000,
+                "busy_percent": 290.138067061144
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 12850,
+        "pre_return_wall_ms": 147.772,
+        "pre_return_cpu_ms": 11.144625,
+        "intervals": [
+          {
+            "phase": "rows -> rows",
+            "start_ns": 321332159000,
+            "end_ns": 321354371000,
+            "wall_ms": 22.212,
+            "cpu_ms": 0.803208,
+            "allocator_ms": 6.021294,
+            "thread_samples": [
+              {
+                "stamp": 321352792000,
+                "tid": 12850,
+                "cpu_ns": 27120217000,
+                "state": 1,
+                "priority": 19,
+                "name": ""
+              }
+            ],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 1232
+            },
+            "counter_bracket": [
+              321192695000,
+              321367455000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 320014398000,
+                "end_ns": 325158220000,
+                "busy_percent": 295.3307392996109
+              }
+            ]
+          },
+          {
+            "phase": "rows -> deadline",
+            "start_ns": 321354371000,
+            "end_ns": 321467204000,
+            "wall_ms": 112.833,
+            "cpu_ms": 0.5065,
+            "allocator_ms": 108.07147,
+            "thread_samples": [
+              {
+                "stamp": 321367455000,
+                "tid": 12850,
+                "cpu_ns": 27120446000,
+                "state": 1,
+                "priority": 19,
+                "name": ""
+              }
+            ],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 1093
+            },
+            "counter_bracket": [
+              321321976000,
+              321478457000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 320014398000,
+                "end_ns": 325158220000,
+                "busy_percent": 295.3307392996109
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 12850,
+        "pre_return_wall_ms": 105.51,
+        "pre_return_cpu_ms": 14.468917,
+        "intervals": [
+          {
+            "phase": "rows -> rows",
+            "start_ns": 398040927000,
+            "end_ns": 398051317000,
+            "wall_ms": 10.39,
+            "cpu_ms": 0.24425,
+            "allocator_ms": 0.058774,
+            "thread_samples": [],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 4433
+            },
+            "counter_bracket": [
+              397938804000,
+              398087514000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 397364671000,
+                "end_ns": 402516595000,
+                "busy_percent": 297.0836033700583
+              }
+            ]
+          },
+          {
+            "phase": "rows -> rows",
+            "start_ns": 398053246000,
+            "end_ns": 398078463000,
+            "wall_ms": 25.217,
+            "cpu_ms": 0.212875,
+            "allocator_ms": 0.054553,
+            "thread_samples": [],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 4433
+            },
+            "counter_bracket": [
+              397938804000,
+              398087514000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 397364671000,
+                "end_ns": 402516595000,
+                "busy_percent": 297.0836033700583
+              }
+            ]
+          },
+          {
+            "phase": "rows -> rows",
+            "start_ns": 398089047000,
+            "end_ns": 398134190000,
+            "wall_ms": 45.143,
+            "cpu_ms": 0.449292,
+            "allocator_ms": 0.353025,
+            "thread_samples": [],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 4652
+            },
+            "counter_bracket": [
+              397962402000,
+              398175888000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 397364671000,
+                "end_ns": 402516595000,
+                "busy_percent": 297.0836033700583
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 12850,
+        "pre_return_wall_ms": 100.451,
+        "pre_return_cpu_ms": 11.51075,
+        "intervals": [
+          {
+            "phase": "rows -> rows",
+            "start_ns": 416004955000,
+            "end_ns": 416020253000,
+            "wall_ms": 15.298,
+            "cpu_ms": 0.40925,
+            "allocator_ms": 8.254839,
+            "thread_samples": [
+              {
+                "stamp": 416016409000,
+                "tid": 12850,
+                "cpu_ns": 61321229000,
+                "state": 1,
+                "priority": 18,
+                "name": ""
+              }
+            ],
+            "task_counter_delta": {
+              "faults": 0,
+              "pageins": 0,
+              "cow_faults": 0,
+              "csw": 7287
+            },
+            "counter_bracket": [
+              415902364000,
+              416066161000
+            ],
+            "host_cpu_windows": [
+              {
+                "start_ns": 412830659000,
+                "end_ns": 417939999000,
+                "busy_percent": 279.5006570302234
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "capture",
+        "deadline": true,
+        "tid": 12850,
+        "pre_return_wall_ms": 100.069,
+        "pre_return_cpu_ms": 12.037917,
+        "intervals": []
+      }
+    ]
+  },
+  {
+    "artifact": "macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55",
+    "measurement": {
+      "variant": "official",
+      "engine": "async",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+      "cpu_admission_gate": false,
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55"
+    },
+    "build": {
+      "official_base": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+      "diagnostic_only": true,
+      "runner_image": "20261021.0445.8",
+      "runner_os_image": "macos26",
+      "runner_arch": "arm64",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "seconds_per_engine": 300,
+      "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+    },
+    "sha_matches": true,
+    "result": {
+      "elapsed_seconds": 300.02656862500004,
+      "requests": 5666389,
+      "request_error_codes": {},
+      "observations": 29496,
+      "observation_error_codes": {
+        "deadline": 1
+      },
+      "publication_attempts": 5934,
+      "publication_error_codes": {
+        "deadline": 3
+      },
+      "query_kinds": {
+        "sort": 9832,
+        "count": 9832,
+        "max": 9832
+      }
+    },
+    "report_sha_matches": true,
+    "slow_captures": [
+      {
+        "attempt": 1620,
+        "capture_cpu_ns": 14950167,
+        "capture_error": "deadline",
+        "capture_wall_ns": 123474250
+      },
+      {
+        "attempt": 1758,
+        "capture_cpu_ns": 17869708,
+        "capture_error": null,
+        "capture_wall_ns": 88803500
+      },
+      {
+        "attempt": 1769,
+        "capture_cpu_ns": 9117958,
+        "capture_error": null,
+        "capture_wall_ns": 67339958
+      },
+      {
+        "attempt": 1772,
+        "capture_cpu_ns": 21607833,
+        "capture_error": "deadline",
+        "capture_wall_ns": 126102709
+      },
+      {
+        "attempt": 3047,
+        "capture_cpu_ns": 17107708,
+        "capture_error": null,
+        "capture_wall_ns": 51415166
+      },
+      {
+        "attempt": 3153,
+        "capture_cpu_ns": 9854333,
+        "capture_error": null,
+        "capture_wall_ns": 52620792
+      },
+      {
+        "attempt": 3657,
+        "capture_cpu_ns": 14469500,
+        "capture_error": "deadline",
+        "capture_wall_ns": 104854000
+      },
+      {
+        "attempt": 3929,
+        "capture_cpu_ns": 15538250,
+        "capture_error": null,
+        "capture_wall_ns": 61523083
+      },
+      {
+        "attempt": 4306,
+        "capture_cpu_ns": 15139375,
+        "capture_error": null,
+        "capture_wall_ns": 57380541
+      },
+      {
+        "attempt": 4810,
+        "capture_cpu_ns": 17069041,
+        "capture_error": null,
+        "capture_wall_ns": 59787583
+      },
+      {
+        "attempt": 4912,
+        "capture_cpu_ns": 13210291,
+        "capture_error": null,
+        "capture_wall_ns": 57961250
+      },
+      {
+        "attempt": 5744,
+        "capture_cpu_ns": 15369125,
+        "capture_error": null,
+        "capture_wall_ns": 51249125
+      }
+    ],
+    "gate": "Traceback (most recent call last):\n  File \"/Users/runner/work/livequery/livequery/scripts/check-load.py\", line 28, in <module>\n    assert set(row[key]) <= {\"busy\"}, (row[\"engine\"], key, row[key])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('async', 'observation_error_codes', {'deadline': 1})\n",
+    "cpu": {
+      "windows": 60,
+      "min": 39.03846153846154,
+      "max": 300.0,
+      "median": 233.39252531837064
+    }
+  },
+  {
+    "artifact": "macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55",
+    "measurement": {
+      "variant": "official",
+      "engine": "sync",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "runner_image": "20261013.0424.1",
+      "runner_os_image": "macos26",
+      "separate_build_job": true,
+      "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+      "cpu_admission_gate": false,
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55"
+    },
+    "build": {
+      "official_base": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+      "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+      "diagnostic_only": true,
+      "runner_image": "20261021.0445.8",
+      "runner_os_image": "macos26",
+      "runner_arch": "arm64",
+      "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "logical_cpus": 3,
+      "seconds_per_engine": 300,
+      "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+    },
+    "sha_matches": true,
+    "result": {
+      "elapsed_seconds": 300.007458375,
+      "requests": 6820856,
+      "request_error_codes": {},
+      "observations": 29317,
+      "observation_error_codes": {
+        "deadline": 2
+      },
+      "publication_attempts": 5769,
+      "publication_error_codes": {
+        "deadline": 4
+      },
+      "query_kinds": {
+        "sort": 9773,
+        "count": 9772,
+        "max": 9772
+      }
+    },
+    "report_sha_matches": true,
+    "slow_captures": [
+      {
+        "attempt": 123,
+        "capture_cpu_ns": 14890458,
+        "capture_error": null,
+        "capture_wall_ns": 67153625
+      },
+      {
+        "attempt": 132,
+        "capture_cpu_ns": 14741166,
+        "capture_error": null,
+        "capture_wall_ns": 66478250
+      },
+      {
+        "attempt": 133,
+        "capture_cpu_ns": 12931208,
+        "capture_error": null,
+        "capture_wall_ns": 67036250
+      },
+      {
+        "attempt": 1456,
+        "capture_cpu_ns": 16348583,
+        "capture_error": null,
+        "capture_wall_ns": 64728792
+      },
+      {
+        "attempt": 1635,
+        "capture_cpu_ns": 13594250,
+        "capture_error": null,
+        "capture_wall_ns": 74474584
+      },
+      {
+        "attempt": 1658,
+        "capture_cpu_ns": 14154208,
+        "capture_error": null,
+        "capture_wall_ns": 54112833
+      },
+      {
+        "attempt": 1664,
+        "capture_cpu_ns": 9846500,
+        "capture_error": null,
+        "capture_wall_ns": 66744250
+      },
+      {
+        "attempt": 1672,
+        "capture_cpu_ns": 10309708,
+        "capture_error": null,
+        "capture_wall_ns": 73145292
+      },
+      {
+        "attempt": 1701,
+        "capture_cpu_ns": 10333541,
+        "capture_error": null,
+        "capture_wall_ns": 73037916
+      },
+      {
+        "attempt": 2111,
+        "capture_cpu_ns": 14557459,
+        "capture_error": null,
+        "capture_wall_ns": 57137459
+      },
+      {
+        "attempt": 2116,
+        "capture_cpu_ns": 14516958,
+        "capture_error": null,
+        "capture_wall_ns": 53094709
+      },
+      {
+        "attempt": 2687,
+        "capture_cpu_ns": 20391042,
+        "capture_error": null,
+        "capture_wall_ns": 84805958
+      },
+      {
+        "attempt": 2689,
+        "capture_cpu_ns": 17566625,
+        "capture_error": null,
+        "capture_wall_ns": 52131042
+      },
+      {
+        "attempt": 2697,
+        "capture_cpu_ns": 19313042,
+        "capture_error": null,
+        "capture_wall_ns": 52009917
+      },
+      {
+        "attempt": 3136,
+        "capture_cpu_ns": 10682291,
+        "capture_error": null,
+        "capture_wall_ns": 91351458
+      },
+      {
+        "attempt": 3287,
+        "capture_cpu_ns": 11293250,
+        "capture_error": "deadline",
+        "capture_wall_ns": 104567708
+      },
+      {
+        "attempt": 3672,
+        "capture_cpu_ns": 4144416,
+        "capture_error": "deadline",
+        "capture_wall_ns": 111854458
+      },
+      {
+        "attempt": 3681,
+        "capture_cpu_ns": 11073708,
+        "capture_error": "deadline",
+        "capture_wall_ns": 428476083
+      },
+      {
+        "attempt": 3697,
+        "capture_cpu_ns": 15589125,
+        "capture_error": null,
+        "capture_wall_ns": 52317041
+      },
+      {
+        "attempt": 3698,
+        "capture_cpu_ns": 23093708,
+        "capture_error": "deadline",
+        "capture_wall_ns": 112284750
+      },
+      {
+        "attempt": 5118,
+        "capture_cpu_ns": 15778625,
+        "capture_error": null,
+        "capture_wall_ns": 75281666
+      }
+    ],
+    "gate": "Traceback (most recent call last):\n  File \"/Users/runner/work/livequery/livequery/scripts/check-load.py\", line 28, in <module>\n    assert set(row[key]) <= {\"busy\"}, (row[\"engine\"], key, row[key])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('sync', 'observation_error_codes', {'deadline': 2})\n",
+    "cpu": {
+      "windows": 60,
+      "min": 15.727391874180865,
+      "max": 300.0,
+      "median": 229.91313731141213
+    }
+  }
+]
