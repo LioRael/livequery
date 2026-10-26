@@ -21,3 +21,7 @@ Next decision is based on failed CI intervals: determine whether they show the s
 ## Isolation follow-up and admission correction
 
 Disk-indexing shutdown alone left user indexing agents active; removing those agents succeeded, but macOS 26 still showed other substantial background activity before load. The [macOS 15 comparison](readiness-ci-isolation-40388527325/README.md) never started a workload: its old admission failed only on load-average history. It cannot establish that switching OS fixes any Deadline. The new admission heuristic incorrectly conflated historical run-queue load with current CPU competition; it now measures interval CPU ticks with the same 25%-of-one-core budget. Original error, workload and resource gates remain untouched. Verification returns to macOS 26; no OS coverage is dropped.
+
+## Actual-CPU admission result
+
+[Run 40389493414](readiness-ci-isolation-40389493414/README.md) returned to macOS 26 and recorded actual pre-workload CPU use of 1.576, 0.498 and 0.522 core equivalents in three five-second intervals. It did not start the workload. Indexing interventions have not established the requested isolation. The 25% diagnostic admission budget is an added conservative prerequisite, not evidence of a workload timeout and not an original acceptance requirement. macOS 15 has no workload result; it cannot be used to bypass macOS 26 failures. Stop repeated identical hosted runs until an execution-isolation strategy is justified; keep every failed report and the original acceptance gates.
