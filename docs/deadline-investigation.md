@@ -29,3 +29,18 @@ Disk-indexing shutdown alone left user indexing agents active; removing those ag
 ## User-directed build/measurement separation
 
 The diagnostic 25% admission requirement is removed. Build and measurement now run on separate hosted VMs, with verified official and instrumented binaries and separate environment provenance. Four macOS 26 jobs run the unchanged actual workload and original gates once each (official/diagnostic × sync/async). Runtime CPU windows are evidence only and are linked to diagnostic failure intervals. This addresses the explicit request to measure actual behavior rather than block on a new host criterion. Isolation effectiveness and timeout resolution remain to be established by completed results.
+
+
+## Paid runner withdrawal and implementation audit
+
+The paid runner selector was withdrawn at the user's explicit request. No paid resources were provisioned or dispatched. Continue on standard macOS 26 ARM and keep the original acceptance requirements.
+
+The current implementation audit establishes these boundaries:
+
+- Workload `record` takes the application counter mutex, but snapshot capture runs after cloning and releasing that mutex. The reported capture deadline cannot include waiting to acquire this application mutex. Copy time is separately recorded.
+- Registered published queries use `Registry::read_snapshot` and an immutable `Arc` snapshot. They do not use the deep-copy `Source::snapshot` fallback. Replacing that fallback would not repair this measured query path.
+- Capture validates constructed snapshots, and publication validates public, mutable snapshot input again. Eliminating publication validation based on an assumption that every snapshot came from capture would permit mutated or manually constructed snapshots to bypass validation; it is not a safe timeout fix.
+- Query deadlines use wall time from execution entry; per-row and final checks remain intact. Sorting currently processes all matching rows before applying LIMIT, an identifiable optimization opportunity, but it does not explain capture deadlines or establish that the observed failures were CPU-bound sorting. No speculative query change was made.
+- The business driver has four clients and observers back off after errors. There is no observed error-triggered tight retry loop to remove. Driver throttling would change the required workload and is not a repair.
+
+This audit has not identified a code defect explaining the observed off-CPU capture intervals. No fix, successful acceptance, or permission to relax the original gates is claimed. Historical evidence remains intact; do not resume the withdrawn paid-resource route or dispatch identical trials merely to obtain a pass.

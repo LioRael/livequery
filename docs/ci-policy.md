@@ -16,10 +16,6 @@ GitHub documents standard macos-26 ARM runners as three CPUs/7GB and macos-26-in
 
 The remaining resource question is short-interval CPU availability to the failed thread, not mean process utilization. Existing correlations support CPU service shortage but do not establish a safe configuration that removes it. Preserve this distinction when selecting a targeted change; no identical-configuration retry or new admission threshold is justified by this audit.
 
-## Prepared resource comparison (not executed)
+## Resource scope
 
-The diagnostic workflow now accepts an explicit `measurement_runner` choice between `macos-26` and `macos-26-xlarge`; the build still runs on standard macOS 26 ARM. The same build artifact and SHA256 verification, engines, 5000 rows, 96-byte strings, four observers, business clients, 300-second diagnostic duration and 100ms/error gates are preserved. No default acceptance runner changes. The existing actual-OS/CPU/image provenance must confirm the allocated configuration before interpreting results.
-
-GitHub documents `macos-26-xlarge` as ARM M2, five CPUs and 14GB RAM. Larger runners require an organization on GitHub Team or Enterprise Cloud. Live repository metadata confirms `LioRael/livequery` is personal-account owned. Therefore the xlarge choice is prepared but must not be dispatched in this personal repository expecting it to provision extra capacity. Source: https://docs.github.com/en/actions/how-tos/manage-runners/larger-runners/use-larger-runners?platform=mac . An explicitly selected eligible organization and authorization to incur runner charges are required before creating a temporary validation repository or moving the repository; neither action has been taken.
-
-A successful larger-ARM diagnostic would support a resource-specific mitigation, not prove standard three-core ARM fixed. Record that boundary and retain failures. Only after the effective validation environment is explicitly established should the unchanged complete release acceptance suite run; no architecture change, threshold change, or repeated allocation-until-green is authorized by this plan.
+The user declined paid runners. The diagnostic workflow is fixed to the existing standard `macos-26` ARM runner. The temporary xlarge selector has been removed; no paid job was dispatched, no validation repository created, and no repository moved. Further investigation stays within the existing implementation, workload and free CI; adding capacity is not a prerequisite for release. Original acceptance requirements remain unchanged.

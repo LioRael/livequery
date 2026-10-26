@@ -1,13 +1,6 @@
 name: macOS deadline diagnosis
 on:
   workflow_dispatch:
-    inputs:
-      measurement_runner:
-        description: 'ARM measurement capacity; xlarge requires an eligible organization and billing authorization'
-        type: choice
-        options: [macos-26, macos-26-xlarge]
-        default: macos-26
-        required: true
 permissions:
   contents: read
 concurrency:
@@ -42,7 +35,7 @@ jobs:
           retention-days: 30
   measure:
     needs: build
-    runs-on: ${{ inputs.measurement_runner }}
+    runs-on: macos-26
     timeout-minutes: 20
     strategy:
       fail-fast: false
