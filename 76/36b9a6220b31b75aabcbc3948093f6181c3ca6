@@ -1,0 +1,77 @@
+docs/readiness-baseline-29b2f17/macos-26-sync/gate-recheck.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/ubuntu-latest-sync/ci-bin/SHA256SUMS
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-async/gate-recheck.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-sync/measurement-policy/measurement-stdout.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-122
+docs/readiness-baseline-29b2f17/ubuntu-latest-sync/endurance.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-15883
+docs/readiness-baseline-29b2f17/ubuntu-latest-async/toolchain.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-10
+docs/readiness-baseline-29b2f17/README.md
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-7
+docs/readiness-baseline-29b2f17/macos-26-async/endurance.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-15817
+docs/readiness-baseline-29b2f17/macos-26-sync/measurement-policy/process-policy-inside.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-30
+docs/readiness-baseline-29b2f17/macos-26-async/measurement-policy/process-policy-inside.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-30
+docs/readiness-baseline-29b2f17/ubuntu-latest-async/ci-bin/SHA256SUMS
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-async/ci-bin/SHA256SUMS
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-2
+docs/readiness-baseline-29b2f17/macos-26-async/measurement-policy/measurement-exit.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-sync/measurement-policy/measurement-launch.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-13
+docs/readiness-baseline-29b2f17/macos-26-async/measurement-policy/measurement-launch.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-13
+docs/readiness-baseline-29b2f17/summary.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-98
+docs/readiness-baseline-29b2f17/macos-26-sync/ci-bin/SHA256SUMS
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-2
+docs/readiness-baseline-29b2f17/ubuntu-latest-async/endurance.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-15883
+docs/readiness-baseline-29b2f17/macos-26-async/measurement-policy/process-policy-outside.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-30
+docs/readiness-baseline-29b2f17/macos-26-sync/measurement-policy/measurement-exit.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-sync/toolchain.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-10
+docs/readiness-baseline-29b2f17/ubuntu-latest-sync/gate-recheck.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-sync/endurance.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-15850
+docs/readiness-baseline-29b2f17/ubuntu-latest-sync/toolchain.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-10
+docs/readiness-baseline-29b2f17/macos-26-sync/ci-offcpu/service-isolation.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-70
+docs/readiness-baseline-29b2f17/macos-26-async/measurement-policy/measurement-stdout.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-122
+docs/readiness-baseline-29b2f17/macos-26-async/toolchain.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-10
+docs/readiness-baseline-29b2f17/macos-26-async/ci-offcpu/service-isolation.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-70
+docs/readiness-baseline-29b2f17/ubuntu-latest-async/gate-recheck.txt
+  s_1d1ebc94680cfb::t_ad075febd5a629 1
+docs/readiness-baseline-29b2f17/macos-26-sync/measurement-policy/process-policy-outside.json
+  s_1d1ebc94680cfb::t_ad075febd5a629 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7636b9a6220b31b75aabcbc3948093f6181c3ca6",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
