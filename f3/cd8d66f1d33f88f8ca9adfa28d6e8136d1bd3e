@@ -1,0 +1,41 @@
+scripts/diagnostics/isolation.py
+  s_1d1ebc94680cfb::t_423004143e2f15 3,21-46,52-53,58-66,68,70-73
+scripts/diagnostics/test_isolation.py
+  s_1d1ebc94680cfb::t_423004143e2f15 1-16
+docs/deadline-investigation.md
+  s_1d1ebc94680cfb::t_0d64330bf2fbe9 20-23
+docs/readiness-ci-isolation-40388527325/README.md
+  s_1d1ebc94680cfb::t_49bf9bae6dc6bb 1-9
+docs/readiness-ci-isolation-40388527325/binary-sha256.txt
+  s_1d1ebc94680cfb::t_c818efbf57f0f2 1
+docs/readiness-ci-isolation-40388527325/instrumentation.patch
+  s_1d1ebc94680cfb::t_4359f3a2729e35 1-245
+docs/readiness-ci-isolation-40388527325/isolation-sync.json
+  s_1d1ebc94680cfb::t_4b99eb1ef5a309 1-9786
+docs/readiness-ci-isolation-40388527325/preflight.json
+  s_1d1ebc94680cfb::t_85e2d3cea92807 1-3
+docs/readiness-ci-isolation-40388527325/provenance.json
+  s_1d1ebc94680cfb::t_4136adaa388526 1-13
+docs/readiness-ci-isolation-40388527325/service-isolation.json
+  s_1d1ebc94680cfb::t_9aa19c3a905832 1-61
+docs/readiness-ci-isolation-40388527325/toolchain.txt
+  s_1d1ebc94680cfb::t_7bc1098fd72446 1-7
+scripts/diagnostics/README.md
+  s_1d1ebc94680cfb::t_f89bf7a0b605c4 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f3cd8d66f1d33f88f8ca9adfa28d6e8136d1bd3e",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
