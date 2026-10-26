@@ -1,0 +1,177 @@
+docs/readiness-field-buffer/ci-40396370860/README.md
+  s_1d1ebc94680cfb::t_4e00eaf58a6803 1-18
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/clock-anchor.json
+  s_1d1ebc94680cfb::t_514bc6ac0b9c38 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/events/3131-12818.tid
+  s_1d1ebc94680cfb::t_83d2abd7f35fa0 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/events/3131-12849.tid
+  s_1d1ebc94680cfb::t_ec141a1db8f50e 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/events/3131-12850.jsonl
+  s_1d1ebc94680cfb::t_94c4f8ad083b88 1-25
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/events/3131-12850.tid
+  s_1d1ebc94680cfb::t_54ef184ca75f6a 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/failure-correlation.json
+  s_1d1ebc94680cfb::t_e6e7d2f30c095f 1-1154
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/gate-recheck.log
+  s_1d1ebc94680cfb::t_e73a8f3190412f 1-4
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/gate.log
+  s_1d1ebc94680cfb::t_0e25c0a86e3ebd 1-5
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/host-activity.jsonl
+  s_1d1ebc94680cfb::t_0c6f717911de1c 1-61
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/pid
+  s_1d1ebc94680cfb::t_a0eb10248bf0ac 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/report.json
+  s_1d1ebc94680cfb::t_7fa97b65ab868a 1-1113
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/run.log
+  s_1d1ebc94680cfb::t_cff315a92be5e0 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/sampler.log
+  s_1d1ebc94680cfb::t_ee6c7f7c3c7107 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/binary-sha256.txt
+  s_1d1ebc94680cfb::t_7d996ffcd1e7fc 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/build-manifest.json
+  s_1d1ebc94680cfb::t_b711ca074c8072 1-19
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/instrumentation.patch
+  s_1d1ebc94680cfb::t_4fa463f9466d95 1-245
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/measurement-provenance.json
+  s_1d1ebc94680cfb::t_e969910ab233fc 1-12
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/preflight.json
+  s_1d1ebc94680cfb::t_8c523bd91f8cc1 1-3
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/provenance.json
+  s_1d1ebc94680cfb::t_bb9060d2671b0a 1-13
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/service-isolation.json
+  s_1d1ebc94680cfb::t_aee8ca498f4746 1-70
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/toolchain.txt
+  s_1d1ebc94680cfb::t_b3726d01d4d564 1-7
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/verdicts.json
+  s_1d1ebc94680cfb::t_c002ae7df631d1 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/binary-sha256.txt
+  s_1d1ebc94680cfb::t_2546586ef4c783 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/build-manifest.json
+  s_1d1ebc94680cfb::t_baf78850e51bff 1-19
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/instrumentation.patch
+  s_1d1ebc94680cfb::t_b8348f8b795e69 1-245
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/measurement-provenance.json
+  s_1d1ebc94680cfb::t_12c7fe9390ff93 1-12
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/preflight.json
+  s_1d1ebc94680cfb::t_daf63c23fcaa83 1-3
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/provenance.json
+  s_1d1ebc94680cfb::t_52ee7b8cf53c7c 1-13
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/service-isolation.json
+  s_1d1ebc94680cfb::t_7ac42391bf6933 1-70
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/clock-anchor.json
+  s_1d1ebc94680cfb::t_0a03f8fa03f3bb 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/events/4102-15759.tid
+  s_1d1ebc94680cfb::t_33be88ea4bcf86 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/events/4102-15777.jsonl
+  s_1d1ebc94680cfb::t_518a61208b0321 1-4
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/events/4102-15777.tid
+  s_1d1ebc94680cfb::t_a41d0a8a87704b 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/events/4102-15779.jsonl
+  s_1d1ebc94680cfb::t_bbe95e44b47968 1-29
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/events/4102-15779.tid
+  s_1d1ebc94680cfb::t_7c1b44e1b36aab 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/failure-correlation.json
+  s_1d1ebc94680cfb::t_b5efbe90ce4841 1-1514
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/gate-recheck.log
+  s_1d1ebc94680cfb::t_161164799f1ddf 1-4
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/gate.log
+  s_1d1ebc94680cfb::t_f3d6522984ccf1 1-5
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/host-activity.jsonl
+  s_1d1ebc94680cfb::t_392c8e73659264 1-61
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/pid
+  s_1d1ebc94680cfb::t_7063e343af17ee 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/report.json
+  s_1d1ebc94680cfb::t_a7f439cd5c8431 1-1137
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/run.log
+  s_1d1ebc94680cfb::t_927f9aadb10948 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/sampler.log
+  s_1d1ebc94680cfb::t_a267e600a600ed 1
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/toolchain.txt
+  s_1d1ebc94680cfb::t_41fe69f2a512f1 1-7
+docs/readiness-field-buffer/ci-40396370860/macos26-diagnostic-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/verdicts.json
+  s_1d1ebc94680cfb::t_3a474ed7ee893c 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/clock-anchor.json
+  s_1d1ebc94680cfb::t_6da580a52fe7a5 1
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/gate-recheck.log
+  s_1d1ebc94680cfb::t_718c58b0a6d55f 1-4
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/gate.log
+  s_1d1ebc94680cfb::t_814312975371a3 1-5
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/host-activity.jsonl
+  s_1d1ebc94680cfb::t_5781e46c7eac45 1-61
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/pid
+  s_1d1ebc94680cfb::t_a721cf7b744c9b 1
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/report.json
+  s_1d1ebc94680cfb::t_e81f071920dd3b 1-1040
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/async/run.log
+  s_1d1ebc94680cfb::t_69e9a16f7177ec 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/binary-sha256.txt
+  s_1d1ebc94680cfb::t_180c72209f081b 1
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/build-manifest.json
+  s_1d1ebc94680cfb::t_84bddf415d2829 1-19
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/instrumentation.patch
+  s_1d1ebc94680cfb::t_a47be92fb0056f 1-245
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/measurement-provenance.json
+  s_1d1ebc94680cfb::t_ecbb1b0a830943 1-12
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/preflight.json
+  s_1d1ebc94680cfb::t_7c5043d07e8ad3 1-3
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/provenance.json
+  s_1d1ebc94680cfb::t_194493ec0acbb4 1-13
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/service-isolation.json
+  s_1d1ebc94680cfb::t_f2dcd7e7660f70 1-70
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/toolchain.txt
+  s_1d1ebc94680cfb::t_717f9b70fda46a 1-7
+docs/readiness-field-buffer/ci-40396370860/macos26-official-async-5bc2613b43d841e17e9c37a94f98264d56d81f55/verdicts.json
+  s_1d1ebc94680cfb::t_2d96d1050d8277 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/binary-sha256.txt
+  s_1d1ebc94680cfb::t_ad127c36c2b601 1
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/build-manifest.json
+  s_1d1ebc94680cfb::t_55d93832cbecdd 1-19
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/instrumentation.patch
+  s_1d1ebc94680cfb::t_b37cb8a971be8b 1-245
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/measurement-provenance.json
+  s_1d1ebc94680cfb::t_e5b5e30b7ec3a2 1-12
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/preflight.json
+  s_1d1ebc94680cfb::t_f9087a32ab40ca 1-3
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/provenance.json
+  s_1d1ebc94680cfb::t_87ba18371d2f0a 1-13
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/service-isolation.json
+  s_1d1ebc94680cfb::t_9f628d4f417c07 1-70
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/clock-anchor.json
+  s_1d1ebc94680cfb::t_39138504f5bc3d 1
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/gate-recheck.log
+  s_1d1ebc94680cfb::t_dd8bc3006cce74 1-4
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/gate.log
+  s_1d1ebc94680cfb::t_28e1157cfef85e 1-5
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/host-activity.jsonl
+  s_1d1ebc94680cfb::t_b3c6b07ba9abd1 1-61
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/pid
+  s_1d1ebc94680cfb::t_7a7f95ae5dc554 1
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/report.json
+  s_1d1ebc94680cfb::t_92bf08dc1ff041 1-1094
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/sync/run.log
+  s_1d1ebc94680cfb::t_4b767f8e100025 1-6
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/toolchain.txt
+  s_1d1ebc94680cfb::t_d38e4ee08deeec 1-7
+docs/readiness-field-buffer/ci-40396370860/macos26-official-sync-5bc2613b43d841e17e9c37a94f98264d56d81f55/verdicts.json
+  s_1d1ebc94680cfb::t_b03a7c6422cde0 1-6
+docs/readiness-field-buffer/ci-40396370860/review-summary.json
+  s_1d1ebc94680cfb::t_251c366e3b2a0c 1-1129
+docs/readiness-field-buffer/msrv-check.log
+  s_1d1ebc94680cfb::t_8c80f9e84f786e 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e223b1229b626962b36eb58e6c96a12ae6d573a4",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
