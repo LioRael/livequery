@@ -1,0 +1,35 @@
+docs/deadline-investigation.md
+  s_1d1ebc94680cfb::t_d04a3055408af7 24-27
+docs/readiness-ci-isolation-40389493414/README.md
+  s_1d1ebc94680cfb::t_c34020bd605924 1-16
+docs/readiness-ci-isolation-40389493414/binary-sha256.txt
+  s_1d1ebc94680cfb::t_e2c266597fe755 1
+docs/readiness-ci-isolation-40389493414/instrumentation.patch
+  s_1d1ebc94680cfb::t_e90c9c0d9a19c3 1-245
+docs/readiness-ci-isolation-40389493414/isolation-sync.json
+  s_1d1ebc94680cfb::t_28a3347359af6b 1-10670
+docs/readiness-ci-isolation-40389493414/preflight.json
+  s_1d1ebc94680cfb::t_78476df4bcbaf2 1-3
+docs/readiness-ci-isolation-40389493414/provenance.json
+  s_1d1ebc94680cfb::t_589617dd600b06 1-13
+docs/readiness-ci-isolation-40389493414/service-isolation.json
+  s_1d1ebc94680cfb::t_dde23c591e94db 1-70
+docs/readiness-ci-isolation-40389493414/toolchain.txt
+  s_1d1ebc94680cfb::t_6a37454ee6c84a 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5a787ebe32b4e0801a9c1970c265ce5a2168db39",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
