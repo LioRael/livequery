@@ -45,3 +45,9 @@ This is candidate evidence, not the required final endurance result. The next
 full Linux/macOS 26 ARM baseline and task cohorts use separate build VMs,
 verified executable hashes, and the same measured default scheduling policy.
 No gate, traffic rate, concurrency, or library deadline was relaxed.
+
+## 0.1.0 task-table acceptance scope (2026-10-27)
+
+The release owner explicitly limited the task-table endurance release gate to Linux sync/async. macOS remains covered by regular correctness/smoke CI and the four-cohort Linux/macOS two-hour baseline. All original Linux task durations, repetitions, traffic, 100ms wall deadlines, error and resource gates remain required. This is a disclosed acceptance-scope change, not a timeout fix or a passing macOS task result.
+
+macOS task-table high-load acceptance has **not passed**. The original 600-second, 1,000-row/128-byte trials at 29b2f17 each recorded a publication Deadline despite ordinary default scheduling; their 5,000-row stage did not run. Historical failures and diagnostics remain in [attempt 5](readiness-task-attempt5/README.md) and [the last correlated investigation](readiness-process-policy/ci-40413152826/README.md). The remaining cross-process delay has no established specific root cause or verified fix. Applications using macOS task-table workloads must handle Deadline/Busy and retain the prior successful snapshot; no high-load success or latency guarantee is claimed for this release.

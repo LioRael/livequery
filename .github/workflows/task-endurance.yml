@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-26]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     steps:
@@ -24,13 +24,10 @@ jobs:
           cp experiments/workload/target/release/livequery-workload target/ci-bin/livequery-workload
           rustc -Vv > target/ci-bin/toolchain.txt
           git rev-parse HEAD >> target/ci-bin/toolchain.txt
-      - if: runner.os == 'macOS'
-        run: clang -Wall -Wextra -Werror scripts/diagnostics/process-policy.c -o target/ci-bin/policy-probe
       - name: Hash all measurement executables
         run: |
           cd target/ci-bin
           shasum -a 256 livequery-workload > SHA256SUMS
-          if [ -f policy-probe ]; then shasum -a 256 policy-probe >> SHA256SUMS; fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: task-endurance-binary-${{ matrix.os }}-${{ github.sha }}
@@ -42,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-26]
+        os: [ubuntu-latest]
         engine: [sync, async]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 180
@@ -57,25 +54,13 @@ jobs:
           cd target/ci-bin
           shasum -a 256 -c SHA256SUMS
           chmod +x livequery-workload
-          if [ -f policy-probe ]; then chmod +x policy-probe; fi
       - name: Preserve toolchain and measurement host identity
         run: |
           cp target/ci-bin/toolchain.txt target/task-toolchain.txt
           uname -a >> target/task-toolchain.txt
           python3 -c 'import json,os,platform,sys; print(json.dumps({"os":platform.platform(),"arch":platform.machine(),"cpus":os.cpu_count(),"image":os.environ.get("ImageVersion"),"python":sys.version}))' >> target/task-toolchain.txt
-      - name: Isolate observed indexing agents on the disposable Mac
-        if: runner.os == 'macOS'
-        run: |
-          sudo mdutil -a -i off
-          mdutil -a -s
-          python3 scripts/diagnostics/quiet-hosted-macos.py
-          sleep 180
-      - name: Original Linux endurance and acceptance gates
-        if: runner.os == 'Linux'
+      - name: Linux endurance and acceptance gates
         run: bash scripts/task-endurance.sh '${{ matrix.engine }}'
-      - name: Original macOS endurance with default application scheduling
-        if: runner.os == 'macOS'
-        run: python3 scripts/diagnostics/measurement-process.py --output target/measurement-policy --probe target/ci-bin/policy-probe --timeout 10800 -- bash scripts/task-endurance.sh '${{ matrix.engine }}'
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
@@ -84,7 +69,5 @@ jobs:
             target/task-*.json
             target/task-toolchain.txt
             target/ci-bin/SHA256SUMS
-            target/ci-offcpu/service-isolation.json
-            target/measurement-policy
           if-no-files-found: error
           retention-days: 30
