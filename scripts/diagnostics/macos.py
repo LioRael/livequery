@@ -20,7 +20,7 @@ from isolation import cpu_ticks, interval_busy_percent
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
-BASE = '12fa024461de4096b325ed3c9b8c87da735ba1e7'
+BASE = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
 p = argparse.ArgumentParser()
 p.add_argument('action', choices=['prepare', 'package', 'run'])
 p.add_argument('--seconds', type=int, default=300)

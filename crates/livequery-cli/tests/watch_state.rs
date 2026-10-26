@@ -54,6 +54,8 @@ fn watch(script: Vec<(Option<&'static str>, Option<Value>)>, json_output: bool) 
                     Err(error) => panic!("fixture accept failed: {error}"),
                 }
             };
+            // Accepted sockets may inherit the listener's nonblocking mode on macOS.
+            stream.set_nonblocking(false).unwrap();
             stream
                 .set_read_timeout(Some(Duration::from_secs(2)))
                 .unwrap();

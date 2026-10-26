@@ -552,9 +552,9 @@ fn identifier(s: &str) -> bool {
 /// Returns a limit error before appending oversized data, or a serialization error.
 #[doc(hidden)]
 pub fn value_with_budget<T: Serialize>(value: &T, remaining: &mut usize) -> Result<Value, Error> {
-    let bytes = json_bytes(value, *remaining)?;
-    *remaining -= bytes.len();
-    Ok(serde_json::from_slice(&bytes)?)
+    let bytes = encode_bounded::<_, 128>(value, *remaining)?;
+    *remaining -= bytes.len;
+    Ok(serde_json::from_slice(bytes.as_slice())?)
 }
 
 // Capture only needs each row's encoded size, not another owned byte buffer.
@@ -594,26 +594,54 @@ fn json_size<T: Serialize>(value: &T, max: usize) -> Result<usize, Error> {
 /// # Errors
 /// Returns a limit or serialization error when encoding cannot complete within the budget.
 pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error> {
-    struct Buffer {
-        bytes: Vec<u8>,
-        max: usize,
-        exceeded: bool,
+    Ok(encode_bounded::<_, 0>(value, max)?.heap)
+}
+
+struct EncodingBuffer<const N: usize> {
+    inline: [u8; N],
+    heap: Vec<u8>,
+    len: usize,
+    max: usize,
+    exceeded: bool,
+}
+impl<const N: usize> EncodingBuffer<N> {
+    fn as_slice(&self) -> &[u8] {
+        if self.len <= N {
+            &self.inline[..self.len]
+        } else {
+            &self.heap
+        }
     }
-    impl std::io::Write for Buffer {
-        fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
-            if bytes.len() > self.max.saturating_sub(self.bytes.len()) {
-                self.exceeded = true;
-                return Err(std::io::Error::other("field byte budget exceeded"));
+}
+impl<const N: usize> std::io::Write for EncodingBuffer<N> {
+    fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
+        if bytes.len() > self.max.saturating_sub(self.len) {
+            self.exceeded = true;
+            return Err(std::io::Error::other("field byte budget exceeded"));
+        }
+        if self.len + bytes.len() <= N {
+            self.inline[self.len..self.len + bytes.len()].copy_from_slice(bytes);
+        } else {
+            if self.len <= N {
+                self.heap.extend_from_slice(&self.inline[..self.len]);
             }
-            self.bytes.extend_from_slice(bytes);
-            Ok(bytes.len())
+            self.heap.extend_from_slice(bytes);
         }
-        fn flush(&mut self) -> std::io::Result<()> {
-            Ok(())
-        }
+        self.len += bytes.len();
+        Ok(bytes.len())
     }
-    let mut buffer = Buffer {
-        bytes: Vec::new(),
+    fn flush(&mut self) -> std::io::Result<()> {
+        Ok(())
+    }
+}
+fn encode_bounded<T: Serialize, const N: usize>(
+    value: &T,
+    max: usize,
+) -> Result<EncodingBuffer<N>, Error> {
+    let mut buffer = EncodingBuffer {
+        inline: [0; N],
+        heap: Vec::new(),
+        len: 0,
         max,
         exceeded: false,
     };
@@ -622,12 +650,66 @@ pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error>
         return Err(Error::Limit("field bytes".into()));
     }
     result?;
-    Ok(buffer.bytes)
+    Ok(buffer)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn inline_field_encoding_preserves_bytes_errors_and_remaining_budget() {
+        let values = [
+            serde_json::json!([null, true, -1, u64::MAX, 1.25]),
+            serde_json::json!("quote\" slash\\ newline\n中文"),
+            serde_json::json!("x".repeat(125)),
+            serde_json::json!("x".repeat(126)),
+            serde_json::json!("x".repeat(127)),
+            serde_json::json!({"text": "中\n".repeat(100), "tail": [1, 2]}),
+        ];
+        for value in values {
+            let expected = serde_json::to_vec(&value).unwrap();
+            for limit in 0..=expected.len() + 1 {
+                let encoded = encode_bounded::<_, 128>(&value, limit);
+                let reference = json_bytes(&value, limit);
+                assert_eq!(
+                    encoded.as_ref().err().map(Error::code),
+                    reference.as_ref().err().map(Error::code)
+                );
+                let mut remaining = limit;
+                let result = value_with_budget(&value, &mut remaining);
+                if limit < expected.len() {
+                    assert!(matches!(result, Err(Error::Limit(_))));
+                    assert_eq!(remaining, limit);
+                } else {
+                    let encoded = encoded.unwrap();
+                    assert_eq!(encoded.as_slice(), expected);
+                    assert_eq!(encoded.heap.is_empty(), expected.len() <= 128);
+                    assert_eq!(result.unwrap(), value);
+                    assert_eq!(remaining, limit - expected.len());
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn inline_spill_serializes_custom_values_once() {
+        struct Once(std::cell::Cell<usize>);
+        impl Serialize for Once {
+            fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+                self.0.set(self.0.get() + 1);
+                serializer.serialize_str(&"x".repeat(256))
+            }
+        }
+        let value = Once(std::cell::Cell::new(0));
+        let mut remaining = 258;
+        assert_eq!(
+            value_with_budget(&value, &mut remaining).unwrap(),
+            Value::String("x".repeat(256))
+        );
+        assert_eq!(value.0.get(), 1);
+        assert_eq!(remaining, 0);
+    }
+
     #[test]
     fn counting_rows_preserves_encoded_byte_limits() {
         for value in [
