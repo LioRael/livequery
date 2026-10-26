@@ -1,0 +1,133 @@
+docs/readiness-process-policy/ci-40409161324/sync/binary-sha256.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/sync/clock-anchor.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/async/measurement-exit.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/sync/failure-correlation.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-125
+docs/readiness-process-policy/ci-40409161324/async/async/run.log
+  s_1d1ebc94680cfb::t_5a856d36393454 1-11
+docs/readiness-process-policy/ci-40409161324/async/service-isolation.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-70
+docs/readiness-process-policy/ci-40409161324/summary.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-48
+docs/readiness-process-policy/ci-40409161324/async/async/host-activity.jsonl
+  s_1d1ebc94680cfb::t_5a856d36393454 1-121
+docs/readiness-process-policy/ci-40409161324/async/async/failure-correlation.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-53
+docs/readiness-process-policy/ci-40409161324/async/toolchain.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1-7
+docs/readiness-process-policy/ci-40409161324/sync/sync/pid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/sync/report.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-1881
+docs/readiness-process-policy/ci-40409161324/async/process-policy-outside.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-30
+docs/readiness-process-policy/ci-40409161324/sync/sync/events/2924-12230.jsonl
+  s_1d1ebc94680cfb::t_5a856d36393454 1-3
+docs/readiness-process-policy/ci-40409161324/sync/measurement-exit.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/toolchain.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1-7
+docs/readiness-process-policy/ci-40409161324/sync/provenance.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-13
+docs/readiness-process-policy/ci-40409161324/sync/preflight.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-3
+docs/readiness-process-policy/ci-40409161324/sync/sync/gate-recheck.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1-4
+docs/readiness-process-policy/ci-40409161324/async/async/gate.log
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/measurement-launch.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-13
+docs/readiness-process-policy/ci-40409161324/async/binary-sha256.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/measurement-stdout.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/async/preflight.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-3
+docs/readiness-process-policy/ci-40409161324/sync/process-policy-inside.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-30
+docs/readiness-process-policy/ci-40409161324/async/async/events/4082-15643.jsonl
+  s_1d1ebc94680cfb::t_5a856d36393454 1-2
+docs/readiness-process-policy/ci-40409161324/shared-delay.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-127
+docs/readiness-process-policy/ci-40409161324/sync/sync/events/2924-12228.tid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/sync/host-activity.jsonl
+  s_1d1ebc94680cfb::t_5a856d36393454 1-121
+docs/readiness-process-policy/ci-40409161324/analyze.py
+  s_1d1ebc94680cfb::t_5a856d36393454 1-24
+docs/readiness-process-policy/ci-40409161324/async/provenance.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-13
+docs/readiness-process-policy/ci-40409161324/async/process-policy-inside.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-30
+docs/readiness-process-policy/ci-40409161324/sync/verdicts.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-6
+docs/readiness-process-policy/ci-40409161324/async/async/pid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/measurement-provenance.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-12
+docs/readiness-process-policy/ci-40409161324/async/verdicts.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-6
+docs/readiness-process-policy/ci-40409161324/async/instrumentation.patch
+  s_1d1ebc94680cfb::t_5a856d36393454 1-245
+docs/readiness-process-policy/ci-40409161324/sync/service-isolation.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-70
+docs/readiness-process-policy/ci-40409161324/sync/sync/events/2924-12229.tid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/sync/events/2924-12230.tid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/async/measurement-stdout.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/sync/run.log
+  s_1d1ebc94680cfb::t_5a856d36393454 1-11
+docs/readiness-process-policy/ci-40409161324/async/async/native-correlation.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-7
+docs/readiness-process-policy/ci-40409161324/sync/sync/gate.log
+  s_1d1ebc94680cfb::t_5a856d36393454 1-5
+docs/readiness-process-policy/ci-40409161324/sync/sync/native-correlation.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-16
+docs/readiness-process-policy/ci-40409161324/async/build-manifest.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-20
+docs/readiness-process-policy/ci-40409161324/async/measurement-launch.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-13
+docs/readiness-process-policy/ci-40409161324/sync/process-policy-outside.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-30
+docs/readiness-process-policy/ci-40409161324/async/async/report.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-1872
+docs/readiness-process-policy/ci-40409161324/async/measurement-provenance.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-12
+docs/readiness-process-policy/ci-40409161324/async/async/events/4082-15642.tid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/async/async/gate-recheck.txt
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/async/async/events/4082-15643.tid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/build-manifest.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1-20
+docs/readiness-process-policy/ci-40409161324/async/async/clock-anchor.json
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/async/async/events/4082-15641.tid
+  s_1d1ebc94680cfb::t_5a856d36393454 1
+docs/readiness-process-policy/ci-40409161324/sync/instrumentation.patch
+  s_1d1ebc94680cfb::t_5a856d36393454 1-245
+docs/readiness-process-policy/ci-40409161324/README.md
+  s_1d1ebc94680cfb::t_6d33ab309cd163 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ffa5ad15d50bebb9b6e022a526e71a3ca6540dcc",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
