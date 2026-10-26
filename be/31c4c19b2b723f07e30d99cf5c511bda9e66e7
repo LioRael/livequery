@@ -1,0 +1,34 @@
+scripts/diagnostics/process-policy.c
+  s_1d1ebc94680cfb::t_1517e5677e690f 1-18
+scripts/diagnostics/measurement-process.py
+  s_1d1ebc94680cfb::t_fcf77e4d089439 1-97,100-103
+  s_1d1ebc94680cfb::t_c54d4ddbee5ce6 98-99
+scripts/diagnostics/thread-sampler.py
+  s_1d1ebc94680cfb::t_fcf77e4d089439 31
+docs/readiness-process-policy/prior-thread-priorities.json
+  s_1d1ebc94680cfb::t_d38870627f3b1a 1-291
+docs/readiness-process-policy/local-check-launch.py
+  s_1d1ebc94680cfb::t_d38870627f3b1a 1-19
+docs/readiness-process-policy/local-launch-check.json
+  s_1d1ebc94680cfb::t_d38870627f3b1a 1-8
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_fcf77e4d089439 25,60
+docs/readiness-process-policy/README.md
+  s_1d1ebc94680cfb::t_3eaf98825e8e3a 1-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
