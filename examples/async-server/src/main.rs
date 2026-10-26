@@ -1,11 +1,8 @@
 use livequery::{
-    Inspect, Limits, Published, Registry, Table,
-    local::{self, Server},
+    Inspect, Limits, PublishedHandle, Registry, Table,
+    local::{self, RunningAgent},
 };
-use std::sync::{
-    Arc,
-    atomic::{AtomicBool, Ordering},
-};
+use std::sync::Arc;
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::TcpListener,
@@ -22,18 +19,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         bytes: 0,
     }]);
     let registry = Registry::new();
-    let published = Published::new::<Requests>(Limits::default())?;
-    let _registration = registry.expose_published("requests", published.clone())?;
-    let server = Server::bind(
+    let published = Arc::new(PublishedHandle::register::<Requests>(
+        &registry,
+        "requests",
+        Limits::default(),
+    )?);
+    let agent = RunningAgent::start(
         local::directory().join(format!("{}.sock", std::process::id())),
         registry,
         Limits::default(),
     )?;
-    let stop = Arc::new(AtomicBool::new(false));
-    let agent = {
-        let stop = stop.clone();
-        std::thread::spawn(move || server.serve(&stop))
-    };
     let listener = TcpListener::bind("127.0.0.1:0").await?;
     println!(
         "echo {} · LiveQuery PID {}",
@@ -65,7 +60,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                         })
                         .is_ok()
                     {
-                        let _ = published.refresh(&stats);
+                        match tokio::task::spawn_blocking(move || published.refresh(&stats)).await {
+                            Ok(Ok(_)) => {}
+                            Ok(Err(error)) => eprintln!("diagnostics stale: {error}"),
+                            Err(error) => eprintln!("diagnostic task failed: {error}"),
+                        }
                         break;
                     }
                     tokio::task::yield_now().await;
@@ -73,7 +72,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
         });
     }
-    stop.store(true, Ordering::Relaxed);
-    agent.join().map_err(|_| "agent thread panicked")??;
+    agent.stop();
+    tokio::task::spawn_blocking(move || agent.wait()).await??;
     Ok(())
 }

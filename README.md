@@ -1,6 +1,8 @@
+> Development candidate: alpha.4. Start with the [stuck-worker walkthrough](docs/stuck-jobs.md), then the [integration/lifecycle recipes](docs/integration.md) and [measured task-table costs](docs/jobs-performance.md). Published alpha.2 and the alpha.3 endurance run are separate versions; their evidence does not certify this candidate.
+
 # LiveQuery
 
-**Experimental · alpha.3 development · Rust 1.88+ · macOS / Linux**
+**Experimental · alpha.4 development · Rust 1.88+ · macOS / Linux**
 
 **Turn running programs into queryable, observable worlds.**
 
@@ -97,13 +99,13 @@ Defaults: 10,000 scanned rows, 1,000 output rows, 1 MiB serialized snapshot/resu
 
 ## Boundaries
 
-No ORDER BY, JOIN, aggregation, history, nested-field queries, Windows transport, write operations, or arbitrary PID attachment. Schema includes Rust type names and JSON Schema with recursive definitions and enum variants. Nested custom types derive `Serialize` and `JsonSchema`; root enums additionally derive `Inspect` and appear in a `value` column. See [schema tests](crates/livequery/tests/schema_collection.rs).
+No JOIN, GROUP BY, event history, nested-field queries, Windows transport, write operations, or arbitrary PID attachment. Schema includes Rust type names and JSON Schema with recursive definitions and enum variants. Nested custom types derive `Serialize` and `JsonSchema`; root enums additionally derive `Inspect` and appear in a `value` column. See [schema tests](crates/livequery/tests/schema_collection.rs).
 
 Each changed publication is scanned; unchanged revisions skip the snapshot and scan. Large collections fail before scanning; use dedicated diagnostic views. Polling misses intermediate states. Same-user processes can read exposed data. Custom serializers/adapters run only during explicit application capture/publication or trusted in-process queries, and cannot be forcibly preempted. Remote queries read only validated owned JSON snapshots. Use short bounded adapters and dedicated inspection views for latency-sensitive applications.
 
 ## Stability work
 
-This checkout is the unpublished alpha.3 candidate. Its CLI negotiates protocol 2; build the CLI from this checkout for its examples. `livequery status --pid <pid> --json` reports snapshot age, last publication time and categorized failures. WATCH retries up to three consecutive I/O interruptions and binds cursors to the Agent session and exact query. Existing alpha.2 CLI requests remain accepted. Use a path dependency for candidate APIs.
+This checkout is the unpublished alpha.4 candidate. Its CLI negotiates protocol 2; build the CLI from this checkout for its examples. `livequery status --pid <pid> --json` reports snapshot age, last publication time and categorized failures. WATCH retries up to three consecutive I/O interruptions and binds cursors to the Agent session and exact query. Existing alpha.2 CLI requests remain accepted. Use a path dependency for candidate APIs.
 
 See [stable release gates and remaining evidence](docs/stability.md). No stable-release or production-readiness claim is made.
 

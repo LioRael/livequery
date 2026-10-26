@@ -1,5 +1,7 @@
 # Stable release gates
 
+This checkout also includes alpha.4 investigation improvements. See [investigation-validation.md](investigation-validation.md); the alpha.3 evidence below applies only to that earlier source revision.
+
 Alpha.3 is an unpublished hardening candidate. Current measured evidence is in [stability-validation.md](stability-validation.md). Passing these checks is necessary, not evidence of universal production suitability. The first stable scope is local, read-only diagnostics on Linux/macOS, with trusted same-user processes, no hard real-time or lossless-event guarantee.
 
 | Gate | Implementation / evidence | Remaining acceptance |
@@ -11,7 +13,7 @@ Alpha.3 is an unpublished hardening candidate. Current measured evidence is in [
 | Resource limits | Capped result/catalog serialization, bounded transport buffers, query-loop deadlines | Timeouts remain cooperative; serialized budgets are not exact heap caps |
 | Security regression | Parser/wire fuzz target, generated query properties, private socket/ancestor checks | Independent focused source review completed with fixes; see [review scope and limits](security-review-alpha3.md) |
 | Dependency health | Pinned cargo-audit CI, weekly checks | Resolve or explicitly assess every new advisory; never silently ignore |
-| Sustained load | Classified request/observation/publication failures; RSS, thread and FD samples every five seconds | Two-minute Linux/macOS runs passed; two-hour per-engine workflow must pass on the repaired implementation |
+| Sustained load | Classified request/observation/publication failures; RSS, thread and FD samples every five seconds | Four Linux/macOS × sync/async two-hour runs passed on alpha.4; see [raw evidence and scope](endurance-alpha4/README.md) |
 | Integration scope | Independent registry/facade/component consumers and ordinary-thread/Tokio TCP service fixtures | Real-project integration is explicitly excluded from the requested acceptance scope |
 
 ## Initial load gate

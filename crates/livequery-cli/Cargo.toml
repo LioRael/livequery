@@ -15,12 +15,13 @@ name = "livequery"
 path = "src/main.rs"
 doc = false
 [dependencies]
-livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.3" }
-livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.3" }
+livequery-query = { path = "../livequery-query", version = "0.1.0-alpha.4" }
+livequery-transport = { path = "../livequery-transport", version = "0.1.0-alpha.4" }
 serde_json.workspace = true
+rustyline = { version = "17", default-features = false }
 [lints]
 workspace = true
 [dev-dependencies]
-livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.3" }
-livequery-agent = { path = "../livequery-agent", version = "0.1.0-alpha.3" }
+livequery-core = { path = "../livequery-core", version = "0.1.0-alpha.4" }
+livequery-agent = { path = "../livequery-agent", version = "0.1.0-alpha.4" }
 tempfile = "3"

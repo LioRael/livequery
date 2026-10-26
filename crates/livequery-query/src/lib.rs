@@ -15,6 +15,13 @@ pub struct Query {
     projection: Option<Vec<String>>,
     filter: Option<Expr>,
     limit: Option<usize>,
+    order: Option<(String, bool)>,
+    aggregate: Option<Aggregate>,
+}
+#[derive(Debug, Clone)]
+enum Aggregate {
+    Count,
+    Max(String),
 }
 #[derive(Debug, Clone)]
 enum Expr {
@@ -36,8 +43,20 @@ pub struct QueryResult {
     /// True if matching rows were omitted by the output limit.
     pub truncated: bool,
 }
+/// Query rows with metadata sampled from the same immutable publication.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
+pub struct QueryExecution {
+    /// Existing result shape, flattened for wire compatibility.
+    #[serde(flatten)]
+    pub result: QueryResult,
+    /// None for local sources; age is sampled when acquiring the snapshot.
+    pub publication: Option<livequery_core::PublicationStatus>,
+    /// Exact revision used to compute this result.
+    pub revision: Option<Revision>,
+}
 impl Query {
-    /// Parses SELECT, projection, WHERE comparisons, AND/OR/NOT, IS NULL and LIMIT.
+    /// Parses SELECT, COUNT/MAX, WHERE predicates, one ORDER BY key and LIMIT.
     /// # Errors
     /// Rejects unsupported clauses, malformed SQL, excessive size or nesting.
     pub fn parse(sql: &str) -> Result<Self, Error> {
@@ -45,79 +64,156 @@ impl Query {
             return Err(Error::Limit("query bytes".into()));
         }
         let tokens = Tokenizer::new(&GenericDialect, sql)
-            .tokenize()
+            .tokenize_with_location()
             .map_err(|e| Error::Invalid(e.to_string()))?
             .into_iter()
-            .filter(|t| !matches!(t, Token::Whitespace(_)))
+            .filter(|t| !matches!(t.token, Token::Whitespace(_)))
             .collect::<Vec<_>>();
         if tokens.len() > 256 {
             return Err(Error::Limit("query tokens".into()));
         }
-        let mut p = Parser { tokens, pos: 0 };
-        p.require("SELECT")?;
-        let projection = if p.take(&Token::Mul) {
-            None
-        } else {
-            let mut fields = vec![p.ident()?];
-            while p.take(&Token::Comma) {
-                fields.push(p.ident()?);
-            }
-            if fields
-                .iter()
-                .collect::<std::collections::BTreeSet<_>>()
-                .len()
-                != fields.len()
+        let locations = tokens.iter().map(|t| t.span.start).collect::<Vec<_>>();
+        let mut p = Parser {
+            tokens: tokens.into_iter().map(|t| t.token).collect(),
+            pos: 0,
+        };
+        let parsed = (|| -> Result<Self, Error> {
+            p.require("SELECT")?;
+            let aggregate = if p.tokens.get(p.pos + 1) == Some(&Token::LParen) && p.keyword("COUNT")
             {
+                p.take(&Token::LParen);
+                if !p.take(&Token::Mul) || !p.take(&Token::RParen) {
+                    return Err(invalid());
+                }
+                Some(Aggregate::Count)
+            } else if p.tokens.get(p.pos + 1) == Some(&Token::LParen) && p.keyword("MAX") {
+                p.take(&Token::LParen);
+                let field = p.ident()?;
+                if !p.take(&Token::RParen) {
+                    return Err(invalid());
+                }
+                Some(Aggregate::Max(field))
+            } else {
+                None
+            };
+            let projection = if aggregate.is_some() || p.take(&Token::Mul) {
+                None
+            } else {
+                let mut fields = vec![p.ident()?];
+                while p.take(&Token::Comma) {
+                    fields.push(p.ident()?);
+                }
+                if fields
+                    .iter()
+                    .collect::<std::collections::BTreeSet<_>>()
+                    .len()
+                    != fields.len()
+                {
+                    return Err(invalid());
+                }
+                Some(fields)
+            };
+            p.require("FROM")?;
+            let source = p.ident()?;
+            let filter = if p.keyword("WHERE") {
+                Some(p.expr(0)?)
+            } else {
+                None
+            };
+            let order = if p.keyword("ORDER") {
+                p.require("BY")?;
+                let name = p.ident()?;
+                let descending = p.keyword("DESC");
+                if !descending {
+                    p.keyword("ASC");
+                }
+                if aggregate.is_some() {
+                    return Err(Error::Invalid(
+                        "ORDER BY is not supported on aggregate results".into(),
+                    ));
+                }
+                Some((name, descending))
+            } else {
+                None
+            };
+            let limit = if p.keyword("LIMIT") {
+                match p.next() {
+                    Some(Token::Number(n, false)) => Some(n.parse().map_err(|_| invalid())?),
+                    _ => return Err(invalid()),
+                }
+            } else {
+                None
+            };
+            p.take(&Token::SemiColon);
+            if p.pos != p.tokens.len() {
                 return Err(invalid());
             }
-            Some(fields)
-        };
-        p.require("FROM")?;
-        let source = p.ident()?;
-        let filter = if p.keyword("WHERE") {
-            Some(p.expr(0)?)
-        } else {
-            None
-        };
-        let limit = if p.keyword("LIMIT") {
-            match p.next() {
-                Some(Token::Number(n, false)) => Some(n.parse().map_err(|_| invalid())?),
-                _ => return Err(invalid()),
+            Ok(Self {
+                source,
+                projection,
+                filter,
+                limit,
+                order,
+                aggregate,
+            })
+        })();
+        parsed.map_err(|error| match error {
+            Error::Invalid(message) => {
+                let location = locations
+                    .get(p.pos.saturating_sub(1))
+                    .or_else(|| locations.last());
+                match location {
+                    Some(location) => Error::Invalid(format!(
+                        "{message} at line {}, column {}",
+                        location.line, location.column
+                    )),
+                    None => Error::Invalid(format!("{message} at line 1, column 1")),
+                }
             }
-        } else {
-            None
-        };
-        p.take(&Token::SemiColon);
-        if p.pos != p.tokens.len() {
-            return Err(invalid());
-        }
-        Ok(Self {
-            source,
-            projection,
-            filter,
-            limit,
+            other => other,
         })
     }
     /// Executes against one consistent source snapshot.
     /// # Errors
     /// Reports unknown fields even on empty tables, incompatible comparisons, and budgets.
     pub fn execute(&self, registry: &Registry, limits: Limits) -> Result<QueryResult, Error> {
+        Ok(self.execute_detailed(registry, limits)?.result)
+    }
+    /// Executes with freshness and revision metadata bound to the actual read version.
+    /// # Errors
+    /// Returns the same validation and resource errors as `execute`.
+    pub fn execute_detailed(
+        &self,
+        registry: &Registry,
+        limits: Limits,
+    ) -> Result<QueryExecution, Error> {
         let start = Instant::now();
-        let snapshot = registry.snapshot(&self.source, limits)?;
+        let view = registry.read_snapshot(&self.source, limits)?;
+        let snapshot = view.snapshot();
         let find = |name: &str| {
             snapshot
                 .columns
                 .iter()
                 .find(|c| c.name == name)
                 .cloned()
-                .ok_or_else(|| Error::Invalid(format!("unknown field: {name}")))
+                .ok_or_else(|| unknown_field(name, &snapshot.columns))
         };
-        let columns = match &self.projection {
-            Some(names) => names
-                .iter()
-                .map(|n| find(n))
-                .collect::<Result<Vec<_>, _>>()?,
-            None => snapshot.columns.clone(),
+        if let Some((name, _)) = &self.order {
+            find(name)?;
+        }
+        if let Some(Aggregate::Max(name)) = &self.aggregate {
+            find(name)?;
+        }
+        let columns = match &self.aggregate {
+            Some(Aggregate::Count) => vec![Column::new::<u64>("count")],
+            Some(Aggregate::Max(_)) => vec![Column::new::<Option<Value>>("max")],
+            None => match &self.projection {
+                Some(names) => names
+                    .iter()
+                    .map(|n| find(n))
+                    .collect::<Result<Vec<_>, _>>()?,
+                None => snapshot.columns.clone(),
+            },
         };
         if let Some(expr) = &self.filter {
             expr.validate(&snapshot.columns)?;
@@ -132,37 +228,100 @@ impl Query {
             scanned: snapshot.rows.len(),
             truncated: false,
         };
-        for row in snapshot.rows {
+        let mut matching = Vec::new();
+        let mut count = 0u64;
+        let mut maximum: Option<Value> = None;
+        let mut sort_type: Option<&Value> = None;
+        for row in &snapshot.rows {
             if start.elapsed() >= limits.query_timeout {
                 return Err(Error::Deadline);
             }
             if self
                 .filter
                 .as_ref()
-                .map(|e| e.eval(&row))
+                .map(|e| e.eval(row))
                 .transpose()?
                 .unwrap_or(Some(true))
                 != Some(true)
             {
                 continue;
             }
-            if result.rows.len() == limit {
-                result.truncated = true;
+            count += 1;
+            if let Some(Aggregate::Max(name)) = &self.aggregate {
+                let value = &row[name];
+                if !value.is_null() {
+                    compare(value, value)?;
+                    if maximum
+                        .as_ref()
+                        .map(|old| compare(value, old).map(|c| c == Ordering::Greater))
+                        .transpose()?
+                        .unwrap_or(true)
+                    {
+                        maximum = Some(value.clone());
+                    }
+                }
+            }
+            if self.aggregate.is_some() {
                 continue;
             }
-            result.rows.push(
-                result
-                    .columns
-                    .iter()
-                    .map(|c| (c.name.clone(), row[&c.name].clone()))
-                    .collect(),
-            );
+            if let Some((name, _)) = &self.order {
+                let value = &row[name];
+                if !value.is_null() {
+                    compare(value, sort_type.unwrap_or(value))?;
+                    sort_type = Some(value);
+                }
+                matching.push(row);
+            } else if matching.len() < limit {
+                matching.push(row);
+            }
+        }
+        if let Some((name, descending)) = &self.order {
+            matching.sort_by(|a, b| match (a[name].is_null(), b[name].is_null()) {
+                (true, true) => Ordering::Equal,
+                (true, false) => Ordering::Greater,
+                (false, true) => Ordering::Less,
+                (false, false) => {
+                    let order =
+                        compare(&a[name], &b[name]).expect("sort scalar types were validated");
+                    if *descending { order.reverse() } else { order }
+                }
+            });
+        }
+        if let Some(aggregate) = &self.aggregate {
+            result.truncated = limit == 0;
+            if limit > 0 {
+                result.rows.push(match aggregate {
+                    Aggregate::Count => {
+                        [("count".into(), Value::from(count))].into_iter().collect()
+                    }
+                    Aggregate::Max(_) => [("max".into(), maximum.unwrap_or(Value::Null))]
+                        .into_iter()
+                        .collect(),
+                });
+            }
+        } else {
+            result.truncated = count as usize > limit;
+            result.rows = matching
+                .into_iter()
+                .take(limit)
+                .map(|row| {
+                    result
+                        .columns
+                        .iter()
+                        .map(|column| (column.name.clone(), row[&column.name].clone()))
+                        .collect()
+                })
+                .collect();
         }
         livequery_core::json_bytes(&result, limits.bytes)?;
         if start.elapsed() >= limits.query_timeout {
             return Err(Error::Deadline);
         }
-        Ok(result)
+        Ok(QueryExecution {
+            result,
+            publication: view.publication().cloned(),
+            revision: view.revision(),
+        })
     }
     /// Publication revision, or none for a live local source.
     /// # Errors
@@ -178,7 +337,7 @@ impl Expr {
                 if columns.iter().any(|c| &c.name == name) {
                     Ok(())
                 } else {
-                    Err(Error::Invalid(format!("unknown field: {name}")))
+                    Err(unknown_field(name, columns))
                 }
             }
             Self::And(a, b) | Self::Or(a, b) => {
@@ -227,7 +386,13 @@ fn compare(a: &Value, b: &Value) -> Result<Ordering, Error> {
         (Value::Bool(a), Value::Bool(b)) => Ok(a.cmp(b)),
         (Value::Number(a), Value::Number(b)) => {
             // Integers retain all 64 bits; never round an identifier through f64.
-            if let (Ok(a), Ok(b)) = (a.to_string().parse::<i128>(), b.to_string().parse::<i128>()) {
+            let integer = |number: &serde_json::Number| {
+                number
+                    .as_i64()
+                    .map(i128::from)
+                    .or_else(|| number.as_u64().map(i128::from))
+            };
+            if let (Some(a), Some(b)) = (integer(a), integer(b)) {
                 return Ok(a.cmp(&b));
             }
             if a.is_f64() && b.is_f64() {
@@ -245,8 +410,18 @@ fn compare(a: &Value, b: &Value) -> Result<Ordering, Error> {
         )),
     }
 }
+fn unknown_field(name: &str, columns: &[Column]) -> Error {
+    Error::Invalid(format!(
+        "unknown field: {name}; available fields: {}",
+        columns
+            .iter()
+            .map(|c| c.name.as_str())
+            .collect::<Vec<_>>()
+            .join(", ")
+    ))
+}
 fn invalid() -> Error {
-    Error::Invalid("expected SELECT fields FROM source [WHERE predicate] [LIMIT integer]".into())
+    Error::Invalid("expected SELECT fields FROM source [WHERE predicate] [ORDER BY field [ASC|DESC]] [LIMIT integer]".into())
 }
 struct Parser {
     tokens: Vec<Token>,

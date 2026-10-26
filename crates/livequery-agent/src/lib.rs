@@ -37,9 +37,14 @@ impl Agent {
                     });
                 }
                 Ok(Response::Ok {
-                    data: serde_json::json!({"protocol":PROTOCOL_VERSION, "agent_id":self.session, "capabilities":["schema","query","observe_v2","status"]}),
+                    data: serde_json::json!({"protocol":PROTOCOL_VERSION, "agent_id":self.session, "capabilities":["schema","query","observe_v2","status","query_details","order_by","aggregates"]}),
                 })
             }
+            Request::QueryDetails { sql } => Ok(Response::Ok {
+                data: serde_json::to_value(
+                    Query::parse(&sql)?.execute_detailed(&self.registry, self.limits)?,
+                )?,
+            }),
             Request::Status => Ok(Response::Ok {
                 data: serde_json::to_value(self.registry.publication_status(self.limits)?)?,
             }),
@@ -48,7 +53,7 @@ impl Agent {
                 let revision = query.revision(&self.registry)?.ok_or_else(|| {
                     Error::Invalid("remote observation requires published data".into())
                 })?;
-                let cursor = Cursor {
+                let mut cursor = Cursor {
                     session: self.session.clone(),
                     query: blake3::hash(sql.as_bytes()).to_hex().to_string(),
                     revision,
@@ -58,7 +63,11 @@ impl Agent {
                         data: serde_json::to_value(Observation::Unchanged { cursor })?,
                     });
                 }
-                let data = serde_json::to_value(query.execute(&self.registry, self.limits)?)?;
+                let execution = query.execute_detailed(&self.registry, self.limits)?;
+                cursor.revision = execution.revision.ok_or_else(|| {
+                    Error::Invalid("remote observation requires published data".into())
+                })?;
+                let data = serde_json::to_value(execution)?;
                 Ok(Response::Ok {
                     data: serde_json::to_value(Observation::Changed {
                         cursor,

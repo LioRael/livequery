@@ -35,6 +35,11 @@ pub enum Request {
         /// Opaque cursor returned by a previous observation.
         since: Option<Cursor>,
     },
+    /// Query with freshness metadata for the actual read version (query_details capability).
+    QueryDetails {
+        /// SELECT statement.
+        sql: String,
+    },
 }
 /// Machine-readable success or diagnostic response.
 #[derive(Debug, Clone, Serialize, Deserialize)]

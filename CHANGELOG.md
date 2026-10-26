@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (unreleased)
+
+- Complete stuck-worker investigation fixture and CLI acceptance test.
+- Optional PublishedHandle and RunningAgent lifecycle conveniences with explicit capture scheduling.
+- Stable scalar ORDER BY, COUNT(*) and MAX with documented NULL/scan/output limits.
+- Explicit interactive CLI sessions, memory-only history, catalog completion and coherent freshness metadata.
+- Shared immutable query reads, preserving owned Snapshot APIs, plus representative task-table cost benchmarks.
+
 ## 0.1.0-alpha.3 (unreleased)
 
 - Protocol negotiation, session/query-bound observation cursors and bounded CLI reconnection.

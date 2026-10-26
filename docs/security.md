@@ -30,7 +30,7 @@ Budgets are checked during derived field serialization and per-row snapshot cons
 
 ## Publication boundary
 
-`Published` validates row/schema agreement, JSON nesting, row count and serialized bytes before replacing its current immutable snapshot. Failed publication leaves the prior version intact. The short internal lock swaps an Arc; old data is dropped after releasing it. A remote query takes a reference under a nonblocking lock, then clones the bounded snapshot outside that lock. It never invokes Source/Inspect/Serialize application callbacks or acquires application collection locks. Budgets are cooperative, not a hard real-time or allocator limit.
+`Published` validates row/schema agreement, JSON nesting, row count and serialized bytes before replacing its current immutable snapshot. Failed publication leaves the prior version intact. The short internal lock swaps an Arc; old data is dropped after releasing it. A remote query takes a reference under a nonblocking lock, then reads the same immutable snapshot without cloning every row. Query execution copies only projected result fields; owned snapshot APIs still clone. It never invokes Source/Inspect/Serialize application callbacks or acquires application collection locks. Budgets are cooperative, not a hard real-time or allocator limit.
 
 ## Host impact
 
