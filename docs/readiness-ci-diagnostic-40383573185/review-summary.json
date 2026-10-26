@@ -1,0 +1,68 @@
+{
+  "provenance": {
+    "official_base": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "workflow_head": "8333ed8bfffea03705d00d821e0f7e0ff8e12c02",
+    "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+    "diagnostic_only": true,
+    "runner_image": "20261013.0424.1",
+    "runner_arch": "arm64",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "seconds_per_engine": 300,
+    "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+  },
+  "preflight": {
+    "conflicting_processes": []
+  },
+  "engines": {
+    "sync": {
+      "seconds": 300.023191,
+      "request_error_codes": {},
+      "observation_error_codes": {
+        "busy": 3
+      },
+      "publication_error_codes": {
+        "deadline": 5
+      },
+      "publication_attempts": 4071,
+      "source_ref_in_report": "8333ed8bfffea03705d00d821e0f7e0ff8e12c02",
+      "binary_sha256": "c0133c0c3acaf939e182ff13f33fc7643d9dd27b0d159bc02698493272655e14",
+      "recorded_deadline_spans": {
+        "capture": 5
+      },
+      "dropped_events": 0,
+      "predeadline_intervals": 11,
+      "zero_fault_brackets": 8,
+      "sampled_states": {
+        "1": 9
+      },
+      "zero_cpu_growth_running_pairs": 0,
+      "largest_flat_cpu_ms": null,
+      "slow_success_spans": 94
+    },
+    "async": {
+      "seconds": 300.017362125,
+      "request_error_codes": {},
+      "observation_error_codes": {},
+      "publication_error_codes": {
+        "deadline": 5
+      },
+      "publication_attempts": 3992,
+      "source_ref_in_report": "8333ed8bfffea03705d00d821e0f7e0ff8e12c02",
+      "binary_sha256": "c0133c0c3acaf939e182ff13f33fc7643d9dd27b0d159bc02698493272655e14",
+      "recorded_deadline_spans": {
+        "capture": 5
+      },
+      "dropped_events": 0,
+      "predeadline_intervals": 8,
+      "zero_fault_brackets": 8,
+      "sampled_states": {
+        "1": 5
+      },
+      "zero_cpu_growth_running_pairs": 0,
+      "largest_flat_cpu_ms": null,
+      "slow_success_spans": 63
+    }
+  },
+  "patch_hash_matches": true
+}

@@ -1,0 +1,530 @@
+[
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 10681,
+      "pre_return_wall_ms": 101.964,
+      "pre_return_cpu_ms": 41.495791,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 167233147000,
+          "end_ns": 167247979000,
+          "wall_ms": 14.832,
+          "cpu_ms": 1.06725,
+          "allocator_ms": 2.772794,
+          "thread_samples": [
+            {
+              "stamp": 167240923000,
+              "tid": 10681,
+              "cpu_ns": 3179654000,
+              "state": 1,
+              "priority": 18,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 934
+          },
+          "counter_bracket": [
+            167192921000,
+            167253773000
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 167304741000,
+          "end_ns": 167320433000,
+          "wall_ms": 15.692,
+          "cpu_ms": 7.905917,
+          "allocator_ms": 0.76496,
+          "thread_samples": [
+            {
+              "stamp": 167314015000,
+              "tid": 10681,
+              "cpu_ns": 3211969000,
+              "state": 1,
+              "priority": 17,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1832
+          },
+          "counter_bracket": [
+            167253773000,
+            167357909000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1011.69,
+    "host_snapshot": {
+      "monotonic_ns": 166221457000,
+      "unix_ns": 1793041627221463000,
+      "loadavg": [
+        40.6748046875,
+        36.17333984375,
+        16.64892578125
+      ],
+      "processes": [
+        {
+          "pid": 135,
+          "cpu_percent": 16.5,
+          "executable": "/usr/libexec/dasd"
+        },
+        {
+          "pid": 382,
+          "cpu_percent": 9.7,
+          "executable": "/System/Library/PrivateFrameworks/VoiceShortcuts.framework/Versions/A/Support/siriactionsd"
+        },
+        {
+          "pid": 2184,
+          "cpu_percent": 81.3,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2186,
+          "cpu_percent": 111.1,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        },
+        {
+          "pid": 2198,
+          "cpu_percent": 15.7,
+          "executable": "/System/Library/PrivateFrameworks/SiriSuggestionsSupport.framework/Versions/A/XPCServices/SiriSuggestionsBookkeepingService.xpc/Contents/MacOS/SiriSuggestionsBookkeepingService"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 10681,
+      "pre_return_wall_ms": 100.049,
+      "pre_return_cpu_ms": 27.330791,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 167363152000,
+          "end_ns": 167374683000,
+          "wall_ms": 11.531,
+          "cpu_ms": 1.31675,
+          "allocator_ms": 2.133331,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2044
+          },
+          "counter_bracket": [
+            167314015000,
+            167402631000
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 167374683000,
+          "end_ns": 167390034000,
+          "wall_ms": 15.351,
+          "cpu_ms": 1.320666,
+          "allocator_ms": 3.889375,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2044
+          },
+          "counter_bracket": [
+            167314015000,
+            167402631000
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 167432371000,
+          "end_ns": 167444064000,
+          "wall_ms": 11.693,
+          "cpu_ms": 1.307334,
+          "allocator_ms": 6.704398,
+          "thread_samples": [
+            {
+              "stamp": 167438635000,
+              "tid": 10681,
+              "cpu_ns": 3245679000,
+              "state": 1,
+              "priority": 15,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 1,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3173
+          },
+          "counter_bracket": [
+            167357909000,
+            167472057000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1141.695,
+    "host_snapshot": {
+      "monotonic_ns": 166221457000,
+      "unix_ns": 1793041627221463000,
+      "loadavg": [
+        40.6748046875,
+        36.17333984375,
+        16.64892578125
+      ],
+      "processes": [
+        {
+          "pid": 135,
+          "cpu_percent": 16.5,
+          "executable": "/usr/libexec/dasd"
+        },
+        {
+          "pid": 382,
+          "cpu_percent": 9.7,
+          "executable": "/System/Library/PrivateFrameworks/VoiceShortcuts.framework/Versions/A/Support/siriactionsd"
+        },
+        {
+          "pid": 2184,
+          "cpu_percent": 81.3,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2186,
+          "cpu_percent": 111.1,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        },
+        {
+          "pid": 2198,
+          "cpu_percent": 15.7,
+          "executable": "/System/Library/PrivateFrameworks/SiriSuggestionsSupport.framework/Versions/A/XPCServices/SiriSuggestionsBookkeepingService.xpc/Contents/MacOS/SiriSuggestionsBookkeepingService"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 10681,
+      "pre_return_wall_ms": 100.305,
+      "pre_return_cpu_ms": 25.171458,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 252710961000,
+          "end_ns": 252737170000,
+          "wall_ms": 26.209,
+          "cpu_ms": 0.965083,
+          "allocator_ms": 5.539168,
+          "thread_samples": [
+            {
+              "stamp": 252720009000,
+              "tid": 10681,
+              "cpu_ns": 47889689000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            },
+            {
+              "stamp": 252732637000,
+              "tid": 10681,
+              "cpu_ns": 47889987000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2160
+          },
+          "counter_bracket": [
+            252679538000,
+            252749566000
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 252743844000,
+          "end_ns": 252754839000,
+          "wall_ms": 10.995,
+          "cpu_ms": 0.713875,
+          "allocator_ms": 3.088047,
+          "thread_samples": [
+            {
+              "stamp": 252749566000,
+              "tid": 10681,
+              "cpu_ns": 47892450000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 1444
+          },
+          "counter_bracket": [
+            252720009000,
+            252775617000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 38.681,
+    "host_snapshot": {
+      "monotonic_ns": 252749642000,
+      "unix_ns": 1793041713749655000,
+      "loadavg": [
+        24.208984375,
+        31.3125,
+        16.6015625
+      ],
+      "processes": [
+        {
+          "pid": 968,
+          "cpu_percent": 16.7,
+          "executable": "/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/provjobd3502045969"
+        },
+        {
+          "pid": 2184,
+          "cpu_percent": 67.9,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2186,
+          "cpu_percent": 89.6,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        },
+        {
+          "pid": 3038,
+          "cpu_percent": 5.2,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared"
+        },
+        {
+          "pid": 3555,
+          "cpu_percent": 6.3,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 10681,
+      "pre_return_wall_ms": 103.043,
+      "pre_return_cpu_ms": 32.851584,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 296658310000,
+          "end_ns": 296672130000,
+          "wall_ms": 13.82,
+          "cpu_ms": 1.327792,
+          "allocator_ms": 8.389148,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 223
+          },
+          "counter_bracket": [
+            296629679000,
+            296697059000
+          ]
+        },
+        {
+          "phase": "rows -> rows",
+          "start_ns": 296676552000,
+          "end_ns": 296711404000,
+          "wall_ms": 34.852,
+          "cpu_ms": 1.131708,
+          "allocator_ms": 3.524951,
+          "thread_samples": [
+            {
+              "stamp": 296697059000,
+              "tid": 10681,
+              "cpu_ns": 72257514000,
+              "state": 1,
+              "priority": 14,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 258
+          },
+          "counter_bracket": [
+            296629679000,
+            296722747000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1992.429,
+    "host_snapshot": {
+      "monotonic_ns": 298650739000,
+      "unix_ns": 1793041759650758000,
+      "loadavg": [
+        25.47021484375,
+        30.55908203125,
+        17.0751953125
+      ],
+      "processes": [
+        {
+          "pid": 290,
+          "cpu_percent": 99.0,
+          "executable": "/System/Library/CoreServices/Software Update.app/Contents/Resources/softwareupdated"
+        },
+        {
+          "pid": 2184,
+          "cpu_percent": 52.0,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2186,
+          "cpu_percent": 91.3,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 10681,
+      "pre_return_wall_ms": 125.751,
+      "pre_return_cpu_ms": 28.509917,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 329873263000,
+          "end_ns": 329889202000,
+          "wall_ms": 15.939,
+          "cpu_ms": 0.740167,
+          "allocator_ms": 2.680002,
+          "thread_samples": [
+            {
+              "stamp": 329873725000,
+              "tid": 10681,
+              "cpu_ns": 86724806000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            },
+            {
+              "stamp": 329885828000,
+              "tid": 10681,
+              "cpu_ns": 86725253000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 8370
+          },
+          "counter_bracket": [
+            329757116000,
+            329956321000
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 329895262000,
+          "end_ns": 329955413000,
+          "wall_ms": 60.151,
+          "cpu_ms": 6.984209,
+          "allocator_ms": 0.075874,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2489
+          },
+          "counter_bracket": [
+            329873725000,
+            329956321000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 339.198,
+    "host_snapshot": {
+      "monotonic_ns": 329534065000,
+      "unix_ns": 1793041790534074000,
+      "loadavg": [
+        22.5458984375,
+        29.35791015625,
+        17.10595703125
+      ],
+      "processes": [
+        {
+          "pid": 329,
+          "cpu_percent": 9.2,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores"
+        },
+        {
+          "pid": 384,
+          "cpu_percent": 11.8,
+          "executable": "/usr/libexec/secinitd"
+        },
+        {
+          "pid": 396,
+          "cpu_percent": 54.6,
+          "executable": "/System/Library/CoreServices/iconservicesagent"
+        },
+        {
+          "pid": 434,
+          "cpu_percent": 21.0,
+          "executable": "/System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd"
+        },
+        {
+          "pid": 703,
+          "cpu_percent": 7.4,
+          "executable": "/System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/BackgroundShortcutRunner.xpc/Contents/MacOS/BackgroundShortcutRunner"
+        },
+        {
+          "pid": 2184,
+          "cpu_percent": 69.3,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2186,
+          "cpu_percent": 74.4,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  }
+]

@@ -15,6 +15,8 @@ import sys
 import tarfile
 import time
 
+from isolation import require_idle
+
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 BASE = '12fa024461de4096b325ed3c9b8c87da735ba1e7'
@@ -89,6 +91,7 @@ def mono():
 
 verdicts = []
 for engine in ['sync', 'async']:
+    require_idle(out / f'isolation-{engine}.json')
     case = out / engine
     (case/'events').mkdir(parents=True, exist_ok=False)
     env = os.environ.copy()

@@ -1,0 +1,11 @@
+# CI diagnostic 40383573185: failed, not acceptance
+
+Both engines ran once, serially, on the same 3-vCPU macos-latest VM. Sync 300.023 s and async 300.017 s each produced five capture Deadlines; business errors were zero. All ten failed capture spans were retained, with zero diagnostic event drops. Original checker failures are preserved in gate.log. Patch hash matches provenance; the instrumented binary is not a release binary.
+
+There are 19 pre-Deadline intervals >=10 ms; 16 expanded process-counter brackets have zero faults/pageins/COW. Fourteen observed thread states are running/runnable. Unlike the local sample, there are no consecutive sampled pairs with exactly unchanged CPU. In the async failed validation interval, 57.425 ms wall time contains 6.026208 ms CPU and 0.426915 ms allocator time, zero bracketed process faults and three running/runnable snapshots. This supports the same CPU-service-shortage mechanism, but sparse samples do not prove continuous runnable state or classify every failure.
+
+Host admission was insufficient. Preflight found no cargo/rustc/workload/xctrace, but load1 ranged 21.62–43.26 during sync and 5.13–29.44 during async. Nearby host snapshots record softwareupdated at 99%, iconservicesagent at 54.6%, and mds_stores at 73.8%. These are decaying ps CPU estimates, sampled seconds apart, not causal scheduling traces. The Python benchmark driver and workload are expected load and must not be removed or throttled to obtain a pass. failure-host-correlation.json preserves nearest-snapshot distances instead of claiming exact simultaneity.
+
+Correction: add explicit host-load admission before each engine. One fixed 15-second observation rejects a busy runner without starting load, killing system services, or retrying until green. This is an environment prerequisite, not replacement for the original acceptance gates. It cannot guarantee physical-host exclusivity or prevent later interference. No production-code fix is justified by these data, and release remains blocked until a suitable environment and unchanged full gates succeed.
+
+threads.jsonl.gz is the losslessly compressed raw sampler output. Other files are copied from the uploaded artifact; review-summary and failure-host-correlation were generated during local analysis.
