@@ -1,0 +1,23 @@
+docs/ci-policy.md
+  s_1d1ebc94680cfb::t_178212ab34c9b5 19,21
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_178212ab34c9b5 38
+docs/deadline-investigation.md
+  s_1d1ebc94680cfb::t_b2bd7de52e135e 32-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "028499390432a34f6baa37b96f5440e56cdb41fe",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
