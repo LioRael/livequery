@@ -1,0 +1,22 @@
+scripts/diagnostics/failure-system-log.py
+  s_1d1ebc94680cfb::t_96597794693452 1-92
+  s_1d1ebc94680cfb::t_72da9ac38c810e 93-94
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_96597794693452 186-188
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7f18a69ea0adac309138889ed678e174ca963f95",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
