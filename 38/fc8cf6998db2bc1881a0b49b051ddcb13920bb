@@ -1,0 +1,35 @@
+scripts/diagnostics/macos.py
+  s_1d1ebc94680cfb::t_38ae9b4d5e5958 27-28,82,137,152-155
+.github/workflows/offcpu-diagnostic.yml
+  s_1d1ebc94680cfb::t_38ae9b4d5e5958 18,24-26,46,62
+scripts/diagnostics/thread-sampler.c
+  s_1d1ebc94680cfb::t_0f453cab36c4ca 88
+  s_1d1ebc94680cfb::t_38ae9b4d5e5958 13,66-70,83,85-86
+  s_1d1ebc94680cfb::t_299fda90a11d73 1-12,14-65,71-82,84,87,89-94
+docs/readiness-process-policy/native-sampler/README.md
+  s_1d1ebc94680cfb::t_802fdc0a4c2962 1-9
+docs/readiness-process-policy/native-sampler/final-samples.jsonl
+  s_1d1ebc94680cfb::t_45752b2dd9b68b 1-85
+docs/readiness-process-policy/native-sampler/final-validation.json
+  s_1d1ebc94680cfb::t_ecfa776ff742a5 1-12
+docs/readiness-process-policy/native-sampler/target.c
+  s_1d1ebc94680cfb::t_62135842d770e0 1-12
+docs/readiness-process-policy/native-sampler/verify.py
+  s_1d1ebc94680cfb::t_b3e46c17829e48 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "38fc8cf6998db2bc1881a0b49b051ddcb13920bb",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
