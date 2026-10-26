@@ -24,6 +24,8 @@ BASE = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True
 p = argparse.ArgumentParser()
 p.add_argument('action', choices=['prepare', 'package', 'run'])
 p.add_argument('--seconds', type=int, default=300)
+p.add_argument('--task-rows', type=int, default=5000)
+p.add_argument('--string-bytes', type=int, default=96)
 p.add_argument('--variant', choices=['official', 'diagnostic'], default='diagnostic')
 p.add_argument('--engine', choices=['sync', 'async'], default='sync')
 a = p.parse_args()
@@ -77,7 +79,7 @@ if a.action == 'prepare':
 
 if a.action == 'package':
     (out/'bin').mkdir(exist_ok=True)
-    hashes = {}
+    hashes = {'native-sampler': digest(out/'bin/native-sampler')}
     for variant, directory in [('official', out/'official-source'), ('diagnostic', src)]:
         binary = directory/'experiments/workload/target/release/livequery-workload'
         destination = out/'bin'/variant
@@ -132,7 +134,7 @@ for engine in [a.engine]:
     (case/'clock-anchor.json').write_text(json.dumps(anchor)+'\n')
     sampler = None
     with (case/'run.log').open('w') as log, (case/'sampler.log').open('w') as slog, (case/'host-activity.jsonl').open('w') as host:
-        proc = subprocess.Popen([sys.executable, str(ROOT/'scripts/benchmark-service.py'), '--binary', str(binary), '--task-rows', '5000', '--string-bytes', '96', '--engine', engine, '--seconds', str(a.seconds), '--repeats', '1', '--output', str(case/'report.json')], env=env, stdout=log, stderr=log, start_new_session=True)
+        proc = subprocess.Popen([sys.executable, str(ROOT/'scripts/benchmark-service.py'), '--binary', str(binary), '--task-rows', str(a.task_rows), '--string-bytes', str(a.string_bytes), '--engine', engine, '--seconds', str(a.seconds), '--repeats', '1', '--output', str(case/'report.json')], env=env, stdout=log, stderr=log, start_new_session=True)
         started = time.monotonic()
         try:
             pid = None
@@ -147,7 +149,10 @@ for engine in [a.engine]:
                 raise RuntimeError('No workload identity within 15 seconds')
             (case/'pid').write_text(str(pid)+'\n')
             if a.variant == 'diagnostic':
-                sampler = subprocess.Popen([sys.executable, str(HERE/'thread-sampler.py'), str(pid), '--seconds', str(min(a.seconds+15, 600)), '--interval', '.01', '--identities', str(case/'events'), '--output', str(case/'threads.jsonl')], stdout=slog, stderr=slog)
+                native_sampler = out/'bin/native-sampler'
+                assert digest(native_sampler) == manifest['binary_sha256']['native-sampler']
+                native_sampler.chmod(0o755)
+                sampler = subprocess.Popen([str(native_sampler), str(pid), str(min(a.seconds+15, 600)), str(case/'events'), str(case/'threads.jsonl')], stdout=slog, stderr=slog)
             previous_cpu = None
             while True:
                 stamp = mono()

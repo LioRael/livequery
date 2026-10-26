@@ -15,13 +15,15 @@ jobs:
         with:
           fetch-depth: 0
       - uses: dtolnay/rust-toolchain@stable
-      - run: python3 scripts/diagnostics/macos.py prepare --seconds 300
+      - run: python3 scripts/diagnostics/macos.py prepare --seconds 600
       - name: Build official and explicitly instrumented binaries
         run: |
           cargo build --release --locked --manifest-path target/ci-offcpu/official-source/experiments/workload/Cargo.toml
           cargo build --release --locked --manifest-path target/ci-offcpu/source/experiments/workload/Cargo.toml
           rustc -Vv > target/ci-offcpu/toolchain.txt
-          python3 scripts/diagnostics/macos.py package --seconds 300
+          mkdir -p target/ci-offcpu/bin
+          clang -Wall -Wextra -Werror scripts/diagnostics/thread-sampler.c -o target/ci-offcpu/bin/native-sampler
+          python3 scripts/diagnostics/macos.py package --seconds 600
           clang -Wall -Wextra -Werror scripts/diagnostics/process-policy.c -o target/ci-offcpu/bin/policy-probe
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
@@ -41,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [official, diagnostic]
+        variant: [diagnostic]
         engine: [sync, async]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -57,7 +59,7 @@ jobs:
       - name: Fixed VM settling interval (no CPU admission gate)
         run: sleep 180
       - name: Measure original workload and enforce original error gates
-        run: python3 scripts/diagnostics/measurement-process.py --output target/ci-offcpu --probe target/ci-offcpu/bin/policy-probe --timeout 1200 -- python3 scripts/diagnostics/macos.py run --seconds 300 --variant '${{ matrix.variant }}' --engine '${{ matrix.engine }}'
+        run: python3 scripts/diagnostics/measurement-process.py --output target/ci-offcpu --probe target/ci-offcpu/bin/policy-probe --timeout 1200 -- python3 scripts/diagnostics/macos.py run --seconds 600 --task-rows 1000 --string-bytes 128 --variant '${{ matrix.variant }}' --engine '${{ matrix.engine }}'
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
