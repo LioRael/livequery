@@ -1,0 +1,23 @@
+docs/readiness-ci-isolation-40387489305/README.md
+  s_1d1ebc94680cfb::t_8097e856653ebc 1-5
+docs/readiness-ci-isolation-40387489305/service-isolation.json
+  s_1d1ebc94680cfb::t_d5b305718bed0a 1-49
+scripts/diagnostics/quiet-hosted-macos.py
+  s_1d1ebc94680cfb::t_dc45abeaed0d6d 9,34-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "65422cc3a73be7ec428538883ac88760a02692d5",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
