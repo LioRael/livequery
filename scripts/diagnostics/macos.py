@@ -9,20 +9,23 @@ import json
 import os
 from pathlib import Path
 import platform
+import shutil
 import signal
 import subprocess
 import sys
 import tarfile
 import time
 
-from isolation import require_idle
+from isolation import cpu_ticks, interval_busy_percent
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 BASE = '12fa024461de4096b325ed3c9b8c87da735ba1e7'
 p = argparse.ArgumentParser()
-p.add_argument('action', choices=['prepare', 'run'])
+p.add_argument('action', choices=['prepare', 'package', 'run'])
 p.add_argument('--seconds', type=int, default=300)
+p.add_argument('--variant', choices=['official', 'diagnostic'], default='diagnostic')
+p.add_argument('--engine', choices=['sync', 'async'], default='sync')
 a = p.parse_args()
 assert platform.system() == 'Darwin'
 assert 1 <= a.seconds <= 600
@@ -51,6 +54,10 @@ if a.action == 'prepare':
     archive = subprocess.check_output(['git', 'archive', '--format=tar', BASE], cwd=ROOT)
     with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
         tar.extractall(src)
+    official = out / 'official-source'
+    official.mkdir(exist_ok=False)
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+        tar.extractall(official)
     run(['git', 'apply', '--check', str(patch)], cwd=src)
     run(['git', 'apply', str(patch)], cwd=src)
     (out / 'provenance.json').write_text(json.dumps({
@@ -68,9 +75,30 @@ if a.action == 'prepare':
     }, indent=2) + '\n')
     sys.exit(0)
 
-binary = src / 'experiments/workload/target/release/livequery-workload'
-assert binary.is_file()
-assert json.loads((out/'provenance.json').read_text())['seconds_per_engine'] == a.seconds
+if a.action == 'package':
+    (out/'bin').mkdir(exist_ok=True)
+    hashes = {}
+    for variant, directory in [('official', out/'official-source'), ('diagnostic', src)]:
+        binary = directory/'experiments/workload/target/release/livequery-workload'
+        destination = out/'bin'/variant
+        shutil.copy2(binary, destination)
+        hashes[variant] = digest(destination)
+    (out/'build-manifest.json').write_text(json.dumps({'binary_sha256': hashes, 'build_provenance': json.loads((out/'provenance.json').read_text())}, indent=2)+'\n')
+    (out/'instrumentation.patch').write_bytes(patch.read_bytes())
+    sys.exit(0)
+
+binary = out/'bin'/a.variant
+manifest = json.loads((out/'build-manifest.json').read_text())
+assert digest(binary) == manifest['binary_sha256'][a.variant], 'Downloaded binary checksum mismatch'
+binary.chmod(0o755)
+assert manifest['build_provenance']['seconds_per_engine'] == a.seconds
+(out/'measurement-provenance.json').write_text(json.dumps({
+    'variant': a.variant, 'engine': a.engine, 'os': platform.platform(),
+    'logical_cpus': os.cpu_count(), 'runner_image': os.environ.get('ImageVersion'),
+    'runner_os_image': os.environ.get('ImageOS'), 'separate_build_job': True,
+    'binary_sha256_verified': digest(binary), 'cpu_admission_gate': False,
+    'workflow_head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+}, indent=2)+'\n')
 # Cooperative per-runner exclusion; it does not claim to lock other hosted VMs.
 lock = open(Path(os.environ.get('RUNNER_TEMP', '/tmp')) / 'livequery-measurement.lock', 'w')
 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -91,13 +119,14 @@ def mono():
     return t.sec * 1_000_000_000 + t.nsec
 
 verdicts = []
-for engine in ['sync', 'async']:
-    require_idle(out / f'isolation-{engine}.json')
+for engine in [a.engine]:
     case = out / engine
     (case/'events').mkdir(parents=True, exist_ok=False)
     env = os.environ.copy()
     env.pop('LQ_VALIDATE_PAUSE', None)
-    env['LQ_DIAGNOSTIC_DIR'] = str(case/'events')
+    env.pop('LQ_DIAGNOSTIC_DIR', None)
+    if a.variant == 'diagnostic':
+        env['LQ_DIAGNOSTIC_DIR'] = str(case/'events')
     before = mono()
     anchor = {'monotonic_before_ns': before, 'unix_ns': time.time_ns(), 'monotonic_after_ns': mono()}
     (case/'clock-anchor.json').write_text(json.dumps(anchor)+'\n')
@@ -108,27 +137,38 @@ for engine in ['sync', 'async']:
         try:
             pid = None
             while time.monotonic()-started < 15 and proc.poll() is None:
-                # Workload itself registers its PID/thread identity on initial capture.
-                ids = list((case/'events').glob('*.tid'))
-                if ids:
-                    pid = int(ids[0].name.split('-')[0])
+                # Match the verified executable path; official binaries have no .tid probes.
+                matches = [r['pid'] for r in processes() if r['executable'] == str(binary)]
+                if len(matches) == 1:
+                    pid = matches[0]
                     break
                 time.sleep(.05)
             if pid is None:
                 raise RuntimeError('No workload identity within 15 seconds')
             (case/'pid').write_text(str(pid)+'\n')
-            sampler = subprocess.Popen([sys.executable, str(HERE/'thread-sampler.py'), str(pid), '--seconds', str(min(a.seconds+15, 600)), '--interval', '.01', '--identities', str(case/'events'), '--output', str(case/'threads.jsonl')], stdout=slog, stderr=slog)
-            while proc.poll() is None:
-                host.write(json.dumps({'monotonic_ns': mono(), 'unix_ns': time.time_ns(), 'loadavg': os.getloadavg(), 'processes': [r for r in processes() if r['cpu_percent'] >= 5 or Path(r['executable']).name in blocked]})+'\n')
+            if a.variant == 'diagnostic':
+                sampler = subprocess.Popen([sys.executable, str(HERE/'thread-sampler.py'), str(pid), '--seconds', str(min(a.seconds+15, 600)), '--interval', '.01', '--identities', str(case/'events'), '--output', str(case/'threads.jsonl')], stdout=slog, stderr=slog)
+            previous_cpu = None
+            while True:
+                stamp = mono()
+                ticks = cpu_ticks()
+                row = {'monotonic_ns': stamp, 'unix_ns': time.time_ns(), 'cpu_ticks': ticks, 'loadavg': os.getloadavg(), 'processes': [r for r in processes() if r['cpu_percent'] >= 5 or Path(r['executable']).name in blocked]}
+                if previous_cpu is not None:
+                    row.update(interval_start_ns=previous_cpu[0], interval_busy_percent=interval_busy_percent(previous_cpu[1], ticks, os.cpu_count()))
+                previous_cpu = (stamp, ticks)
+                host.write(json.dumps(row)+'\n')
                 host.flush()
+                if proc.poll() is not None:
+                    break
                 if time.monotonic()-started > a.seconds+45:
                     raise TimeoutError('Workload completion exceeded bounded diagnostic duration')
                 time.sleep(5)
             if proc.returncode:
                 raise RuntimeError(f'Benchmark exited {proc.returncode}')
-            sampler.wait(timeout=15)
-            if sampler.returncode:
-                raise RuntimeError(f'Sampler exited {sampler.returncode}')
+            if sampler is not None:
+                sampler.wait(timeout=15)
+                if sampler.returncode:
+                    raise RuntimeError(f'Sampler exited {sampler.returncode}')
         finally:
             if proc.poll() is None:
                 os.killpg(proc.pid, signal.SIGKILL)
@@ -136,7 +176,8 @@ for engine in ['sync', 'async']:
             if sampler is not None and sampler.poll() is None:
                 sampler.terminate()
                 sampler.wait(timeout=10)
-    run([sys.executable, str(HERE/'correlate.py'), str(case)])
+    if a.variant == 'diagnostic':
+        run([sys.executable, str(HERE/'correlate.py'), str(case)])
     with (case/'gate.log').open('w') as gate:
         verdict = subprocess.run([sys.executable, str(ROOT/'scripts/check-load.py'), str(case/'report.json'), '--min-seconds', str(a.seconds), '--engine', engine], stdout=gate, stderr=gate).returncode
     verdicts.append({'engine': engine, 'original_gate_exit': verdict})

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed on a busy macOS runner before starting measurements."""
+"""Read host CPU counters for evidence, not an admission gate."""
 import ctypes
 import json
 import os
@@ -44,33 +44,3 @@ def interval_busy_percent(before, after, cpus):
 def conflicts(row):
     return [p for p in row['processes'] if Path(p['executable']).name in
             {'cargo', 'rustc', 'xctrace', 'livequery-workload'}]
-
-
-def require_idle(path):
-    """One 15-second observation, no wait-until-green loop or process killing."""
-    records = []
-    cpus = os.cpu_count() or 1
-    previous = None
-    for index in range(4):
-        if index:
-            time.sleep(5)
-        row = snapshot()
-        row['cpu_ticks'] = cpu_ticks()
-        row['monotonic_ns'] = time.monotonic_ns()
-        row['conflicting_processes'] = conflicts(row)
-        if previous is not None:
-            row['interval_busy_percent'] = interval_busy_percent(previous['cpu_ticks'], row['cpu_ticks'], cpus)
-            row['interval_seconds'] = (row['monotonic_ns'] - previous['monotonic_ns']) / 1e9
-            row['admitted'] = (not row['conflicting_processes']
-                               and 0 < row['interval_seconds'] <= 10
-                               and row['interval_busy_percent'] <= 25)
-        records.append(row)
-        previous = row
-    result = {'purpose': 'environment admission, not the original workload acceptance gate',
-              'logical_cpus': cpus, 'max_interval_busy_percent': 25,
-              'measurement': 'HOST_CPU_LOAD_INFO tick deltas; includes observer overhead; loadavg and ps CPU advisory only',
-              'samples': records,
-              'admitted': not records[0]['conflicting_processes'] and all(r['admitted'] for r in records[1:])}
-    Path(path).write_text(json.dumps(result, indent=2) + '\n')
-    if not result['admitted']:
-        raise RuntimeError('Runner isolation unavailable; evidence saved, no measurement started, no automatic retry')

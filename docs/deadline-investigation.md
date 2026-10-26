@@ -25,3 +25,7 @@ Disk-indexing shutdown alone left user indexing agents active; removing those ag
 ## Actual-CPU admission result
 
 [Run 40389493414](readiness-ci-isolation-40389493414/README.md) returned to macOS 26 and recorded actual pre-workload CPU use of 1.576, 0.498 and 0.522 core equivalents in three five-second intervals. It did not start the workload. Indexing interventions have not established the requested isolation. The 25% diagnostic admission budget is an added conservative prerequisite, not evidence of a workload timeout and not an original acceptance requirement. macOS 15 has no workload result; it cannot be used to bypass macOS 26 failures. Stop repeated identical hosted runs until an execution-isolation strategy is justified; keep every failed report and the original acceptance gates.
+
+## User-directed build/measurement separation
+
+The diagnostic 25% admission requirement is removed. Build and measurement now run on separate hosted VMs, with verified official and instrumented binaries and separate environment provenance. Four macOS 26 jobs run the unchanged actual workload and original gates once each (official/diagnostic × sync/async). Runtime CPU windows are evidence only and are linked to diagnostic failure intervals. This addresses the explicit request to measure actual behavior rather than block on a new host criterion. Isolation effectiveness and timeout resolution remain to be established by completed results.
