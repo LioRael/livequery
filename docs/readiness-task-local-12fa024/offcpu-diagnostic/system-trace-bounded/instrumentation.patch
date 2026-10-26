@@ -1,0 +1,190 @@
+--- a/crates/livequery-core/Cargo.toml
++++ b/crates/livequery-core/Cargo.toml
+@@ -9,6 +9,7 @@
+ readme = "README.md"
+ description = "Explicit schemas, registration and safe runtime snapshots"
+ [dependencies]
++libc = "0.2"
+ serde.workspace = true
+ serde_json.workspace = true
+ thiserror.workspace = true
+--- a/crates/livequery-core/src/lib.rs
++++ b/crates/livequery-core/src/lib.rs
+@@ -13,3 +13,6 @@
+     Source, json_bytes,
+ };
+ pub use {schemars, serde, serde_json};
++
++#[doc(hidden)]
++pub mod diagnostic;
+--- a/crates/livequery-core/src/diagnostic.rs
++++ b/crates/livequery-core/src/diagnostic.rs
+@@ -0,0 +1,66 @@
++//! Temporary diagnostic-only instrumentation; never a release artifact.
++use std::io::Write;
++fn clock(id: libc::clockid_t) -> Option<u64> {
++    let mut t = libc::timespec { tv_sec: 0, tv_nsec: 0 };
++    // SAFETY: initialized writable output and a supported local clock identifier.
++    if unsafe { libc::clock_gettime(id, &mut t) } != 0 { return None; }
++    u64::try_from(t.tv_sec).ok()?.checked_mul(1_000_000_000)?.checked_add(u64::try_from(t.tv_nsec).ok()?)
++}
++#[derive(Debug, serde::Serialize)]
++struct Point { phase: &'static str, row: usize, wall_ns: Option<u64>, cpu_ns: Option<u64> }
++#[derive(Debug)]
++pub struct Span { kind: &'static str, tid: u64, pthread_handle: u64, points: Vec<Point>, start: u64, failed: bool }
++impl Span {
++    pub fn new(kind: &'static str) -> Self {
++        let mut tid = 0;
++        // SAFETY: null selects the current thread; tid is initialized writable storage.
++        unsafe { libc::pthread_threadid_np(0, &mut tid); }
++        thread_local! {static REGISTERED: std::cell::Cell<bool> = const {std::cell::Cell::new(false)};}
++        REGISTERED.with(|registered| {if !registered.replace(true) {
++            if let Ok(dir)=std::env::var("LQ_DIAGNOSTIC_DIR") {
++                let _=std::fs::write(std::path::Path::new(&dir).join(format!("{}-{}.tid",std::process::id(),tid)),b"thread_id64");
++            }
++        }});
++        let mut s = Self {kind,tid,pthread_handle: unsafe { libc::pthread_self() } as u64,points:Vec::with_capacity(48), start:clock(libc::CLOCK_MONOTONIC).unwrap(),failed:false};
++        s.mark("start",0);
++        static INJECT: std::sync::Once = std::sync::Once::new();
++        INJECT.call_once(|| { if std::env::var_os("LQ_VALIDATE_PAUSE").is_some() {
++            // SAFETY: opt-in diagnostic injection stops this process until the test controller resumes it.
++            unsafe { libc::raise(libc::SIGSTOP); }
++        }});
++        s
++    }
++    pub fn mark(&mut self, phase: &'static str, row: usize) {
++        self.points.push(Point {phase,row,wall_ns:clock(libc::CLOCK_MONOTONIC),cpu_ns:clock(libc::CLOCK_THREAD_CPUTIME_ID)});
++    }
++    pub fn deadline(&mut self) {self.failed=true;self.mark("deadline",0);}
++}
++#[derive(serde::Serialize)]
++struct Event { kind: &'static str, tid: u64, pthread_handle: u64, wall_ns: u64, deadline: bool, points: Vec<Point> }
++struct Sink { events: Vec<Event>, dropped: usize }
++impl Drop for Sink {
++    fn drop(&mut self) {
++        // Flush only when the diagnostic thread exits, outside measured operations.
++        if self.events.is_empty() { return; }
++        if let Ok(dir) = std::env::var("LQ_DIAGNOSTIC_DIR") {
++            let path = std::path::Path::new(&dir).join(format!("{}-{}.jsonl", std::process::id(), self.events[0].tid));
++            if let Ok(mut f) = std::fs::OpenOptions::new().create(true).append(true).open(path) {
++                for event in &self.events { let _ = serde_json::to_writer(&mut f, event); let _ = writeln!(f); }
++                let _ = writeln!(f, "{}", serde_json::json!({"diagnostic_dropped_events": self.dropped}));
++            }
++        }
++    }
++}
++thread_local! { static SINK: std::cell::RefCell<Sink> = const { std::cell::RefCell::new(Sink { events: Vec::new(), dropped: 0 }) }; }
++impl Drop for Span {
++    fn drop(&mut self) {
++        self.mark("end", 0);
++        let elapsed = clock(libc::CLOCK_MONOTONIC).unwrap() - self.start;
++        if elapsed < 50_000_000 && !self.failed { return; }
++        SINK.with(|sink| {
++            let mut sink = sink.borrow_mut();
++            if sink.events.len() == 256 { sink.dropped += 1; return; }
++            sink.events.push(Event { kind: self.kind, tid: self.tid, pthread_handle: self.pthread_handle, wall_ns: elapsed, deadline: self.failed, points: std::mem::take(&mut self.points) });
++        });
++    }
++}
+--- a/crates/livequery-core/src/state.rs
++++ b/crates/livequery-core/src/state.rs
+@@ -141,14 +141,16 @@
+         limits: Limits,
+     ) -> Result<Self, Error> {
+         let start = Instant::now();
++        let mut diagnostic = crate::diagnostic::Span::new("capture");
+         let mut snapshot = Self {
+             columns: T::schema(),
+             rows: Vec::new(),
+         };
+         let mut bytes = json_bytes(&snapshot.columns, limits.bytes)?.len();
+-        for row in rows {
++        for (index, row) in rows.into_iter().enumerate() {
++            if index % 128 == 0 { diagnostic.mark("rows", index); }
+             if start.elapsed() >= limits.query_timeout {
+-                return Err(Error::Deadline);
++                diagnostic.deadline(); return Err(Error::Deadline);
+             }
+             if snapshot.rows.len() == limits.scan_rows {
+                 return Err(Error::Limit("scan rows".into()));
+@@ -157,9 +159,11 @@
+             bytes += json_size(&row, limits.bytes.saturating_sub(bytes))?;
+             snapshot.rows.push(row);
+         }
++        diagnostic.mark("validate", snapshot.rows.len());
+         snapshot.validate(limits)?;
++        diagnostic.mark("validated", snapshot.rows.len());
+         if start.elapsed() >= limits.query_timeout {
+-            return Err(Error::Deadline);
++            diagnostic.deadline(); return Err(Error::Deadline);
+         }
+         Ok(snapshot)
+     }
+--- a/crates/livequery-query/src/lib.rs
++++ b/crates/livequery-query/src/lib.rs
+@@ -199,7 +199,9 @@
+         budget: ResultBudget,
+     ) -> Result<QueryExecution, Error> {
+         let start = Instant::now();
++        let mut diagnostic = livequery_core::diagnostic::Span::new("query");
+         let view = registry.read_snapshot(&self.source, limits)?;
++        diagnostic.mark("snapshot",0);
+         let snapshot = view.snapshot();
+         let find = |name: &str| {
+             snapshot
+@@ -243,9 +245,10 @@
+         let mut count = 0u64;
+         let mut maximum: Option<Value> = None;
+         let mut sort_type: Option<&Value> = None;
+-        for row in &snapshot.rows {
++        for (index, row) in snapshot.rows.iter().enumerate() {
++            if index % 128 == 0 { diagnostic.mark("scan", index); }
+             if start.elapsed() >= limits.query_timeout {
+-                return Err(Error::Deadline);
++                diagnostic.deadline(); return Err(Error::Deadline);
+             }
+             if self
+                 .filter
+@@ -286,6 +289,7 @@
+                 matching.push(row);
+             }
+         }
++        diagnostic.mark("sort",0);
+         if let Some((name, descending)) = &self.order {
+             matching.sort_by(|a, b| match (a[name].is_null(), b[name].is_null()) {
+                 (true, true) => Ordering::Equal,
+@@ -298,6 +302,7 @@
+                 }
+             });
+         }
++        diagnostic.mark("project",0);
+         if let Some(aggregate) = &self.aggregate {
+             result.truncated = limit == 0;
+             if limit > 0 {
+@@ -329,6 +334,7 @@
+             publication: view.publication().cloned(),
+             revision: view.revision(),
+         };
++        diagnostic.mark("encode",0);
+         match budget {
+             ResultBudget::Detailed => {
+                 livequery_core::json_bytes(&execution, limits.bytes)?;
+@@ -338,7 +344,7 @@
+             }
+         }
+         if start.elapsed() >= limits.query_timeout {
+-            return Err(Error::Deadline);
++            diagnostic.deadline(); return Err(Error::Deadline);
+         }
+         Ok(execution)
+     }
+--- a/experiments/workload/Cargo.lock
++++ b/experiments/workload/Cargo.lock
+@@ -204,6 +204,7 @@
+ name = "livequery-core"
+ version = "0.1.0-alpha.4"
+ dependencies = [
++ "libc",
+  "livequery-derive",
+  "schemars",
+  "serde",

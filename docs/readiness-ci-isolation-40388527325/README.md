@@ -1,0 +1,9 @@
+# macOS 15 comparison: workload not started
+
+Run 40388527325 used macOS 15.7.9, ARM64, 3 logical CPUs, image 20260907.0337.1 and the same diagnostic patch hash as the macOS 26 workload. The old host-admission heuristic rejected it before any workload: load1 3.208, 3.031, 2.868, 2.798; aggregate external decaying ps CPU 22.8%, 23.8%, 1.4%, 1.3%. There are no workload report files. This is neither a timeout nor a timeout-free result. No conclusion about LiveQuery's OS dependence follows.
+
+The comparison exposed an admission defect: historical load average can include the preceding compilation and cannot reliably identify current competition. The prior macOS 26 runs independently observed large background-process CPU estimates, but the old admission rejection alone is not proof of current CPU contention. All those outcomes remain preserved.
+
+The corrected admission retains the same 25%-of-one-core budget and fixed 15-second observation, using actual HOST_CPU_LOAD_INFO tick deltas in three five-second intervals. It includes monitoring overhead rather than subtracting it. It keeps loadavg and ps output as advisory evidence, rejects missing/stalled counters or >10-second sample gaps, and retains the conflicting-process exclusion. Kernel counter layout was checked against the installed SDK; idle, saturated-core, 32-bit-wrap, stalled-counter and conflicting-process unit cases pass. A read-only native API sanity check observed advancing counters without generating a workload. This is a correction to the new diagnostic precondition, not a change to any original workload/error/resource gate.
+
+Next validation returns to macOS 26 with the corrected admission and retained indexing isolation; macOS 15 is not substituted as final acceptance. A subsequent short pass still cannot replace full original acceptance.

@@ -1,0 +1,12 @@
+{
+  "sync": {
+    "snapshots": 60,
+    "load1_exceeds_3_cpus": 60,
+    "note": "Retrospective load-only check; not a before-load admission measurement."
+  },
+  "async": {
+    "snapshots": 60,
+    "load1_exceeds_3_cpus": 60,
+    "note": "Retrospective load-only check; not a before-load admission measurement."
+  }
+}

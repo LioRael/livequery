@@ -1,0 +1,317 @@
+[
+  {
+    "report": "macos-async-task-cost-10-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.03817866700001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 779,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-async-task-cost-100-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.065659624999967,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 201,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-async-task-baseline.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.000582417000004,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 0,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-async-task-cost-10-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.02627612500001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 1050,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-async-task-1000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 600.1088584170001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 15424,
+    "publication_error_codes": {
+      "deadline": 1
+    }
+  },
+  {
+    "report": "macos-async-task-cost-100-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.05156475000001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 191,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-sync-task-5000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 7200.065835165999,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 31
+    },
+    "publication_attempts": 124495,
+    "publication_error_codes": {
+      "deadline": 2
+    }
+  },
+  {
+    "report": "macos-sync-task-cost-10-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.026767291999988,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 673,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-sync-task-cost-100-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.01177591699991,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 185,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-sync-task-baseline.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.000828625000025,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 0,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-sync-task-cost-10-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.02135612500001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 1147,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-sync-task-1000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 600.0322031249999,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 2
+    },
+    "publication_attempts": 15469,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "macos-sync-task-cost-100-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "93d36e431dc601ab65d77f236c1ed6777058c57f4ea9a739eb31568a146f35bc",
+    "elapsed_seconds": 30.00883695799996,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 182,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-sync-task-5000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 7200.016388948,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 43
+    },
+    "publication_attempts": 289207,
+    "publication_error_codes": {
+      "busy": 2
+    }
+  },
+  {
+    "report": "linux-sync-task-cost-10-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.01062289700002,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 2416,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-sync-task-cost-100-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.00439793800001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 318,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-sync-task-baseline.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.000262789000004,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 0,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-sync-task-cost-10-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.019260738000014,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 2408,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-sync-task-1000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 600.011109529,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 4
+    },
+    "publication_attempts": 43810,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-sync-task-cost-100-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.001330155000005,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 317,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-5000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 7200.013173591,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 9
+    },
+    "publication_attempts": 333395,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-cost-10-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.01272905000002,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 2650,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-cost-100-4.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.002317407999954,
+    "request_errors": 0,
+    "observation_error_codes": {
+      "busy": 1
+    },
+    "publication_attempts": 321,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-baseline.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.000297546000013,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 0,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-cost-10-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.012717735999985,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 2632,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-1000.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 600.0186802530001,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 48307,
+    "publication_error_codes": {}
+  },
+  {
+    "report": "linux-async-task-cost-100-1.json",
+    "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+    "source_dirty": false,
+    "binary_sha256": "c34f9bdfae5489c5e3685c5d2bc114f96795ad1770cf0a6e4253a9a86d05b3b8",
+    "elapsed_seconds": 30.016553621000014,
+    "request_errors": 0,
+    "observation_error_codes": {},
+    "publication_attempts": 321,
+    "publication_error_codes": {}
+  }
+]

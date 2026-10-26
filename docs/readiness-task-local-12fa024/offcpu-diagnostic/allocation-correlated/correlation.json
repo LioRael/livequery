@@ -1,0 +1,99 @@
+{
+  "correlated_spans": [
+    {
+      "kind": "capture",
+      "wall_ms": 54.222,
+      "phase": [
+        "validate",
+        "validated"
+      ],
+      "gap_ms": 7.435,
+      "cpu_ms": 5.349459,
+      "allocator_ms": 0.069458,
+      "samples": [
+        {
+          "time_ns": 1780302464536000,
+          "tid": 52266973,
+          "cpu_ns": 510538000,
+          "state": 1,
+          "priority": 31,
+          "name": ""
+        }
+      ],
+      "witness": []
+    },
+    {
+      "kind": "capture",
+      "wall_ms": 73.165,
+      "phase": [
+        "rows",
+        "rows"
+      ],
+      "gap_ms": 19.83,
+      "cpu_ms": 0.605625,
+      "allocator_ms": 17.578861,
+      "samples": [
+        {
+          "time_ns": 1780302557076000,
+          "tid": 52266973,
+          "cpu_ns": 531046000,
+          "state": 1,
+          "priority": 31,
+          "name": ""
+        }
+      ],
+      "witness": []
+    },
+    {
+      "kind": "capture",
+      "wall_ms": 84.459,
+      "phase": [
+        "validate",
+        "validated"
+      ],
+      "gap_ms": 37.24,
+      "cpu_ms": 3.414958,
+      "allocator_ms": 0.010958,
+      "samples": [
+        {
+          "time_ns": 1780323439009000,
+          "tid": 52266973,
+          "cpu_ns": 12944285000,
+          "state": 1,
+          "priority": 29,
+          "name": ""
+        },
+        {
+          "time_ns": 1780323451073000,
+          "tid": 52266973,
+          "cpu_ns": 12944301000,
+          "state": 1,
+          "priority": 29,
+          "name": ""
+        },
+        {
+          "time_ns": 1780323461879000,
+          "tid": 52266973,
+          "cpu_ns": 12945384000,
+          "state": 1,
+          "priority": 29,
+          "name": ""
+        }
+      ],
+      "witness": [
+        {
+          "start_ns": 1780323464484000,
+          "wall_ns": 1067000,
+          "cpu_ns": 1002833
+        }
+      ]
+    }
+  ],
+  "witness_max": {
+    "start_ns": 1780302510488000,
+    "wall_ns": 17138000,
+    "cpu_ns": 1001083
+  },
+  "sample_count": 5504,
+  "limitations": "10ms snapshots can miss intervening waits. Witness samples 1ms CPU work followed by 50ms sleep, so lack of overlap is not evidence of no host stall. This run had no Deadline."
+}

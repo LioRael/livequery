@@ -1,0 +1,1 @@
+{"counts": {"('query', False)": 2, "('capture', True)": 4, "('capture', False)": 18}, "file": "/Users/runner/work/livequery/livequery/target/ci-offcpu/sync/failure-correlation.json"}

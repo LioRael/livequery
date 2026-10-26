@@ -1,0 +1,5 @@
+# Hosted runner admission failure, before LiveQuery starts
+
+Run 40386116211, source 08bda91057a932721e163c37d757429ec50a152d. A different macos-latest image allocated five logical CPUs; preserve provenance rather than assuming the earlier three-CPU capacity. No workload was launched. Four samples show load1 40.40, 37.25, 34.43, 33.03 and external decaying ps CPU estimates 60.9%, 222.0%, 459.9%, 470.3%. Spotlight mds/mds_stores/mdworker_shared dominate the later samples. This proves competing indexing activity before the benchmark, not that each earlier Deadline was caused by Spotlight.
+
+The next environment correction disables Spotlight indexing only inside the ephemeral GitHub diagnostic VM, records mdutil status, and provides a fixed 180-second post-build settling interval before the unchanged admission check. No local host settings, library behavior, workload rate, observer count or error gate changes. This is a targeted intervention with a concrete rejected baseline, not a retry of the same measurement. It remains unverified until the admission and correlated workload results finish. A failed admission remains failed; no automatic retry.

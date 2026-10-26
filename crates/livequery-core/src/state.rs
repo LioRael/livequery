@@ -154,7 +154,7 @@ impl Snapshot {
                 return Err(Error::Limit("scan rows".into()));
             }
             let row = row.inspect_bounded(limits.bytes.saturating_sub(bytes))?;
-            bytes += json_bytes(&row, limits.bytes.saturating_sub(bytes))?.len();
+            bytes += json_size(&row, limits.bytes.saturating_sub(bytes))?;
             snapshot.rows.push(row);
         }
         snapshot.validate(limits)?;
@@ -169,7 +169,7 @@ impl Snapshot {
         }
         let bytes = json_bytes(self, limits.bytes)?;
         // Parsing validates nesting before any remote request can clone a published value.
-        let _: serde_json::Value = serde_json::from_slice(&bytes)?;
+        validate_json(&bytes)?;
         let mut names = std::collections::BTreeSet::new();
         if self.columns.is_empty()
             || self
@@ -186,6 +186,73 @@ impl Snapshot {
         Ok(bytes.len())
     }
 }
+// Walk through serde_json's normal recursive deserializer without constructing a
+// second JSON tree. deserialize_any retains its nesting and numeric checks.
+struct ValidatedJson(bool);
+impl<'de> Deserialize<'de> for ValidatedJson {
+    fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = ValidatedJson;
+            fn expecting(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+                f.write_str("a bounded JSON value")
+            }
+            fn visit_bool<E: serde::de::Error>(self, _: bool) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_i64<E: serde::de::Error>(self, _: i64) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_u64<E: serde::de::Error>(self, _: u64) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_f64<E: serde::de::Error>(self, _: f64) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_str<E: serde::de::Error>(self, value: &str) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(matches!(
+                    value,
+                    "$serde_json::private::Number" | "$serde_json::private::RawValue"
+                )))
+            }
+            fn visit_unit<E: serde::de::Error>(self) -> Result<Self::Value, E> {
+                Ok(ValidatedJson(false))
+            }
+            fn visit_seq<A: serde::de::SeqAccess<'de>>(
+                self,
+                mut seq: A,
+            ) -> Result<Self::Value, A::Error> {
+                let mut special = false;
+                while let Some(value) = seq.next_element::<ValidatedJson>()? {
+                    special |= value.0;
+                }
+                Ok(ValidatedJson(special))
+            }
+            fn visit_map<A: serde::de::MapAccess<'de>>(
+                self,
+                mut map: A,
+            ) -> Result<Self::Value, A::Error> {
+                let mut special = false;
+                while let Some(key) = map.next_key::<ValidatedJson>()? {
+                    special |= key.0 | map.next_value::<ValidatedJson>()?.0;
+                }
+                Ok(ValidatedJson(special))
+            }
+        }
+        deserializer.deserialize_any(Visitor)
+    }
+}
+
+fn validate_json(bytes: &[u8]) -> Result<(), serde_json::Error> {
+    let scanned: ValidatedJson = serde_json::from_slice(bytes)?;
+    // Feature unification can enable Value's reserved-key representations. Keep
+    // their acceptance semantics without rebuilding ordinary snapshot trees.
+    if scanned.0 {
+        let _: Value = serde_json::from_slice(bytes)?;
+    }
+    Ok(())
+}
+
 /// An opaque source identity and publication sequence used for conditional observations.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Revision {
@@ -485,35 +552,96 @@ fn identifier(s: &str) -> bool {
 /// Returns a limit error before appending oversized data, or a serialization error.
 #[doc(hidden)]
 pub fn value_with_budget<T: Serialize>(value: &T, remaining: &mut usize) -> Result<Value, Error> {
-    let bytes = json_bytes(value, *remaining)?;
-    *remaining -= bytes.len();
-    Ok(serde_json::from_slice(&bytes)?)
+    let bytes = encode_bounded::<_, 128>(value, *remaining)?;
+    *remaining -= bytes.len;
+    Ok(serde_json::from_slice(bytes.as_slice())?)
 }
 
-/// Serializes a value through a capped writer without retaining excess output.
-/// # Errors
-/// Returns a limit or serialization error when encoding cannot complete within the budget.
-pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error> {
-    struct Buffer {
-        bytes: Vec<u8>,
+// Capture only needs each row's encoded size, not another owned byte buffer.
+fn json_size<T: Serialize>(value: &T, max: usize) -> Result<usize, Error> {
+    struct Counter {
+        len: usize,
         max: usize,
         exceeded: bool,
     }
-    impl std::io::Write for Buffer {
+    impl std::io::Write for Counter {
         fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
-            if bytes.len() > self.max.saturating_sub(self.bytes.len()) {
+            if bytes.len() > self.max.saturating_sub(self.len) {
                 self.exceeded = true;
                 return Err(std::io::Error::other("field byte budget exceeded"));
             }
-            self.bytes.extend_from_slice(bytes);
+            self.len += bytes.len();
             Ok(bytes.len())
         }
         fn flush(&mut self) -> std::io::Result<()> {
             Ok(())
         }
     }
-    let mut buffer = Buffer {
-        bytes: Vec::new(),
+    let mut counter = Counter {
+        len: 0,
+        max,
+        exceeded: false,
+    };
+    let result = serde_json::to_writer(&mut counter, value);
+    if counter.exceeded {
+        return Err(Error::Limit("field bytes".into()));
+    }
+    result?;
+    Ok(counter.len)
+}
+
+/// Serializes a value through a capped writer without retaining excess output.
+/// # Errors
+/// Returns a limit or serialization error when encoding cannot complete within the budget.
+pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error> {
+    Ok(encode_bounded::<_, 0>(value, max)?.heap)
+}
+
+struct EncodingBuffer<const N: usize> {
+    inline: [u8; N],
+    heap: Vec<u8>,
+    len: usize,
+    max: usize,
+    exceeded: bool,
+}
+impl<const N: usize> EncodingBuffer<N> {
+    fn as_slice(&self) -> &[u8] {
+        if self.len <= N {
+            &self.inline[..self.len]
+        } else {
+            &self.heap
+        }
+    }
+}
+impl<const N: usize> std::io::Write for EncodingBuffer<N> {
+    fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
+        if bytes.len() > self.max.saturating_sub(self.len) {
+            self.exceeded = true;
+            return Err(std::io::Error::other("field byte budget exceeded"));
+        }
+        if self.len + bytes.len() <= N {
+            self.inline[self.len..self.len + bytes.len()].copy_from_slice(bytes);
+        } else {
+            if self.len <= N {
+                self.heap.extend_from_slice(&self.inline[..self.len]);
+            }
+            self.heap.extend_from_slice(bytes);
+        }
+        self.len += bytes.len();
+        Ok(bytes.len())
+    }
+    fn flush(&mut self) -> std::io::Result<()> {
+        Ok(())
+    }
+}
+fn encode_bounded<T: Serialize, const N: usize>(
+    value: &T,
+    max: usize,
+) -> Result<EncodingBuffer<N>, Error> {
+    let mut buffer = EncodingBuffer {
+        inline: [0; N],
+        heap: Vec::new(),
+        len: 0,
         max,
         exceeded: false,
     };
@@ -522,12 +650,120 @@ pub fn json_bytes<T: Serialize>(value: &T, max: usize) -> Result<Vec<u8>, Error>
         return Err(Error::Limit("field bytes".into()));
     }
     result?;
-    Ok(buffer.bytes)
+    Ok(buffer)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn inline_field_encoding_preserves_bytes_errors_and_remaining_budget() {
+        let values = [
+            serde_json::json!([null, true, -1, u64::MAX, 1.25]),
+            serde_json::json!("quote\" slash\\ newline\n中文"),
+            serde_json::json!("x".repeat(125)),
+            serde_json::json!("x".repeat(126)),
+            serde_json::json!("x".repeat(127)),
+            serde_json::json!({"text": "中\n".repeat(100), "tail": [1, 2]}),
+        ];
+        for value in values {
+            let expected = serde_json::to_vec(&value).unwrap();
+            for limit in 0..=expected.len() + 1 {
+                let encoded = encode_bounded::<_, 128>(&value, limit);
+                let reference = json_bytes(&value, limit);
+                assert_eq!(
+                    encoded.as_ref().err().map(Error::code),
+                    reference.as_ref().err().map(Error::code)
+                );
+                let mut remaining = limit;
+                let result = value_with_budget(&value, &mut remaining);
+                if limit < expected.len() {
+                    assert!(matches!(result, Err(Error::Limit(_))));
+                    assert_eq!(remaining, limit);
+                } else {
+                    let encoded = encoded.unwrap();
+                    assert_eq!(encoded.as_slice(), expected);
+                    assert_eq!(encoded.heap.is_empty(), expected.len() <= 128);
+                    assert_eq!(result.unwrap(), value);
+                    assert_eq!(remaining, limit - expected.len());
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn inline_spill_serializes_custom_values_once() {
+        struct Once(std::cell::Cell<usize>);
+        impl Serialize for Once {
+            fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+                self.0.set(self.0.get() + 1);
+                serializer.serialize_str(&"x".repeat(256))
+            }
+        }
+        let value = Once(std::cell::Cell::new(0));
+        let mut remaining = 258;
+        assert_eq!(
+            value_with_budget(&value, &mut remaining).unwrap(),
+            Value::String("x".repeat(256))
+        );
+        assert_eq!(value.0.get(), 1);
+        assert_eq!(remaining, 0);
+    }
+
+    #[test]
+    fn counting_rows_preserves_encoded_byte_limits() {
+        for value in [
+            serde_json::json!({"text": "quote\" slash\\ newline\n中文", "n": u64::MAX}),
+            serde_json::json!([null, true, -1, 1.25, [], {}]),
+        ] {
+            let bytes = serde_json::to_vec(&value).unwrap();
+            for limit in 0..=bytes.len() + 1 {
+                let expected = json_bytes(&value, limit);
+                let actual = json_size(&value, limit);
+                assert_eq!(
+                    actual.as_ref().err().map(Error::code),
+                    expected.as_ref().err().map(Error::code)
+                );
+                if let Ok(size) = actual {
+                    assert_eq!(size, bytes.len());
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn tree_free_validation_preserves_json_acceptance_and_depth_limit() {
+        for depth in 0..140 {
+            for (open, close) in [("[", "]"), ("{\"key\":", "}")] {
+                let input = format!("{}null{}", open.repeat(depth), close.repeat(depth));
+                assert_eq!(
+                    validate_json(input.as_bytes()).is_ok(),
+                    serde_json::from_str::<Value>(&input).is_ok(),
+                    "depth={depth}, input={open}"
+                );
+            }
+        }
+        for input in [
+            r#"{"$serde_json::private::Number":"not-a-number"}"#,
+            r#"{"$serde_json::private::RawValue":"invalid"}"#,
+            "null",
+            "true",
+            "-9223372036854775808",
+            "18446744073709551615",
+            "1.25",
+            "1e400",
+            "[1,]",
+            "{\"x\":}",
+            "null true",
+            "\"escaped\\ntext\"",
+        ] {
+            assert_eq!(
+                validate_json(input.as_bytes()).is_ok(),
+                serde_json::from_str::<Value>(input).is_ok(),
+                "{input}"
+            );
+        }
+    }
     #[test]
     fn request_paths_do_not_wait_for_registration_writers() {
         let registry = Registry::new();

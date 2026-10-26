@@ -1,0 +1,12 @@
+{
+  "unix": 1793037439.551955,
+  "pid": 55710,
+  "signal": "SIGINT",
+  "reason": "available filesystem space 6.9 GiB during large trace save",
+  "trace_not_root_cause_evidence": true,
+  "escalation": "SIGTERM",
+  "escalation_reason": "SIGINT did not stop writes; available disk 3.1 GiB",
+  "final_signal": "SIGKILL",
+  "final_reason": "SIGINT and SIGTERM did not stop saving; disk reached 1.4 GiB",
+  "trace_process_exited": true
+}

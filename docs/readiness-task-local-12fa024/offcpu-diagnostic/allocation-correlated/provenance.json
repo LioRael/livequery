@@ -1,0 +1,8 @@
+{
+  "base_source": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+  "diagnostic_only": true,
+  "seconds": 60,
+  "binary_sha256": "baf40914b7138ad036c11ef5de9348cf8babb00943f2c0006dc15186792c9a49",
+  "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+  "limitations": "Allocator wall time includes descheduling inside allocator. Two clocks per allocator call add overhead; not acceptance. No external recorder."
+}

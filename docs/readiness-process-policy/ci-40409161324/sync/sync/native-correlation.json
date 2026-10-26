@@ -1,0 +1,16 @@
+{
+  "failure_intervals": [
+    {
+      "kind": "capture",
+      "tid": 12230,
+      "phase": "rows -> deadline",
+      "wall_ms": 185.55,
+      "cpu_ms": 0.360125,
+      "pairs": []
+    }
+  ],
+  "samples": 52573,
+  "max_observer_gap_ms": 217.245,
+  "observer_cpu_ms": 1903.860834,
+  "limitations": "Adjacent sample pairs only; waiting between samples is possible. Process-wide CPU and syscall deltas do not identify a thread. Zero deltas require no time-unit assumption. Observer gaps do not by themselves prove VM suspension."
+}

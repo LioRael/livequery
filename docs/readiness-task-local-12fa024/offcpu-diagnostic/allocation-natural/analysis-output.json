@@ -1,0 +1,6502 @@
+{
+  "spans": [
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 97.068,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 46.329,
+          "cpu_ms": 2.89075,
+          "allocator_wall_ms": 0.010877,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.577,
+          "cpu_ms": 0.391958,
+          "allocator_wall_ms": 3.816449,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.057,
+          "cpu_ms": 0.241625,
+          "allocator_wall_ms": 0.13829,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 113.573,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 48.854,
+          "cpu_ms": 0.099292,
+          "allocator_wall_ms": 0.031548,
+          "allocator_calls": 456,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 46.442,
+          "cpu_ms": 0.504291,
+          "allocator_wall_ms": 0.731842,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 9.27,
+          "cpu_ms": 1.589292,
+          "allocator_wall_ms": 7.139484,
+          "allocator_calls": 26735,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 119.394,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 34.286,
+          "cpu_ms": 0.338125,
+          "allocator_wall_ms": 34.082631,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 19.038,
+          "cpu_ms": 2.306541,
+          "allocator_wall_ms": 1.797061,
+          "allocator_calls": 38111,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.903,
+          "cpu_ms": 0.4275,
+          "allocator_wall_ms": 0.1561,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 58.797,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 24.179,
+          "cpu_ms": 3.249417,
+          "allocator_wall_ms": 0.015626,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.188,
+          "cpu_ms": 0.270958,
+          "allocator_wall_ms": 0.805587,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.908,
+          "cpu_ms": 0.30525,
+          "allocator_wall_ms": 0.441481,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 63.827,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.791,
+          "cpu_ms": 0.470042,
+          "allocator_wall_ms": 21.415757,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.505,
+          "cpu_ms": 0.362,
+          "allocator_wall_ms": 0.446649,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 5.579,
+          "cpu_ms": 2.737625,
+          "allocator_wall_ms": 0.01025,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 149.688,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 45.903,
+          "cpu_ms": 1.960417,
+          "allocator_wall_ms": 21.39743,
+          "allocator_calls": 23774,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 31.901,
+          "cpu_ms": 0.341833,
+          "allocator_wall_ms": 31.595623,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.353,
+          "cpu_ms": 0.281792,
+          "allocator_wall_ms": 15.263803,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 106.388,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 34.012,
+          "cpu_ms": 0.325125,
+          "allocator_wall_ms": 1.236903,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.741,
+          "cpu_ms": 0.579167,
+          "allocator_wall_ms": 15.68913,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.148,
+          "cpu_ms": 0.490917,
+          "allocator_wall_ms": 7.445507,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 316.953,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 213.558,
+          "cpu_ms": 2.782583,
+          "allocator_wall_ms": 89.880452,
+          "allocator_calls": 33935,
+          "slow_allocator_calls": 5
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 21.446,
+          "cpu_ms": 0.216459,
+          "allocator_wall_ms": 17.574378,
+          "allocator_calls": 1224,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.782,
+          "cpu_ms": 0.296292,
+          "allocator_wall_ms": 2.708633,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 120.51,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 76.474,
+          "cpu_ms": 0.454083,
+          "allocator_wall_ms": 72.71267,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 20.509,
+          "cpu_ms": 0.680666,
+          "allocator_wall_ms": 10.526049,
+          "allocator_calls": 8285,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.15,
+          "cpu_ms": 0.471334,
+          "allocator_wall_ms": 2.712703,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 112.16,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 46.42,
+          "cpu_ms": 0.579917,
+          "allocator_wall_ms": 41.198684,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 34.241,
+          "cpu_ms": 0.323917,
+          "allocator_wall_ms": 24.168101,
+          "allocator_calls": 2881,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 26.651,
+          "cpu_ms": 0.432125,
+          "allocator_wall_ms": 2.973557,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 62.004,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.966,
+          "cpu_ms": 0.257292,
+          "allocator_wall_ms": 0.228655,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.36,
+          "cpu_ms": 2.566167,
+          "allocator_wall_ms": 0.18954,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.712,
+          "cpu_ms": 0.267042,
+          "allocator_wall_ms": 7.526915,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 62.12,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 20.056,
+          "cpu_ms": 2.898125,
+          "allocator_wall_ms": 0.01579,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.446,
+          "cpu_ms": 0.258541,
+          "allocator_wall_ms": 2.387595,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.094,
+          "cpu_ms": 0.314875,
+          "allocator_wall_ms": 5.361452,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 71.134,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 35.521,
+          "cpu_ms": 0.291667,
+          "allocator_wall_ms": 35.296404,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 24.736,
+          "cpu_ms": 3.237542,
+          "allocator_wall_ms": 0.548375,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 0.819,
+          "cpu_ms": 0.238416,
+          "allocator_wall_ms": 0.623467,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 96.633,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.42,
+          "cpu_ms": 0.27975,
+          "allocator_wall_ms": 16.199336,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.803,
+          "cpu_ms": 0.303375,
+          "allocator_wall_ms": 13.424819,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.067,
+          "cpu_ms": 0.2895,
+          "allocator_wall_ms": 8.384553,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 53.841,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.007,
+          "cpu_ms": 3.413083,
+          "allocator_wall_ms": 0.013415,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.61,
+          "cpu_ms": 0.418416,
+          "allocator_wall_ms": 1.586013,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.324,
+          "cpu_ms": 0.2895,
+          "allocator_wall_ms": 2.811677,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 58.152,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.657,
+          "cpu_ms": 0.277792,
+          "allocator_wall_ms": 12.944176,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.497,
+          "cpu_ms": 5.249292,
+          "allocator_wall_ms": 0.797501,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.575,
+          "cpu_ms": 0.411542,
+          "allocator_wall_ms": 0.155029,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 68.504,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 18.062,
+          "cpu_ms": 3.165292,
+          "allocator_wall_ms": 0.052206,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.657,
+          "cpu_ms": 0.25825,
+          "allocator_wall_ms": 2.519229,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.277,
+          "cpu_ms": 0.327083,
+          "allocator_wall_ms": 1.481579,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 50.944,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.617,
+          "cpu_ms": 0.550375,
+          "allocator_wall_ms": 21.27671,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.998,
+          "cpu_ms": 3.114875,
+          "allocator_wall_ms": 0.030833,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.354,
+          "cpu_ms": 0.247209,
+          "allocator_wall_ms": 0.136254,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 55.555,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.737,
+          "cpu_ms": 0.295792,
+          "allocator_wall_ms": 10.970978,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 6.813,
+          "cpu_ms": 2.983667,
+          "allocator_wall_ms": 0.013086,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.107,
+          "cpu_ms": 0.409708,
+          "allocator_wall_ms": 1.0604,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 210.291,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 97.987,
+          "cpu_ms": 0.0965,
+          "allocator_wall_ms": 0.032878,
+          "allocator_calls": 1105,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 57.375,
+          "cpu_ms": 1.190417,
+          "allocator_wall_ms": 37.660265,
+          "allocator_calls": 18914,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 47.769,
+          "cpu_ms": 0.289791,
+          "allocator_wall_ms": 44.31411,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 80.305,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 33.065,
+          "cpu_ms": 0.338292,
+          "allocator_wall_ms": 6.035648,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.211,
+          "cpu_ms": 0.243459,
+          "allocator_wall_ms": 6.059214,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.605,
+          "cpu_ms": 0.35025,
+          "allocator_wall_ms": 0.122306,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 76.676,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 55.518,
+          "cpu_ms": 0.242167,
+          "allocator_wall_ms": 0.087883,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 4.854,
+          "cpu_ms": 2.481792,
+          "allocator_wall_ms": 1.432624,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 1.798,
+          "cpu_ms": 0.317458,
+          "allocator_wall_ms": 0.640248,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 69.762,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 26.113,
+          "cpu_ms": 3.315583,
+          "allocator_wall_ms": 0.011125,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.092,
+          "cpu_ms": 0.387333,
+          "allocator_wall_ms": 0.581859,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.946,
+          "cpu_ms": 0.305125,
+          "allocator_wall_ms": 0.505614,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 88.879,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.269,
+          "cpu_ms": 0.268958,
+          "allocator_wall_ms": 3.167823,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.049,
+          "cpu_ms": 0.293125,
+          "allocator_wall_ms": 10.761129,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.759,
+          "cpu_ms": 0.365666,
+          "allocator_wall_ms": 1.669247,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 80.741,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 19.653,
+          "cpu_ms": 0.317291,
+          "allocator_wall_ms": 1.816578,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.218,
+          "cpu_ms": 0.367959,
+          "allocator_wall_ms": 2.537081,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.907,
+          "cpu_ms": 2.575333,
+          "allocator_wall_ms": 0.434001,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 70.594,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 16.839,
+          "cpu_ms": 3.725167,
+          "allocator_wall_ms": 0.014166,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.573,
+          "cpu_ms": 0.561583,
+          "allocator_wall_ms": 14.208676,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.242,
+          "cpu_ms": 0.484875,
+          "allocator_wall_ms": 2.748724,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 86.866,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 25.638,
+          "cpu_ms": 4.3955,
+          "allocator_wall_ms": 0.021959,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.65,
+          "cpu_ms": 0.28925,
+          "allocator_wall_ms": 1.24121,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.252,
+          "cpu_ms": 0.447791,
+          "allocator_wall_ms": 0.161131,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 56.282,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.693,
+          "cpu_ms": 3.148417,
+          "allocator_wall_ms": 0.014083,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.723,
+          "cpu_ms": 0.28925,
+          "allocator_wall_ms": 7.131664,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.229,
+          "cpu_ms": 0.419542,
+          "allocator_wall_ms": 5.925512,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 66.588,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.72,
+          "cpu_ms": 0.38975,
+          "allocator_wall_ms": 18.491744,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.025,
+          "cpu_ms": 3.292792,
+          "allocator_wall_ms": 0.01725,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.009,
+          "cpu_ms": 0.422625,
+          "allocator_wall_ms": 0.971394,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 63.355,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.926,
+          "cpu_ms": 2.767584,
+          "allocator_wall_ms": 0.013874,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.936,
+          "cpu_ms": 0.363041,
+          "allocator_wall_ms": 0.614455,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.063,
+          "cpu_ms": 0.309667,
+          "allocator_wall_ms": 0.109463,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 52.895,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.763,
+          "cpu_ms": 0.475167,
+          "allocator_wall_ms": 12.740063,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.483,
+          "cpu_ms": 2.671334,
+          "allocator_wall_ms": 0.010289,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.557,
+          "cpu_ms": 0.305541,
+          "allocator_wall_ms": 5.211899,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 115.208,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 58.962,
+          "cpu_ms": 0.022,
+          "allocator_wall_ms": 0.007875,
+          "allocator_calls": 73,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 56.124,
+          "cpu_ms": 0.263417,
+          "allocator_wall_ms": 1.808213,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 0.079,
+          "cpu_ms": 0.079125,
+          "allocator_wall_ms": 0.033363,
+          "allocator_calls": 1247,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 109.284,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 92.408,
+          "cpu_ms": 0.301833,
+          "allocator_wall_ms": 52.707444,
+          "allocator_calls": 2262,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "start -> rows",
+          "wall_ms": 16.817,
+          "cpu_ms": 0.04025,
+          "allocator_wall_ms": 0.014047,
+          "allocator_calls": 208,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 0.059,
+          "cpu_ms": 0.058625,
+          "allocator_wall_ms": 0.024879,
+          "allocator_calls": 914,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 82.819,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 27.417,
+          "cpu_ms": 3.714792,
+          "allocator_wall_ms": 0.017335,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.021,
+          "cpu_ms": 0.310667,
+          "allocator_wall_ms": 9.472737,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.869,
+          "cpu_ms": 0.312042,
+          "allocator_wall_ms": 2.336702,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 96.725,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.121,
+          "cpu_ms": 0.347625,
+          "allocator_wall_ms": 11.74684,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.017,
+          "cpu_ms": 0.4995,
+          "allocator_wall_ms": 4.149598,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.935,
+          "cpu_ms": 0.394167,
+          "allocator_wall_ms": 5.707062,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 145.208,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 45.176,
+          "cpu_ms": 1.738292,
+          "allocator_wall_ms": 17.276389,
+          "allocator_calls": 18041,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.694,
+          "cpu_ms": 0.364666,
+          "allocator_wall_ms": 16.600738,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 16.24,
+          "cpu_ms": 0.325083,
+          "allocator_wall_ms": 12.002488,
+          "allocator_calls": 1848,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 68.512,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 31.739,
+          "cpu_ms": 4.39475,
+          "allocator_wall_ms": 0.123041,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.628,
+          "cpu_ms": 0.50925,
+          "allocator_wall_ms": 1.923527,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.968,
+          "cpu_ms": 0.451209,
+          "allocator_wall_ms": 0.298094,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 81.557,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.809,
+          "cpu_ms": 0.346625,
+          "allocator_wall_ms": 3.225803,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.368,
+          "cpu_ms": 0.409625,
+          "allocator_wall_ms": 4.639042,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.957,
+          "cpu_ms": 0.253333,
+          "allocator_wall_ms": 0.089895,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 122.277,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 21.556,
+          "cpu_ms": 0.466875,
+          "allocator_wall_ms": 20.129541,
+          "allocator_calls": 2688,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 19.067,
+          "cpu_ms": 0.270333,
+          "allocator_wall_ms": 17.781213,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.114,
+          "cpu_ms": 0.446625,
+          "allocator_wall_ms": 15.821232,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 90.526,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 27.851,
+          "cpu_ms": 0.298125,
+          "allocator_wall_ms": 20.2731,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 17.532,
+          "cpu_ms": 5.001334,
+          "allocator_wall_ms": 0.023129,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.186,
+          "cpu_ms": 0.287958,
+          "allocator_wall_ms": 0.234017,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 73.41,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 21.87,
+          "cpu_ms": 4.807208,
+          "allocator_wall_ms": 0.023458,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.959,
+          "cpu_ms": 0.499292,
+          "allocator_wall_ms": 0.259723,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.363,
+          "cpu_ms": 0.279167,
+          "allocator_wall_ms": 0.467956,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 65.819,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.89,
+          "cpu_ms": 0.245334,
+          "allocator_wall_ms": 0.086308,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.135,
+          "cpu_ms": 4.084416,
+          "allocator_wall_ms": 0.014373,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.723,
+          "cpu_ms": 0.43,
+          "allocator_wall_ms": 5.83857,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 59.862,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.552,
+          "cpu_ms": 5.417792,
+          "allocator_wall_ms": 0.093541,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.484,
+          "cpu_ms": 0.390542,
+          "allocator_wall_ms": 0.222255,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.138,
+          "cpu_ms": 0.529166,
+          "allocator_wall_ms": 3.104082,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 58.732,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.555,
+          "cpu_ms": 0.263084,
+          "allocator_wall_ms": 5.900211,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 7.296,
+          "cpu_ms": 3.941583,
+          "allocator_wall_ms": 0.017793,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.085,
+          "cpu_ms": 0.490292,
+          "allocator_wall_ms": 0.830239,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 178.107,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 75.184,
+          "cpu_ms": 3.717625,
+          "allocator_wall_ms": 23.10647,
+          "allocator_calls": 43745,
+          "slow_allocator_calls": 5
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 19.088,
+          "cpu_ms": 0.535458,
+          "allocator_wall_ms": 7.260472,
+          "allocator_calls": 2808,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.248,
+          "cpu_ms": 0.299875,
+          "allocator_wall_ms": 10.65712,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 163.233,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 57.576,
+          "cpu_ms": 4.047375,
+          "allocator_wall_ms": 34.160352,
+          "allocator_calls": 44114,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.361,
+          "cpu_ms": 0.383375,
+          "allocator_wall_ms": 1.720416,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 11.451,
+          "cpu_ms": 0.0845,
+          "allocator_wall_ms": 0.019007,
+          "allocator_calls": 720,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 94.558,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 31.824,
+          "cpu_ms": 0.483875,
+          "allocator_wall_ms": 1.497016,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 23.252,
+          "cpu_ms": 4.858334,
+          "allocator_wall_ms": 0.023043,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.928,
+          "cpu_ms": 0.52925,
+          "allocator_wall_ms": 3.014256,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 67.497,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.499,
+          "cpu_ms": 4.854542,
+          "allocator_wall_ms": 0.021457,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.386,
+          "cpu_ms": 0.3335,
+          "allocator_wall_ms": 0.620969,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.706,
+          "cpu_ms": 0.445292,
+          "allocator_wall_ms": 0.183094,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 69.776,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.858,
+          "cpu_ms": 0.395292,
+          "allocator_wall_ms": 0.987273,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.341,
+          "cpu_ms": 0.236666,
+          "allocator_wall_ms": 6.193401,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.953,
+          "cpu_ms": 0.269958,
+          "allocator_wall_ms": 5.50309,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 70.302,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.206,
+          "cpu_ms": 0.531208,
+          "allocator_wall_ms": 1.143312,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.946,
+          "cpu_ms": 2.6085,
+          "allocator_wall_ms": 0.010544,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.744,
+          "cpu_ms": 0.543584,
+          "allocator_wall_ms": 2.018043,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 131.608,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 41.324,
+          "cpu_ms": 0.38275,
+          "allocator_wall_ms": 5.297361,
+          "allocator_calls": 2280,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 29.864,
+          "cpu_ms": 2.650708,
+          "allocator_wall_ms": 2.81536,
+          "allocator_calls": 26267,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.416,
+          "cpu_ms": 0.459667,
+          "allocator_wall_ms": 0.856221,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 109.58,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 23.199,
+          "cpu_ms": 0.486125,
+          "allocator_wall_ms": 22.861102,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.269,
+          "cpu_ms": 0.430375,
+          "allocator_wall_ms": 7.401942,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.582,
+          "cpu_ms": 0.555042,
+          "allocator_wall_ms": 2.700088,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 108.819,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 26.275,
+          "cpu_ms": 0.556666,
+          "allocator_wall_ms": 3.366545,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.883,
+          "cpu_ms": 0.491417,
+          "allocator_wall_ms": 0.330875,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.171,
+          "cpu_ms": 0.441833,
+          "allocator_wall_ms": 0.455273,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 109.531,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 41.841,
+          "cpu_ms": 0.45775,
+          "allocator_wall_ms": 13.772244,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.203,
+          "cpu_ms": 0.328708,
+          "allocator_wall_ms": 10.2613,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 10.282,
+          "cpu_ms": 0.118959,
+          "allocator_wall_ms": 2.106128,
+          "allocator_calls": 1032,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 61.186,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.772,
+          "cpu_ms": 0.523334,
+          "allocator_wall_ms": 5.044278,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.495,
+          "cpu_ms": 0.381791,
+          "allocator_wall_ms": 0.155025,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 5.809,
+          "cpu_ms": 3.801166,
+          "allocator_wall_ms": 0.018749,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 158.745,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 52.852,
+          "cpu_ms": 3.502125,
+          "allocator_wall_ms": 4.60364,
+          "allocator_calls": 37103,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 26.584,
+          "cpu_ms": 0.343375,
+          "allocator_wall_ms": 9.40525,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.946,
+          "cpu_ms": 0.27675,
+          "allocator_wall_ms": 1.25621,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 124.185,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 32.839,
+          "cpu_ms": 0.574542,
+          "allocator_wall_ms": 25.528747,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 20.041,
+          "cpu_ms": 4.523542,
+          "allocator_wall_ms": 0.136044,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 18.192,
+          "cpu_ms": 3.822542,
+          "allocator_wall_ms": 9.93491,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 79.363,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 24.589,
+          "cpu_ms": 3.763417,
+          "allocator_wall_ms": 0.020459,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.791,
+          "cpu_ms": 0.388541,
+          "allocator_wall_ms": 0.129187,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.471,
+          "cpu_ms": 0.564833,
+          "allocator_wall_ms": 4.035109,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 125.069,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 49.537,
+          "cpu_ms": 0.567208,
+          "allocator_wall_ms": 25.787954,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 24.245,
+          "cpu_ms": 2.743625,
+          "allocator_wall_ms": 14.452918,
+          "allocator_calls": 35465,
+          "slow_allocator_calls": 5
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.531,
+          "cpu_ms": 0.348625,
+          "allocator_wall_ms": 3.025884,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 98.137,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 17.351,
+          "cpu_ms": 4.134,
+          "allocator_wall_ms": 0.016541,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.092,
+          "cpu_ms": 0.348916,
+          "allocator_wall_ms": 8.788331,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.604,
+          "cpu_ms": 0.620833,
+          "allocator_wall_ms": 6.592853,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 58.807,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 10.231,
+          "cpu_ms": 2.698583,
+          "allocator_wall_ms": 0.012919,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.159,
+          "cpu_ms": 0.463625,
+          "allocator_wall_ms": 6.087414,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.953,
+          "cpu_ms": 0.352083,
+          "allocator_wall_ms": 2.61277,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 62.503,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.254,
+          "cpu_ms": 5.160917,
+          "allocator_wall_ms": 0.060209,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.353,
+          "cpu_ms": 0.529583,
+          "allocator_wall_ms": 2.781247,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.291,
+          "cpu_ms": 0.296625,
+          "allocator_wall_ms": 2.90069,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 61.238,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.774,
+          "cpu_ms": 5.738334,
+          "allocator_wall_ms": 0.016998,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.75,
+          "cpu_ms": 0.577791,
+          "allocator_wall_ms": 1.898693,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.949,
+          "cpu_ms": 0.258959,
+          "allocator_wall_ms": 0.091502,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 56.632,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.766,
+          "cpu_ms": 4.08175,
+          "allocator_wall_ms": 0.065751,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.953,
+          "cpu_ms": 0.438,
+          "allocator_wall_ms": 2.769618,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.749,
+          "cpu_ms": 0.35075,
+          "allocator_wall_ms": 0.473516,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 63.005,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 16.186,
+          "cpu_ms": 5.020708,
+          "allocator_wall_ms": 0.014875,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.65,
+          "cpu_ms": 0.363709,
+          "allocator_wall_ms": 1.474995,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.587,
+          "cpu_ms": 0.550166,
+          "allocator_wall_ms": 3.253736,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 55.008,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.742,
+          "cpu_ms": 3.385875,
+          "allocator_wall_ms": 0.045166,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.64,
+          "cpu_ms": 0.425708,
+          "allocator_wall_ms": 2.038611,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.38,
+          "cpu_ms": 0.426416,
+          "allocator_wall_ms": 0.675014,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 97.124,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 23.729,
+          "cpu_ms": 0.767625,
+          "allocator_wall_ms": 15.322698,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 6
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 18.42,
+          "cpu_ms": 5.112,
+          "allocator_wall_ms": 0.209751,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.596,
+          "cpu_ms": 0.657,
+          "allocator_wall_ms": 6.0817,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 95.713,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.244,
+          "cpu_ms": 0.444584,
+          "allocator_wall_ms": 0.885211,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.706,
+          "cpu_ms": 0.290042,
+          "allocator_wall_ms": 3.702524,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.424,
+          "cpu_ms": 0.5245,
+          "allocator_wall_ms": 0.482225,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 62.258,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.209,
+          "cpu_ms": 0.374708,
+          "allocator_wall_ms": 7.374591,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.458,
+          "cpu_ms": 0.433083,
+          "allocator_wall_ms": 2.254251,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 5.054,
+          "cpu_ms": 4.195084,
+          "allocator_wall_ms": 0.019873,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 54.537,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.131,
+          "cpu_ms": 4.016042,
+          "allocator_wall_ms": 0.019083,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.028,
+          "cpu_ms": 0.476,
+          "allocator_wall_ms": 1.401206,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.026,
+          "cpu_ms": 0.528583,
+          "allocator_wall_ms": 1.450296,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 195.141,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 87.82,
+          "cpu_ms": 2.679167,
+          "allocator_wall_ms": 45.857212,
+          "allocator_calls": 36356,
+          "slow_allocator_calls": 6
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.146,
+          "cpu_ms": 0.518958,
+          "allocator_wall_ms": 9.425489,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 19.104,
+          "cpu_ms": 0.134333,
+          "allocator_wall_ms": 18.259615,
+          "allocator_calls": 1536,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 115.023,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.501,
+          "cpu_ms": 0.320667,
+          "allocator_wall_ms": 0.188978,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.592,
+          "cpu_ms": 0.452042,
+          "allocator_wall_ms": 6.082819,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 15.012,
+          "cpu_ms": 2.730458,
+          "allocator_wall_ms": 9.525914,
+          "allocator_calls": 32288,
+          "slow_allocator_calls": 4
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 113.429,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 51.105,
+          "cpu_ms": 0.280542,
+          "allocator_wall_ms": 0.370569,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.117,
+          "cpu_ms": 0.585542,
+          "allocator_wall_ms": 10.303657,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 10.86,
+          "cpu_ms": 0.384209,
+          "allocator_wall_ms": 0.286557,
+          "allocator_calls": 2160,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 135.257,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 56.481,
+          "cpu_ms": 5.301584,
+          "allocator_wall_ms": 0.029211,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 25.029,
+          "cpu_ms": 3.580333,
+          "allocator_wall_ms": 13.592178,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.916,
+          "cpu_ms": 0.271792,
+          "allocator_wall_ms": 0.178799,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 115.475,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.267,
+          "cpu_ms": 5.119958,
+          "allocator_wall_ms": 0.027003,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.243,
+          "cpu_ms": 0.505375,
+          "allocator_wall_ms": 14.881873,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.52,
+          "cpu_ms": 0.447042,
+          "allocator_wall_ms": 7.263884,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 126.442,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 82.952,
+          "cpu_ms": 0.493,
+          "allocator_wall_ms": 51.537044,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 18.164,
+          "cpu_ms": 0.518833,
+          "allocator_wall_ms": 0.199241,
+          "allocator_calls": 2881,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 17.937,
+          "cpu_ms": 0.670375,
+          "allocator_wall_ms": 2.084667,
+          "allocator_calls": 5756,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 287.128,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 185.859,
+          "cpu_ms": 2.609375,
+          "allocator_wall_ms": 113.485904,
+          "allocator_calls": 23234,
+          "slow_allocator_calls": 7
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 34.758,
+          "cpu_ms": 0.536584,
+          "allocator_wall_ms": 10.109758,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.731,
+          "cpu_ms": 0.455458,
+          "allocator_wall_ms": 0.903058,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 98.179,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.639,
+          "cpu_ms": 0.258541,
+          "allocator_wall_ms": 15.456382,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.246,
+          "cpu_ms": 0.320166,
+          "allocator_wall_ms": 8.624984,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.136,
+          "cpu_ms": 0.540625,
+          "allocator_wall_ms": 1.754186,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 276.565,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 130.445,
+          "cpu_ms": 2.241041,
+          "allocator_wall_ms": 44.30935,
+          "allocator_calls": 27878,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 104.686,
+          "cpu_ms": 0.105667,
+          "allocator_wall_ms": 35.014048,
+          "allocator_calls": 432,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 29.851,
+          "cpu_ms": 0.518708,
+          "allocator_wall_ms": 29.533843,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 727.683,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 619.467,
+          "cpu_ms": 4.324917,
+          "allocator_wall_ms": 305.436863,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 16
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 63.097,
+          "cpu_ms": 3.545541,
+          "allocator_wall_ms": 0.014209,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.09,
+          "cpu_ms": 0.342875,
+          "allocator_wall_ms": 0.799072,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 117.16,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 73.109,
+          "cpu_ms": 0.270541,
+          "allocator_wall_ms": 2.887415,
+          "allocator_calls": 2377,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.321,
+          "cpu_ms": 0.488875,
+          "allocator_wall_ms": 12.051616,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.074,
+          "cpu_ms": 0.334833,
+          "allocator_wall_ms": 1.232707,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 134.011,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 108.246,
+          "cpu_ms": 0.2585,
+          "allocator_wall_ms": 108.107745,
+          "allocator_calls": 2472,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 12.997,
+          "cpu_ms": 1.319584,
+          "allocator_wall_ms": 0.694531,
+          "allocator_calls": 13667,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.35,
+          "cpu_ms": 0.256083,
+          "allocator_wall_ms": 5.162477,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 238.292,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 130.039,
+          "cpu_ms": 3.451833,
+          "allocator_wall_ms": 126.940074,
+          "allocator_calls": 38102,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 28.671,
+          "cpu_ms": 0.347375,
+          "allocator_wall_ms": 20.477022,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 25.894,
+          "cpu_ms": 0.014958,
+          "allocator_wall_ms": 0.001209,
+          "allocator_calls": 48,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 115.513,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 79.719,
+          "cpu_ms": 4.334166,
+          "allocator_wall_ms": 0.024252,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 12.845,
+          "cpu_ms": 3.0905,
+          "allocator_wall_ms": 3.215075,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.075,
+          "cpu_ms": 0.263417,
+          "allocator_wall_ms": 0.093736,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 187.951,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 83.973,
+          "cpu_ms": 3.899708,
+          "allocator_wall_ms": 6.381957,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 26.269,
+          "cpu_ms": 0.625958,
+          "allocator_wall_ms": 1.604375,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.148,
+          "cpu_ms": 0.468959,
+          "allocator_wall_ms": 11.962651,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 132.639,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 23.064,
+          "cpu_ms": 2.226875,
+          "allocator_wall_ms": 16.869041,
+          "allocator_calls": 31802,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 20.537,
+          "cpu_ms": 0.152541,
+          "allocator_wall_ms": 0.193088,
+          "allocator_calls": 1680,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.308,
+          "cpu_ms": 0.473667,
+          "allocator_wall_ms": 1.982718,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 118.68,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 30.757,
+          "cpu_ms": 0.436083,
+          "allocator_wall_ms": 16.177176,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 29.034,
+          "cpu_ms": 0.4815,
+          "allocator_wall_ms": 5.972189,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 18.587,
+          "cpu_ms": 2.1095,
+          "allocator_wall_ms": 2.826728,
+          "allocator_calls": 25349,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 78.658,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.124,
+          "cpu_ms": 4.967583,
+          "allocator_wall_ms": 0.046377,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.903,
+          "cpu_ms": 0.454333,
+          "allocator_wall_ms": 1.842476,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.493,
+          "cpu_ms": 0.353916,
+          "allocator_wall_ms": 4.239602,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 98.229,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 52.411,
+          "cpu_ms": 0.478959,
+          "allocator_wall_ms": 0.204233,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 10.764,
+          "cpu_ms": 4.436125,
+          "allocator_wall_ms": 0.022667,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.957,
+          "cpu_ms": 0.418834,
+          "allocator_wall_ms": 2.295348,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 80.028,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.252,
+          "cpu_ms": 0.456833,
+          "allocator_wall_ms": 1.432139,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.338,
+          "cpu_ms": 0.560667,
+          "allocator_wall_ms": 7.243912,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.827,
+          "cpu_ms": 0.316958,
+          "allocator_wall_ms": 0.150514,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 74.262,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.411,
+          "cpu_ms": 0.448,
+          "allocator_wall_ms": 16.670225,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.633,
+          "cpu_ms": 5.472209,
+          "allocator_wall_ms": 0.022915,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.695,
+          "cpu_ms": 0.286625,
+          "allocator_wall_ms": 0.252544,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 106.997,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 29.131,
+          "cpu_ms": 0.38625,
+          "allocator_wall_ms": 11.435646,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.683,
+          "cpu_ms": 0.648708,
+          "allocator_wall_ms": 4.723482,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.404,
+          "cpu_ms": 0.278917,
+          "allocator_wall_ms": 7.679358,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 74.688,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 15.28,
+          "cpu_ms": 4.507542,
+          "allocator_wall_ms": 0.021748,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.73,
+          "cpu_ms": 0.35875,
+          "allocator_wall_ms": 13.537763,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.387,
+          "cpu_ms": 0.52275,
+          "allocator_wall_ms": 1.493579,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 114.901,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 38.66,
+          "cpu_ms": 0.616292,
+          "allocator_wall_ms": 37.178488,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.005,
+          "cpu_ms": 0.470958,
+          "allocator_wall_ms": 1.165028,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.626,
+          "cpu_ms": 0.33475,
+          "allocator_wall_ms": 0.127074,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 152.628,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 90.375,
+          "cpu_ms": 5.733959,
+          "allocator_wall_ms": 0.024292,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 18.578,
+          "cpu_ms": 3.64375,
+          "allocator_wall_ms": 4.268883,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.018,
+          "cpu_ms": 0.404375,
+          "allocator_wall_ms": 4.436545,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 62.291,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 22.626,
+          "cpu_ms": 5.022083,
+          "allocator_wall_ms": 0.016042,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.75,
+          "cpu_ms": 0.347208,
+          "allocator_wall_ms": 2.960162,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.34,
+          "cpu_ms": 0.2395,
+          "allocator_wall_ms": 0.08311,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 76.304,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 27.786,
+          "cpu_ms": 4.791,
+          "allocator_wall_ms": 0.028248,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.602,
+          "cpu_ms": 0.30775,
+          "allocator_wall_ms": 0.105544,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.596,
+          "cpu_ms": 0.464042,
+          "allocator_wall_ms": 4.367975,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 119.672,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 19.166,
+          "cpu_ms": 3.334958,
+          "allocator_wall_ms": 9.182988,
+          "allocator_calls": 35807,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.363,
+          "cpu_ms": 0.695917,
+          "allocator_wall_ms": 6.212585,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.646,
+          "cpu_ms": 0.539333,
+          "allocator_wall_ms": 7.910597,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 125.578,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 34.479,
+          "cpu_ms": 3.901,
+          "allocator_wall_ms": 0.155168,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.942,
+          "cpu_ms": 0.487458,
+          "allocator_wall_ms": 15.549195,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 9.774,
+          "cpu_ms": 4.102875,
+          "allocator_wall_ms": 4.427151,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 65.947,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 22.69,
+          "cpu_ms": 3.557459,
+          "allocator_wall_ms": 0.244835,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.154,
+          "cpu_ms": 0.311666,
+          "allocator_wall_ms": 0.22011,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.714,
+          "cpu_ms": 0.346625,
+          "allocator_wall_ms": 5.320354,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 82.581,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.703,
+          "cpu_ms": 0.399833,
+          "allocator_wall_ms": 4.149392,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.586,
+          "cpu_ms": 0.537459,
+          "allocator_wall_ms": 0.197909,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.683,
+          "cpu_ms": 0.275084,
+          "allocator_wall_ms": 5.617744,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 131.459,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 78.6,
+          "cpu_ms": 0.305208,
+          "allocator_wall_ms": 11.992378,
+          "allocator_calls": 1824,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 29.568,
+          "cpu_ms": 0.378042,
+          "allocator_wall_ms": 14.145729,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.795,
+          "cpu_ms": 0.458375,
+          "allocator_wall_ms": 0.174222,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 130.303,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 97.754,
+          "cpu_ms": 0.066625,
+          "allocator_wall_ms": 0.025215,
+          "allocator_calls": 696,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 31.814,
+          "cpu_ms": 0.485417,
+          "allocator_wall_ms": 31.336629,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 0.239,
+          "cpu_ms": 0.238208,
+          "allocator_wall_ms": 0.100626,
+          "allocator_calls": 3785,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 153.515,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 42.521,
+          "cpu_ms": 2.041042,
+          "allocator_wall_ms": 1.069611,
+          "allocator_calls": 29849,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 25.026,
+          "cpu_ms": 0.294709,
+          "allocator_wall_ms": 0.181062,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 23.487,
+          "cpu_ms": 0.334458,
+          "allocator_wall_ms": 20.835664,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 204.906,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 104.856,
+          "cpu_ms": 2.125291,
+          "allocator_wall_ms": 46.987037,
+          "allocator_calls": 24800,
+          "slow_allocator_calls": 5
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 73.534,
+          "cpu_ms": 0.375708,
+          "allocator_wall_ms": 19.672691,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 19.914,
+          "cpu_ms": 0.258292,
+          "allocator_wall_ms": 0.08649,
+          "allocator_calls": 1440,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 110.473,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 36.79,
+          "cpu_ms": 0.440625,
+          "allocator_wall_ms": 1.862535,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.561,
+          "cpu_ms": 0.328,
+          "allocator_wall_ms": 16.138295,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.215,
+          "cpu_ms": 0.325333,
+          "allocator_wall_ms": 14.245955,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 55.189,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 12.694,
+          "cpu_ms": 4.501667,
+          "allocator_wall_ms": 0.013211,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.428,
+          "cpu_ms": 0.483042,
+          "allocator_wall_ms": 6.03231,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.893,
+          "cpu_ms": 0.274166,
+          "allocator_wall_ms": 7.291554,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 131.882,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 29.298,
+          "cpu_ms": 0.124625,
+          "allocator_wall_ms": 29.222085,
+          "allocator_calls": 1536,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 26.886,
+          "cpu_ms": 0.332959,
+          "allocator_wall_ms": 25.105012,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.776,
+          "cpu_ms": 0.462917,
+          "allocator_wall_ms": 8.576389,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 141.199,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 25.376,
+          "cpu_ms": 3.406959,
+          "allocator_wall_ms": 12.138532,
+          "allocator_calls": 38498,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 17.469,
+          "cpu_ms": 0.226791,
+          "allocator_wall_ms": 0.075686,
+          "allocator_calls": 1104,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.101,
+          "cpu_ms": 0.328292,
+          "allocator_wall_ms": 7.434292,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 126.488,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 26.347,
+          "cpu_ms": 3.286542,
+          "allocator_wall_ms": 5.557507,
+          "allocator_calls": 44699,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 25.565,
+          "cpu_ms": 0.3195,
+          "allocator_wall_ms": 11.800414,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.594,
+          "cpu_ms": 0.259,
+          "allocator_wall_ms": 0.109247,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 74.731,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.806,
+          "cpu_ms": 0.304083,
+          "allocator_wall_ms": 2.108771,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.427,
+          "cpu_ms": 0.288917,
+          "allocator_wall_ms": 8.282857,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.51,
+          "cpu_ms": 3.361625,
+          "allocator_wall_ms": 1.817376,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 142.409,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 25.188,
+          "cpu_ms": 0.057916,
+          "allocator_wall_ms": 25.160967,
+          "allocator_calls": 216,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 23.977,
+          "cpu_ms": 0.293875,
+          "allocator_wall_ms": 7.378201,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 22.915,
+          "cpu_ms": 3.423875,
+          "allocator_wall_ms": 2.644502,
+          "allocator_calls": 40469,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 87.445,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.985,
+          "cpu_ms": 3.580625,
+          "allocator_wall_ms": 0.016084,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.137,
+          "cpu_ms": 0.287292,
+          "allocator_wall_ms": 0.094627,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.7,
+          "cpu_ms": 0.378125,
+          "allocator_wall_ms": 2.940845,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 144.365,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 43.875,
+          "cpu_ms": 2.393375,
+          "allocator_wall_ms": 24.368909,
+          "allocator_calls": 25142,
+          "slow_allocator_calls": 6
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 24.332,
+          "cpu_ms": 0.451209,
+          "allocator_wall_ms": 14.913575,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.803,
+          "cpu_ms": 0.576208,
+          "allocator_wall_ms": 16.143681,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 60.857,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 21.277,
+          "cpu_ms": 3.657375,
+          "allocator_wall_ms": 0.020038,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.134,
+          "cpu_ms": 0.327,
+          "allocator_wall_ms": 0.118295,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.742,
+          "cpu_ms": 0.32775,
+          "allocator_wall_ms": 0.929237,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 51.335,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 14.528,
+          "cpu_ms": 5.414125,
+          "allocator_wall_ms": 0.201623,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.326,
+          "cpu_ms": 0.482459,
+          "allocator_wall_ms": 5.111343,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.67,
+          "cpu_ms": 0.493666,
+          "allocator_wall_ms": 0.20319,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 143.733,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 82.921,
+          "cpu_ms": 0.192333,
+          "allocator_wall_ms": 81.734425,
+          "allocator_calls": 1296,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 32.259,
+          "cpu_ms": 0.249917,
+          "allocator_wall_ms": 0.093704,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 17.525,
+          "cpu_ms": 2.595125,
+          "allocator_wall_ms": 8.966701,
+          "allocator_calls": 35114,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 134.032,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 47.879,
+          "cpu_ms": 0.405833,
+          "allocator_wall_ms": 0.707987,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 32.345,
+          "cpu_ms": 2.18075,
+          "allocator_wall_ms": 21.710154,
+          "allocator_calls": 28535,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.205,
+          "cpu_ms": 0.4105,
+          "allocator_wall_ms": 3.375362,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 265.461,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 121.01,
+          "cpu_ms": 2.879375,
+          "allocator_wall_ms": 99.760413,
+          "allocator_calls": 37868,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 48.296,
+          "cpu_ms": 0.218833,
+          "allocator_wall_ms": 10.655211,
+          "allocator_calls": 2497,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 33.145,
+          "cpu_ms": 0.411375,
+          "allocator_wall_ms": 27.968744,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 144.77,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 69.627,
+          "cpu_ms": 3.490833,
+          "allocator_wall_ms": 0.020125,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 29.679,
+          "cpu_ms": 0.25925,
+          "allocator_wall_ms": 2.149292,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 18.434,
+          "cpu_ms": 3.311416,
+          "allocator_wall_ms": 2.749146,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 294.923,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 192.128,
+          "cpu_ms": 2.064708,
+          "allocator_wall_ms": 67.211302,
+          "allocator_calls": 19328,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 66.826,
+          "cpu_ms": 0.241667,
+          "allocator_wall_ms": 2.731031,
+          "allocator_calls": 2209,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.556,
+          "cpu_ms": 0.398666,
+          "allocator_wall_ms": 2.537971,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 151.056,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 62.38,
+          "cpu_ms": 3.488875,
+          "allocator_wall_ms": 0.014792,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 23.988,
+          "cpu_ms": 3.750667,
+          "allocator_wall_ms": 10.100422,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.863,
+          "cpu_ms": 0.452875,
+          "allocator_wall_ms": 0.396403,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 142.852,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 91.267,
+          "cpu_ms": 3.492833,
+          "allocator_wall_ms": 0.01892,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 28.188,
+          "cpu_ms": 3.18275,
+          "allocator_wall_ms": 19.782623,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.655,
+          "cpu_ms": 0.315458,
+          "allocator_wall_ms": 0.151407,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 109.805,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.301,
+          "cpu_ms": 0.455875,
+          "allocator_wall_ms": 1.52423,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.845,
+          "cpu_ms": 0.2395,
+          "allocator_wall_ms": 0.094299,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.189,
+          "cpu_ms": 0.298167,
+          "allocator_wall_ms": 1.702233,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 56.558,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.812,
+          "cpu_ms": 0.280291,
+          "allocator_wall_ms": 2.296554,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.253,
+          "cpu_ms": 0.403667,
+          "allocator_wall_ms": 3.027606,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.385,
+          "cpu_ms": 0.479209,
+          "allocator_wall_ms": 0.2021,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 57.912,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 27.205,
+          "cpu_ms": 3.827875,
+          "allocator_wall_ms": 0.018418,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.627,
+          "cpu_ms": 0.272416,
+          "allocator_wall_ms": 3.135113,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.436,
+          "cpu_ms": 0.284542,
+          "allocator_wall_ms": 0.493255,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 98.537,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 19.609,
+          "cpu_ms": 4.789125,
+          "allocator_wall_ms": 0.023418,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.737,
+          "cpu_ms": 0.431167,
+          "allocator_wall_ms": 0.162189,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.626,
+          "cpu_ms": 0.575458,
+          "allocator_wall_ms": 7.927834,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 120.166,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 52.341,
+          "cpu_ms": 0.345541,
+          "allocator_wall_ms": 1.558932,
+          "allocator_calls": 3025,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.86,
+          "cpu_ms": 0.313791,
+          "allocator_wall_ms": 8.443305,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.987,
+          "cpu_ms": 0.380375,
+          "allocator_wall_ms": 17.603058,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 79.71,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.342,
+          "cpu_ms": 0.426875,
+          "allocator_wall_ms": 0.23234,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.707,
+          "cpu_ms": 0.477583,
+          "allocator_wall_ms": 8.795289,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.108,
+          "cpu_ms": 0.306583,
+          "allocator_wall_ms": 0.930531,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 53.228,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.401,
+          "cpu_ms": 0.320417,
+          "allocator_wall_ms": 8.30729,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.505,
+          "cpu_ms": 4.348084,
+          "allocator_wall_ms": 0.028211,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.796,
+          "cpu_ms": 0.425208,
+          "allocator_wall_ms": 0.27376,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 64.89,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.788,
+          "cpu_ms": 0.410084,
+          "allocator_wall_ms": 12.395307,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.267,
+          "cpu_ms": 4.27125,
+          "allocator_wall_ms": 0.041248,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.769,
+          "cpu_ms": 0.598542,
+          "allocator_wall_ms": 0.210538,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 79.458,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.47,
+          "cpu_ms": 0.295917,
+          "allocator_wall_ms": 4.623814,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.37,
+          "cpu_ms": 0.47975,
+          "allocator_wall_ms": 4.785606,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 10.666,
+          "cpu_ms": 5.317916,
+          "allocator_wall_ms": 0.018706,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 117.231,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 52.662,
+          "cpu_ms": 0.374125,
+          "allocator_wall_ms": 19.408209,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 17.124,
+          "cpu_ms": 2.470834,
+          "allocator_wall_ms": 11.672081,
+          "allocator_calls": 33638,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.436,
+          "cpu_ms": 0.301666,
+          "allocator_wall_ms": 0.290695,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 134.744,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 76.411,
+          "cpu_ms": 0.467333,
+          "allocator_wall_ms": 0.248635,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 26.972,
+          "cpu_ms": 3.853583,
+          "allocator_wall_ms": 22.730507,
+          "allocator_calls": 32639,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 13.484,
+          "cpu_ms": 0.148333,
+          "allocator_wall_ms": 10.397259,
+          "allocator_calls": 840,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 133.774,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 84.806,
+          "cpu_ms": 0.601209,
+          "allocator_wall_ms": 83.685598,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 27.652,
+          "cpu_ms": 0.883333,
+          "allocator_wall_ms": 27.177744,
+          "allocator_calls": 7223,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 17.092,
+          "cpu_ms": 0.075917,
+          "allocator_wall_ms": 16.910543,
+          "allocator_calls": 648,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 109.294,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.785,
+          "cpu_ms": 0.248583,
+          "allocator_wall_ms": 22.639197,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.303,
+          "cpu_ms": 0.399333,
+          "allocator_wall_ms": 22.066494,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.713,
+          "cpu_ms": 0.409583,
+          "allocator_wall_ms": 4.115717,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 408.715,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 273.629,
+          "cpu_ms": 2.215542,
+          "allocator_wall_ms": 180.304222,
+          "allocator_calls": 24341,
+          "slow_allocator_calls": 6
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 123.239,
+          "cpu_ms": 0.065125,
+          "allocator_wall_ms": 123.204416,
+          "allocator_calls": 216,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 1.369,
+          "cpu_ms": 0.470583,
+          "allocator_wall_ms": 0.362213,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 123.714,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 59.345,
+          "cpu_ms": 5.310667,
+          "allocator_wall_ms": 0.031916,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 30.023,
+          "cpu_ms": 0.381083,
+          "allocator_wall_ms": 0.142272,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.886,
+          "cpu_ms": 0.437667,
+          "allocator_wall_ms": 4.443292,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 161.453,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 64.18,
+          "cpu_ms": 0.49325,
+          "allocator_wall_ms": 28.614178,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 52.626,
+          "cpu_ms": 2.4425,
+          "allocator_wall_ms": 4.643831,
+          "allocator_calls": 29381,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 20.217,
+          "cpu_ms": 0.373583,
+          "allocator_wall_ms": 1.028082,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 117.985,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 41.467,
+          "cpu_ms": 0.619416,
+          "allocator_wall_ms": 36.846987,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 31.339,
+          "cpu_ms": 0.140167,
+          "allocator_wall_ms": 29.583334,
+          "allocator_calls": 1128,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 21.401,
+          "cpu_ms": 0.493917,
+          "allocator_wall_ms": 20.773261,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 59.176,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 13.878,
+          "cpu_ms": 5.177042,
+          "allocator_wall_ms": 0.044293,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.405,
+          "cpu_ms": 0.379375,
+          "allocator_wall_ms": 12.084072,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.183,
+          "cpu_ms": 0.549292,
+          "allocator_wall_ms": 0.854216,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 285.749,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 159.199,
+          "cpu_ms": 2.452584,
+          "allocator_wall_ms": 64.188772,
+          "allocator_calls": 32711,
+          "slow_allocator_calls": 7
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 79.385,
+          "cpu_ms": 0.098208,
+          "allocator_wall_ms": 0.035286,
+          "allocator_calls": 1032,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 27.209,
+          "cpu_ms": 0.263875,
+          "allocator_wall_ms": 24.345794,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 104.974,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 27.318,
+          "cpu_ms": 0.327541,
+          "allocator_wall_ms": 14.859381,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 20.928,
+          "cpu_ms": 0.413916,
+          "allocator_wall_ms": 2.591016,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 18.545,
+          "cpu_ms": 0.142416,
+          "allocator_wall_ms": 0.045769,
+          "allocator_calls": 1416,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 93.097,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 37.413,
+          "cpu_ms": 0.563917,
+          "allocator_wall_ms": 34.891327,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.922,
+          "cpu_ms": 0.257542,
+          "allocator_wall_ms": 0.097388,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.577,
+          "cpu_ms": 0.331417,
+          "allocator_wall_ms": 9.351133,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 94.659,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 31.98,
+          "cpu_ms": 4.06075,
+          "allocator_wall_ms": 0.02221,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.59,
+          "cpu_ms": 0.557834,
+          "allocator_wall_ms": 14.623664,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.765,
+          "cpu_ms": 0.586417,
+          "allocator_wall_ms": 7.611489,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 50.132,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.464,
+          "cpu_ms": 0.439625,
+          "allocator_wall_ms": 11.20597,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.569,
+          "cpu_ms": 0.526417,
+          "allocator_wall_ms": 0.191295,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 5.047,
+          "cpu_ms": 4.199917,
+          "allocator_wall_ms": 0.02954,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 103.217,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 50.087,
+          "cpu_ms": 0.367375,
+          "allocator_wall_ms": 13.386225,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 19.136,
+          "cpu_ms": 0.54,
+          "allocator_wall_ms": 0.64508,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.394,
+          "cpu_ms": 0.312208,
+          "allocator_wall_ms": 12.950442,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 327.732,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 216.603,
+          "cpu_ms": 4.257458,
+          "allocator_wall_ms": 0.162292,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 25.349,
+          "cpu_ms": 2.974583,
+          "allocator_wall_ms": 13.650945,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 11.624,
+          "cpu_ms": 0.387542,
+          "allocator_wall_ms": 3.418331,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 55.044,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.939,
+          "cpu_ms": 3.733417,
+          "allocator_wall_ms": 0.020581,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.459,
+          "cpu_ms": 0.246833,
+          "allocator_wall_ms": 0.093635,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.964,
+          "cpu_ms": 0.347958,
+          "allocator_wall_ms": 5.732183,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 167.533,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 129.729,
+          "cpu_ms": 3.717125,
+          "allocator_wall_ms": 0.010332,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.438,
+          "cpu_ms": 0.434459,
+          "allocator_wall_ms": 2.843059,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 4.736,
+          "cpu_ms": 3.006875,
+          "allocator_wall_ms": 1.484193,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 123.772,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 23.909,
+          "cpu_ms": 3.6595,
+          "allocator_wall_ms": 0.021166,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 18.505,
+          "cpu_ms": 0.348292,
+          "allocator_wall_ms": 1.748254,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.769,
+          "cpu_ms": 0.27475,
+          "allocator_wall_ms": 16.56006,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 58.553,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 35.397,
+          "cpu_ms": 3.421458,
+          "allocator_wall_ms": 0.018001,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.338,
+          "cpu_ms": 0.285,
+          "allocator_wall_ms": 0.14191,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.911,
+          "cpu_ms": 0.303042,
+          "allocator_wall_ms": 1.455371,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 186.578,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 107.766,
+          "cpu_ms": 3.468709,
+          "allocator_wall_ms": 0.014127,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 18.748,
+          "cpu_ms": 3.206334,
+          "allocator_wall_ms": 10.969548,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.671,
+          "cpu_ms": 0.286625,
+          "allocator_wall_ms": 0.953099,
+          "allocator_calls": 3078,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 93.172,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.92,
+          "cpu_ms": 0.292542,
+          "allocator_wall_ms": 5.221367,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 20.022,
+          "cpu_ms": 4.799792,
+          "allocator_wall_ms": 0.023375,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 14.485,
+          "cpu_ms": 0.267625,
+          "allocator_wall_ms": 5.577375,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 66.75,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 23.708,
+          "cpu_ms": 0.279792,
+          "allocator_wall_ms": 0.113153,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.084,
+          "cpu_ms": 0.240125,
+          "allocator_wall_ms": 0.088417,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.382,
+          "cpu_ms": 0.35175,
+          "allocator_wall_ms": 5.291413,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 75.97,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 10.009,
+          "cpu_ms": 3.282917,
+          "allocator_wall_ms": 0.020126,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.522,
+          "cpu_ms": 0.293125,
+          "allocator_wall_ms": 0.12652,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.589,
+          "cpu_ms": 0.287458,
+          "allocator_wall_ms": 7.433996,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 53.407,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 16.879,
+          "cpu_ms": 2.9695,
+          "allocator_wall_ms": 0.008124,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.665,
+          "cpu_ms": 0.274042,
+          "allocator_wall_ms": 0.102532,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.765,
+          "cpu_ms": 0.2765,
+          "allocator_wall_ms": 5.49087,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 51.146,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.67,
+          "cpu_ms": 0.590917,
+          "allocator_wall_ms": 0.219586,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.171,
+          "cpu_ms": 0.455208,
+          "allocator_wall_ms": 0.221432,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.84,
+          "cpu_ms": 0.500042,
+          "allocator_wall_ms": 1.31364,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 89.922,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 34.968,
+          "cpu_ms": 0.329334,
+          "allocator_wall_ms": 0.175294,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.05,
+          "cpu_ms": 0.288833,
+          "allocator_wall_ms": 15.20585,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 10.604,
+          "cpu_ms": 4.826,
+          "allocator_wall_ms": 0.017458,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 58.083,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 25.119,
+          "cpu_ms": 5.882667,
+          "allocator_wall_ms": 0.474418,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.754,
+          "cpu_ms": 0.460916,
+          "allocator_wall_ms": 0.543375,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.246,
+          "cpu_ms": 0.257917,
+          "allocator_wall_ms": 0.099088,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 56.145,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.548,
+          "cpu_ms": 0.270708,
+          "allocator_wall_ms": 1.217253,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 9.539,
+          "cpu_ms": 4.730375,
+          "allocator_wall_ms": 0.029415,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.439,
+          "cpu_ms": 0.4765,
+          "allocator_wall_ms": 1.030399,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 119.245,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 79.723,
+          "cpu_ms": 0.2165,
+          "allocator_wall_ms": 0.11376,
+          "allocator_calls": 2064,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 16.287,
+          "cpu_ms": 0.324875,
+          "allocator_wall_ms": 5.449303,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 10.268,
+          "cpu_ms": 0.741375,
+          "allocator_wall_ms": 0.457468,
+          "allocator_calls": 8906,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 85.713,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 33.777,
+          "cpu_ms": 5.231416,
+          "allocator_wall_ms": 0.02471,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.397,
+          "cpu_ms": 0.4635,
+          "allocator_wall_ms": 5.294733,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.696,
+          "cpu_ms": 0.421042,
+          "allocator_wall_ms": 3.492012,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 94.912,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 78.565,
+          "cpu_ms": 4.405792,
+          "allocator_wall_ms": 0.013583,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.653,
+          "cpu_ms": 0.30375,
+          "allocator_wall_ms": 0.272473,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 0.7,
+          "cpu_ms": 0.435541,
+          "allocator_wall_ms": 0.166984,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 113.522,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 45.897,
+          "cpu_ms": 4.115667,
+          "allocator_wall_ms": 4.588123,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 23.074,
+          "cpu_ms": 0.639,
+          "allocator_wall_ms": 4.733239,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.042,
+          "cpu_ms": 0.317625,
+          "allocator_wall_ms": 5.789672,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 63.034,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 16.601,
+          "cpu_ms": 3.82,
+          "allocator_wall_ms": 0.070623,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.101,
+          "cpu_ms": 0.368958,
+          "allocator_wall_ms": 0.281168,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.012,
+          "cpu_ms": 0.420708,
+          "allocator_wall_ms": 2.268431,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 106.722,
+      "intervals": [
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 75.467,
+          "cpu_ms": 0.275875,
+          "allocator_wall_ms": 47.598595,
+          "allocator_calls": 1152,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.871,
+          "cpu_ms": 0.585166,
+          "allocator_wall_ms": 6.757608,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 4.063,
+          "cpu_ms": 2.529541,
+          "allocator_wall_ms": 2.24317,
+          "allocator_calls": 36212,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 113.206,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 26.299,
+          "cpu_ms": 0.423916,
+          "allocator_wall_ms": 22.723256,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 17.631,
+          "cpu_ms": 0.339708,
+          "allocator_wall_ms": 10.248194,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.332,
+          "cpu_ms": 0.32525,
+          "allocator_wall_ms": 11.959844,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 52.194,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 13.735,
+          "cpu_ms": 5.042834,
+          "allocator_wall_ms": 0.027624,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.075,
+          "cpu_ms": 0.482375,
+          "allocator_wall_ms": 0.178534,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.975,
+          "cpu_ms": 0.303083,
+          "allocator_wall_ms": 3.782504,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 67.838,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 13.534,
+          "cpu_ms": 3.333833,
+          "allocator_wall_ms": 0.020876,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.064,
+          "cpu_ms": 0.463709,
+          "allocator_wall_ms": 0.826488,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.049,
+          "cpu_ms": 0.308292,
+          "allocator_wall_ms": 0.22071,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 61.011,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 17.804,
+          "cpu_ms": 5.374834,
+          "allocator_wall_ms": 0.020998,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.55,
+          "cpu_ms": 0.402083,
+          "allocator_wall_ms": 4.132556,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.232,
+          "cpu_ms": 0.307875,
+          "allocator_wall_ms": 0.345203,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 208.148,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 105.673,
+          "cpu_ms": 1.891375,
+          "allocator_wall_ms": 72.146957,
+          "allocator_calls": 26150,
+          "slow_allocator_calls": 5
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 57.384,
+          "cpu_ms": 0.338042,
+          "allocator_wall_ms": 2.439914,
+          "allocator_calls": 1968,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 28.692,
+          "cpu_ms": 0.597,
+          "allocator_wall_ms": 2.602018,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 80.404,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.505,
+          "cpu_ms": 0.383667,
+          "allocator_wall_ms": 10.114404,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 4
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.738,
+          "cpu_ms": 0.347458,
+          "allocator_wall_ms": 1.708243,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 8.085,
+          "cpu_ms": 4.285292,
+          "allocator_wall_ms": 0.020956,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 179.863,
+      "intervals": [
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 75.91,
+          "cpu_ms": 2.120292,
+          "allocator_wall_ms": 34.693133,
+          "allocator_calls": 24818,
+          "slow_allocator_calls": 5
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 74.689,
+          "cpu_ms": 0.315916,
+          "allocator_wall_ms": 64.389854,
+          "allocator_calls": 1488,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.375,
+          "cpu_ms": 0.526834,
+          "allocator_wall_ms": 2.776239,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 72.892,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 46.514,
+          "cpu_ms": 5.450125,
+          "allocator_wall_ms": 0.038707,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.004,
+          "cpu_ms": 0.431166,
+          "allocator_wall_ms": 2.664879,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.151,
+          "cpu_ms": 0.385042,
+          "allocator_wall_ms": 1.920184,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 190.711,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 87.187,
+          "cpu_ms": 3.684625,
+          "allocator_wall_ms": 0.017335,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 39.917,
+          "cpu_ms": 0.354292,
+          "allocator_wall_ms": 0.138836,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 14.997,
+          "cpu_ms": 4.148375,
+          "allocator_wall_ms": 9.483441,
+          "allocator_calls": 45068,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 63.584,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 11.134,
+          "cpu_ms": 4.575125,
+          "allocator_wall_ms": 0.014165,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.878,
+          "cpu_ms": 0.283292,
+          "allocator_wall_ms": 0.524008,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.672,
+          "cpu_ms": 0.420958,
+          "allocator_wall_ms": 0.295989,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 50.808,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 26.499,
+          "cpu_ms": 4.357208,
+          "allocator_wall_ms": 0.025417,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "start -> rows",
+          "wall_ms": 2.811,
+          "cpu_ms": 0.042667,
+          "allocator_wall_ms": 2.789166,
+          "allocator_calls": 208,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.778,
+          "cpu_ms": 0.404416,
+          "allocator_wall_ms": 2.144238,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 66.683,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 18.41,
+          "cpu_ms": 3.763666,
+          "allocator_wall_ms": 0.01467,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.511,
+          "cpu_ms": 0.333959,
+          "allocator_wall_ms": 0.415647,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 8.327,
+          "cpu_ms": 0.4435,
+          "allocator_wall_ms": 4.401434,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 103.857,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 30.433,
+          "cpu_ms": 0.475083,
+          "allocator_wall_ms": 30.015585,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 19.139,
+          "cpu_ms": 0.473125,
+          "allocator_wall_ms": 17.272328,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.077,
+          "cpu_ms": 0.508,
+          "allocator_wall_ms": 1.826408,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 93.392,
+      "intervals": [
+        {
+          "phase": "start -> rows",
+          "wall_ms": 26.29,
+          "cpu_ms": 0.060625,
+          "allocator_wall_ms": 0.019532,
+          "allocator_calls": 208,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.561,
+          "cpu_ms": 0.352292,
+          "allocator_wall_ms": 21.285256,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 15.456,
+          "cpu_ms": 0.649375,
+          "allocator_wall_ms": 9.708739,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 64.178,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 18.973,
+          "cpu_ms": 3.702875,
+          "allocator_wall_ms": 0.021418,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.619,
+          "cpu_ms": 0.311708,
+          "allocator_wall_ms": 2.112802,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.207,
+          "cpu_ms": 0.535917,
+          "allocator_wall_ms": 0.19107,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 112.635,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 50.367,
+          "cpu_ms": 0.500458,
+          "allocator_wall_ms": 0.247098,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 24.306,
+          "cpu_ms": 0.623875,
+          "allocator_wall_ms": 0.322194,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 13.463,
+          "cpu_ms": 0.506083,
+          "allocator_wall_ms": 0.191478,
+          "allocator_calls": 2761,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 86.806,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 20.097,
+          "cpu_ms": 0.292041,
+          "allocator_wall_ms": 0.162773,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.374,
+          "cpu_ms": 0.571417,
+          "allocator_wall_ms": 0.237239,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.827,
+          "cpu_ms": 0.42,
+          "allocator_wall_ms": 8.513968,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 86.535,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 18.932,
+          "cpu_ms": 5.881125,
+          "allocator_wall_ms": 0.030665,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 5.464,
+          "cpu_ms": 0.48875,
+          "allocator_wall_ms": 2.173234,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.972,
+          "cpu_ms": 0.528542,
+          "allocator_wall_ms": 4.6229,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 60.935,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 21.487,
+          "cpu_ms": 5.5225,
+          "allocator_wall_ms": 0.04029,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.932,
+          "cpu_ms": 0.662708,
+          "allocator_wall_ms": 7.374536,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.923,
+          "cpu_ms": 0.478791,
+          "allocator_wall_ms": 1.767294,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 149.135,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 50.626,
+          "cpu_ms": 0.580375,
+          "allocator_wall_ms": 49.572718,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "deadline -> end",
+          "wall_ms": 49.135,
+          "cpu_ms": 2.697291,
+          "allocator_wall_ms": 39.41816,
+          "allocator_calls": 34439,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 12.279,
+          "cpu_ms": 0.699917,
+          "allocator_wall_ms": 3.857923,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": true,
+      "wall_ms": 127.751,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 29.631,
+          "cpu_ms": 0.609458,
+          "allocator_wall_ms": 22.922559,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "rows -> deadline",
+          "wall_ms": 26.879,
+          "cpu_ms": 0.501375,
+          "allocator_wall_ms": 0.199297,
+          "allocator_calls": 2832,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 22.758,
+          "cpu_ms": 0.442875,
+          "allocator_wall_ms": 0.340625,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 55.299,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 7.363,
+          "cpu_ms": 4.719958,
+          "allocator_wall_ms": 0.016543,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.524,
+          "cpu_ms": 0.545167,
+          "allocator_wall_ms": 1.635382,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.069,
+          "cpu_ms": 0.609,
+          "allocator_wall_ms": 1.225791,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 52.134,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 17.392,
+          "cpu_ms": 5.2855,
+          "allocator_wall_ms": 0.025416,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.165,
+          "cpu_ms": 0.406667,
+          "allocator_wall_ms": 2.367976,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 2.629,
+          "cpu_ms": 0.49925,
+          "allocator_wall_ms": 0.522214,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 74.199,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 24.224,
+          "cpu_ms": 5.253333,
+          "allocator_wall_ms": 0.023044,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 7.291,
+          "cpu_ms": 0.266584,
+          "allocator_wall_ms": 0.094386,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 6.052,
+          "cpu_ms": 0.784209,
+          "allocator_wall_ms": 3.341986,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 53.136,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 13.503,
+          "cpu_ms": 0.446125,
+          "allocator_wall_ms": 0.230235,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 10.189,
+          "cpu_ms": 3.726541,
+          "allocator_wall_ms": 0.033582,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.66,
+          "cpu_ms": 0.359,
+          "allocator_wall_ms": 2.848846,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52243415,
+      "deadline": false,
+      "wall_ms": 65.68,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 27.743,
+          "cpu_ms": 0.44725,
+          "allocator_wall_ms": 0.384291,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.238,
+          "cpu_ms": 0.358083,
+          "allocator_wall_ms": 0.203561,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 7.495,
+          "cpu_ms": 5.757666,
+          "allocator_wall_ms": 0.02779,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 56.767,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 44.448,
+          "cpu_ms": 0.026,
+          "allocator_wall_ms": 44.436458,
+          "allocator_calls": 1,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "sort -> project",
+          "wall_ms": 8.209,
+          "cpu_ms": 0.961875,
+          "allocator_wall_ms": 0.003084,
+          "allocator_calls": 2,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 3.267,
+          "cpu_ms": 0.024375,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 89.973,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 26.417,
+          "cpu_ms": 0.040875,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 25.145,
+          "cpu_ms": 0.017375,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 24.523,
+          "cpu_ms": 0.025375,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 70.232,
+      "intervals": [
+        {
+          "phase": "encode -> end",
+          "wall_ms": 32.88,
+          "cpu_ms": 4.34375,
+          "allocator_wall_ms": 19.534981,
+          "allocator_calls": 45087,
+          "slow_allocator_calls": 2
+        },
+        {
+          "phase": "sort -> project",
+          "wall_ms": 19.157,
+          "cpu_ms": 2.00875,
+          "allocator_wall_ms": 0.006042,
+          "allocator_calls": 2,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 8.464,
+          "cpu_ms": 0.050959,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 98.012,
+      "intervals": [
+        {
+          "phase": "sort -> project",
+          "wall_ms": 65.395,
+          "cpu_ms": 0.694208,
+          "allocator_wall_ms": 0.006541,
+          "allocator_calls": 2,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 14.375,
+          "cpu_ms": 0.082959,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 5.528,
+          "cpu_ms": 0.0555,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 67.359,
+      "intervals": [
+        {
+          "phase": "sort -> project",
+          "wall_ms": 62.424,
+          "cpu_ms": 1.826708,
+          "allocator_wall_ms": 0.365958,
+          "allocator_calls": 2,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 1.391,
+          "cpu_ms": 0.059125,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "project -> encode",
+          "wall_ms": 0.603,
+          "cpu_ms": 0.08425,
+          "allocator_wall_ms": 0.081196,
+          "allocator_calls": 130,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 86.588,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 71.651,
+          "cpu_ms": 0.03075,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 9.479,
+          "cpu_ms": 0.026334,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 3.924,
+          "cpu_ms": 0.053042,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 78.894,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 53.228,
+          "cpu_ms": 0.053708,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 13.041,
+          "cpu_ms": 0.05575,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 10.335,
+          "cpu_ms": 0.052709,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 68.864,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 55.013,
+          "cpu_ms": 0.0265,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 8.512,
+          "cpu_ms": 0.039042,
+          "allocator_wall_ms": 0.001625,
+          "allocator_calls": 1,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 3.618,
+          "cpu_ms": 0.0445,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 54.958,
+      "intervals": [
+        {
+          "phase": "encode -> end",
+          "wall_ms": 33.656,
+          "cpu_ms": 4.739167,
+          "allocator_wall_ms": 16.279513,
+          "allocator_calls": 45085,
+          "slow_allocator_calls": 3
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 19.928,
+          "cpu_ms": 0.030833,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 0.2,
+          "cpu_ms": 0.020625,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "query",
+      "tid": 52243414,
+      "deadline": false,
+      "wall_ms": 75.861,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 44.198,
+          "cpu_ms": 0.079833,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 18.066,
+          "cpu_ms": 0.0605,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "scan -> scan",
+          "wall_ms": 6.371,
+          "cpu_ms": 0.042625,
+          "allocator_wall_ms": 0.0,
+          "allocator_calls": 0,
+          "slow_allocator_calls": 0
+        }
+      ]
+    }
+  ],
+  "dropped_events": 0,
+  "limitations": "Allocator wall time includes time descheduled while within System allocator. Positive allocator time is not proof of allocator lock contention. CPU is thread CPU. Unrecorded fast spans are not summarized."
+}

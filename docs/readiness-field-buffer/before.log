@@ -1,0 +1,54 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling libc v0.2.191
+   Compiling serde_core v1.0.229
+   Compiling winnow v1.0.4
+   Compiling hashbrown v0.17.1
+   Compiling equivalent v1.0.3
+   Compiling zmij v1.0.23
+   Compiling serde_json v1.0.154
+   Compiling ref-cast v1.0.27
+   Compiling toml_datetime v1.1.2+spec-1.1.0
+   Compiling serde v1.0.229
+   Compiling indexmap v2.14.2
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling thiserror v2.0.21
+   Compiling find-msvc-tools v0.1.15
+   Compiling dyn-clone v1.0.20
+   Compiling shlex v2.0.1
+   Compiling getrandom v0.4.3
+   Compiling rustix v1.1.5
+   Compiling cfg-if v1.0.5
+   Compiling cc v1.10.0
+   Compiling bitflags v2.13.2
+   Compiling log v0.4.34
+   Compiling toml_parser v1.1.5+spec-1.1.0
+   Compiling syn v3.0.9
+   Compiling syn v2.0.119
+   Compiling sqlparser v0.59.0
+   Compiling arrayvec v0.7.8
+   Compiling constant_time_eq v0.4.2
+   Compiling toml_edit v0.25.17+spec-1.1.0
+   Compiling errno v0.3.14
+   Compiling socket2 v0.6.5
+   Compiling uuid v1.26.1
+   Compiling proc-macro-crate v3.5.0
+   Compiling blake3 v1.8.7
+   Compiling serde_derive_internals v0.30.0
+   Compiling ref-cast-impl v1.0.27
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling schemars_derive v1.2.3
+   Compiling livequery-derive v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+   Compiling schemars v1.2.3
+   Compiling livequery-core v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+   Compiling livequery-transport v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-query v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+   Compiling livequery-agent v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+   Compiling livequery v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+   Compiling livequery-benchmarks v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/benches)
+    Finished `bench` profile [optimized] target(s) in 23.89s
+     Running jobs.rs (target/release/deps/jobs-f2f12197ac0a78ab)
+{"contention":[{"business_request_p99_us":97.708,"business_requests":6330,"copy_before_serialization":false,"observers":0,"publication_errors":{},"publish_ms":0,"query_errors":{},"rows":100},{"business_request_p99_us":136.875,"business_requests":6373,"copy_before_serialization":false,"observers":1,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":100},{"business_request_p99_us":128.792,"business_requests":6476,"copy_before_serialization":false,"observers":4,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":100},{"business_request_p99_us":72.208,"business_requests":6442,"copy_before_serialization":false,"observers":1,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":100},{"business_request_p99_us":189.875,"business_requests":4939,"copy_before_serialization":false,"observers":4,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":100},{"business_request_p99_us":127.291,"business_requests":5919,"copy_before_serialization":true,"observers":1,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":100},{"business_request_p99_us":67.667,"business_requests":6391,"copy_before_serialization":true,"observers":4,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":100},{"business_request_p99_us":80.875,"business_requests":6307,"copy_before_serialization":true,"observers":1,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":100},{"business_request_p99_us":65.459,"business_requests":6492,"copy_before_serialization":true,"observers":4,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":100},{"business_request_p99_us":118.458,"business_requests":6031,"copy_before_serialization":false,"observers":0,"publication_errors":{},"publish_ms":0,"query_errors":{},"rows":1000},{"business_request_p99_us":1092.084,"business_requests":5824,"copy_before_serialization":false,"observers":1,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":1000},{"business_request_p99_us":1064.917,"business_requests":5756,"copy_before_serialization":false,"observers":4,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":1000},{"business_request_p99_us":122.125,"business_requests":6022,"copy_before_serialization":false,"observers":1,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":1000},{"business_request_p99_us":77.0,"business_requests":6328,"copy_before_serialization":false,"observers":4,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":1000},{"business_request_p99_us":102.833,"business_requests":6192,"copy_before_serialization":true,"observers":1,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":1000},{"business_request_p99_us":140.75,"business_requests":5861,"copy_before_serialization":true,"observers":4,"publication_errors":{},"publish_ms":10,"query_errors":{},"rows":1000},{"business_request_p99_us":98.291,"business_requests":6124,"copy_before_serialization":true,"observers":1,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":1000},{"business_request_p99_us":99.417,"business_requests":6235,"copy_before_serialization":true,"observers":4,"publication_errors":{},"publish_ms":100,"query_errors":{},"rows":1000}],"contention_seconds_per_case":1,"costs":[{"metrics":[{"allocated_bytes":128702,"allocations":1542,"mean_us":117.6751,"operation":"capture_under_lock"},{"allocated_bytes":7200,"allocations":101,"mean_us":1.88745,"operation":"copy_lock_hold"},{"allocated_bytes":75610,"allocations":768,"mean_us":15.0626,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.28345,"operation":"shared_snapshot_read"},{"allocated_bytes":23235,"allocations":149,"mean_us":13.52915,"operation":"projected_sorted_query"},{"allocated_bytes":32992,"allocations":15,"mean_us":43.55415,"operation":"publication_validation_and_swap"}],"rows":100,"string_bytes":16},{"metrics":[{"allocated_bytes":206270,"allocations":1543,"mean_us":128.89585,"operation":"capture_under_lock"},{"allocated_bytes":18400,"allocations":101,"mean_us":1.8876,"operation":"copy_lock_hold"},{"allocated_bytes":86810,"allocations":768,"mean_us":14.1688,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.29175,"operation":"shared_snapshot_read"},{"allocated_bytes":23235,"allocations":149,"mean_us":12.2543,"operation":"projected_sorted_query"},{"allocated_bytes":65760,"allocations":16,"mean_us":49.16875,"operation":"publication_validation_and_swap"}],"rows":100,"string_bytes":128},{"metrics":[{"allocated_bytes":323006,"allocations":1544,"mean_us":147.4228,"operation":"capture_under_lock"},{"allocated_bytes":31200,"allocations":101,"mean_us":2.1522,"operation":"copy_lock_hold"},{"allocated_bytes":99610,"allocations":768,"mean_us":14.70215,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.296,"operation":"shared_snapshot_read"},{"allocated_bytes":23235,"allocations":149,"mean_us":12.20615,"operation":"projected_sorted_query"},{"allocated_bytes":131296,"allocations":17,"mean_us":58.3812,"operation":"publication_validation_and_swap"}],"rows":100,"string_bytes":256},{"metrics":[{"allocated_bytes":1099486,"allocations":14148,"mean_us":1091.6061,"operation":"capture_under_lock"},{"allocated_bytes":72000,"allocations":1001,"mean_us":17.0083,"operation":"copy_lock_hold"},{"allocated_bytes":713710,"allocations":7068,"mean_us":133.7355,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.29345,"operation":"shared_snapshot_read"},{"allocated_bytes":45571,"allocations":153,"mean_us":51.7,"operation":"projected_sorted_query"},{"allocated_bytes":262368,"allocations":18,"mean_us":406.2751,"operation":"publication_validation_and_swap"}],"rows":1000,"string_bytes":16},{"metrics":[{"allocated_bytes":1809630,"allocations":14149,"mean_us":1234.15625,"operation":"capture_under_lock"},{"allocated_bytes":184000,"allocations":1001,"mean_us":16.63955,"operation":"copy_lock_hold"},{"allocated_bytes":825710,"allocations":7068,"mean_us":135.90645,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.30195,"operation":"shared_snapshot_read"},{"allocated_bytes":45571,"allocations":153,"mean_us":52.82285,"operation":"projected_sorted_query"},{"allocated_bytes":524512,"allocations":19,"mean_us":474.98955,"operation":"publication_validation_and_swap"}],"rows":1000,"string_bytes":128},{"metrics":[{"allocated_bytes":2845918,"allocations":14150,"mean_us":1431.9333,"operation":"capture_under_lock"},{"allocated_bytes":312000,"allocations":1001,"mean_us":20.23945,"operation":"copy_lock_hold"},{"allocated_bytes":953710,"allocations":7068,"mean_us":136.25225,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.2938,"operation":"shared_snapshot_read"},{"allocated_bytes":45571,"allocations":153,"mean_us":54.3854,"operation":"projected_sorted_query"},{"allocated_bytes":1048800,"allocations":20,"mean_us":533.51875,"operation":"publication_validation_and_swap"}],"rows":1000,"string_bytes":256},{"metrics":[{"allocated_bytes":5333982,"allocations":70153,"mean_us":5419.70015,"operation":"capture_under_lock"},{"allocated_bytes":360000,"allocations":5001,"mean_us":89.1792,"operation":"copy_lock_hold"},{"allocated_bytes":3549710,"allocations":35068,"mean_us":670.40005,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.3126,"operation":"shared_snapshot_read"},{"allocated_bytes":192259,"allocations":156,"mean_us":231.2896,"operation":"projected_sorted_query"},{"allocated_bytes":1048800,"allocations":20,"mean_us":2057.83755,"operation":"publication_validation_and_swap"}],"rows":5000,"string_bytes":16},{"metrics":[{"allocated_bytes":8622558,"allocations":70154,"mean_us":6229.85635,"operation":"capture_under_lock"},{"allocated_bytes":920000,"allocations":5001,"mean_us":86.85415,"operation":"copy_lock_hold"},{"allocated_bytes":4109710,"allocations":35068,"mean_us":653.0584,"operation":"owned_snapshot_read"},{"allocated_bytes":640,"allocations":9,"mean_us":0.31665,"operation":"shared_snapshot_read"},{"allocated_bytes":192259,"allocations":156,"mean_us":240.77715,"operation":"projected_sorted_query"},{"allocated_bytes":2097376,"allocations":21,"mean_us":2379.98545,"operation":"publication_validation_and_swap"}],"rows":5000,"string_bytes":128},{"rejected":"limit","rows":5000,"string_bytes":256}],"micro_repetitions":20}

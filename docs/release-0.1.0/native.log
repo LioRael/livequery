@@ -1,0 +1,425 @@
+   Compiling livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+    Checking livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+    Checking livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Checking livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+    Checking livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+    Checking livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+    Checking livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+    Checking livequery-benchmarks v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/benches)
+    Checking livequery-example-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/jobs)
+    Checking livequery-example-concurrent v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/concurrent)
+    Checking livequery-example-basic v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/basic)
+    Checking livequery-example-async-server v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/async-server)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.12s
+   Compiling livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+    Checking livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+    Checking livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+    Checking livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Checking livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+    Checking livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+    Checking livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+    Checking livequery-example-concurrent v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/concurrent)
+    Checking livequery-example-basic v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/basic)
+    Checking livequery-example-async-server v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/async-server)
+    Checking livequery-benchmarks v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/benches)
+    Checking livequery-example-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/jobs)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.18s
+   Compiling livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+   Compiling livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+   Compiling livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+   Compiling livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+   Compiling livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+   Compiling livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+   Compiling livequery-example-concurrent v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/concurrent)
+   Compiling livequery-example-async-server v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/async-server)
+   Compiling livequery-example-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/jobs)
+   Compiling livequery-example-basic v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/basic)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.93s
+     Running unittests src/lib.rs (target/debug/deps/livequery-492da68cf9dc2a52)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/diagnostics.rs (target/debug/deps/diagnostics-caf30569b5668294)
+
+running 6 tests
+test incompatible_sort_values_are_rejected_without_lossy_numeric_coercion ... ok
+test ordered_integer_extremes_and_null_max_preserve_exact_values ... ok
+test ordering_is_stable_nulls_last_and_limit_counts_full_scan ... ok
+test aggregates_scan_all_rows_and_have_defined_empty_null_semantics ... ok
+test running_agent_explicit_and_drop_shutdown_release_socket ... ok
+test immutable_views_and_query_metadata_refer_to_the_same_version ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/inspection.rs (target/debug/deps/inspection-e6afd3bc1c22930c)
+
+running 12 tests
+test inconsistent_custom_snapshots_fail_before_query_evaluation ... ok
+test busy_and_resource_limits ... ok
+test invalid_sql_is_never_silently_accepted ... ok
+test public_handles_are_send_sync ... ok
+test custom_mutex_adapter_releases_on_unregistration ... ok
+test integer_literals_reject_overflow_and_preserve_negative_zero ... ok
+test schema_projection_privacy_and_complex_values ... ok
+test lifecycle_and_watch_cancellation_release_sources ... ok
+test integer_precision_boolean_precedence_and_null_logic ... ok
+test malformed_input_corpus_never_panics ... ok
+test derived_serialization_rejects_large_fields_before_copying_entire_row ... ok
+test concurrent_snapshots_never_tear ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+     Running tests/lifecycle_readiness.rs (target/debug/deps/lifecycle_readiness-ec77703ee8afee8a)
+
+running 2 tests
+test failed_refresh_preserves_data_then_recovers_across_registration_cycles ... ok
+test running_agent_closes_slow_clients_without_waiting_for_io_deadlines ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests/query_readiness.rs (target/debug/deps/query_readiness-067115d865c66ca9)
+
+running 3 tests
+test syntax_errors_identify_the_unexpected_token_or_end_of_input ... ok
+test detailed_query_budgets_metadata_without_reducing_legacy_result_budget ... ok
+test ordering_and_aggregates_match_filtered_values ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/schema_collection.rs (target/debug/deps/schema_collection-2860efc8c4331d98)
+
+running 6 tests
+test query_has_a_cooperative_deadline ... ok
+test publication_is_atomic_and_invalid_replacements_do_not_erase_data ... ok
+test watch_does_not_reuse_revision_from_another_registry ... ok
+test adapters_preserve_collection_order_and_mutex_consistency ... ok
+test nested_values_and_enum_root_use_their_declared_serde_representation ... ok
+test schemas_exist_on_empty_sources_and_describe_recursive_enums ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/stability.rs (target/debug/deps/stability-db610546819445c8)
+
+running 8 tests
+test repeated_projection_and_aggregate_catalog_are_bounded ... ok
+test nested_enum_secrets_are_omitted_from_values_and_schema ... ok
+test negotiation_rejects_incompatible_versions_and_legacy_queries_still_work ... ok
+test stale_publication_remains_queryable_and_failures_are_classified_once ... ok
+test session_query_and_source_replacement_invalidate_cursors ... ok
+test repeated_registration_and_snapshot_lifetimes_release_sources ... ok
+test selection_matches_numeric_predicate ... ok
+test arbitrary_queries_and_wire_frames_do_not_panic ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+     Running tests/transport.rs (target/debug/deps/transport-ef334ce649c5f4d8)
+
+running 11 tests
+test symlinked_socket_directory_is_rejected ... ok
+test rejects_public_directory ... ok
+test full_listener_backlog_cannot_block_client_indefinitely ... ok
+test cleanup_does_not_remove_a_replacement_file ... ok
+test unsafe_ancestor_and_symlink_socket_are_rejected ... ok
+test idle_client_does_not_delay_healthy_queries ... ok
+test remote_queries_only_read_published_data_and_observations_skip_unchanged_versions ... ok
+test real_socket_query_disconnect_invalid_frame_and_cleanup ... ok
+test oversized_schema_returns_a_bounded_error ... ok
+test trickling_request_does_not_extend_deadline ... ok
+test slow_reader_is_disconnected_without_stalling_other_clients ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.52s
+
+     Running unittests src/lib.rs (target/debug/deps/livequery_agent-040406d0e7ad4735)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/livequery-149b8b40e938e7b5)
+
+running 1 test
+test session::tests::completion_preserves_unicode_boundaries_and_catalog_names ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/reconnect.rs (target/debug/deps/reconnect-67ab42ae9c37baef)
+
+running 1 test
+test watch_recovers_after_socket_replacement_without_reusing_cached_rows ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.16s
+
+     Running tests/watch_state.rs (target/debug/deps/watch_state-fa3122753e68975d)
+
+running 3 tests
+test missing_metadata_clears_previous_snapshot_age ... ok
+test new_session_emits_identical_rows_without_an_io_failure ... ok
+test interrupted_request_clears_cursor_and_result_before_retry ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.48s
+
+     Running unittests src/lib.rs (target/debug/deps/livequery_core-24f28af8c0cb65ee)
+
+running 6 tests
+test state::tests::request_paths_do_not_wait_for_registration_writers ... ok
+test state::tests::inline_spill_serializes_custom_values_once ... ok
+test state::tests::counting_rows_preserves_encoded_byte_limits ... ok
+test published::lifetime_tests::superseded_snapshots_are_freed_after_the_last_reader ... ok
+test state::tests::tree_free_validation_preserves_json_acceptance_and_depth_limit ... ok
+test state::tests::inline_field_encoding_preserves_bytes_errors_and_remaining_budget ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running unittests src/lib.rs (target/debug/deps/livequery_derive-47552d727d3158ad)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/async_server-586b34a6015710ba)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/basic-a80cc1e942f38de9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/concurrent-0b300c61dcd21106)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/jobs-748f083477cedd8c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/livequery_query-9b11e0c0685a177f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/livequery_transport-67e9531c96ecf095)
+
+running 2 tests
+test local::tests::validated_directory_is_reused_after_original_alias_changes ... ok
+test local::tests::cancellation_stops_between_ready_clients ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests livequery
+
+running 1 test
+test crates/livequery/src/lib.rs - (line 3) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test crates/livequery/src/lib.rs - (line 17) - compile fail ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+all doctests ran in 0.37s; merged doctests compilation took 0.28s
+   Doc-tests livequery_agent
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests livequery_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests livequery_derive
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests livequery_query
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests livequery_transport
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling rustix v1.1.5
+    Checking getrandom v0.4.3
+ Documenting livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+ Documenting livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+ Documenting livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+    Checking uuid v1.26.1
+    Checking livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+ Documenting livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Checking livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+ Documenting livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+    Checking livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+ Documenting livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+ Documenting livequery-example-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/jobs)
+ Documenting livequery-example-concurrent v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/concurrent)
+ Documenting livequery-example-basic v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/basic)
+ Documenting livequery-example-async-server v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/async-server)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.07s
+   Generated /Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/doc/livequery/index.html and 9 other files
+   Compiling livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+   Compiling livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+   Compiling livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+   Compiling livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+   Compiling livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+   Compiling livequery-consumer-check v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/tests/consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.37s
+     Running `tests/consumer/target/debug/livequery-consumer-check`
+   Compiling livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+   Compiling livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+   Compiling livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+   Compiling livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+   Compiling livequery-components-check v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/tests/components)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.40s
+     Running `tests/components/target/debug/livequery-components-check`
+standalone renamed Core, Query, Agent and Transport: PASS
+compile-fail enum: PASS
+compile-fail tuple: PASS
+compile-fail attribute: PASS
+compile-fail enum_field_skip: PASS
+compile-fail enum_tuple_skip: PASS
+compile-fail enum_variant_skip: PASS
+compile-fail container_skip: PASS
+compile-fail non_send: PASS
+   Compiling rustix v1.1.5
+   Compiling livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+   Compiling livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+   Compiling livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+   Compiling livequery-example-concurrent v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/concurrent)
+   Compiling livequery-example-basic v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/basic)
+   Compiling livequery-example-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/jobs)
+   Compiling livequery-example-async-server v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/async-server)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.52s
+snapshot age: 105 ms
+PID 19937 · livequery watch 'SELECT * FROM players WHERE health < 80' --pid 19937
+id  health  
+1   58      
+2   8       
+2 rows · 2 scanned
+concurrent: PASS (graceful exit, real socket and CLI)
+echo 127.0.0.1:62495 · LiveQuery PID 20305
+async-server: PASS (graceful exit, real socket and CLI)
+jobs: discover stalled worker, accept requests, aggregate, WATCH repair, interactive recovery and cleanup PASS
+    Blocking waiting for file lock on package cache
+   Packaging livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Updating crates.io index
+    Packaged 8 files, 22.1KiB (7.9KiB compressed)
+   Packaging livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+    Blocking waiting for file lock on package cache
+    Updating crates.io index
+    Blocking waiting for file lock on package cache
+    Packaged 11 files, 64.0KiB (18.2KiB compressed)
+   Packaging livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+    Updating crates.io index
+    Packaged 8 files, 41.5KiB (12.7KiB compressed)
+   Packaging livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Updating crates.io index
+    Packaged 9 files, 40.3KiB (13.0KiB compressed)
+   Packaging livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+    Updating crates.io index
+    Packaged 9 files, 35.7KiB (11.7KiB compressed)
+   Packaging livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+    Updating crates.io index
+    Packaged 16 files, 89.1KiB (23.0KiB compressed)
+   Packaging livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+    Updating crates.io index
+    Packaged 11 files, 59.4KiB (18.1KiB compressed)
+   Verifying livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+   Compiling livequery-derive v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-derive-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 13.73s
+   Verifying livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+    Updating crates.io index
+   Unpacking livequery-derive v0.1.0 (registry `/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/tmp-registry`)
+   Compiling serde_json v1.0.154
+   Compiling livequery-derive v0.1.0
+   Compiling schemars v1.2.3
+   Compiling livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-core-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 15.87s
+   Verifying livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+    Updating crates.io index
+   Unpacking livequery-core v0.1.0 (registry `/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/tmp-registry`)
+   Compiling livequery-core v0.1.0
+   Compiling livequery-query v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-query-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 17.44s
+   Verifying livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Updating crates.io index
+   Compiling libc v0.2.191
+   Compiling errno v0.3.14
+   Compiling socket2 v0.6.5
+   Compiling rustix v1.1.5
+   Compiling livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-transport-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 21.14s
+   Verifying livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+    Updating crates.io index
+   Unpacking livequery-query v0.1.0 (registry `/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/tmp-registry`)
+   Unpacking livequery-transport v0.1.0 (registry `/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/tmp-registry`)
+   Compiling getrandom v0.4.3
+   Compiling livequery-transport v0.1.0
+   Compiling livequery-query v0.1.0
+   Compiling uuid v1.26.1
+   Compiling livequery-agent v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-agent-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 22.80s
+   Verifying livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+    Updating crates.io index
+    Blocking waiting for file lock on package cache
+   Unpacking livequery-agent v0.1.0 (registry `/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/tmp-registry`)
+    Blocking waiting for file lock on package cache
+   Compiling livequery-agent v0.1.0
+   Compiling livequery v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 24.24s
+   Verifying livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+    Updating crates.io index
+   Compiling livequery-core v0.1.0
+   Compiling livequery-transport v0.1.0
+   Compiling livequery-query v0.1.0
+   Compiling livequery-cli v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-cli-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 27.90s
+   Compiling livequery-core v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.93s
+     Running unittests src/lib.rs (target/debug/deps/livequery_core-9625b8d63cd3e6da)
+
+running 6 tests
+test state::tests::inline_spill_serializes_custom_values_once ... ok
+test state::tests::counting_rows_preserves_encoded_byte_limits ... ok
+test state::tests::request_paths_do_not_wait_for_registration_writers ... ok
+test published::lifetime_tests::superseded_snapshots_are_freed_after_the_last_reader ... ok
+test state::tests::inline_field_encoding_preserves_bytes_errors_and_remaining_budget ... ok
+test state::tests::tree_free_validation_preserves_json_acceptance_and_depth_limit ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests livequery_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+new CLI rejects alpha.2 Agent explicitly; alpha.2 CLI still queries/watches new Agent; status PASS
+jobs: discover stalled worker, accept requests, aggregate, WATCH repair, interactive recovery and cleanup PASS

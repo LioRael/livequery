@@ -1,0 +1,13 @@
+   Compiling livequery-derive v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-derive)
+    Checking livequery-core v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+    Checking livequery-transport v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Checking livequery-query v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+    Checking livequery-agent v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+    Checking livequery-cli v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+    Checking livequery v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery)
+    Checking livequery-example-async-server v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/async-server)
+    Checking livequery-benchmarks v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/benches)
+    Checking livequery-example-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/jobs)
+    Checking livequery-example-concurrent v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/concurrent)
+    Checking livequery-example-basic v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/examples/basic)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.47s

@@ -1,0 +1,15 @@
+{
+  "capture_deadlines": 87,
+  "query_deadlines": 0,
+  "slow_intervals_outside_allocator": 25,
+  "strongest_example": {
+    "phase": "validate -> validated",
+    "wall_ms": 216.603,
+    "cpu_ms": 4.257458,
+    "allocator_wall_ms": 0.162292,
+    "allocator_calls": 21,
+    "slow_allocator_calls": 0
+  },
+  "probe_overhead": "Approximately 47\u201364 ns per allocator operation in the isolated 96-byte microbenchmark; not an end-to-end overhead measurement.",
+  "causal_limit": "Off-CPU stalls outside allocator calls rule out allocator contention as the sole explanation of this run. No scheduler-state evidence, so preemption versus kernel/page-fault wait remains unresolved. Does not establish cause of historical CI failures."
+}

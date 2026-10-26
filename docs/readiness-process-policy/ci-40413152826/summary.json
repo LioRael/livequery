@@ -1,0 +1,45 @@
+{
+  "sync": {
+    "elapsed_seconds": 600.0042235000001,
+    "requests": 14397405,
+    "observation_error_codes": {
+      "busy": 9
+    },
+    "publication_error_codes": {
+      "busy": 1,
+      "deadline": 1
+    },
+    "slow_captures": [
+      {
+        "attempt": 1890,
+        "capture_cpu_ns": 4665666,
+        "capture_error": null,
+        "capture_wall_ns": 56800458
+      },
+      {
+        "attempt": 9046,
+        "capture_cpu_ns": 2552709,
+        "capture_error": "deadline",
+        "capture_wall_ns": 178920792
+      },
+      {
+        "attempt": 9792,
+        "capture_cpu_ns": 16806291,
+        "capture_error": null,
+        "capture_wall_ns": 55966917
+      }
+    ],
+    "request_errors": 0
+  },
+  "async": {
+    "elapsed_seconds": 600.026776375,
+    "requests": 22674238,
+    "observation_error_codes": {
+      "busy": 4,
+      "deadline": 1
+    },
+    "publication_error_codes": {},
+    "slow_captures": [],
+    "request_errors": 0
+  }
+}

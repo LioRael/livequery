@@ -1,0 +1,427 @@
+[
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 28884,
+      "pre_return_wall_ms": 100.16,
+      "pre_return_cpu_ms": 33.916166,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 530129148000,
+          "end_ns": 530143095000,
+          "wall_ms": 13.947,
+          "cpu_ms": 0.900333,
+          "allocator_ms": 3.8032,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3272
+          },
+          "counter_bracket": [
+            530076247000,
+            530174836000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1345.551,
+    "host_snapshot": {
+      "monotonic_ns": 531474699000,
+      "unix_ns": 1793041992474745000,
+      "loadavg": [
+        26.2197265625,
+        28.96630859375,
+        19.62646484375
+      ],
+      "processes": [
+        {
+          "pid": 329,
+          "cpu_percent": 22.6,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores"
+        },
+        {
+          "pid": 382,
+          "cpu_percent": 6.1,
+          "executable": "/System/Library/PrivateFrameworks/VoiceShortcuts.framework/Versions/A/Support/siriactionsd"
+        },
+        {
+          "pid": 968,
+          "cpu_percent": 17.3,
+          "executable": "/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/provjobd3502045969"
+        },
+        {
+          "pid": 1137,
+          "cpu_percent": 6.9,
+          "executable": "/System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/BackgroundShortcutRunner.xpc/Contents/MacOS/BackgroundShortcutRunner"
+        },
+        {
+          "pid": 3007,
+          "cpu_percent": 7.2,
+          "executable": "/System/Library/PrivateFrameworks/SafariSafeBrowsing.framework/com.apple.Safari.SafeBrowsing.Service"
+        },
+        {
+          "pid": 8047,
+          "cpu_percent": 62.6,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 8049,
+          "cpu_percent": 85.4,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 28884,
+      "pre_return_wall_ms": 108.991,
+      "pre_return_cpu_ms": 30.143917,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 629385406000,
+          "end_ns": 629399487000,
+          "wall_ms": 14.081,
+          "cpu_ms": 0.768792,
+          "allocator_ms": 3.899108,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4539
+          },
+          "counter_bracket": [
+            629331904000,
+            629434226000
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 629462444000,
+          "end_ns": 629473944000,
+          "wall_ms": 11.5,
+          "cpu_ms": 5.852791,
+          "allocator_ms": 0.02083,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 6113
+          },
+          "counter_bracket": [
+            629382204000,
+            629520479000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 558.116,
+    "host_snapshot": {
+      "monotonic_ns": 628827290000,
+      "unix_ns": 1793042089827315000,
+      "loadavg": [
+        21.46728515625,
+        26.8291015625,
+        19.791015625
+      ],
+      "processes": [
+        {
+          "pid": 329,
+          "cpu_percent": 73.8,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores"
+        },
+        {
+          "pid": 8047,
+          "cpu_percent": 88.4,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 8049,
+          "cpu_percent": 90.6,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 28884,
+      "pre_return_wall_ms": 119.362,
+      "pre_return_cpu_ms": 24.73775,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 673609084000,
+          "end_ns": 673622179000,
+          "wall_ms": 13.095,
+          "cpu_ms": 0.792458,
+          "allocator_ms": 9.862713,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 2768
+          },
+          "counter_bracket": [
+            673500596000,
+            673660144000
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 673653296000,
+          "end_ns": 673710721000,
+          "wall_ms": 57.425,
+          "cpu_ms": 6.026208,
+          "allocator_ms": 0.426915,
+          "thread_samples": [
+            {
+              "stamp": 673660144000,
+              "tid": 28884,
+              "cpu_ns": 87729963000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            },
+            {
+              "stamp": 673671337000,
+              "tid": 28884,
+              "cpu_ns": 87730451000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            },
+            {
+              "stamp": 673704883000,
+              "tid": 28884,
+              "cpu_ns": 87732870000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4042
+          },
+          "counter_bracket": [
+            673500596000,
+            673718546000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1415.318,
+    "host_snapshot": {
+      "monotonic_ns": 675024402000,
+      "unix_ns": 1793042136024812000,
+      "loadavg": [
+        12.56494140625,
+        23.73779296875,
+        19.0146484375
+      ],
+      "processes": [
+        {
+          "pid": 1,
+          "cpu_percent": 5.9,
+          "executable": "/sbin/launchd"
+        },
+        {
+          "pid": 117,
+          "cpu_percent": 6.8,
+          "executable": "/usr/libexec/diskarbitrationd"
+        },
+        {
+          "pid": 329,
+          "cpu_percent": 8.3,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores"
+        },
+        {
+          "pid": 8047,
+          "cpu_percent": 57.7,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 8049,
+          "cpu_percent": 74.8,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 28884,
+      "pre_return_wall_ms": 120.312,
+      "pre_return_cpu_ms": 26.976583,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 673940506000,
+          "end_ns": 673951047000,
+          "wall_ms": 10.541,
+          "cpu_ms": 0.814458,
+          "allocator_ms": 0.254067,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 658
+          },
+          "counter_bracket": [
+            673908087000,
+            674002918000
+          ]
+        },
+        {
+          "phase": "validate -> validated",
+          "start_ns": 673977905000,
+          "end_ns": 674021581000,
+          "wall_ms": 43.676,
+          "cpu_ms": 7.13975,
+          "allocator_ms": 0.031332,
+          "thread_samples": [
+            {
+              "stamp": 674002918000,
+              "tid": 28884,
+              "cpu_ns": 87832877000,
+              "state": 1,
+              "priority": 14,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 3749
+          },
+          "counter_bracket": [
+            673908087000,
+            674091251000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1083.896,
+    "host_snapshot": {
+      "monotonic_ns": 675024402000,
+      "unix_ns": 1793042136024812000,
+      "loadavg": [
+        12.56494140625,
+        23.73779296875,
+        19.0146484375
+      ],
+      "processes": [
+        {
+          "pid": 1,
+          "cpu_percent": 5.9,
+          "executable": "/sbin/launchd"
+        },
+        {
+          "pid": 117,
+          "cpu_percent": 6.8,
+          "executable": "/usr/libexec/diskarbitrationd"
+        },
+        {
+          "pid": 329,
+          "cpu_percent": 8.3,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores"
+        },
+        {
+          "pid": 8047,
+          "cpu_percent": 57.7,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 8049,
+          "cpu_percent": 74.8,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  },
+  {
+    "span": {
+      "kind": "capture",
+      "deadline": true,
+      "tid": 28884,
+      "pre_return_wall_ms": 112.546,
+      "pre_return_cpu_ms": 30.9525,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "start_ns": 706936929000,
+          "end_ns": 706957558000,
+          "wall_ms": 20.629,
+          "cpu_ms": 6.198584,
+          "allocator_ms": 0.102292,
+          "thread_samples": [
+            {
+              "stamp": 706940471000,
+              "tid": 28884,
+              "cpu_ns": 103256129000,
+              "state": 1,
+              "priority": 19,
+              "name": ""
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 4820
+          },
+          "counter_bracket": [
+            706908234000,
+            707021278000
+          ]
+        }
+      ]
+    },
+    "host_snapshot_distance_ms": 1010.41,
+    "host_snapshot": {
+      "monotonic_ns": 705926519000,
+      "unix_ns": 1793042166926598000,
+      "loadavg": [
+        9.38720703125,
+        21.89794921875,
+        18.50927734375
+      ],
+      "processes": [
+        {
+          "pid": 329,
+          "cpu_percent": 45.9,
+          "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores"
+        },
+        {
+          "pid": 8047,
+          "cpu_percent": 81.4,
+          "executable": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 8049,
+          "cpu_percent": 106.4,
+          "executable": "/Users/runner/work/livequery/livequery/target/ci-offcpu/source/experiments/workload/target/release/livequery-workload"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "variant": "diagnostic",
+  "engine": "async",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "logical_cpus": 3,
+  "runner_image": "20261013.0424.1",
+  "runner_os_image": "macos26",
+  "separate_build_job": true,
+  "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+  "cpu_admission_gate": false,
+  "workflow_head": "7f18a69ea0adac309138889ed678e174ca963f95"
+}

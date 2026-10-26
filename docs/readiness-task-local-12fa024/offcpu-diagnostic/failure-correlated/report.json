@@ -1,0 +1,1174 @@
+{
+  "platform": "darwin",
+  "source_ref": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+  "source_dirty": true,
+  "task_rows": 5000,
+  "string_bytes": 96,
+  "started_at": "2026-10-26T18:55:42.991334+00:00",
+  "finished_at": "2026-10-26T18:57:52.580921+00:00",
+  "engines": [
+    "async"
+  ],
+  "binary": "target/offcpu-diagnostic/source/experiments/workload/target/release/livequery-workload",
+  "binary_bytes": 2218000,
+  "binary_sha256": "baf40914b7138ad036c11ef5de9348cf8babb00943f2c0006dc15186792c9a49",
+  "repeats": 1,
+  "load_seconds": 120,
+  "load_clients": 4,
+  "payload_bytes": 64,
+  "latency_policy": "last 100000 completed requests; bounded memory, not a whole-run tail",
+  "results": [
+    {
+      "repeat": 0,
+      "engine": "async",
+      "mode": "jobs",
+      "subscribers": 4,
+      "publish_ms": 10,
+      "poll_ms": 10,
+      "diagnostic_snapshot_bytes": 914901,
+      "task_rows": 5000,
+      "string_bytes": 96,
+      "host_cpu_seconds": 72.20601500000001,
+      "host_peak_rss_bytes": 23117824,
+      "elapsed_seconds": 120.108613792,
+      "requests": 341412,
+      "requests_per_second": 2842.527186195369,
+      "p50_us": 881.9170000009535,
+      "p95_us": 6402.499999992983,
+      "p99_us": 15709.584000006771,
+      "latency_samples": 100000,
+      "request_errors": 0,
+      "request_error_codes": {},
+      "observations": 13633,
+      "not_modified": 0,
+      "observation_errors": 5,
+      "observation_error_codes": {
+        "busy": 3,
+        "deadline": 2
+      },
+      "observation_p99_us": 82710.7920000003,
+      "resource_samples": [
+        {
+          "elapsed_seconds": 0.037757666999999995,
+          "requests": 470,
+          "request_errors": 0,
+          "observations": 8,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 4,
+            "count": 4
+          },
+          "rss_bytes": 17039360,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 5.165126334,
+          "requests": 40536,
+          "request_errors": 0,
+          "observations": 782,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 262,
+            "count": 260,
+            "max": 260
+          },
+          "rss_bytes": 18923520,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 10.413027667,
+          "requests": 56182,
+          "request_errors": 0,
+          "observations": 1423,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 476,
+            "count": 475,
+            "max": 472
+          },
+          "rss_bytes": 23117824,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 15.541219084,
+          "requests": 66075,
+          "request_errors": 0,
+          "observations": 1964,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 656,
+            "count": 656,
+            "max": 652
+          },
+          "rss_bytes": 22249472,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 20.660185208999998,
+          "requests": 75097,
+          "request_errors": 0,
+          "observations": 2456,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 820,
+            "count": 820,
+            "max": 816
+          },
+          "rss_bytes": 22577152,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 25.799293875,
+          "requests": 102832,
+          "request_errors": 0,
+          "observations": 3238,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 1080,
+            "count": 1080,
+            "max": 1078
+          },
+          "rss_bytes": 21938176,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 30.942288584,
+          "requests": 118591,
+          "request_errors": 0,
+          "observations": 3932,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 1312,
+            "count": 1311,
+            "max": 1309
+          },
+          "rss_bytes": 21626880,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 36.054942834,
+          "requests": 135498,
+          "request_errors": 0,
+          "observations": 4604,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 1536,
+            "count": 1535,
+            "max": 1533
+          },
+          "rss_bytes": 19431424,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 41.195038292,
+          "requests": 160611,
+          "request_errors": 0,
+          "observations": 5249,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 1751,
+            "count": 1750,
+            "max": 1748
+          },
+          "rss_bytes": 19791872,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 46.365403334,
+          "requests": 172800,
+          "request_errors": 0,
+          "observations": 5900,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 1968,
+            "count": 1967,
+            "max": 1965
+          },
+          "rss_bytes": 19513344,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 51.565063042,
+          "requests": 185649,
+          "request_errors": 0,
+          "observations": 6555,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 2187,
+            "count": 2184,
+            "max": 2184
+          },
+          "rss_bytes": 19169280,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 56.642473125,
+          "requests": 200726,
+          "request_errors": 0,
+          "observations": 7183,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 2396,
+            "count": 2395,
+            "max": 2392
+          },
+          "rss_bytes": 19283968,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 61.815971584,
+          "requests": 224943,
+          "request_errors": 0,
+          "observations": 7893,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 2632,
+            "count": 2631,
+            "max": 2630
+          },
+          "rss_bytes": 19251200,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 66.939046834,
+          "requests": 233281,
+          "request_errors": 0,
+          "observations": 8446,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 2816,
+            "count": 2816,
+            "max": 2814
+          },
+          "rss_bytes": 18251776,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 73.046964875,
+          "requests": 245259,
+          "request_errors": 0,
+          "observations": 8955,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 2987,
+            "count": 2984,
+            "max": 2984
+          },
+          "rss_bytes": 17055744,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 78.235646042,
+          "requests": 256417,
+          "request_errors": 0,
+          "observations": 9503,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 3168,
+            "count": 3168,
+            "max": 3167
+          },
+          "rss_bytes": 18825216,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 83.39092979200001,
+          "requests": 267779,
+          "request_errors": 0,
+          "observations": 10083,
+          "observation_errors": 2,
+          "query_kinds": {
+            "sort": 3362,
+            "count": 3361,
+            "max": 3360
+          },
+          "rss_bytes": 18857984,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 88.736560875,
+          "requests": 275726,
+          "request_errors": 0,
+          "observations": 10628,
+          "observation_errors": 3,
+          "query_kinds": {
+            "sort": 3544,
+            "count": 3543,
+            "max": 3541
+          },
+          "rss_bytes": 19070976,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 93.83535733400001,
+          "requests": 286217,
+          "request_errors": 0,
+          "observations": 11160,
+          "observation_errors": 4,
+          "query_kinds": {
+            "sort": 3721,
+            "count": 3720,
+            "max": 3719
+          },
+          "rss_bytes": 18874368,
+          "threads": 5,
+          "fds": 12
+        },
+        {
+          "elapsed_seconds": 99.021820959,
+          "requests": 307601,
+          "request_errors": 0,
+          "observations": 11831,
+          "observation_errors": 4,
+          "query_kinds": {
+            "sort": 3945,
+            "count": 3944,
+            "max": 3942
+          },
+          "rss_bytes": 18874368,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 104.29235225000001,
+          "requests": 315816,
+          "request_errors": 0,
+          "observations": 12294,
+          "observation_errors": 5,
+          "query_kinds": {
+            "sort": 4100,
+            "count": 4098,
+            "max": 4096
+          },
+          "rss_bytes": 18579456,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 109.385935459,
+          "requests": 323125,
+          "request_errors": 0,
+          "observations": 12756,
+          "observation_errors": 5,
+          "query_kinds": {
+            "sort": 4253,
+            "count": 4252,
+            "max": 4251
+          },
+          "rss_bytes": 21626880,
+          "threads": 5,
+          "fds": 16
+        },
+        {
+          "elapsed_seconds": 114.503762334,
+          "requests": 333012,
+          "request_errors": 0,
+          "observations": 13256,
+          "observation_errors": 5,
+          "query_kinds": {
+            "sort": 4420,
+            "count": 4419,
+            "max": 4417
+          },
+          "rss_bytes": 19218432,
+          "threads": 5,
+          "fds": 14
+        },
+        {
+          "elapsed_seconds": 120.107205084,
+          "requests": 341412,
+          "request_errors": 0,
+          "observations": 13633,
+          "observation_errors": 5,
+          "query_kinds": {
+            "sort": 4545,
+            "count": 4544,
+            "max": 4544
+          },
+          "rss_bytes": 15876096,
+          "threads": 5,
+          "fds": 8
+        }
+      ],
+      "query_kinds": {
+        "sort": 4545,
+        "count": 4544,
+        "max": 4544
+      },
+      "capture_lock_max_ns": 82218209,
+      "capture_lock_ns": 2829292964,
+      "completed": 341412,
+      "publication_attempts": 2051,
+      "publication_error_codes": {
+        "deadline": 60
+      },
+      "publication_errors": 60,
+      "publication_max_ns": 595034750,
+      "publication_ns": 91644409088,
+      "slow_captures": [
+        {
+          "attempt": 78,
+          "capture_cpu_ns": 16343625,
+          "capture_error": null,
+          "capture_wall_ns": 78417166
+        },
+        {
+          "attempt": 107,
+          "capture_cpu_ns": 15743333,
+          "capture_error": null,
+          "capture_wall_ns": 62744667
+        },
+        {
+          "attempt": 132,
+          "capture_cpu_ns": 12942292,
+          "capture_error": "deadline",
+          "capture_wall_ns": 119555584
+        },
+        {
+          "attempt": 202,
+          "capture_cpu_ns": 15879041,
+          "capture_error": "deadline",
+          "capture_wall_ns": 181957833
+        },
+        {
+          "attempt": 205,
+          "capture_cpu_ns": 15454000,
+          "capture_error": null,
+          "capture_wall_ns": 56828375
+        },
+        {
+          "attempt": 219,
+          "capture_cpu_ns": 15008834,
+          "capture_error": null,
+          "capture_wall_ns": 72232750
+        },
+        {
+          "attempt": 221,
+          "capture_cpu_ns": 16788791,
+          "capture_error": "deadline",
+          "capture_wall_ns": 152840875
+        },
+        {
+          "attempt": 228,
+          "capture_cpu_ns": 15335083,
+          "capture_error": null,
+          "capture_wall_ns": 59216958
+        },
+        {
+          "attempt": 236,
+          "capture_cpu_ns": 16544166,
+          "capture_error": null,
+          "capture_wall_ns": 53080500
+        },
+        {
+          "attempt": 239,
+          "capture_cpu_ns": 19229500,
+          "capture_error": "deadline",
+          "capture_wall_ns": 173856291
+        },
+        {
+          "attempt": 244,
+          "capture_cpu_ns": 15526750,
+          "capture_error": null,
+          "capture_wall_ns": 63454834
+        },
+        {
+          "attempt": 247,
+          "capture_cpu_ns": 15433000,
+          "capture_error": null,
+          "capture_wall_ns": 60622042
+        },
+        {
+          "attempt": 269,
+          "capture_cpu_ns": 15567125,
+          "capture_error": null,
+          "capture_wall_ns": 51604250
+        },
+        {
+          "attempt": 287,
+          "capture_cpu_ns": 17121834,
+          "capture_error": "deadline",
+          "capture_wall_ns": 157540333
+        },
+        {
+          "attempt": 291,
+          "capture_cpu_ns": 18145208,
+          "capture_error": "deadline",
+          "capture_wall_ns": 185677208
+        },
+        {
+          "attempt": 292,
+          "capture_cpu_ns": 16404458,
+          "capture_error": null,
+          "capture_wall_ns": 83063208
+        },
+        {
+          "attempt": 296,
+          "capture_cpu_ns": 21296709,
+          "capture_error": "deadline",
+          "capture_wall_ns": 246993375
+        },
+        {
+          "attempt": 297,
+          "capture_cpu_ns": 12782625,
+          "capture_error": "deadline",
+          "capture_wall_ns": 145515084
+        },
+        {
+          "attempt": 302,
+          "capture_cpu_ns": 18328041,
+          "capture_error": null,
+          "capture_wall_ns": 62459833
+        },
+        {
+          "attempt": 305,
+          "capture_cpu_ns": 18297625,
+          "capture_error": null,
+          "capture_wall_ns": 64924875
+        },
+        {
+          "attempt": 314,
+          "capture_cpu_ns": 17941875,
+          "capture_error": null,
+          "capture_wall_ns": 84393959
+        },
+        {
+          "attempt": 315,
+          "capture_cpu_ns": 12981542,
+          "capture_error": "deadline",
+          "capture_wall_ns": 149098375
+        },
+        {
+          "attempt": 316,
+          "capture_cpu_ns": 12839500,
+          "capture_error": null,
+          "capture_wall_ns": 62089958
+        },
+        {
+          "attempt": 317,
+          "capture_cpu_ns": 13346625,
+          "capture_error": "deadline",
+          "capture_wall_ns": 114520875
+        },
+        {
+          "attempt": 321,
+          "capture_cpu_ns": 18896916,
+          "capture_error": null,
+          "capture_wall_ns": 50126958
+        },
+        {
+          "attempt": 322,
+          "capture_cpu_ns": 19907042,
+          "capture_error": null,
+          "capture_wall_ns": 78780000
+        },
+        {
+          "attempt": 333,
+          "capture_cpu_ns": 18043541,
+          "capture_error": null,
+          "capture_wall_ns": 87124250
+        },
+        {
+          "attempt": 334,
+          "capture_cpu_ns": 16502875,
+          "capture_error": null,
+          "capture_wall_ns": 62823625
+        },
+        {
+          "attempt": 340,
+          "capture_cpu_ns": 14665292,
+          "capture_error": null,
+          "capture_wall_ns": 57646542
+        },
+        {
+          "attempt": 344,
+          "capture_cpu_ns": 14091417,
+          "capture_error": null,
+          "capture_wall_ns": 51935250
+        },
+        {
+          "attempt": 383,
+          "capture_cpu_ns": 13751083,
+          "capture_error": null,
+          "capture_wall_ns": 81399750
+        },
+        {
+          "attempt": 480,
+          "capture_cpu_ns": 14435250,
+          "capture_error": null,
+          "capture_wall_ns": 69147459
+        },
+        {
+          "attempt": 496,
+          "capture_cpu_ns": 18585333,
+          "capture_error": null,
+          "capture_wall_ns": 65178250
+        },
+        {
+          "attempt": 499,
+          "capture_cpu_ns": 14705083,
+          "capture_error": null,
+          "capture_wall_ns": 76635042
+        },
+        {
+          "attempt": 557,
+          "capture_cpu_ns": 16536583,
+          "capture_error": null,
+          "capture_wall_ns": 52984000
+        },
+        {
+          "attempt": 575,
+          "capture_cpu_ns": 17394458,
+          "capture_error": null,
+          "capture_wall_ns": 56388083
+        },
+        {
+          "attempt": 658,
+          "capture_cpu_ns": 16313417,
+          "capture_error": null,
+          "capture_wall_ns": 55089000
+        },
+        {
+          "attempt": 659,
+          "capture_cpu_ns": 16802666,
+          "capture_error": null,
+          "capture_wall_ns": 52552667
+        },
+        {
+          "attempt": 660,
+          "capture_cpu_ns": 16545792,
+          "capture_error": null,
+          "capture_wall_ns": 58021875
+        },
+        {
+          "attempt": 665,
+          "capture_cpu_ns": 21138375,
+          "capture_error": null,
+          "capture_wall_ns": 70141916
+        },
+        {
+          "attempt": 683,
+          "capture_cpu_ns": 17983084,
+          "capture_error": null,
+          "capture_wall_ns": 71459792
+        },
+        {
+          "attempt": 685,
+          "capture_cpu_ns": 22383000,
+          "capture_error": null,
+          "capture_wall_ns": 50412000
+        },
+        {
+          "attempt": 686,
+          "capture_cpu_ns": 20115542,
+          "capture_error": null,
+          "capture_wall_ns": 52930875
+        },
+        {
+          "attempt": 689,
+          "capture_cpu_ns": 16026041,
+          "capture_error": null,
+          "capture_wall_ns": 59944500
+        },
+        {
+          "attempt": 692,
+          "capture_cpu_ns": 16513458,
+          "capture_error": null,
+          "capture_wall_ns": 50541000
+        },
+        {
+          "attempt": 693,
+          "capture_cpu_ns": 21786000,
+          "capture_error": "deadline",
+          "capture_wall_ns": 210983375
+        },
+        {
+          "attempt": 694,
+          "capture_cpu_ns": 20808667,
+          "capture_error": "deadline",
+          "capture_wall_ns": 125051208
+        },
+        {
+          "attempt": 695,
+          "capture_cpu_ns": 18674125,
+          "capture_error": null,
+          "capture_wall_ns": 70449959
+        },
+        {
+          "attempt": 698,
+          "capture_cpu_ns": 20974583,
+          "capture_error": "deadline",
+          "capture_wall_ns": 125133792
+        },
+        {
+          "attempt": 699,
+          "capture_cpu_ns": 18692750,
+          "capture_error": null,
+          "capture_wall_ns": 94803750
+        },
+        {
+          "attempt": 703,
+          "capture_cpu_ns": 16958667,
+          "capture_error": null,
+          "capture_wall_ns": 82098542
+        },
+        {
+          "attempt": 705,
+          "capture_cpu_ns": 16213583,
+          "capture_error": null,
+          "capture_wall_ns": 84214167
+        },
+        {
+          "attempt": 716,
+          "capture_cpu_ns": 13749375,
+          "capture_error": null,
+          "capture_wall_ns": 64672250
+        },
+        {
+          "attempt": 799,
+          "capture_cpu_ns": 20299917,
+          "capture_error": null,
+          "capture_wall_ns": 61678500
+        },
+        {
+          "attempt": 809,
+          "capture_cpu_ns": 15214791,
+          "capture_error": null,
+          "capture_wall_ns": 60751292
+        },
+        {
+          "attempt": 844,
+          "capture_cpu_ns": 15578375,
+          "capture_error": null,
+          "capture_wall_ns": 50523208
+        },
+        {
+          "attempt": 913,
+          "capture_cpu_ns": 16587750,
+          "capture_error": null,
+          "capture_wall_ns": 52916916
+        },
+        {
+          "attempt": 919,
+          "capture_cpu_ns": 17196583,
+          "capture_error": null,
+          "capture_wall_ns": 64276209
+        },
+        {
+          "attempt": 948,
+          "capture_cpu_ns": 20609625,
+          "capture_error": null,
+          "capture_wall_ns": 52092083
+        },
+        {
+          "attempt": 986,
+          "capture_cpu_ns": 15092958,
+          "capture_error": null,
+          "capture_wall_ns": 81466542
+        },
+        {
+          "attempt": 996,
+          "capture_cpu_ns": 18135666,
+          "capture_error": null,
+          "capture_wall_ns": 50708125
+        },
+        {
+          "attempt": 1001,
+          "capture_cpu_ns": 15155333,
+          "capture_error": null,
+          "capture_wall_ns": 53888875
+        },
+        {
+          "attempt": 1015,
+          "capture_cpu_ns": 14831916,
+          "capture_error": null,
+          "capture_wall_ns": 57758000
+        },
+        {
+          "attempt": 1024,
+          "capture_cpu_ns": 18786083,
+          "capture_error": null,
+          "capture_wall_ns": 58975000
+        },
+        {
+          "attempt": 1034,
+          "capture_cpu_ns": 19794167,
+          "capture_error": null,
+          "capture_wall_ns": 56352583
+        },
+        {
+          "attempt": 1035,
+          "capture_cpu_ns": 16523000,
+          "capture_error": null,
+          "capture_wall_ns": 55822250
+        },
+        {
+          "attempt": 1046,
+          "capture_cpu_ns": 19701583,
+          "capture_error": null,
+          "capture_wall_ns": 53257667
+        },
+        {
+          "attempt": 1047,
+          "capture_cpu_ns": 16866708,
+          "capture_error": null,
+          "capture_wall_ns": 58541958
+        },
+        {
+          "attempt": 1152,
+          "capture_cpu_ns": 14840542,
+          "capture_error": null,
+          "capture_wall_ns": 96671459
+        },
+        {
+          "attempt": 1157,
+          "capture_cpu_ns": 11966334,
+          "capture_error": "deadline",
+          "capture_wall_ns": 114465583
+        },
+        {
+          "attempt": 1159,
+          "capture_cpu_ns": 13617875,
+          "capture_error": null,
+          "capture_wall_ns": 57953459
+        },
+        {
+          "attempt": 1169,
+          "capture_cpu_ns": 16488625,
+          "capture_error": null,
+          "capture_wall_ns": 68037917
+        },
+        {
+          "attempt": 1172,
+          "capture_cpu_ns": 13779125,
+          "capture_error": null,
+          "capture_wall_ns": 60963333
+        },
+        {
+          "attempt": 1174,
+          "capture_cpu_ns": 17162334,
+          "capture_error": null,
+          "capture_wall_ns": 70409833
+        },
+        {
+          "attempt": 1185,
+          "capture_cpu_ns": 20084000,
+          "capture_error": "deadline",
+          "capture_wall_ns": 117355042
+        },
+        {
+          "attempt": 1213,
+          "capture_cpu_ns": 8221208,
+          "capture_error": "deadline",
+          "capture_wall_ns": 151417291
+        },
+        {
+          "attempt": 1214,
+          "capture_cpu_ns": 13766542,
+          "capture_error": null,
+          "capture_wall_ns": 77567041
+        },
+        {
+          "attempt": 1222,
+          "capture_cpu_ns": 19554416,
+          "capture_error": "deadline",
+          "capture_wall_ns": 162869500
+        },
+        {
+          "attempt": 1229,
+          "capture_cpu_ns": 20420292,
+          "capture_error": "deadline",
+          "capture_wall_ns": 123714500
+        },
+        {
+          "attempt": 1230,
+          "capture_cpu_ns": 17691875,
+          "capture_error": null,
+          "capture_wall_ns": 55199042
+        },
+        {
+          "attempt": 1231,
+          "capture_cpu_ns": 19589500,
+          "capture_error": "deadline",
+          "capture_wall_ns": 133382125
+        },
+        {
+          "attempt": 1234,
+          "capture_cpu_ns": 20855625,
+          "capture_error": "deadline",
+          "capture_wall_ns": 112799125
+        },
+        {
+          "attempt": 1250,
+          "capture_cpu_ns": 16358292,
+          "capture_error": null,
+          "capture_wall_ns": 82684166
+        },
+        {
+          "attempt": 1259,
+          "capture_cpu_ns": 18431833,
+          "capture_error": "deadline",
+          "capture_wall_ns": 164174958
+        },
+        {
+          "attempt": 1262,
+          "capture_cpu_ns": 15633708,
+          "capture_error": null,
+          "capture_wall_ns": 56250875
+        },
+        {
+          "attempt": 1276,
+          "capture_cpu_ns": 24426916,
+          "capture_error": "deadline",
+          "capture_wall_ns": 108841292
+        },
+        {
+          "attempt": 1325,
+          "capture_cpu_ns": 19648125,
+          "capture_error": "deadline",
+          "capture_wall_ns": 174057834
+        },
+        {
+          "attempt": 1327,
+          "capture_cpu_ns": 10918916,
+          "capture_error": "deadline",
+          "capture_wall_ns": 125414959
+        },
+        {
+          "attempt": 1328,
+          "capture_cpu_ns": 17719792,
+          "capture_error": "deadline",
+          "capture_wall_ns": 136127375
+        },
+        {
+          "attempt": 1329,
+          "capture_cpu_ns": 20761958,
+          "capture_error": "deadline",
+          "capture_wall_ns": 240266583
+        },
+        {
+          "attempt": 1330,
+          "capture_cpu_ns": 24310125,
+          "capture_error": "deadline",
+          "capture_wall_ns": 139954209
+        },
+        {
+          "attempt": 1332,
+          "capture_cpu_ns": 2058000,
+          "capture_error": "deadline",
+          "capture_wall_ns": 258031291
+        },
+        {
+          "attempt": 1333,
+          "capture_cpu_ns": 7166042,
+          "capture_error": "deadline",
+          "capture_wall_ns": 110716875
+        },
+        {
+          "attempt": 1334,
+          "capture_cpu_ns": 12183958,
+          "capture_error": "deadline",
+          "capture_wall_ns": 120272709
+        },
+        {
+          "attempt": 1363,
+          "capture_cpu_ns": 20563833,
+          "capture_error": "deadline",
+          "capture_wall_ns": 137039167
+        },
+        {
+          "attempt": 1388,
+          "capture_cpu_ns": 17390167,
+          "capture_error": "deadline",
+          "capture_wall_ns": 121775833
+        },
+        {
+          "attempt": 1442,
+          "capture_cpu_ns": 5253750,
+          "capture_error": "deadline",
+          "capture_wall_ns": 124376458
+        },
+        {
+          "attempt": 1626,
+          "capture_cpu_ns": 10784417,
+          "capture_error": "deadline",
+          "capture_wall_ns": 104183958
+        },
+        {
+          "attempt": 1636,
+          "capture_cpu_ns": 18457291,
+          "capture_error": "deadline",
+          "capture_wall_ns": 280351875
+        },
+        {
+          "attempt": 1785,
+          "capture_cpu_ns": 7350708,
+          "capture_error": "deadline",
+          "capture_wall_ns": 108250916
+        },
+        {
+          "attempt": 1787,
+          "capture_cpu_ns": 504709,
+          "capture_error": "deadline",
+          "capture_wall_ns": 108532375
+        },
+        {
+          "attempt": 1788,
+          "capture_cpu_ns": 14594667,
+          "capture_error": "deadline",
+          "capture_wall_ns": 230558083
+        },
+        {
+          "attempt": 1792,
+          "capture_cpu_ns": 11631375,
+          "capture_error": "deadline",
+          "capture_wall_ns": 175548708
+        },
+        {
+          "attempt": 1794,
+          "capture_cpu_ns": 5772416,
+          "capture_error": "deadline",
+          "capture_wall_ns": 138142333
+        },
+        {
+          "attempt": 1800,
+          "capture_cpu_ns": 17959541,
+          "capture_error": "deadline",
+          "capture_wall_ns": 136026084
+        },
+        {
+          "attempt": 1844,
+          "capture_cpu_ns": 11125791,
+          "capture_error": "deadline",
+          "capture_wall_ns": 161590208
+        },
+        {
+          "attempt": 1878,
+          "capture_cpu_ns": 14493541,
+          "capture_error": "deadline",
+          "capture_wall_ns": 129385167
+        },
+        {
+          "attempt": 1917,
+          "capture_cpu_ns": 19683792,
+          "capture_error": "deadline",
+          "capture_wall_ns": 125902166
+        },
+        {
+          "attempt": 1924,
+          "capture_cpu_ns": 6346833,
+          "capture_error": "deadline",
+          "capture_wall_ns": 146483583
+        },
+        {
+          "attempt": 1925,
+          "capture_cpu_ns": 4121416,
+          "capture_error": "deadline",
+          "capture_wall_ns": 185640125
+        },
+        {
+          "attempt": 1927,
+          "capture_cpu_ns": 23073500,
+          "capture_error": "deadline",
+          "capture_wall_ns": 114014500
+        },
+        {
+          "attempt": 2004,
+          "capture_cpu_ns": 13559125,
+          "capture_error": "deadline",
+          "capture_wall_ns": 133461458
+        },
+        {
+          "attempt": 2005,
+          "capture_cpu_ns": 13365125,
+          "capture_error": "deadline",
+          "capture_wall_ns": 181481542
+        },
+        {
+          "attempt": 2018,
+          "capture_cpu_ns": 14432584,
+          "capture_error": "deadline",
+          "capture_wall_ns": 113089333
+        },
+        {
+          "attempt": 2022,
+          "capture_cpu_ns": 6007292,
+          "capture_error": "deadline",
+          "capture_wall_ns": 103277208
+        },
+        {
+          "attempt": 2023,
+          "capture_cpu_ns": 3482167,
+          "capture_error": "deadline",
+          "capture_wall_ns": 185993416
+        },
+        {
+          "attempt": 2025,
+          "capture_cpu_ns": 7348084,
+          "capture_error": "deadline",
+          "capture_wall_ns": 192759208
+        },
+        {
+          "attempt": 2027,
+          "capture_cpu_ns": 11318875,
+          "capture_error": "deadline",
+          "capture_wall_ns": 528590167
+        },
+        {
+          "attempt": 2028,
+          "capture_cpu_ns": 21933583,
+          "capture_error": "deadline",
+          "capture_wall_ns": 595004291
+        },
+        {
+          "attempt": 2029,
+          "capture_cpu_ns": 12457667,
+          "capture_error": "deadline",
+          "capture_wall_ns": 357824667
+        },
+        {
+          "attempt": 2031,
+          "capture_cpu_ns": 13051708,
+          "capture_error": "deadline",
+          "capture_wall_ns": 113321083
+        },
+        {
+          "attempt": 2034,
+          "capture_cpu_ns": 10958959,
+          "capture_error": "deadline",
+          "capture_wall_ns": 128526458
+        },
+        {
+          "attempt": 2044,
+          "capture_cpu_ns": 21428750,
+          "capture_error": "deadline",
+          "capture_wall_ns": 134531916
+        },
+        {
+          "attempt": 2051,
+          "capture_cpu_ns": 12267208,
+          "capture_error": "deadline",
+          "capture_wall_ns": 165530750
+        }
+      ]
+    }
+  ]
+}

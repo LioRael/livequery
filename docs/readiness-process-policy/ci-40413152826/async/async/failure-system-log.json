@@ -1,0 +1,15 @@
+{
+  "windows": [
+    {
+      "start_utc": "2026-10-26 22:38:59+0000",
+      "end_utc": "2026-10-26 22:39:04+0000",
+      "returncode": 0,
+      "truncated_reason": null,
+      "bytes": 74056
+    }
+  ],
+  "omitted_windows": 0,
+  "anchor_width_ns": 6000,
+  "predicate": "process IN {\"kernel\", \"powerd\", \"runningboardd\", \"thermalmonitord\", \"watchdogd\"}",
+  "limitations": "Postmortem existing logs only. Missing records cannot exclude unlogged scheduling or hypervisor delays. A nearby event alone is not causation. Initial clock anchor does not rule out later wall-clock adjustment."
+}

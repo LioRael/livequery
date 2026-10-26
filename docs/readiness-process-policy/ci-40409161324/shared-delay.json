@@ -1,0 +1,127 @@
+{
+  "span": {
+    "kind": "capture",
+    "deadline": true,
+    "tid": 12230,
+    "pre_return_wall_ms": 189.164,
+    "pre_return_cpu_ms": 1.675625,
+    "intervals": [
+      {
+        "phase": "rows -> deadline",
+        "start_ns": 575762498000,
+        "end_ns": 575948048000,
+        "wall_ms": 185.55,
+        "cpu_ms": 0.360125,
+        "allocator_ms": 185.316326,
+        "thread_samples": [],
+        "task_counter_delta": {
+          "faults": 0,
+          "pageins": 0,
+          "cow_faults": 0,
+          "csw": 519
+        },
+        "counter_bracket": [
+          575736860000,
+          575957110000
+        ],
+        "host_cpu_windows": [
+          {
+            "start_ns": 574817826000,
+            "end_ns": 579908005000,
+            "busy_percent": 292.7165354330709
+          }
+        ]
+      }
+    ]
+  },
+  "last_sample_before": {
+    "monotonic_ns": 575748659000,
+    "sample_end_ns": 575748668000,
+    "observer_cpu_ns": 1032374208,
+    "threads": [
+      {
+        "tid": 12230,
+        "cpu_ns": 103243948000,
+        "state": 3,
+        "priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "tid": 12228,
+        "cpu_ns": 4013679000,
+        "state": 3,
+        "priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "tid": 12229,
+        "cpu_ns": 20035578000,
+        "state": 3,
+        "priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      }
+    ],
+    "task_counters": {
+      "faults": 547,
+      "pageins": 0,
+      "cow_faults": 65,
+      "csw": 11540363,
+      "syscalls_mach": 307367,
+      "syscalls_unix": 16101044,
+      "threadnum": 7,
+      "numrunning": 3,
+      "total_user_raw": 3047683416,
+      "total_system_raw": 3243428032
+    }
+  },
+  "first_sample_after": {
+    "monotonic_ns": 575957110000,
+    "sample_end_ns": 575957118000,
+    "observer_cpu_ns": 1032391916,
+    "threads": [
+      {
+        "tid": 12230,
+        "cpu_ns": 103247234000,
+        "state": 3,
+        "priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "tid": 12228,
+        "cpu_ns": 4013887000,
+        "state": 3,
+        "priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      },
+      {
+        "tid": 12229,
+        "cpu_ns": 20036687000,
+        "state": 3,
+        "priority": 31,
+        "base_priority": 31,
+        "max_priority": 63
+      }
+    ],
+    "task_counters": {
+      "faults": 547,
+      "pageins": 0,
+      "cow_faults": 65,
+      "csw": 11540653,
+      "syscalls_mach": 307377,
+      "syscalls_unix": 16101336,
+      "threadnum": 7,
+      "numrunning": 4,
+      "total_user_raw": 3047783774,
+      "total_system_raw": 3243492569
+    }
+  },
+  "observer_gap_ms": 208.451,
+  "observer_cpu_delta_ns": 17708,
+  "previous_read_duration_ns": 9000,
+  "limitation": "No sample inside stalled interval. Independent sampler also had a delayed wake; neither continuous thread state nor VM host scheduling is observed. Does not prove a specific competing process or the cause of the earlier official failures."
+}

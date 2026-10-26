@@ -1,0 +1,30 @@
+[
+  {
+    "thread": "main",
+    "pid": 4067,
+    "nice": -10,
+    "qos_status": 0,
+    "qos": 17,
+    "relative": 0,
+    "task_role_status": 0,
+    "task_role": 0,
+    "threadinfo_bytes": 112,
+    "current_priority": 20,
+    "base_priority": 20,
+    "max_priority": 20
+  },
+  {
+    "thread": "child",
+    "pid": 4067,
+    "nice": -10,
+    "qos_status": 0,
+    "qos": 21,
+    "relative": 0,
+    "task_role_status": 0,
+    "task_role": 0,
+    "threadinfo_bytes": 112,
+    "current_priority": 20,
+    "base_priority": 20,
+    "max_priority": 20
+  }
+]

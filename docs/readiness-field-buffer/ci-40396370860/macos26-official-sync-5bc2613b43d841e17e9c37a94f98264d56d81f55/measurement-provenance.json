@@ -1,0 +1,12 @@
+{
+  "variant": "official",
+  "engine": "sync",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "logical_cpus": 3,
+  "runner_image": "20261013.0424.1",
+  "runner_os_image": "macos26",
+  "separate_build_job": true,
+  "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+  "cpu_admission_gate": false,
+  "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55"
+}

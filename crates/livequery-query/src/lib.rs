@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sqlparser::{
     dialect::GenericDialect,
-    tokenizer::{Token, Tokenizer},
+    tokenizer::{Location, Token, Tokenizer},
 };
 use std::{cmp::Ordering, time::Instant};
 
@@ -22,6 +22,11 @@ pub struct Query {
 enum Aggregate {
     Count,
     Max(String),
+}
+#[derive(Debug, Clone, Copy)]
+enum ResultBudget {
+    Rows,
+    Detailed,
 }
 #[derive(Debug, Clone)]
 enum Expr {
@@ -65,7 +70,9 @@ impl Query {
         }
         let tokens = Tokenizer::new(&GenericDialect, sql)
             .tokenize_with_location()
-            .map_err(|e| Error::Invalid(e.to_string()))?
+            .map_err(|e| Error::Invalid(e.to_string()))?;
+        let end = tokens.last().map_or(Location::new(1, 1), |t| t.span.end);
+        let tokens = tokens
             .into_iter()
             .filter(|t| !matches!(t.token, Token::Whitespace(_)))
             .collect::<Vec<_>>();
@@ -76,6 +83,7 @@ impl Query {
         let mut p = Parser {
             tokens: tokens.into_iter().map(|t| t.token).collect(),
             pos: 0,
+            error_pos: 0,
         };
         let parsed = (|| -> Result<Self, Error> {
             p.require("SELECT")?;
@@ -101,15 +109,11 @@ impl Query {
             } else {
                 let mut fields = vec![p.ident()?];
                 while p.take(&Token::Comma) {
-                    fields.push(p.ident()?);
-                }
-                if fields
-                    .iter()
-                    .collect::<std::collections::BTreeSet<_>>()
-                    .len()
-                    != fields.len()
-                {
-                    return Err(invalid());
+                    let field = p.ident()?;
+                    if fields.contains(&field) {
+                        return Err(invalid());
+                    }
+                    fields.push(field);
                 }
                 Some(fields)
             };
@@ -121,6 +125,7 @@ impl Query {
                 None
             };
             let order = if p.keyword("ORDER") {
+                let order_pos = p.pos - 1;
                 p.require("BY")?;
                 let name = p.ident()?;
                 let descending = p.keyword("DESC");
@@ -128,6 +133,7 @@ impl Query {
                     p.keyword("ASC");
                 }
                 if aggregate.is_some() {
+                    p.error_pos = order_pos;
                     return Err(Error::Invalid(
                         "ORDER BY is not supported on aggregate results".into(),
                     ));
@@ -146,6 +152,7 @@ impl Query {
             };
             p.take(&Token::SemiColon);
             if p.pos != p.tokens.len() {
+                p.error_pos = p.pos;
                 return Err(invalid());
             }
             Ok(Self {
@@ -159,16 +166,11 @@ impl Query {
         })();
         parsed.map_err(|error| match error {
             Error::Invalid(message) => {
-                let location = locations
-                    .get(p.pos.saturating_sub(1))
-                    .or_else(|| locations.last());
-                match location {
-                    Some(location) => Error::Invalid(format!(
-                        "{message} at line {}, column {}",
-                        location.line, location.column
-                    )),
-                    None => Error::Invalid(format!("{message} at line 1, column 1")),
-                }
+                let location = locations.get(p.error_pos).copied().unwrap_or(end);
+                Error::Invalid(format!(
+                    "{message} at line {}, column {}",
+                    location.line, location.column
+                ))
             }
             other => other,
         })
@@ -177,15 +179,24 @@ impl Query {
     /// # Errors
     /// Reports unknown fields even on empty tables, incompatible comparisons, and budgets.
     pub fn execute(&self, registry: &Registry, limits: Limits) -> Result<QueryResult, Error> {
-        Ok(self.execute_detailed(registry, limits)?.result)
+        self.execute_with_budget(registry, limits, ResultBudget::Rows)
+            .map(|execution| execution.result)
     }
     /// Executes with freshness and revision metadata bound to the actual read version.
     /// # Errors
-    /// Returns the same validation and resource errors as `execute`.
+    /// Returns validation/resource errors. The byte budget includes publication and revision metadata.
     pub fn execute_detailed(
         &self,
         registry: &Registry,
         limits: Limits,
+    ) -> Result<QueryExecution, Error> {
+        self.execute_with_budget(registry, limits, ResultBudget::Detailed)
+    }
+    fn execute_with_budget(
+        &self,
+        registry: &Registry,
+        limits: Limits,
+        budget: ResultBudget,
     ) -> Result<QueryExecution, Error> {
         let start = Instant::now();
         let view = registry.read_snapshot(&self.source, limits)?;
@@ -313,15 +324,23 @@ impl Query {
                 })
                 .collect();
         }
-        livequery_core::json_bytes(&result, limits.bytes)?;
-        if start.elapsed() >= limits.query_timeout {
-            return Err(Error::Deadline);
-        }
-        Ok(QueryExecution {
+        let execution = QueryExecution {
             result,
             publication: view.publication().cloned(),
             revision: view.revision(),
-        })
+        };
+        match budget {
+            ResultBudget::Detailed => {
+                livequery_core::json_bytes(&execution, limits.bytes)?;
+            }
+            ResultBudget::Rows => {
+                livequery_core::json_bytes(&execution.result, limits.bytes)?;
+            }
+        }
+        if start.elapsed() >= limits.query_timeout {
+            return Err(Error::Deadline);
+        }
+        Ok(execution)
     }
     /// Publication revision, or none for a live local source.
     /// # Errors
@@ -426,14 +445,17 @@ fn invalid() -> Error {
 struct Parser {
     tokens: Vec<Token>,
     pos: usize,
+    error_pos: usize,
 }
 impl Parser {
     fn next(&mut self) -> Option<Token> {
+        self.error_pos = self.pos;
         let t = self.tokens.get(self.pos)?.clone();
         self.pos += 1;
         Some(t)
     }
     fn take(&mut self, token: &Token) -> bool {
+        self.error_pos = self.pos;
         if self.tokens.get(self.pos) == Some(token) {
             self.pos += 1;
             true
@@ -442,6 +464,7 @@ impl Parser {
         }
     }
     fn keyword(&mut self, word: &str) -> bool {
+        self.error_pos = self.pos;
         if matches!(self.tokens.get(self.pos), Some(Token::Word(w)) if w.quote_style.is_none() && w.value.eq_ignore_ascii_case(word))
         {
             self.pos += 1;

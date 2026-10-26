@@ -1,0 +1,12 @@
+{
+  "exit": 0,
+  "samples": 84,
+  "controlled_stop_start_ns": 1791840393463000,
+  "controlled_stop_end_ns": 1791840517808000,
+  "stopped_samples": 9,
+  "stopped_cpu_growth_ns": 0,
+  "running_samples": 71,
+  "observer_cpu_ms": 1.081625,
+  "max_read_us": 115.0,
+  "note": "One-second owned computing helper, 120ms SIGSTOP. Validates distinction against exact intervention interval; not natural failure evidence."
+}

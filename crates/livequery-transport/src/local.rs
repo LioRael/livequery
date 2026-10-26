@@ -76,7 +76,9 @@ impl Server {
                     Err(error) => return Err(error.into()),
                 }
             }
-            clients.retain_mut(|client| client.advance(self, &handle));
+            clients.retain_mut(|client| {
+                !stop.load(Ordering::Relaxed) && client.advance(self, &handle)
+            });
             std::thread::sleep(Duration::from_millis(5));
         }
         Ok(())
@@ -372,5 +374,39 @@ mod tests {
         assert!(!other.join("private/test.sock").exists());
         drop(listener);
         fs::remove_dir_all(root).unwrap();
+    }
+    #[test]
+    fn cancellation_stops_between_ready_clients() {
+        use std::sync::atomic::AtomicUsize;
+        let root = std::env::temp_dir().join(format!("lqstop-{}", std::process::id()));
+        fs::DirBuilder::new().mode(0o700).create(&root).unwrap();
+        let path = root.join("a.sock");
+        let server = Server::bind(&path, Limits::default()).unwrap();
+        let mut peers = Vec::new();
+        for _ in 0..16 {
+            let mut peer = UnixStream::connect(&path).unwrap();
+            peer.write_all(b"{\"command\":\"schema\"}\n").unwrap();
+            peers.push(peer);
+        }
+        let stop = AtomicBool::new(false);
+        let calls = AtomicUsize::new(0);
+        server
+            .serve(&stop, |_| {
+                calls.fetch_add(1, Ordering::Relaxed);
+                stop.store(true, Ordering::Relaxed);
+                Ok(Response::Ok {
+                    data: serde_json::Value::Null,
+                })
+            })
+            .unwrap();
+        assert_eq!(
+            calls.load(Ordering::Relaxed),
+            1,
+            "shutdown must not dispatch queued queries"
+        );
+        drop(peers);
+        drop(server);
+        assert!(!path.exists());
+        fs::remove_dir(root).unwrap();
     }
 }

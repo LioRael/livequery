@@ -1,0 +1,9 @@
+{
+  "base_source": "12fa024461de4096b325ed3c9b8c87da735ba1e7",
+  "diagnostic_only": true,
+  "injected_pause": false,
+  "seconds": 120,
+  "binary_sha256": "efcee039890b24357bd9973f5decf5348a6f82cb8a00c43ed7339ec0c191d77f",
+  "patch_sha256": "eb59fc7dc25c65179ca9ae56d51246d4c135e9e06f015018f5c27ce755cc8704",
+  "note": "Modified source defined by patch; benchmark source_ref alone is not provenance. Sampling and stage checkpoints add overhead. Not release acceptance."
+}

@@ -1,0 +1,89 @@
+{
+  "note": "Read-only metadata of preexisting trace scratch files during prior local endurance. Ownership and target unknown; no causal conclusion. Not deleted. Investigate host activity before assuming an internal lock or scheduler cause.",
+  "files": [
+    {
+      "name": "instrumentsKof8LT.ktrace",
+      "bytes": 2218802704,
+      "birth_unix": 1793025948.893147,
+      "modified_unix": 1793025958.857836
+    },
+    {
+      "name": "instrumentsFSR1Iw.ktrace",
+      "bytes": 2088515936,
+      "birth_unix": 1793026060.0865269,
+      "modified_unix": 1793026068.0672705
+    },
+    {
+      "name": "instruments5W0pWR.ktrace",
+      "bytes": 2162169808,
+      "birth_unix": 1793026163.484409,
+      "modified_unix": 1793026172.3278315
+    },
+    {
+      "name": "instrumentsdnrblu.ktrace",
+      "bytes": 2132565280,
+      "birth_unix": 1793026270.0277731,
+      "modified_unix": 1793026277.956825
+    },
+    {
+      "name": "instruments0dx73t.ktrace",
+      "bytes": 2078806904,
+      "birth_unix": 1793026368.1641648,
+      "modified_unix": 1793026376.0255504
+    },
+    {
+      "name": "instrumentsYqHJpK.ktrace",
+      "bytes": 2076750336,
+      "birth_unix": 1793026465.4394097,
+      "modified_unix": 1793026474.445825
+    },
+    {
+      "name": "instruments5oPReB.ktrace",
+      "bytes": 1968046168,
+      "birth_unix": 1793026561.6821876,
+      "modified_unix": 1793026569.9014964
+    },
+    {
+      "name": "instrumentsIdUhf1.ktrace",
+      "bytes": 2189219224,
+      "birth_unix": 1793026650.8384995,
+      "modified_unix": 1793026659.51762
+    },
+    {
+      "name": "instrumentsEpqwWT.ktrace",
+      "bytes": 2132643720,
+      "birth_unix": 1793026748.9814508,
+      "modified_unix": 1793026756.9599838
+    },
+    {
+      "name": "instrumentsCFNRy2.ktrace",
+      "bytes": 2081579632,
+      "birth_unix": 1793026851.3099904,
+      "modified_unix": 1793026859.3430154
+    },
+    {
+      "name": "instrumentsMK2KCP.ktrace",
+      "bytes": 2118169816,
+      "birth_unix": 1793026945.7213705,
+      "modified_unix": 1793026954.4969888
+    },
+    {
+      "name": "instruments1HHqKD.ktrace",
+      "bytes": 2084608488,
+      "birth_unix": 1793027042.819917,
+      "modified_unix": 1793027051.5703425
+    },
+    {
+      "name": "instrumentsLUkxsF.ktrace",
+      "bytes": 2149611472,
+      "birth_unix": 1793028544.3867943,
+      "modified_unix": 1793028552.7600894
+    },
+    {
+      "name": "instrumentsLxPGwq.ktrace",
+      "bytes": 2182295592,
+      "birth_unix": 1793028645.7135503,
+      "modified_unix": 1793028654.979188
+    }
+  ]
+}

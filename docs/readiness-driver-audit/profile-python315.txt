@@ -1,0 +1,45 @@
+Tue Oct 27 04:51:38 2026    target/driver-review/profile315.pstats
+
+         13675820 function calls (13359702 primitive calls) in 13.200 seconds
+
+   Ordered by: internal time
+   List reduced from 1377 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    2.865    2.865    2.868    2.868 {built-in method posix.wait4}
+    87005    1.597    0.000    1.597    0.000 {method 'control' of 'select.kqueue' objects}
+   151048    1.265    0.000    1.265    0.000 {method 'send' of '_socket.socket' objects}
+   151051    1.170    0.000    1.170    0.000 {method 'recv' of '_socket.socket' objects}
+    83834    0.436    0.000   20.134    0.000 base_events.py:1990(_run_once)
+   149488    0.336    0.000    4.382    0.000 benchmark-service.py:53(load)
+   302090    0.241    0.000    2.290    0.000 tasks.py:449(wait_for)
+   316326    0.218    0.000    0.275    0.000 events.py:41(__init__)
+   298944    0.217    0.000    0.537    0.000 streams.py:748(readexactly)
+   314750    0.177    0.000    7.489    0.000 events.py:92(_run)
+   151045    0.177    0.000    1.459    0.000 selector_events.py:1060(write)
+   152621    0.166    0.000    0.584    0.000 base_events.py:804(call_at)
+    83834    0.164    0.000   11.861    0.000 selectors.py:540(select)
+   151045    0.155    0.000    0.203    0.000 streams.py:374(drain)
+   151046    0.153    0.000    0.265    0.000 timeouts.py:144(timeout)
+314752/14    0.151    0.000    0.001    0.000 {method 'run' of '_contextvars.Context' objects}
+   302090    0.144    0.000    0.247    0.000 streams.py:530(_wait_for_data)
+   151046    0.134    0.000    0.772    0.000 timeouts.py:49(reschedule)
+   152621    0.127    0.000    0.223    0.000 events.py:190(cancel)
+   162120    0.126    0.000    0.248    0.000 base_events.py:851(_call_soon)
+   151046    0.125    0.000    0.938    0.000 timeouts.py:84(__aenter__)
+   151045    0.121    0.000    0.688    0.000 streams.py:508(feed_data)
+   394030    0.114    0.000    0.163    0.000 base_events.py:771(time)
+        1    0.105    0.105    0.105    0.105 {built-in method time.sleep}
+   151045    0.095    0.000    2.188    0.000 selector_events.py:1014(_read_ready__data_received)
+   152621    0.095    0.000    0.267    0.000 events.py:146(__init__)
+   158931    0.094    0.000    0.108    0.000 base_events.py:461(create_future)
+   158932    0.088    0.000    0.428    0.000 {method 'set_result' of '_asyncio.Future' objects}
+   162120    0.088    0.000    0.352    0.000 base_events.py:822(call_soon)
+   151046    0.083    0.000    0.297    0.000 timeouts.py:96(__aexit__)
+   337576    0.082    0.000    0.109    0.000 events.py:162(__lt__)
+   152622    0.081    0.000    0.520    0.000 streams.py:479(_wakeup_waiter)
+   151045    0.078    0.000    0.799    0.000 streams.py:289(data_received)
+636328/636187    0.073    0.000    0.073    0.000 {built-in method builtins.len}
+    83834    0.070    0.000    0.133    0.000 selector_events.py:749(_process_events)
+
+

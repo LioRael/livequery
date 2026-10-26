@@ -1,0 +1,102 @@
+[
+  {
+    "monotonic_before_ns": 1776187735860000,
+    "realtime_ns": 1793036402398160000,
+    "monotonic_after_ns": 1776187735869000
+  },
+  {
+    "monotonic_before_ns": 1776187735871000,
+    "realtime_ns": 1793036402398163000,
+    "monotonic_after_ns": 1776187735872000
+  },
+  {
+    "monotonic_before_ns": 1776187735873000,
+    "realtime_ns": 1793036402398166000,
+    "monotonic_after_ns": 1776187735874000
+  },
+  {
+    "monotonic_before_ns": 1776187735886000,
+    "realtime_ns": 1793036402398182000,
+    "monotonic_after_ns": 1776187735891000
+  },
+  {
+    "monotonic_before_ns": 1776187735892000,
+    "realtime_ns": 1793036402398185000,
+    "monotonic_after_ns": 1776187735894000
+  },
+  {
+    "monotonic_before_ns": 1776187735895000,
+    "realtime_ns": 1793036402398188000,
+    "monotonic_after_ns": 1776187735896000
+  },
+  {
+    "monotonic_before_ns": 1776187735897000,
+    "realtime_ns": 1793036402398190000,
+    "monotonic_after_ns": 1776187735898000
+  },
+  {
+    "monotonic_before_ns": 1776187735899000,
+    "realtime_ns": 1793036402398192000,
+    "monotonic_after_ns": 1776187735901000
+  },
+  {
+    "monotonic_before_ns": 1776187735901000,
+    "realtime_ns": 1793036402398194000,
+    "monotonic_after_ns": 1776187735903000
+  },
+  {
+    "monotonic_before_ns": 1776187735904000,
+    "realtime_ns": 1793036402398196000,
+    "monotonic_after_ns": 1776187735905000
+  },
+  {
+    "monotonic_before_ns": 1776187735906000,
+    "realtime_ns": 1793036402398199000,
+    "monotonic_after_ns": 1776187735907000
+  },
+  {
+    "monotonic_before_ns": 1776187735908000,
+    "realtime_ns": 1793036402398201000,
+    "monotonic_after_ns": 1776187735909000
+  },
+  {
+    "monotonic_before_ns": 1776187735910000,
+    "realtime_ns": 1793036402398203000,
+    "monotonic_after_ns": 1776187735912000
+  },
+  {
+    "monotonic_before_ns": 1776187735912000,
+    "realtime_ns": 1793036402398205000,
+    "monotonic_after_ns": 1776187735914000
+  },
+  {
+    "monotonic_before_ns": 1776187735915000,
+    "realtime_ns": 1793036402398207000,
+    "monotonic_after_ns": 1776187735916000
+  },
+  {
+    "monotonic_before_ns": 1776187735917000,
+    "realtime_ns": 1793036402398210000,
+    "monotonic_after_ns": 1776187735922000
+  },
+  {
+    "monotonic_before_ns": 1776187735923000,
+    "realtime_ns": 1793036402398216000,
+    "monotonic_after_ns": 1776187735924000
+  },
+  {
+    "monotonic_before_ns": 1776187735925000,
+    "realtime_ns": 1793036402398218000,
+    "monotonic_after_ns": 1776187735926000
+  },
+  {
+    "monotonic_before_ns": 1776187735927000,
+    "realtime_ns": 1793036402398220000,
+    "monotonic_after_ns": 1776187735928000
+  },
+  {
+    "monotonic_before_ns": 1776187735929000,
+    "realtime_ns": 1793036402398222000,
+    "monotonic_after_ns": 1776187735930000
+  }
+]

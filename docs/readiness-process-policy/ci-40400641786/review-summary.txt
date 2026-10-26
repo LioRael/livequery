@@ -1,0 +1,220 @@
+{
+  "artifact": "macos26-official-sync-be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+  "measurement": {
+    "variant": "official",
+    "engine": "sync",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "separate_build_job": true,
+    "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+    "cpu_admission_gate": false,
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+  },
+  "build": {
+    "official_base": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+    "diagnostic_only": true,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "runner_arch": "arm64",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "seconds_per_engine": 300,
+    "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+  },
+  "sha_matches": true,
+  "result": {
+    "elapsed_seconds": 300.02470249999993,
+    "requests": 6927532,
+    "request_error_codes": {},
+    "observations": 52695,
+    "observation_error_codes": {
+      "busy": 9
+    },
+    "publication_attempts": 11236,
+    "publication_error_codes": {
+      "busy": 1
+    },
+    "query_kinds": {
+      "sort": 17567,
+      "count": 17564,
+      "max": 17564
+    }
+  },
+  "report_sha_matches": true,
+  "gate": "sync load correctness/resource gates PASS\n",
+  "cpu": {
+    "windows": 60,
+    "min": 118.05555555555556,
+    "max": 294.2498347653668,
+    "median": 258.0784649682497
+  }
+}
+{
+  "artifact": "macos26-official-async-be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+  "measurement": {
+    "variant": "official",
+    "engine": "async",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "separate_build_job": true,
+    "binary_sha256_verified": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+    "cpu_admission_gate": false,
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+  },
+  "build": {
+    "official_base": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+    "diagnostic_only": true,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "runner_arch": "arm64",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "seconds_per_engine": 300,
+    "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+  },
+  "sha_matches": true,
+  "result": {
+    "elapsed_seconds": 300.02591375,
+    "requests": 11050765,
+    "request_error_codes": {},
+    "observations": 63211,
+    "observation_error_codes": {
+      "busy": 1
+    },
+    "publication_attempts": 13769,
+    "publication_error_codes": {
+      "busy": 1
+    },
+    "query_kinds": {
+      "sort": 21072,
+      "count": 21071,
+      "max": 21068
+    }
+  },
+  "report_sha_matches": true,
+  "gate": "async load correctness/resource gates PASS\n",
+  "cpu": {
+    "windows": 61,
+    "min": 27.56113681427627,
+    "max": 298.60557768924303,
+    "median": 241.49797570850203
+  }
+}
+{
+  "artifact": "macos26-diagnostic-sync-be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+  "measurement": {
+    "variant": "diagnostic",
+    "engine": "sync",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "runner_image": "20261021.0445.8",
+    "runner_os_image": "macos26",
+    "separate_build_job": true,
+    "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+    "cpu_admission_gate": false,
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+  },
+  "build": {
+    "official_base": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+    "diagnostic_only": true,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "runner_arch": "arm64",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "seconds_per_engine": 300,
+    "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+  },
+  "sha_matches": true,
+  "result": {
+    "elapsed_seconds": 300.01955254200004,
+    "requests": 6832381,
+    "request_error_codes": {},
+    "observations": 49916,
+    "observation_error_codes": {
+      "busy": 4
+    },
+    "publication_attempts": 8011,
+    "publication_error_codes": {
+      "deadline": 4
+    },
+    "query_kinds": {
+      "sort": 16640,
+      "count": 16639,
+      "max": 16637
+    }
+  },
+  "report_sha_matches": true,
+  "gate": "Traceback (most recent call last):\n  File \"/Users/runner/work/livequery/livequery/scripts/check-load.py\", line 28, in <module>\n    assert set(row[key]) <= {\"busy\"}, (row[\"engine\"], key, row[key])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('sync', 'publication_error_codes', {'deadline': 4})\n",
+  "cpu": {
+    "windows": 60,
+    "min": 125.9920634920635,
+    "max": 300.0,
+    "median": 271.8639897390257
+  }
+}
+{
+  "artifact": "macos26-diagnostic-async-be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+  "measurement": {
+    "variant": "diagnostic",
+    "engine": "async",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "separate_build_job": true,
+    "binary_sha256_verified": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f",
+    "cpu_admission_gate": false,
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7"
+  },
+  "build": {
+    "official_base": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "workflow_head": "be31c4c19b2b723f07e30d99cf5c511bda9e66e7",
+    "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+    "diagnostic_only": true,
+    "runner_image": "20261013.0424.1",
+    "runner_os_image": "macos26",
+    "runner_arch": "arm64",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "seconds_per_engine": 300,
+    "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+  },
+  "sha_matches": true,
+  "result": {
+    "elapsed_seconds": 300.020888917,
+    "requests": 4757926,
+    "request_error_codes": {},
+    "observations": 46638,
+    "observation_error_codes": {
+      "busy": 5
+    },
+    "publication_attempts": 7980,
+    "publication_error_codes": {
+      "deadline": 2
+    },
+    "query_kinds": {
+      "sort": 15546,
+      "count": 15546,
+      "max": 15546
+    }
+  },
+  "report_sha_matches": true,
+  "gate": "Traceback (most recent call last):\n  File \"/Users/runner/work/livequery/livequery/scripts/check-load.py\", line 28, in <module>\n    assert set(row[key]) <= {\"busy\"}, (row[\"engine\"], key, row[key])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('async', 'publication_error_codes', {'deadline': 2})\n",
+  "cpu": {
+    "windows": 60,
+    "min": 116.78783873099802,
+    "max": 300.0,
+    "median": 277.0234449034874
+  }
+}

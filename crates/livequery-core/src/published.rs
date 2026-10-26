@@ -249,3 +249,31 @@ impl PublishedHandle {
         self.published.status()
     }
 }
+
+#[cfg(test)]
+mod lifetime_tests {
+    use super::*;
+    #[test]
+    fn superseded_snapshots_are_freed_after_the_last_reader() {
+        let limits = Limits::default();
+        let snapshot = Snapshot {
+            columns: vec![Column::new::<u64>("id")],
+            rows: Vec::new(),
+        };
+        let published = Published::from_snapshot(snapshot.clone(), limits).unwrap();
+        let mut readers = Vec::new();
+        let mut weak = Vec::new();
+        for _ in 0..100 {
+            let (reader, _) = published.read(limits).unwrap();
+            weak.push(Arc::downgrade(&reader));
+            readers.push(reader);
+            published.publish(snapshot.clone()).unwrap();
+        }
+        assert!(weak.iter().all(|snapshot| snapshot.upgrade().is_some()));
+        drop(readers);
+        assert!(
+            weak.iter().all(|snapshot| snapshot.upgrade().is_none()),
+            "publication must not retain historical snapshots after readers release them"
+        );
+    }
+}

@@ -10,6 +10,7 @@ default = ["inspection", "async"]
 inspection = ["dep:livequery"]
 async = ["dep:tokio"]
 [dependencies]
+libc = "0.2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 livequery = { path = "../../crates/livequery", optional = true }

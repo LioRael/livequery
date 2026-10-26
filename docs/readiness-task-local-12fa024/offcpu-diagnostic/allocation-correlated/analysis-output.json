@@ -1,0 +1,102 @@
+{
+  "spans": [
+    {
+      "kind": "capture",
+      "tid": 52266973,
+      "deadline": false,
+      "wall_ms": 54.222,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 7.435,
+          "cpu_ms": 5.349459,
+          "allocator_wall_ms": 0.069458,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 4.459,
+          "cpu_ms": 0.363875,
+          "allocator_wall_ms": 4.057829,
+          "allocator_calls": 3073,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 3.525,
+          "cpu_ms": 0.5025,
+          "allocator_wall_ms": 0.740285,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52266973,
+      "deadline": false,
+      "wall_ms": 73.165,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 19.83,
+          "cpu_ms": 0.605625,
+          "allocator_wall_ms": 17.578861,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 10.334,
+          "cpu_ms": 0.294583,
+          "allocator_wall_ms": 4.347259,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 1
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 9.697,
+          "cpu_ms": 0.361542,
+          "allocator_wall_ms": 0.934333,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    },
+    {
+      "kind": "capture",
+      "tid": 52266973,
+      "deadline": false,
+      "wall_ms": 84.459,
+      "intervals": [
+        {
+          "phase": "validate -> validated",
+          "wall_ms": 37.24,
+          "cpu_ms": 3.414958,
+          "allocator_wall_ms": 0.010958,
+          "allocator_calls": 21,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 34.842,
+          "cpu_ms": 0.468375,
+          "allocator_wall_ms": 0.182054,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        },
+        {
+          "phase": "rows -> rows",
+          "wall_ms": 1.562,
+          "cpu_ms": 0.256333,
+          "allocator_wall_ms": 0.670725,
+          "allocator_calls": 3072,
+          "slow_allocator_calls": 0
+        }
+      ]
+    }
+  ],
+  "dropped_events": 0,
+  "limitations": "Allocator wall time includes time descheduled while within System allocator. Positive allocator time is not proof of allocator lock contention. CPU is thread CPU. Unrecorded fast spans are not summarized."
+}

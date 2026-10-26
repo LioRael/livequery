@@ -1,0 +1,14 @@
+{
+  "exit_code": -9,
+  "stop_reason": "total_duration_including_finalization",
+  "elapsed_seconds": 31.196588333,
+  "peak_observed_bytes": 0,
+  "final_bytes": 0,
+  "private_tmpdir": "/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/offcpu-diagnostic/bounded-recorder/profiler-validation/tmp",
+  "limits": {
+    "bytes": 134217728,
+    "seconds": 30.0,
+    "min_free_bytes": 8589934592
+  },
+  "limitations": "50 ms polling can overshoot; only files under root counted. Recorder must be verified to honor TMPDIR. Process groups do not constrain helpers that deliberately detach."
+}

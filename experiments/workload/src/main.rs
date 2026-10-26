@@ -9,17 +9,54 @@ use std::{
     },
     time::{Duration, Instant},
 };
-#[derive(Debug, Clone, Copy, Serialize, Default)]
+// The workload runs on Linux/macOS; thread CPU time separates computation from
+// elapsed time spent off-CPU without changing the library's wall-clock budget.
+#[cfg(feature = "inspection")]
+fn thread_cpu_ns() -> Option<u64> {
+    let mut time = libc::timespec {
+        tv_sec: 0,
+        tv_nsec: 0,
+    };
+    // SAFETY: time is writable and initialized; this clock reads the calling thread.
+    if unsafe { libc::clock_gettime(libc::CLOCK_THREAD_CPUTIME_ID, &mut time) } != 0 {
+        return None;
+    }
+    u64::try_from(time.tv_sec)
+        .ok()?
+        .checked_mul(1_000_000_000)?
+        .checked_add(u64::try_from(time.tv_nsec).ok()?)
+}
+
+#[derive(Debug, Clone, Serialize, Default)]
 #[cfg_attr(feature = "inspection", derive(livequery::Inspect))]
 struct Counters {
     completed: u64,
     bytes: u64,
+    #[serde(skip)]
+    #[cfg_attr(feature = "inspection", inspect(skip))]
+    jobs: Vec<Job>,
+}
+#[derive(Debug, Clone, Serialize)]
+#[cfg_attr(feature = "inspection", derive(livequery::Inspect))]
+struct Job {
+    id: u64,
+    state: String,
+    worker_id: u64,
+    elapsed_ms: u64,
+    retry_count: u64,
+    detail: String,
 }
 type State = Arc<Mutex<Counters>>;
 fn record(state: &State) {
     let mut counters = state.lock().expect("application counters poisoned");
     counters.completed += 1;
     counters.bytes += 64;
+    let completed = counters.completed;
+    if !counters.jobs.is_empty() {
+        let index = completed as usize % counters.jobs.len();
+        counters.jobs[index].elapsed_ms += 1;
+        counters.jobs[index].retry_count = counters.jobs[index].elapsed_ms / 100;
+    }
 }
 fn sync_client(mut stream: TcpStream, state: State, stop: Arc<AtomicBool>) {
     stream
@@ -153,7 +190,7 @@ fn manual_debug(path: PathBuf, state: State, stop: Arc<AtomicBool>) -> std::thre
                             .get("min_completed")
                             .and_then(|v| v.as_u64())
                             .unwrap_or(0);
-                        let counters = *state.lock().expect("application counters poisoned");
+                        let counters = state.lock().expect("application counters poisoned").clone();
                         let rows = if counters.completed > minimum {
                             vec![counters]
                         } else {
@@ -188,28 +225,81 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .transpose()?
         .unwrap_or(10)
         .max(1);
-    let state = Arc::new(Mutex::new(Counters::default()));
+    let task_rows = args
+        .get(5)
+        .map(|v| v.parse::<usize>())
+        .transpose()?
+        .unwrap_or(0);
+    let string_bytes = args
+        .get(6)
+        .map(|v| v.parse::<usize>())
+        .transpose()?
+        .unwrap_or(32);
+    if task_rows > 10_000 || string_bytes > 4096 {
+        return Err("fixture size too large".into());
+    }
+    let jobs = (0..task_rows)
+        .map(|id| Job {
+            id: id as u64,
+            state: "running".into(),
+            worker_id: id as u64 % 4,
+            elapsed_ms: 0,
+            retry_count: 0,
+            detail: "x".repeat(string_bytes),
+        })
+        .collect();
+    let state = Arc::new(Mutex::new(Counters {
+        jobs,
+        ..Counters::default()
+    }));
     let stop = Arc::new(AtomicBool::new(false));
+    let slow_captures = Arc::new(Mutex::new(Vec::<serde_json::Value>::new()));
     let publication_errors = Arc::new(AtomicU64::new(0));
     let publication_attempts = Arc::new(AtomicU64::new(0));
+    let capture_lock_ns = Arc::new(AtomicU64::new(0));
+    let capture_lock_max_ns = Arc::new(AtomicU64::new(0));
+    let publication_ns = Arc::new(AtomicU64::new(0));
+    let publication_max_ns = Arc::new(AtomicU64::new(0));
     let publication_error_codes =
         Arc::new(Mutex::new(std::collections::BTreeMap::<String, u64>::new()));
     let dir = std::env::temp_dir().join(format!("lq-workload-{}", std::process::id()));
     let path = dir.join("agent.sock");
     let mut workers = Vec::new();
+    let mut diagnostic_snapshot_bytes = 0usize;
     if mode != "baseline" {
         std::fs::DirBuilder::new().mode(0o700).create(&dir)?;
     }
     match mode {
         "baseline" => {}
         "manual" => workers.push(manual_debug(path.clone(), state.clone(), stop.clone())),
-        "published" => {
+        "published" | "jobs" => {
             #[cfg(feature = "inspection")]
             {
                 let limits = livequery::Limits::default();
-                let published = livequery::Published::new::<Counters>(limits)?;
+                let task_mode = mode == "jobs";
+                if task_mode && task_rows == 0 {
+                    return Err("jobs requires positive rows".into());
+                }
+                let published = if task_mode {
+                    livequery::Published::new::<Job>(limits)?
+                } else {
+                    livequery::Published::new::<Counters>(limits)?
+                };
+                if task_mode {
+                    let initial = state
+                        .lock()
+                        .expect("application counters poisoned")
+                        .jobs
+                        .clone();
+                    let snapshot = livequery::Snapshot::capture(initial.iter(), limits)?;
+                    diagnostic_snapshot_bytes = serde_json::to_vec(&snapshot)?.len();
+                    published.publish(snapshot)?;
+                }
                 let registry = livequery::Registry::new();
-                let guard = registry.expose_published("counters", published.clone())?;
+                let guard = registry.expose_published(
+                    if task_mode { "jobs" } else { "counters" },
+                    published.clone(),
+                )?;
                 let server = livequery::local::Server::bind(&path, registry, limits)?;
                 let shutdown = stop.clone();
                 workers.push(std::thread::spawn(move || {
@@ -218,15 +308,61 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }));
                 let state = state.clone();
                 let shutdown = stop.clone();
+                let slow_captures = slow_captures.clone();
                 let errors = publication_errors.clone();
                 let attempts = publication_attempts.clone();
                 let error_codes = publication_error_codes.clone();
+                let lock_total = capture_lock_ns.clone();
+                let lock_max = capture_lock_max_ns.clone();
+                let publish_total = publication_ns.clone();
+                let publish_max = publication_max_ns.clone();
                 workers.push(std::thread::spawn(move || {
                     while !shutdown.load(Ordering::Relaxed) {
-                        let counters = *state.lock().expect("application counters poisoned");
+                        let counters = {
+                            let guard = state.lock().expect("application counters poisoned");
+                            let start = Instant::now();
+                            let copy = guard.clone();
+                            let elapsed =
+                                start.elapsed().as_nanos().min(u128::from(u64::MAX)) as u64;
+                            lock_total.fetch_add(elapsed, Ordering::Relaxed);
+                            lock_max.fetch_max(elapsed, Ordering::Relaxed);
+                            copy
+                        };
+                        let publication_started = Instant::now();
                         attempts.fetch_add(1, Ordering::Relaxed);
-                        if let Err(error) = livequery::Snapshot::capture([&counters], limits)
-                            .and_then(|snapshot| published.publish(snapshot))
+                        let cpu_started = thread_cpu_ns();
+                        let capture_started = Instant::now();
+                        let snapshot = if task_mode {
+                            livequery::Snapshot::capture(counters.jobs.iter(), limits)
+                        } else {
+                            livequery::Snapshot::capture([&counters], limits)
+                        };
+                        let capture_wall_ns = capture_started.elapsed().as_nanos();
+                        let capture_cpu_ns = cpu_started
+                            .zip(thread_cpu_ns())
+                            .and_then(|(start, end)| end.checked_sub(start));
+                        let capture_error = snapshot.as_ref().err().map(livequery::Error::code);
+                        if capture_wall_ns >= 50_000_000 || capture_error.is_some() {
+                            let mut samples =
+                                slow_captures.lock().expect("diagnostic samples poisoned");
+                            if samples
+                                .iter()
+                                .filter(|sample| {
+                                    sample["capture_error"].is_null() == capture_error.is_none()
+                                })
+                                .count()
+                                < 64
+                            {
+                                samples.push(serde_json::json!({
+                                    "attempt": attempts.load(Ordering::Relaxed),
+                                    "capture_wall_ns": capture_wall_ns,
+                                    "capture_cpu_ns": capture_cpu_ns,
+                                    "capture_error": capture_error,
+                                }));
+                            }
+                        }
+                        if let Err(error) =
+                            snapshot.and_then(|snapshot| published.publish(snapshot))
                         {
                             errors.fetch_add(1, Ordering::Relaxed);
                             *error_codes
@@ -235,6 +371,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                                 .entry(error.code().into())
                                 .or_default() += 1;
                         }
+                        let elapsed = publication_started
+                            .elapsed()
+                            .as_nanos()
+                            .min(u128::from(u64::MAX)) as u64;
+                        publish_total.fetch_add(elapsed, Ordering::Relaxed);
+                        publish_max.fetch_max(elapsed, Ordering::Relaxed);
                         std::thread::sleep(Duration::from_millis(publish_ms));
                     }
                 }));
@@ -250,7 +392,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let listener = TcpListener::bind("127.0.0.1:0")?;
     println!(
         "{}",
-        serde_json::json!({"port":listener.local_addr()?.port(),"socket":path,"pid":std::process::id()})
+        serde_json::json!({"port":listener.local_addr()?.port(),"socket":path,"pid":std::process::id(),"diagnostic_snapshot_bytes":diagnostic_snapshot_bytes})
     );
     std::io::stdout().flush()?;
     let deadline = Instant::now() + Duration::from_secs(seconds);
@@ -268,7 +410,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     println!(
         "{}",
-        serde_json::json!({"publication_errors":publication_errors.load(Ordering::Relaxed),"publication_attempts":publication_attempts.load(Ordering::Relaxed),"publication_error_codes":*publication_error_codes.lock().expect("diagnostic counters poisoned"),"completed":state.lock().expect("counters poisoned").completed})
+        serde_json::json!({"slow_captures":*slow_captures.lock().expect("diagnostic samples poisoned"),"capture_lock_ns":capture_lock_ns.load(Ordering::Relaxed),"capture_lock_max_ns":capture_lock_max_ns.load(Ordering::Relaxed),"publication_ns":publication_ns.load(Ordering::Relaxed),"publication_max_ns":publication_max_ns.load(Ordering::Relaxed),"publication_errors":publication_errors.load(Ordering::Relaxed),"publication_attempts":publication_attempts.load(Ordering::Relaxed),"publication_error_codes":*publication_error_codes.lock().expect("diagnostic counters poisoned"),"completed":state.lock().expect("counters poisoned").completed})
     );
     Ok(())
+}
+
+#[cfg(all(test, feature = "inspection"))]
+mod tests {
+    #[test]
+    fn thread_cpu_clock_is_available_and_monotonic() {
+        let start = super::thread_cpu_ns().expect("thread CPU clock must be available");
+        for i in 0_u64..100_000 {
+            std::hint::black_box(i.wrapping_mul(i));
+        }
+        let end = super::thread_cpu_ns().expect("thread CPU clock must remain available");
+        assert!(
+            end > start,
+            "CPU work should advance the calling thread clock"
+        );
+    }
 }

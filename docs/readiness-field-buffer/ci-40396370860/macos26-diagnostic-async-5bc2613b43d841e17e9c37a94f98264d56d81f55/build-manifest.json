@@ -1,0 +1,19 @@
+{
+  "binary_sha256": {
+    "official": "dc7aa356b8e450de5b2cdc99e51c039b6bb9c14ee628c70dfcae465599172ccf",
+    "diagnostic": "cb456f330076117553a21e365348291d20c59487eb26f03cb060872066aca98f"
+  },
+  "build_provenance": {
+    "official_base": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+    "workflow_head": "5bc2613b43d841e17e9c37a94f98264d56d81f55",
+    "patch_sha256": "abec3f4a9904b6b61ac11c9c82bf59937c3af26d2bd446dd5035576b76c85cf4",
+    "diagnostic_only": true,
+    "runner_image": "20261021.0445.8",
+    "runner_os_image": "macos26",
+    "runner_arch": "arm64",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 3,
+    "seconds_per_engine": 300,
+    "limitations": "Allocator clocks and 10ms sampling add overhead. A passing diagnostic does not meet final endurance gates. VM isolation does not establish exclusive physical-host CPU."
+  }
+}

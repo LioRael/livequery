@@ -1,0 +1,14 @@
+{
+  "binary_sha256": "8675e7611ec061cd798ad3eae65c98fe8c141927e1052f5730362f025d9c0910",
+  "binary_source_verified": false,
+  "purpose": "Profile the unchanged Python driver, not qualify the library binary",
+  "local_python_versions": [
+    "3.9.6",
+    "3.15.1"
+  ],
+  "ci_python_path": "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/Resources/Python.app/Contents/MacOS/Python",
+  "ci_evidence": "docs/readiness-field-buffer/ci-40396370860/*official*/*/host-activity.jsonl",
+  "profile_overhead": true,
+  "seconds_per_run": 10,
+  "original_acceptance": false
+}

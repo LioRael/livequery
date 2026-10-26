@@ -1,0 +1,70 @@
+{
+  "agents": [
+    {
+      "target": "gui/501/com.apple.corespotlightd",
+      "before_exit": 0,
+      "actions": [
+        {
+          "action": "disable",
+          "exit": 0,
+          "stderr": ""
+        },
+        {
+          "action": "bootout",
+          "exit": 0,
+          "stderr": ""
+        }
+      ],
+      "after_exit": 113,
+      "shutdown_observations": [
+        {
+          "exit": 0,
+          "status": [
+            "state = SIGTERMed",
+            "pid = 423",
+            "state = active",
+            "state = active"
+          ]
+        },
+        {
+          "exit": 113,
+          "status": []
+        }
+      ]
+    },
+    {
+      "target": "user/501/com.apple.corespotlightd",
+      "before_exit": 113,
+      "stderr": "Bad request.\nCould not find service \"com.apple.corespotlightd\" in domain for uid: 501\n"
+    },
+    {
+      "target": "gui/501/com.apple.helpd",
+      "before_exit": 0,
+      "actions": [
+        {
+          "action": "disable",
+          "exit": 0,
+          "stderr": ""
+        },
+        {
+          "action": "bootout",
+          "exit": 0,
+          "stderr": ""
+        }
+      ],
+      "after_exit": 113,
+      "shutdown_observations": [
+        {
+          "exit": 113,
+          "status": []
+        }
+      ]
+    },
+    {
+      "target": "user/501/com.apple.helpd",
+      "before_exit": 113,
+      "stderr": "Bad request.\nCould not find service \"com.apple.helpd\" in domain for uid: 501\n"
+    }
+  ],
+  "configuration_failed": false
+}

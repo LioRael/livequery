@@ -1,0 +1,8 @@
+{
+  "outside": "{\"thread\":\"main\",\"pid\":96938,\"nice\":0,\"qos_status\":0,\"qos\":17,\"relative\":0,\"task_role_status\":0,\"task_role\":0,\"threadinfo_bytes\":112,\"current_priority\":20,\"base_priority\":20,\"max_priority\":20}\n{\"thread\":\"child\",\"pid\":96938,\"nice\":0,\"qos_status\":0,\"qos\":21,\"relative\":0,\"task_role_status\":0,\"task_role\":0,\"threadinfo_bytes\":112,\"current_priority\":20,\"base_priority\":20,\"max_priority\":20}\n",
+  "bootstrap_exit": 0,
+  "bootstrap_error": "",
+  "inside": "{\"thread\":\"main\",\"pid\":96940,\"nice\":0,\"qos_status\":0,\"qos\":21,\"relative\":0,\"task_role_status\":0,\"task_role\":0,\"threadinfo_bytes\":112,\"current_priority\":31,\"base_priority\":31,\"max_priority\":63}\n{\"thread\":\"child\",\"pid\":96940,\"nice\":0,\"qos_status\":0,\"qos\":21,\"relative\":0,\"task_role_status\":0,\"task_role\":0,\"threadinfo_bytes\":112,\"current_priority\":31,\"base_priority\":31,\"max_priority\":63}\n",
+  "cleanup_exit": 0,
+  "absent": true
+}

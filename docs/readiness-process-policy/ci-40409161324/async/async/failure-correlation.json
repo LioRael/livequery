@@ -1,0 +1,53 @@
+{
+  "spans": [
+    {
+      "kind": "capture",
+      "deadline": false,
+      "tid": 15643,
+      "pre_return_wall_ms": 55.627,
+      "pre_return_cpu_ms": 4.507792,
+      "intervals": [
+        {
+          "phase": "rows -> rows",
+          "start_ns": 411496903000,
+          "end_ns": 411546907000,
+          "wall_ms": 50.004,
+          "cpu_ms": 0.453458,
+          "allocator_ms": 49.315468,
+          "thread_samples": [
+            {
+              "stamp": 411546722000,
+              "tid": 15643,
+              "cpu_ns": 37451169000,
+              "state": 1,
+              "priority": 30,
+              "base_priority": 31,
+              "max_priority": 63
+            }
+          ],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 122
+          },
+          "counter_bracket": [
+            411436228000,
+            411640209000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 407528667000,
+              "end_ns": 412558227000,
+              "busy_percent": 240.68825910931173
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "('capture', False)": 1
+  },
+  "limitations": "Task counters cover all threads and an expanded time bracket. Positive faults cannot be attributed to measured thread. State snapshots can miss intervening waits; state 1 is not proof of running on CPU. Post-Deadline cleanup excluded."
+}

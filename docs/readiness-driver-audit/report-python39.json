@@ -1,0 +1,94 @@
+{
+  "platform": "darwin",
+  "source_ref": "e223b1229b626962b36eb58e6c96a12ae6d573a4",
+  "source_dirty": false,
+  "task_rows": 5000,
+  "string_bytes": 96,
+  "started_at": "2026-10-26T20:50:16.118776+00:00",
+  "finished_at": "2026-10-26T20:50:29.181977+00:00",
+  "engines": [
+    "sync"
+  ],
+  "binary": "experiments/workload/target/release/livequery-workload",
+  "binary_bytes": 2189552,
+  "binary_sha256": "8675e7611ec061cd798ad3eae65c98fe8c141927e1052f5730362f025d9c0910",
+  "repeats": 1,
+  "load_seconds": 10,
+  "load_clients": 4,
+  "payload_bytes": 64,
+  "latency_policy": "last 100000 completed requests; bounded memory, not a whole-run tail",
+  "results": [
+    {
+      "repeat": 0,
+      "engine": "sync",
+      "mode": "jobs",
+      "subscribers": 4,
+      "publish_ms": 10,
+      "poll_ms": 10,
+      "diagnostic_snapshot_bytes": 914901,
+      "task_rows": 5000,
+      "string_bytes": 96,
+      "host_cpu_seconds": 8.462361,
+      "host_peak_rss_bytes": 20185088,
+      "elapsed_seconds": 10.016409999999999,
+      "requests": 131848,
+      "requests_per_second": 13163.199190129,
+      "p50_us": 243.0829999999773,
+      "p95_us": 567.166999999813,
+      "p99_us": 1232.332999999919,
+      "latency_samples": 100000,
+      "request_errors": 0,
+      "request_error_codes": {},
+      "observations": 1823,
+      "not_modified": 0,
+      "observation_errors": 0,
+      "observation_error_codes": {},
+      "observation_p99_us": 28148.500000000353,
+      "resource_samples": [
+        {
+          "elapsed_seconds": 0.04289891600000001,
+          "requests": 388,
+          "request_errors": 0,
+          "observations": 8,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 4,
+            "count": 4
+          },
+          "rss_bytes": 17301504,
+          "threads": 7,
+          "fds": 9
+        },
+        {
+          "elapsed_seconds": 5.090770916,
+          "requests": 71600,
+          "request_errors": 0,
+          "observations": 942,
+          "observation_errors": 0,
+          "query_kinds": {
+            "sort": 316,
+            "count": 314,
+            "max": 312
+          },
+          "rss_bytes": 19660800,
+          "threads": 7,
+          "fds": 9
+        }
+      ],
+      "query_kinds": {
+        "sort": 608,
+        "count": 608,
+        "max": 607
+      },
+      "capture_lock_max_ns": 2531083,
+      "capture_lock_ns": 103899795,
+      "completed": 131848,
+      "publication_attempts": 569,
+      "publication_error_codes": {},
+      "publication_errors": 0,
+      "publication_max_ns": 37801291,
+      "publication_ns": 6117782464,
+      "slow_captures": []
+    }
+  ]
+}

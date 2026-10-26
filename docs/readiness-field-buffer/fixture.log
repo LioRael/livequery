@@ -1,0 +1,20 @@
+   Compiling getrandom v0.4.3
+   Compiling schemars v1.2.3
+   Compiling socket2 v0.6.5
+   Compiling uuid v1.26.1
+   Compiling tempfile v3.27.0
+   Compiling livequery-core v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-core)
+   Compiling livequery-query v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-query)
+   Compiling livequery-transport v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-agent v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-agent)
+   Compiling livequery-cli v0.1.0-alpha.4 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.51s
+     Running tests/watch_state.rs (target/debug/deps/watch_state-bdd23e9e23e28754)
+
+running 3 tests
+test new_session_emits_identical_rows_without_an_io_failure ... ok
+test missing_metadata_clears_previous_snapshot_age ... ok
+test interrupted_request_clears_cursor_and_result_before_retry ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+

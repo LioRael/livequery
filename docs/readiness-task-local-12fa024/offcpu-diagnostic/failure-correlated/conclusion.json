@@ -1,0 +1,58 @@
+{
+  "capture_failures": 60,
+  "query_failures": 2,
+  "failed_interval_count": 144,
+  "sampled_thread_states": {
+    "1": 339
+  },
+  "zero_fault_brackets_with_all_state1_samples": 111,
+  "flat_cpu_pairs_in_these_brackets": 54,
+  "longest_flat_cpu_ms": 28.894,
+  "query_example": {
+    "phase": "scan -> scan",
+    "start_ns": 1780828615193000,
+    "end_ns": 1780828654545000,
+    "wall_ms": 39.352,
+    "cpu_ms": 0.042083,
+    "allocator_ms": 0.0,
+    "thread_samples": [
+      {
+        "stamp": 1780828620582000,
+        "tid": 52303249,
+        "cpu_ns": 11969453000,
+        "state": 1,
+        "priority": 30,
+        "name": ""
+      },
+      {
+        "stamp": 1780828635653000,
+        "tid": 52303249,
+        "cpu_ns": 11969466000,
+        "state": 1,
+        "priority": 30,
+        "name": ""
+      },
+      {
+        "stamp": 1780828647795000,
+        "tid": 52303249,
+        "cpu_ns": 11969466000,
+        "state": 1,
+        "priority": 30,
+        "name": ""
+      }
+    ],
+    "task_counter_delta": {
+      "faults": 0,
+      "pageins": 0,
+      "cow_faults": 0,
+      "csw": 286
+    },
+    "counter_bracket": [
+      1780828596469000,
+      1780828660378000
+    ]
+  },
+  "interpretation": "Strong evidence that insufficient CPU scheduling service is the dominant local failure mechanism, not a CPU-heavy algorithm, application lock wait, or page-in explanation for the zero-fault intervals. State sampling is not a continuous scheduler trace and cannot prove every instant of every historical failure. This instrumented local result does not certify CI or release readiness.",
+  "official_source_unchanged": true,
+  "source_reference": "https://github.com/apple-oss-distributions/xnu/blob/main/osfmk/kern/thread.c"
+}

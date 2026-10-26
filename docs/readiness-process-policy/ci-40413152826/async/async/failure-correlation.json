@@ -1,0 +1,69 @@
+{
+  "spans": [
+    {
+      "kind": "query",
+      "deadline": true,
+      "tid": 18284,
+      "pre_return_wall_ms": 145.593,
+      "pre_return_cpu_ms": 0.126,
+      "intervals": [
+        {
+          "phase": "scan -> scan",
+          "start_ns": 422067780000,
+          "end_ns": 422115238000,
+          "wall_ms": 47.458,
+          "cpu_ms": 0.041833,
+          "allocator_ms": 0.0005,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 507
+          },
+          "counter_bracket": [
+            422055388000,
+            422213653000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 420056731000,
+              "end_ns": 425087939000,
+              "busy_percent": 244.24242424242425
+            }
+          ]
+        },
+        {
+          "phase": "scan -> deadline",
+          "start_ns": 422115261000,
+          "end_ns": 422213336000,
+          "wall_ms": 98.075,
+          "cpu_ms": 0.024709,
+          "allocator_ms": 98.071459,
+          "thread_samples": [],
+          "task_counter_delta": {
+            "faults": 0,
+            "pageins": 0,
+            "cow_faults": 0,
+            "csw": 507
+          },
+          "counter_bracket": [
+            422055388000,
+            422213653000
+          ],
+          "host_cpu_windows": [
+            {
+              "start_ns": 420056731000,
+              "end_ns": 425087939000,
+              "busy_percent": 244.24242424242425
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "('query', True)": 1
+  },
+  "limitations": "Task counters cover all threads and an expanded time bracket. Positive faults cannot be attributed to measured thread. State snapshots can miss intervening waits; state 1 is not proof of running on CPU. Post-Deadline cleanup excluded."
+}

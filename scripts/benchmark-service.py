@@ -41,13 +41,14 @@ def resources(pid):
     return sample
 
 
-async def drive(meta, mode, seconds, subscribers, poll_ms):
+async def drive(meta, mode, seconds, subscribers, poll_ms, task_rows=0):
     start = time.perf_counter()
     finish = start + seconds
     latency, query_latency = deque(maxlen=SAMPLES), deque(maxlen=SAMPLES)
     errors, query_errors = Counter(), Counter()
     completed = observations = unchanged = 0
     samples = []
+    query_kinds = Counter()
 
     async def load():
         nonlocal completed
@@ -72,6 +73,8 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
         nonlocal observations, unchanged
         cursor = None
         last_completed = 0
+        last_sequence = 0
+        turn = 0
         while time.perf_counter() < finish:
             before = time.perf_counter()
             writer = None
@@ -79,9 +82,35 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
                 reader, writer = await asyncio.open_unix_connection(meta["socket"])
                 request = {"min_completed": 0} if mode == "manual" else {
                     "command": "observe_v2", "sql": "SELECT completed, bytes FROM counters WHERE completed > 0", "since": cursor}
+                kind = ["sort", "count", "max"][turn % 3]
+                if mode == "jobs":
+                    sql = {"sort": "SELECT id, elapsed_ms, retry_count FROM jobs WHERE state = 'running' ORDER BY elapsed_ms DESC LIMIT 20", "count": "SELECT COUNT(*) FROM jobs WHERE state = 'running'", "max": "SELECT MAX(elapsed_ms) FROM jobs WHERE state = 'running'"}[kind]
+                    request = {"command": "query_details", "sql": sql}
                 writer.write(json.dumps(request).encode() + b"\n")
                 await writer.drain()
                 reply = json.loads(await asyncio.wait_for(reader.readline(), 1))
+                if mode == "jobs":
+                    if reply["status"] == "error":
+                        query_errors[reply["code"]] += 1
+                        continue
+                    result = reply["data"]
+                    assert result["scanned"] == task_rows, "incomplete task scan"
+                    sequence = result["publication"]["sequence"]
+                    assert sequence >= last_sequence and sequence > 0, "publication regressed/uninitialized"
+                    last_sequence = sequence
+                    rows = result["rows"]
+                    if kind == "count":
+                        assert rows == [{"count": task_rows}], "incorrect count"
+                    elif kind == "max":
+                        assert isinstance(rows[0]["max"], int) and rows[0]["max"] >= 0
+                    else:
+                        assert len(rows) == min(task_rows, 20)
+                        assert len({r["id"] for r in rows}) == len(rows)
+                        assert all(0 <= r["id"] < task_rows and r["retry_count"] == r["elapsed_ms"] // 100 for r in rows), "incoherent task fields"
+                        assert rows == sorted(rows, key=lambda r: (-r["elapsed_ms"], r["id"])), "incorrect/stability order"
+                        assert result["truncated"] == (task_rows > 20)
+                    query_kinds[kind] += 1
+                    turn += 1
                 if mode == "published":
                     if reply["status"] == "error":
                         query_errors[reply["code"]] += 1
@@ -112,7 +141,7 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
             sample = await asyncio.to_thread(resources, meta["pid"])
             samples.append({"elapsed_seconds": time.perf_counter() - start,
                             "requests": completed, "request_errors": sum(errors.values()),
-                            "observations": observations, "observation_errors": sum(query_errors.values()), **sample})
+                            "observations": observations, "observation_errors": sum(query_errors.values()), "query_kinds": dict(query_kinds), **sample})
             if len(samples) % 12 == 1:
                 print(json.dumps({"progress_seconds": round(time.perf_counter() - start),
                                   "requests": completed, "request_errors": dict(errors),
@@ -126,7 +155,7 @@ async def drive(meta, mode, seconds, subscribers, poll_ms):
                 latency_samples=len(latency), request_errors=sum(errors.values()), request_error_codes=dict(errors),
                 observations=observations, not_modified=unchanged, observation_errors=sum(query_errors.values()),
                 observation_error_codes=dict(query_errors), observation_p99_us=quantile(query_latency, .99),
-                resource_samples=samples)
+                resource_samples=samples, query_kinds=dict(query_kinds))
 
 
 def main():
@@ -137,7 +166,14 @@ def main():
     parser.add_argument("--binary", default="experiments/workload/target/release/livequery-workload")
     parser.add_argument("--only", choices=["baseline", "soak"])
     parser.add_argument("--engine", choices=["sync", "async", "both"], default="both")
+    parser.add_argument("--task-rows", type=int, default=0)
+    parser.add_argument("--string-bytes", type=int, default=32)
+    parser.add_argument("--publish-ms", type=int, default=10)
+    parser.add_argument("--subscribers", type=int, default=4)
+    parser.add_argument("--poll-ms", type=int, default=10)
     args = parser.parse_args()
+    if not 0 <= args.task_rows <= 10000 or not 0 <= args.string_bytes <= 4096 or not 1 <= args.publish_ms <= 60000 or not 0 <= args.subscribers <= 16 or not 1 <= args.poll_ms <= 60000:
+        parser.error("invalid workload bounds")
     if args.seconds < 1 or args.repeats < 1:
         parser.error("seconds and repeats must be positive")
     started_at = datetime.now(timezone.utc).isoformat()
@@ -153,21 +189,23 @@ def main():
                 cases = [("baseline", 0, 10)]
             if args.only == "soak":
                 cases = [("published", 4, 10)]
+            if args.task_rows and args.only != "baseline":
+                cases = [("jobs", args.subscribers, args.publish_ms)]
             cases = cases[repeat:] + cases[:repeat]
             for mode, subscribers, publish_ms in cases:
-                proc = subprocess.Popen([str(binary), engine, mode, str(args.seconds + 3), str(publish_ms)],
+                proc = subprocess.Popen([str(binary), engine, mode, str(args.seconds + 3), str(publish_ms), str(args.task_rows), str(args.string_bytes)],
                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
                 try:
                     meta = json.loads(proc.stdout.readline())
                     time.sleep(.1)
-                    metrics = asyncio.run(drive(meta, mode, args.seconds, subscribers, 10))
+                    metrics = asyncio.run(drive(meta, mode, args.seconds, subscribers, args.poll_ms, args.task_rows))
                     _, status, usage = os.wait4(proc.pid, 0)
                     proc.returncode = os.waitstatus_to_exitcode(status)
                     if proc.returncode:
                         raise RuntimeError(proc.stderr.read())
                     summary = json.loads(proc.stdout.readline())
                     row = dict(repeat=repeat, engine=engine, mode=mode, subscribers=subscribers,
-                               publish_ms=publish_ms, poll_ms=10, host_cpu_seconds=usage.ru_utime + usage.ru_stime,
+                               publish_ms=publish_ms, poll_ms=args.poll_ms, diagnostic_snapshot_bytes=meta.get("diagnostic_snapshot_bytes", 0), task_rows=args.task_rows, string_bytes=args.string_bytes, host_cpu_seconds=usage.ru_utime + usage.ru_stime,
                                host_peak_rss_bytes=usage.ru_maxrss * (1 if sys.platform == "darwin" else 1024),
                                **metrics, **summary)
                     rows.append(row)
@@ -178,7 +216,7 @@ def main():
                         proc.wait()
     output = ROOT / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(dict(platform=sys.platform, source_ref=source_ref, started_at=started_at, finished_at=datetime.now(timezone.utc).isoformat(), engines=engines, binary=args.binary, binary_bytes=binary.stat().st_size, binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
+    output.write_text(json.dumps(dict(platform=sys.platform, source_ref=source_ref, source_dirty=bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).strip()), task_rows=args.task_rows, string_bytes=args.string_bytes, started_at=started_at, finished_at=datetime.now(timezone.utc).isoformat(), engines=engines, binary=args.binary, binary_bytes=binary.stat().st_size, binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
                                      repeats=args.repeats, load_seconds=args.seconds, load_clients=4, payload_bytes=64,
                                      latency_policy="last 100000 completed requests; bounded memory, not a whole-run tail",
                                      results=rows), indent=2) + "\n")

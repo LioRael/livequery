@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0 — 2026-10-27
+
+- Acceptance scope: macOS task-table high-load endurance has not passed and is excluded from the 0.1.0 release gate by explicit release-owner decision. Regular macOS CI and two-hour baseline remain required. Deadline/Busy must be handled; the remaining macOS delay has no established specific root cause or verified fix. Historical failures are retained in [attempt 5](docs/readiness-task-attempt5/README.md).
+
+- Enforce detailed-result metadata byte budgets while preserving basic-query budgets.
+- Report syntax errors at the unexpected token or EOF.
+- Reset WATCH result/freshness state on session changes, missing metadata and I/O retries.
+- Check cancellation between client dispatches; test slow-client shutdown, refresh recovery and historical snapshot release.
+- Add representative task-table socket load, property/fuzz checks, registry-install acceptance and a candidate stable API contract.
+
 ## 0.1.0-alpha.4 — 2026-10-26
 
 All seven crates published. Includes the alpha.3 hardening changes below; alpha.3 itself was not published. Four Linux/macOS × sync/async two-hour endurance gates passed; see [evidence](docs/endurance-alpha4/README.md) and [registry verification](docs/release-alpha4.json).
