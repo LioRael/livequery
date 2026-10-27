@@ -1,0 +1,51 @@
+docs/release-0.1.0/README.md
+  s_1d1ebc94680cfb::t_428c593d207517 3,9
+docs/release-0.1.0/github-release.json
+  s_1d1ebc94680cfb::t_ff08e32d2fe1d9 1
+docs/release-0.1.0/livequery-agent-publish.log
+  s_1d1ebc94680cfb::t_a246552f778ed5 1-17
+docs/release-0.1.0/livequery-cli-publish.log
+  s_1d1ebc94680cfb::t_4ec0940e27f18b 1-15
+docs/release-0.1.0/livequery-core-publish.log
+  s_1d1ebc94680cfb::t_a3d89f8cb36c13 1-15
+docs/release-0.1.0/livequery-derive-publish.log
+  s_1d1ebc94680cfb::t_01bdf0650ce52f 1-12
+docs/release-0.1.0/livequery-publish.log
+  s_1d1ebc94680cfb::t_1a29dd12d6224c 1-15
+docs/release-0.1.0/livequery-query-publish.log
+  s_1d1ebc94680cfb::t_42ada2915280d9 1-15
+docs/release-0.1.0/livequery-transport-publish.log
+  s_1d1ebc94680cfb::t_7769cf3ef86bbd 1-12
+docs/release-0.1.0/main-ci.json
+  s_1d1ebc94680cfb::t_8c9b536e18dc67 1
+docs/release-0.1.0/main-stability.json
+  s_1d1ebc94680cfb::t_7fa91f20343ef3 1
+docs/release-0.1.0/merged-pr.json
+  s_1d1ebc94680cfb::t_aedf3bc31e8c27 1
+docs/release-0.1.0/registry-consumer-Cargo.lock
+  s_1d1ebc94680cfb::t_2a5b013050f23e 1-626
+docs/release-0.1.0/registry-install-corrected.log
+  s_1d1ebc94680cfb::t_19c25e0c090ed9 1-60
+docs/release-0.1.0/registry-install.log
+  s_1d1ebc94680cfb::t_67d24ffe14fd1d 1-63
+docs/release-0.1.0/registry-receipts.json
+  s_1d1ebc94680cfb::t_b990baae519440 1-93
+docs/stability.md
+  s_1d1ebc94680cfb::t_df09274bf81f81 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6c2a9095988d768708e14b7b2f1962a87e9f6c94",
+  "prompts": {},
+  "sessions": {
+    "s_1d1ebc94680cfb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a174e3-7a80-7303-89d2-f016a5e7e9de",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
