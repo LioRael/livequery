@@ -1,6 +1,6 @@
 # Stable release gates
 
-Alpha.4 is published with investigation improvements and alpha.3 hardening. The first stable release is still a candidate: the stable-readiness working tree contains additional corrections, so published alpha.4 evidence must not be relabeled as validation of those changes. See [published validation](investigation-validation.md), the [candidate API/protocol contract](stable-contract.md), and the [incremental independent review](security-review-alpha4.md).
+Version 0.1.0 is published with the additional stable-readiness corrections. See the [final release receipts](release-0.1.0/README.md) for exact source, CI, registry and installation verification. Published alpha.4 evidence remains historical and is not relabeled as stable binary evidence. See [published validation](investigation-validation.md), the [candidate API/protocol contract](stable-contract.md), and the [incremental independent review](security-review-alpha4.md).
 
 The first stable scope is local, read-only diagnostics on Linux/macOS, with trusted same-user processes, no hard real-time or lossless-event guarantee. Alpha.3 was not published separately. Historical hardening measurements remain in [stability-validation.md](stability-validation.md).
 

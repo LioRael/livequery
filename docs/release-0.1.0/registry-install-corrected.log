@@ -1,0 +1,60 @@
+   Compiling livequery-registry-jobs v0.0.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/release-0.1.0/registry-consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.24s
+ Downloading crates ...
+  Downloaded livequery-cli v0.1.0
+    Updating crates.io index
+  Installing livequery-cli v0.1.0
+    Updating crates.io index
+    Updating crates.io index
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling libc v0.2.191
+   Compiling serde_core v1.0.229
+   Compiling winnow v1.0.4
+   Compiling hashbrown v0.17.1
+   Compiling equivalent v1.0.3
+   Compiling zmij v1.0.23
+   Compiling toml_datetime v1.1.2+spec-1.1.0
+   Compiling serde v1.0.229
+   Compiling serde_json v1.0.154
+   Compiling memchr v2.8.3
+   Compiling ref-cast v1.0.27
+   Compiling thiserror v2.0.21
+   Compiling itoa v1.0.18
+   Compiling bitflags v2.13.2
+   Compiling dyn-clone v1.0.20
+   Compiling cfg_aliases v0.2.2
+   Compiling indexmap v2.14.2
+   Compiling log v0.4.34
+   Compiling nix v0.30.1
+   Compiling rustix v1.1.5
+   Compiling cfg-if v1.0.5
+   Compiling sqlparser v0.59.0
+   Compiling syn v3.0.9
+   Compiling syn v2.0.119
+   Compiling unicode-segmentation v1.13.3
+   Compiling unicode-width v0.2.2
+   Compiling utf8parse v0.2.2
+   Compiling toml_parser v1.1.5+spec-1.1.0
+   Compiling toml_edit v0.25.17+spec-1.1.0
+   Compiling errno v0.3.14
+   Compiling socket2 v0.6.5
+   Compiling serde_derive_internals v0.30.0
+   Compiling proc-macro-crate v3.5.0
+   Compiling ref-cast-impl v1.0.27
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling schemars_derive v1.2.3
+   Compiling rustyline v17.0.2
+   Compiling livequery-derive v0.1.0
+   Compiling schemars v1.2.3
+   Compiling livequery-core v0.1.0
+   Compiling livequery-transport v0.1.0
+   Compiling livequery-query v0.1.0
+   Compiling livequery-cli v0.1.0
+    Finished `release` profile [optimized] target(s) in 27.43s
+  Installing /Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/release-0.1.0/registry-install/bin/livequery
+   Installed package `livequery-cli v0.1.0` (executable `livequery`)
+warning: be sure to add `/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/release-0.1.0/registry-install/bin` to your PATH to be able to run the installed binaries
+jobs: discover stalled worker, accept requests, aggregate, WATCH repair, interactive recovery and cleanup PASS

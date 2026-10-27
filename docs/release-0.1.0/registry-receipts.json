@@ -1,0 +1,93 @@
+[
+  {
+    "name": "livequery-derive",
+    "version": "0.1.0",
+    "checksum": "5caee0df8e517d75dc1ceaf095c5523619090bfa3dc8609ea48861dc524e5635",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery-derive"
+    },
+    "registry_id": 3618730
+  },
+  {
+    "name": "livequery-core",
+    "version": "0.1.0",
+    "checksum": "4bde59d98f53c34ead5962fe258aa675332fae03b9a1cb8ccb4a47249640b1e8",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery-core"
+    },
+    "registry_id": 3618732
+  },
+  {
+    "name": "livequery-query",
+    "version": "0.1.0",
+    "checksum": "2d2925034b02ce37ca11caf10b0ef7afa94e16b9408bfefdf22bf428cab9ab44",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery-query"
+    },
+    "registry_id": 3618737
+  },
+  {
+    "name": "livequery-transport",
+    "version": "0.1.0",
+    "checksum": "66a05ce3effda3c8952d89654975027dacd67e7ab01e3016790201822bfe39d9",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery-transport"
+    },
+    "registry_id": 3618739
+  },
+  {
+    "name": "livequery-agent",
+    "version": "0.1.0",
+    "checksum": "8849706623e332f1ed676c96efec3a2f5783fdd756fa155bc8ff572babc864bb",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery-agent"
+    },
+    "registry_id": 3618741
+  },
+  {
+    "name": "livequery",
+    "version": "0.1.0",
+    "checksum": "307cb4def44505d711cf45551351528db7690ae3dca72f24b25a15d0ef6269af",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery"
+    },
+    "registry_id": 3618744
+  },
+  {
+    "name": "livequery-cli",
+    "version": "0.1.0",
+    "checksum": "73e973cfc5daf39a562b2877cec3bf83d22ad66ec357192674abe426ae47a85d",
+    "yanked": false,
+    "vcs": {
+      "git": {
+        "sha1": "55703feed2b5be287586a5efa73a5ace18f9e4b3"
+      },
+      "path_in_vcs": "crates/livequery-cli"
+    },
+    "registry_id": 3618746
+  }
+]

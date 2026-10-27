@@ -1,0 +1,12 @@
+    Updating crates.io index
+   Packaging livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Updating crates.io index
+    Packaged 9 files, 40.2KiB (13.0KiB compressed)
+   Verifying livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+   Compiling livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/target/package/livequery-transport-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.47s
+   Uploading livequery-transport v0.1.0 (/Users/leosouthey/.codex/worktrees/investigation-experience/livequery/crates/livequery-transport)
+    Uploaded livequery-transport v0.1.0 to registry `crates-io`
+note: waiting for livequery-transport v0.1.0 to be available at registry `crates-io`
+help: you may press ctrl-c to skip waiting; the crate should be available shortly
+   Published livequery-transport v0.1.0 at registry `crates-io`
